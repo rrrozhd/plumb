@@ -1,0 +1,93 @@
+{
+ "summary": {
+  "at": "2026-10-24T22:08:13Z",
+  "ledger_L": 107880070,
+  "accounts": 5,
+  "start_equals_creating_ledger": 5,
+  "first_sent_matches_start": 5,
+  "account_info_overshoot_ledgers": [
+   111826,
+   112909,
+   109155,
+   111430,
+   111614
+  ],
+  "created_span": [
+   "2026-08-25T05:12:30+00:00",
+   "2026-08-25T05:16:02+00:00"
+  ],
+  "created_ledger_span": 56
+ },
+ "accounts": [
+  {
+   "account": "r3DnqvqrH5eB5dfNjMMj1jrQ8oPS2gC8j4",
+   "creating_tx": "C11D453C076F49389DEEA6A86C11BB79AF808B08992B8558DFBFC8DE4A30B71F",
+   "funder": "rfQ9EcLkU6WnNmkS3EwUkFeXeN47Rk8Cvi",
+   "created_ledger": 106526857,
+   "created_at": "2026-08-25T05:12:30+00:00",
+   "starting_sequence": 106526857,
+   "start_equals_ledger": true,
+   "first_sent_sequence": 106526857,
+   "first_sent_matches": true,
+   "sequence_at_L": 106638683,
+   "account_info_overshoot_ledgers": 111826,
+   "account_info_overshoot_days": 5.0
+  },
+  {
+   "account": "r3UbYiMa9PsPTtUuYsYZ1sLp7SH9tA2nrf",
+   "creating_tx": "E43EF0797F3AC2130391DC7BE2BFDCC8E68F25618B68AF3921C69D45B445905C",
+   "funder": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+   "created_ledger": 106526898,
+   "created_at": "2026-08-25T05:15:10+00:00",
+   "starting_sequence": 106526898,
+   "start_equals_ledger": true,
+   "first_sent_sequence": 106526898,
+   "first_sent_matches": true,
+   "sequence_at_L": 106639807,
+   "account_info_overshoot_ledgers": 112909,
+   "account_info_overshoot_days": 5.1
+  },
+  {
+   "account": "r3cGEVyyNuA8Sq5ATsKVVNezF9bxdSdyNz",
+   "creating_tx": "A8D536FF6D9AEA00BC6934432353830486BCDF500BD970AFB40521A1E6AC4591",
+   "funder": "rhWj9gaovwu2hZxYW7p388P8GRbuXFLQkK",
+   "created_ledger": 106526857,
+   "created_at": "2026-08-25T05:12:30+00:00",
+   "starting_sequence": 106526857,
+   "start_equals_ledger": true,
+   "first_sent_sequence": 106526857,
+   "first_sent_matches": true,
+   "sequence_at_L": 106636012,
+   "account_info_overshoot_ledgers": 109155,
+   "account_info_overshoot_days": 4.9
+  },
+  {
+   "account": "r3zgdeoq3WRykoSLpMWKUyPK89po41Sfdm",
+   "creating_tx": "42A54156EA9E6A373EB853892E9038CAC46CD59CC19AA7817EDD993C17A84F05",
+   "funder": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+   "created_ledger": 106526913,
+   "created_at": "2026-08-25T05:16:02+00:00",
+   "starting_sequence": 106526913,
+   "start_equals_ledger": true,
+   "first_sent_sequence": 106526913,
+   "first_sent_matches": true,
+   "sequence_at_L": 106638343,
+   "account_info_overshoot_ledgers": 111430,
+   "account_info_overshoot_days": 5.0
+  },
+  {
+   "account": "r4u9tau15hD7wPT8UV3oXWBfHCoTzfKixV",
+   "creating_tx": "79378AD52D14A0BA15B2CC56EFBA186E787C8E09E0D4114C7893E3BC69FE2CC0",
+   "funder": "rhWj9gaovwu2hZxYW7p388P8GRbuXFLQkK",
+   "created_ledger": 106526883,
+   "created_at": "2026-08-25T05:14:10+00:00",
+   "starting_sequence": 106526883,
+   "start_equals_ledger": true,
+   "first_sent_sequence": 106526883,
+   "first_sent_matches": true,
+   "sequence_at_L": 106638497,
+   "account_info_overshoot_ledgers": 111614,
+   "account_info_overshoot_days": 5.0
+  }
+ ]
+}
