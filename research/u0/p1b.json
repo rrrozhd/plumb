@@ -1,0 +1,634 @@
+{
+ "summary": {
+  "at": "2026-10-24T22:14:29Z",
+  "pages_per_account": 3,
+  "accounts": 15,
+  "incoming_payments": 317,
+  "t54_tagged": 238,
+  "x402_like": 243,
+  "x402_like_outside_t54_tag": 5,
+  "accounts_with_x402_like_outside_t54_tag": {
+   "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg": [
+    [
+     "26100006",
+     2
+    ]
+   ],
+   "raUiAFeLjNsimQAfNTsHmV876xSCWeXi1B": [
+    [
+     "None",
+     1
+    ]
+   ],
+   "r9Y5kWQvZLXn4vuvqNJovoNpJFzpMCuP2d": [
+    [
+     "804681468",
+     3
+    ],
+    [
+     "None",
+     1
+    ]
+   ],
+   "rpkhorcjzeFLxsBmui5sYmfVdpZAuMy8LZ": [
+    [
+     "None",
+     1
+    ]
+   ]
+  },
+  "accounts_without_x402_like": [
+   "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7",
+   "r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf"
+  ]
+ },
+ "accounts": {
+  "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ": {
+   "host": "api.chainmarket-api.workers.dev",
+   "listed_tags": {
+    "804681468": 1078
+   },
+   "incoming_payments": 10,
+   "window": [
+    "2026-10-19",
+    "2026-10-24"
+   ],
+   "source_tags": [
+    [
+     "804681468",
+     8
+    ],
+    [
+     "None",
+     2
+    ]
+   ],
+   "t54_tagged": 8,
+   "x402_like": 8,
+   "x402_like_by_tag": [
+    [
+     "804681468",
+     8
+    ]
+   ],
+   "x402_like_outside_t54_tag": 0,
+   "currencies": [
+    [
+     "524C555344000000000000000000000000000000",
+     8
+    ],
+    [
+     "XRP",
+     2
+    ]
+   ]
+  },
+  "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32": {
+   "host": "airdroppulse.theaslangroupllc.com",
+   "listed_tags": {
+    "804681468": 946
+   },
+   "incoming_payments": 148,
+   "window": [
+    "2026-07-24",
+    "2026-10-24"
+   ],
+   "source_tags": [
+    [
+     "804681468",
+     143
+    ],
+    [
+     "None",
+     5
+    ]
+   ],
+   "t54_tagged": 143,
+   "x402_like": 143,
+   "x402_like_by_tag": [
+    [
+     "804681468",
+     143
+    ]
+   ],
+   "x402_like_outside_t54_tag": 0,
+   "currencies": [
+    [
+     "524C555344000000000000000000000000000000",
+     143
+    ],
+    [
+     "XRP",
+     5
+    ]
+   ]
+  },
+  "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7": {
+   "host": "pay.edge-agents.ai",
+   "listed_tags": {
+    "402402402": 587
+   },
+   "incoming_payments": 20,
+   "window": [
+    "2026-03-02",
+    "2026-10-03"
+   ],
+   "source_tags": [
+    [
+     "None",
+     20
+    ]
+   ],
+   "t54_tagged": 0,
+   "x402_like": 0,
+   "x402_like_by_tag": [],
+   "x402_like_outside_t54_tag": 0,
+   "currencies": [
+    [
+     "XRP",
+     20
+    ]
+   ]
+  },
+  "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp": {
+   "host": "api.vextorium.com",
+   "listed_tags": {
+    "804681468": 451
+   },
+   "incoming_payments": 16,
+   "window": [
+    "2026-10-11",
+    "2026-10-24"
+   ],
+   "source_tags": [
+    [
+     "804681468",
+     13
+    ],
+    [
+     "None",
+     3
+    ]
+   ],
+   "t54_tagged": 13,
+   "x402_like": 13,
+   "x402_like_by_tag": [
+    [
+     "804681468",
+     13
+    ]
+   ],
+   "x402_like_outside_t54_tag": 0,
+   "currencies": [
+    [
+     "524C555344000000000000000000000000000000",
+     12
+    ],
+    [
+     "XRP",
+     4
+    ]
+   ]
+  },
+  "r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf": {
+   "host": "horizonpulse.dev",
+   "listed_tags": {
+    "None": 29
+   },
+   "incoming_payments": 3,
+   "window": [
+    "2026-10-09",
+    "2026-10-23"
+   ],
+   "source_tags": [
+    [
+     "None",
+     3
+    ]
+   ],
+   "t54_tagged": 0,
+   "x402_like": 0,
+   "x402_like_by_tag": [],
+   "x402_like_outside_t54_tag": 0,
+   "currencies": [
+    [
+     "XRP",
+     2
+    ],
+    [
+     "524C555344000000000000000000000000000000",
+     1
+    ]
+   ]
+  },
+  "rhFHztjS63h6fs5vXgTotuL7jsuryUvDSF": {
+   "host": "api.babyblueviper.com",
+   "listed_tags": {
+    "804681468": 21
+   },
+   "incoming_payments": 6,
+   "window": [
+    "2026-07-25",
+    "2026-10-24"
+   ],
+   "source_tags": [
+    [
+     "804681468",
+     4
+    ],
+    [
+     "None",
+     2
+    ]
+   ],
+   "t54_tagged": 4,
+   "x402_like": 4,
+   "x402_like_by_tag": [
+    [
+     "804681468",
+     4
+    ]
+   ],
+   "x402_like_outside_t54_tag": 0,
+   "currencies": [
+    [
+     "XRP",
+     6
+    ]
+   ]
+  },
+  "r9xmBsRr8Ao7jRgjjxreMiAwGiCK2FGwqw": {
+   "host": "buy.fizzl.eu",
+   "listed_tags": {
+    "804681468": 18
+   },
+   "incoming_payments": 22,
+   "window": [
+    "2026-10-06",
+    "2026-10-24"
+   ],
+   "source_tags": [
+    [
+     "804681468",
+     20
+    ],
+    [
+     "None",
+     2
+    ]
+   ],
+   "t54_tagged": 20,
+   "x402_like": 20,
+   "x402_like_by_tag": [
+    [
+     "804681468",
+     20
+    ]
+   ],
+   "x402_like_outside_t54_tag": 0,
+   "currencies": [
+    [
+     "524C555344000000000000000000000000000000",
+     20
+    ],
+    [
+     "XRP",
+     2
+    ]
+   ]
+  },
+  "rnFHPGmgTLSg7hjzfr8wiHaTdTh3PijrZZ": {
+   "host": "api.agentweather.io",
+   "listed_tags": {
+    "804681468": 18
+   },
+   "incoming_payments": 26,
+   "window": [
+    "2026-09-26",
+    "2026-10-24"
+   ],
+   "source_tags": [
+    [
+     "804681468",
+     14
+    ],
+    [
+     "None",
+     12
+    ]
+   ],
+   "t54_tagged": 14,
+   "x402_like": 14,
+   "x402_like_by_tag": [
+    [
+     "804681468",
+     14
+    ]
+   ],
+   "x402_like_outside_t54_tag": 0,
+   "currencies": [
+    [
+     "524C555344000000000000000000000000000000",
+     12
+    ],
+    [
+     "XRP",
+     10
+    ],
+    [
+     "46555A5A59000000000000000000000000000000",
+     2
+    ],
+    [
+     "41524D5900000000000000000000000000000000",
+     1
+    ]
+   ]
+  },
+  "rM8kmmnz5qPMg7V3r7SHYXgDGvm8PhzLvM": {
+   "host": "api.lumitrades.io",
+   "listed_tags": {
+    "804681468": 17
+   },
+   "incoming_payments": 21,
+   "window": [
+    "2026-10-22",
+    "2026-10-23"
+   ],
+   "source_tags": [
+    [
+     "804681468",
+     18
+    ],
+    [
+     "None",
+     3
+    ]
+   ],
+   "t54_tagged": 18,
+   "x402_like": 18,
+   "x402_like_by_tag": [
+    [
+     "804681468",
+     18
+    ]
+   ],
+   "x402_like_outside_t54_tag": 0,
+   "currencies": [
+    [
+     "XRP",
+     13
+    ],
+    [
+     "524C555344000000000000000000000000000000",
+     8
+    ]
+   ]
+  },
+  "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg": {
+   "host": "api.stablecoingateways.com",
+   "listed_tags": {
+    "26100009": 1,
+    "26100007": 1,
+    "26100010": 1,
+    "26100013": 1,
+    "26100015": 1,
+    "26100014": 1,
+    "26100012": 1,
+    "26100011": 1,
+    "26100008": 1,
+    "26100005": 1,
+    "26100004": 1,
+    "26100003": 1,
+    "26100002": 1,
+    "26100006": 1
+   },
+   "incoming_payments": 3,
+   "window": [
+    "2026-10-22",
+    "2026-10-23"
+   ],
+   "source_tags": [
+    [
+     "26100006",
+     2
+    ],
+    [
+     "None",
+     1
+    ]
+   ],
+   "t54_tagged": 0,
+   "x402_like": 2,
+   "x402_like_by_tag": [
+    [
+     "26100006",
+     2
+    ]
+   ],
+   "x402_like_outside_t54_tag": 2,
+   "currencies": [
+    [
+     "XRP",
+     3
+    ]
+   ]
+  },
+  "rfryheo6yzFdLWj8qUQtZc7zG9MKkBkUEy": {
+   "host": "app.heinrichstech.com",
+   "listed_tags": {
+    "804681468": 14
+   },
+   "incoming_payments": 13,
+   "window": [
+    "2026-04-17",
+    "2026-10-23"
+   ],
+   "source_tags": [
+    [
+     "804681468",
+     8
+    ],
+    [
+     "None",
+     5
+    ]
+   ],
+   "t54_tagged": 8,
+   "x402_like": 8,
+   "x402_like_by_tag": [
+    [
+     "804681468",
+     8
+    ]
+   ],
+   "x402_like_outside_t54_tag": 0,
+   "currencies": [
+    [
+     "XRP",
+     10
+    ],
+    [
+     "524C555344000000000000000000000000000000",
+     3
+    ]
+   ]
+  },
+  "r36sbDCAsaCj44ZUXWY2jjGE1jBpsCoRQ4": {
+   "host": "bruk-agent-api.fly.dev",
+   "listed_tags": {
+    "804681468": 1,
+    "None": 7
+   },
+   "incoming_payments": 11,
+   "window": [
+    "2026-10-18",
+    "2026-10-23"
+   ],
+   "source_tags": [
+    [
+     "804681468",
+     7
+    ],
+    [
+     "None",
+     4
+    ]
+   ],
+   "t54_tagged": 7,
+   "x402_like": 7,
+   "x402_like_by_tag": [
+    [
+     "804681468",
+     7
+    ]
+   ],
+   "x402_like_outside_t54_tag": 0,
+   "currencies": [
+    [
+     "XRP",
+     8
+    ],
+    [
+     "524C555344000000000000000000000000000000",
+     3
+    ]
+   ]
+  },
+  "raUiAFeLjNsimQAfNTsHmV876xSCWeXi1B": {
+   "host": "numba2witcheese.tail7d8d44.ts.net",
+   "listed_tags": {
+    "None": 6,
+    "804681468": 6
+   },
+   "incoming_payments": 3,
+   "window": [
+    "2026-10-10",
+    "2026-10-10"
+   ],
+   "source_tags": [
+    [
+     "None",
+     3
+    ]
+   ],
+   "t54_tagged": 0,
+   "x402_like": 1,
+   "x402_like_by_tag": [
+    [
+     "None",
+     1
+    ]
+   ],
+   "x402_like_outside_t54_tag": 1,
+   "currencies": [
+    [
+     "XRP",
+     2
+    ],
+    [
+     "PDC",
+     1
+    ]
+   ]
+  },
+  "r9Y5kWQvZLXn4vuvqNJovoNpJFzpMCuP2d": {
+   "host": "numba2witcheese.tail7d8d44.ts.net",
+   "listed_tags": {
+    "None": 6,
+    "804681468": 6
+   },
+   "incoming_payments": 12,
+   "window": [
+    "2026-10-09",
+    "2026-10-19"
+   ],
+   "source_tags": [
+    [
+     "None",
+     9
+    ],
+    [
+     "804681468",
+     3
+    ]
+   ],
+   "t54_tagged": 3,
+   "x402_like": 4,
+   "x402_like_by_tag": [
+    [
+     "804681468",
+     3
+    ],
+    [
+     "None",
+     1
+    ]
+   ],
+   "x402_like_outside_t54_tag": 1,
+   "currencies": [
+    [
+     "XRP",
+     7
+    ],
+    [
+     "524C555344000000000000000000000000000000",
+     5
+    ]
+   ]
+  },
+  "rpkhorcjzeFLxsBmui5sYmfVdpZAuMy8LZ": {
+   "host": "numba2witcheese.tail7d8d44.ts.net",
+   "listed_tags": {
+    "None": 1,
+    "804681468": 1
+   },
+   "incoming_payments": 3,
+   "window": [
+    "2026-10-10",
+    "2026-10-10"
+   ],
+   "source_tags": [
+    [
+     "None",
+     3
+    ]
+   ],
+   "t54_tagged": 0,
+   "x402_like": 1,
+   "x402_like_by_tag": [
+    [
+     "None",
+     1
+    ]
+   ],
+   "x402_like_outside_t54_tag": 1,
+   "currencies": [
+    [
+     "XRP",
+     3
+    ]
+   ]
+  }
+ }
+}

@@ -1,0 +1,369 @@
+{
+ "at": "2026-10-24T22:14:20Z",
+ "base": "https://api.cdp.coinbase.com/platform/v2/x402/discovery",
+ "paths": {
+  "/search": 200,
+  "/resources/search": 404,
+  "/search/resources": 404
+ },
+ "filter": [
+  {
+   "query": "weather",
+   "unfiltered": 8,
+   "unfiltered_xrpl": 0,
+   "filtered": 15,
+   "filtered_xrpl": 15
+  },
+  {
+   "query": "crypto price",
+   "unfiltered": 20,
+   "unfiltered_xrpl": 2,
+   "filtered": 12,
+   "filtered_xrpl": 12
+  },
+  {
+   "query": "news",
+   "unfiltered": 9,
+   "unfiltered_xrpl": 0,
+   "filtered": 16,
+   "filtered_xrpl": 16
+  },
+  {
+   "query": "sanctions",
+   "unfiltered": 13,
+   "unfiltered_xrpl": 6,
+   "filtered": 20,
+   "filtered_xrpl": 20
+  },
+  {
+   "query": "whois",
+   "unfiltered": 18,
+   "unfiltered_xrpl": 2,
+   "filtered": 6,
+   "filtered_xrpl": 6
+  },
+  {
+   "query": "fx rate",
+   "unfiltered": 12,
+   "unfiltered_xrpl": 0,
+   "filtered": 14,
+   "filtered_xrpl": 14
+  },
+  {
+   "query": "gas fees",
+   "unfiltered": 13,
+   "unfiltered_xrpl": 0,
+   "filtered": 16,
+   "filtered_xrpl": 16
+  },
+  {
+   "query": "stock price",
+   "unfiltered": 7,
+   "unfiltered_xrpl": 0,
+   "filtered": 5,
+   "filtered_xrpl": 5
+  }
+ ],
+ "other_networks": {
+  "xrpl": 0,
+  "xrpl:1": 0,
+  "bogus:0": 0,
+  "eip155:8453": 20
+ },
+ "search_limit5_returned": 5,
+ "resources_endpoint_with_network": {
+  "returned": 20,
+  "xrpl": 0,
+  "pagination": {
+   "limit": 20,
+   "offset": 0,
+   "total": 42241
+  },
+  "total_without_network": 42241
+ },
+ "payto_accounts": 15,
+ "listings": 3207,
+ "listings_any_non_t54_option": 643,
+ "listings_no_t54_option": 637,
+ "listings_xrp_only": 112,
+ "rlusd_amounts": 3095,
+ "rlusd_amounts_with_decimal_point": 3076,
+ "rlusd_amount_examples": [
+  "0.001",
+  "0.001000",
+  "0.002",
+  "0.002000",
+  "0.003",
+  "0.003000",
+  "0.004",
+  "0.0045"
+ ],
+ "xrp_amounts": 2551,
+ "xrp_amounts_integer_drops": 2551,
+ "listings_with_invoice_id": 3178,
+ "census": {
+  "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ": {
+   "listings": 1078,
+   "hosts": 9,
+   "top_hosts": [
+    "api.chainmarket-api.workers.dev",
+    "api.companyrecords-api.workers.dev",
+    "api.fadeandco.workers.dev"
+   ],
+   "assets": {
+    "RLUSD": 1078,
+    "XRP": 1078
+   },
+   "source_tags": {
+    "804681468": 1078
+   },
+   "xrp_only": 0,
+   "also_xrpl1": 0
+  },
+  "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32": {
+   "listings": 946,
+   "hosts": 77,
+   "top_hosts": [
+    "airdroppulse.theaslangroupllc.com",
+    "alphapulse.theaslangroupllc.com",
+    "api.vetpulse.theaslangroupllc.com"
+   ],
+   "assets": {
+    "RLUSD": 869,
+    "XRP": 946
+   },
+   "source_tags": {
+    "804681468": 946
+   },
+   "xrp_only": 77,
+   "also_xrpl1": 0
+  },
+  "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7": {
+   "listings": 587,
+   "hosts": 1,
+   "top_hosts": [
+    "pay.edge-agents.ai"
+   ],
+   "assets": {
+    "RLUSD": 587
+   },
+   "source_tags": {
+    "402402402": 587
+   },
+   "xrp_only": 0,
+   "also_xrpl1": 0
+  },
+  "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp": {
+   "listings": 451,
+   "hosts": 1,
+   "top_hosts": [
+    "api.vextorium.com"
+   ],
+   "assets": {
+    "RLUSD": 451,
+    "XRP": 451
+   },
+   "source_tags": {
+    "804681468": 451
+   },
+   "xrp_only": 0,
+   "also_xrpl1": 0
+  },
+  "r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf": {
+   "listings": 29,
+   "hosts": 1,
+   "top_hosts": [
+    "horizonpulse.dev"
+   ],
+   "assets": {
+    "RLUSD": 29
+   },
+   "source_tags": {
+    "None": 29
+   },
+   "xrp_only": 0,
+   "also_xrpl1": 0
+  },
+  "rhFHztjS63h6fs5vXgTotuL7jsuryUvDSF": {
+   "listings": 21,
+   "hosts": 1,
+   "top_hosts": [
+    "api.babyblueviper.com"
+   ],
+   "assets": {
+    "XRP": 21
+   },
+   "source_tags": {
+    "804681468": 21
+   },
+   "xrp_only": 21,
+   "also_xrpl1": 0
+  },
+  "r9xmBsRr8Ao7jRgjjxreMiAwGiCK2FGwqw": {
+   "listings": 18,
+   "hosts": 4,
+   "top_hosts": [
+    "buy.fizzl.eu",
+    "ichimoku-signal.fizzl.eu",
+    "presign-guard.fizzl.eu"
+   ],
+   "assets": {
+    "RLUSD": 18
+   },
+   "source_tags": {
+    "804681468": 18
+   },
+   "xrp_only": 0,
+   "also_xrpl1": 0
+  },
+  "rnFHPGmgTLSg7hjzfr8wiHaTdTh3PijrZZ": {
+   "listings": 18,
+   "hosts": 1,
+   "top_hosts": [
+    "api.agentweather.io"
+   ],
+   "assets": {
+    "RLUSD": 18
+   },
+   "source_tags": {
+    "804681468": 18
+   },
+   "xrp_only": 0,
+   "also_xrpl1": 0
+  },
+  "rM8kmmnz5qPMg7V3r7SHYXgDGvm8PhzLvM": {
+   "listings": 17,
+   "hosts": 1,
+   "top_hosts": [
+    "api.lumitrades.io"
+   ],
+   "assets": {
+    "RLUSD": 17,
+    "XRP": 17,
+    "55534443.rGm7WCVp": 17
+   },
+   "source_tags": {
+    "804681468": 17
+   },
+   "xrp_only": 0,
+   "also_xrpl1": 0
+  },
+  "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg": {
+   "listings": 14,
+   "hosts": 1,
+   "top_hosts": [
+    "api.stablecoingateways.com"
+   ],
+   "assets": {
+    "XRP": 14
+   },
+   "source_tags": {
+    "26100009": 1,
+    "26100007": 1,
+    "26100010": 1,
+    "26100013": 1,
+    "26100015": 1,
+    "26100014": 1,
+    "26100012": 1,
+    "26100011": 1,
+    "26100008": 1,
+    "26100005": 1,
+    "26100004": 1,
+    "26100003": 1,
+    "26100002": 1,
+    "26100006": 1
+   },
+   "xrp_only": 14,
+   "also_xrpl1": 14
+  },
+  "rfryheo6yzFdLWj8qUQtZc7zG9MKkBkUEy": {
+   "listings": 14,
+   "hosts": 1,
+   "top_hosts": [
+    "app.heinrichstech.com"
+   ],
+   "assets": {
+    "RLUSD": 14,
+    "55534443.rGm7WCVp": 5,
+    "XRP": 9,
+    "55534443.rcEGREd8": 9
+   },
+   "source_tags": {
+    "804681468": 14
+   },
+   "xrp_only": 0,
+   "also_xrpl1": 0
+  },
+  "r36sbDCAsaCj44ZUXWY2jjGE1jBpsCoRQ4": {
+   "listings": 8,
+   "hosts": 1,
+   "top_hosts": [
+    "bruk-agent-api.fly.dev"
+   ],
+   "assets": {
+    "RLUSD": 8,
+    "XRP": 8
+   },
+   "source_tags": {
+    "804681468": 1,
+    "None": 7
+   },
+   "xrp_only": 0,
+   "also_xrpl1": 0
+  },
+  "raUiAFeLjNsimQAfNTsHmV876xSCWeXi1B": {
+   "listings": 6,
+   "hosts": 1,
+   "top_hosts": [
+    "numba2witcheese.tail7d8d44.ts.net"
+   ],
+   "assets": {
+    "RLUSD": 6,
+    "PDC.raUi.": 6,
+    "XRP": 6
+   },
+   "source_tags": {
+    "None": 6,
+    "804681468": 6
+   },
+   "xrp_only": 0,
+   "also_xrpl1": 0
+  },
+  "r9Y5kWQvZLXn4vuvqNJovoNpJFzpMCuP2d": {
+   "listings": 6,
+   "hosts": 1,
+   "top_hosts": [
+    "numba2witcheese.tail7d8d44.ts.net"
+   ],
+   "assets": {
+    "RLUSD": 6,
+    "PDC.raUi.": 6,
+    "XRP": 6
+   },
+   "source_tags": {
+    "None": 6,
+    "804681468": 6
+   },
+   "xrp_only": 0,
+   "also_xrpl1": 0
+  },
+  "rpkhorcjzeFLxsBmui5sYmfVdpZAuMy8LZ": {
+   "listings": 1,
+   "hosts": 1,
+   "top_hosts": [
+    "numba2witcheese.tail7d8d44.ts.net"
+   ],
+   "assets": {
+    "RLUSD": 1,
+    "PDC.raUi.": 1,
+    "XRP": 1
+   },
+   "source_tags": {
+    "None": 1,
+    "804681468": 1
+   },
+   "xrp_only": 0,
+   "also_xrpl1": 0
+  }
+ }
+}
