@@ -1,0 +1,4913 @@
+{
+ "summary": {
+  "at": "2026-10-24T21:49:53Z",
+  "source": "eval/queries.yaml",
+  "needs": 20,
+  "qualifying": 20,
+  "min_qualifying": 8,
+  "rule": {
+   "min_operators": 2,
+   "nonsettling_max_rank": 3,
+   "nonsettling_hosts": [
+    "pay.edge-agents.ai"
+   ],
+   "min_qualifying": 8
+  },
+  "all_stable": true,
+  "operators_hist": {
+   "4": 11,
+   "3": 4,
+   "5": 2,
+   "2": 2,
+   "6": 1
+  },
+  "top1_hosts": [
+   [
+    "api.stablecoingateways.com",
+    6
+   ],
+   [
+    "api.vextorium.com",
+    4
+   ],
+   [
+    "horizonpulse.dev",
+    3
+   ],
+   [
+    "api.sitecheck-api.workers.dev",
+    2
+   ],
+   [
+    "pay.edge-agents.ai",
+    1
+   ],
+   [
+    "api.tradeenergy-api.workers.dev",
+    1
+   ],
+   [
+    "compliancepulse.theaslangroupllc.com",
+    1
+   ],
+   [
+    "onchainpulse.theaslangroupllc.com",
+    1
+   ],
+   [
+    "clinicalintelpulse.theaslangroupllc.com",
+    1
+   ]
+  ],
+  "nonsettling_in_top_n": 7,
+  "top1_no_rlusd": 6,
+  "top1_non_t54_tag": 10
+ },
+ "needs": [
+  {
+   "id": "q01",
+   "need": "Current XRP price in USD",
+   "n_results": 11,
+   "n_xrpl": 11,
+   "operators": 4,
+   "operator_counts": [
+    [
+     "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7",
+     5
+    ],
+    [
+     "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp",
+     4
+    ],
+    [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ",
+     1
+    ],
+    [
+     "r36sbDCAsaCj44ZUXWY2jjGE1jBpsCoRQ4",
+     1
+    ]
+   ],
+   "nonsettling_rank": 4,
+   "qualifies": true,
+   "reason": "operators",
+   "stable": true,
+   "unfiltered_n": 8,
+   "unfiltered_xrpl": 1,
+   "unfiltered_operators": 1,
+   "top1": {
+    "rank": 1,
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "host": "api.vextorium.com",
+    "payto": [
+     "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+    ],
+    "price_rlusd": "0.003",
+    "price_xrp_drops": 2310,
+    "assets": [
+     "524C555344000000000000000000000000000000",
+     "XRP"
+    ],
+    "source_tags": [
+     804681468
+    ]
+   },
+   "rows": [
+    {
+     "rank": 1,
+     "url": "https://api.vextorium.com/v1/crypto-price",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 2,
+     "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.004",
+     "price_xrp_drops": 2990,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 3,
+     "url": "https://api.vextorium.com/precio-simple-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 4,
+     "url": "https://pay.edge-agents.ai/v1/services/xrp-float-intelligence",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.1",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 5,
+     "url": "https://pay.edge-agents.ai/v1/services/xrp-cftc-leveraged-fund-positioning",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 6,
+     "url": "https://pay.edge-agents.ai/v1/services/rlusd-supply-liquidity-monitor",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 7,
+     "url": "https://pay.edge-agents.ai/v1/services/xrp-escrow-release-relock-history",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.1",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 8,
+     "url": "https://pay.edge-agents.ai/v1/services/exponential-adoption-monitor",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 9,
+     "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+     "host": "api.sitecheck-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.001",
+     "price_xrp_drops": 726,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 10,
+     "url": "https://bruk-agent-api.fly.dev/v1/pulse",
+     "host": "bruk-agent-api.fly.dev",
+     "payto": [
+      "r36sbDCAsaCj44ZUXWY2jjGE1jBpsCoRQ4"
+     ],
+     "price_rlusd": "0.001",
+     "price_xrp_drops": 800,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      0
+     ]
+    },
+    {
+     "rank": 11,
+     "url": "https://api.vextorium.com/v1/fx-rates",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.004",
+     "price_xrp_drops": 3080,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q02",
+   "need": "Current BTC perpetual futures funding rate on major exchanges",
+   "n_results": 15,
+   "n_xrpl": 15,
+   "operators": 4,
+   "operator_counts": [
+    [
+     "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7",
+     5
+    ],
+    [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ",
+     5
+    ],
+    [
+     "rM8kmmnz5qPMg7V3r7SHYXgDGvm8PhzLvM",
+     3
+    ],
+    [
+     "r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf",
+     2
+    ]
+   ],
+   "nonsettling_rank": 1,
+   "qualifies": true,
+   "reason": "operators+nonsettling",
+   "stable": true,
+   "unfiltered_n": 17,
+   "unfiltered_xrpl": 2,
+   "unfiltered_operators": 2,
+   "top1": {
+    "rank": 1,
+    "url": "https://pay.edge-agents.ai/v1/services/perp-funding-rates",
+    "host": "pay.edge-agents.ai",
+    "payto": [
+     "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+    ],
+    "price_rlusd": "0.01",
+    "price_xrp_drops": null,
+    "assets": [
+     "524C555344000000000000000000000000000000"
+    ],
+    "source_tags": [
+     402402402
+    ]
+   },
+   "rows": [
+    {
+     "rank": 1,
+     "url": "https://pay.edge-agents.ai/v1/services/perp-funding-rates",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 2,
+     "url": "https://horizonpulse.dev/api/funding",
+     "host": "horizonpulse.dev",
+     "payto": [
+      "r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      0
+     ]
+    },
+    {
+     "rank": 3,
+     "url": "https://api.sitecheck-api.workers.dev/api/crypto/funding",
+     "host": "api.sitecheck-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1531,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 4,
+     "url": "https://api.lumitrades.io/v1/funding",
+     "host": "api.lumitrades.io",
+     "payto": [
+      "rM8kmmnz5qPMg7V3r7SHYXgDGvm8PhzLvM"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2300,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "5553444300000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 5,
+     "url": "https://api.chainmarket-api.workers.dev/api/finance/hyperliquid-perp-funding",
+     "host": "api.chainmarket-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1558,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 6,
+     "url": "https://api.fadeandco.workers.dev/api/agent-intel/perp-funding-rate-heatmap",
+     "host": "api.fadeandco.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1557,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 7,
+     "url": "https://pay.edge-agents.ai/v1/services/perp-funding-arbitrage-scan",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.1",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 8,
+     "url": "https://api.lumitrades.io/v1/market",
+     "host": "api.lumitrades.io",
+     "payto": [
+      "rM8kmmnz5qPMg7V3r7SHYXgDGvm8PhzLvM"
+     ],
+     "price_rlusd": "0.02",
+     "price_xrp_drops": 15200,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "5553444300000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 9,
+     "url": "https://pay.edge-agents.ai/v1/services/btc-cftc-leveraged-fund-positioning",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 10,
+     "url": "https://api.chainmarket-api.workers.dev/api/finance/ofr-short-term-funding-monitor",
+     "host": "api.chainmarket-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1532,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 11,
+     "url": "https://horizonpulse.dev/api/signals",
+     "host": "horizonpulse.dev",
+     "payto": [
+      "r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf"
+     ],
+     "price_rlusd": "0.005",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      0
+     ]
+    },
+    {
+     "rank": 12,
+     "url": "https://pay.edge-agents.ai/v1/services/btc-cftc-asset-manager-positioning",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 13,
+     "url": "https://api.chainmarket-api.workers.dev/api/finance/phemex-tickers",
+     "host": "api.chainmarket-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1532,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 14,
+     "url": "https://api.lumitrades.io/v1/sentiment",
+     "host": "api.lumitrades.io",
+     "payto": [
+      "rM8kmmnz5qPMg7V3r7SHYXgDGvm8PhzLvM"
+     ],
+     "price_rlusd": "0.005",
+     "price_xrp_drops": 3800,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "5553444300000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 15,
+     "url": "https://pay.edge-agents.ai/v1/services/btc-onchain-derivatives-divergence",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.1",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q03",
+   "need": "Today's crypto Fear & Greed Index value",
+   "n_results": 13,
+   "n_xrpl": 13,
+   "operators": 4,
+   "operator_counts": [
+    [
+     "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp",
+     4
+    ],
+    [
+     "rM8kmmnz5qPMg7V3r7SHYXgDGvm8PhzLvM",
+     4
+    ],
+    [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ",
+     3
+    ],
+    [
+     "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32",
+     2
+    ]
+   ],
+   "nonsettling_rank": null,
+   "qualifies": true,
+   "reason": "operators",
+   "stable": true,
+   "unfiltered_n": 17,
+   "unfiltered_xrpl": 6,
+   "unfiltered_operators": 2,
+   "top1": {
+    "rank": 1,
+    "url": "https://api.vextorium.com/fear-greed-pago",
+    "host": "api.vextorium.com",
+    "payto": [
+     "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+    ],
+    "price_rlusd": "0.005",
+    "price_xrp_drops": 3850,
+    "assets": [
+     "524C555344000000000000000000000000000000",
+     "XRP"
+    ],
+    "source_tags": [
+     804681468
+    ]
+   },
+   "rows": [
+    {
+     "rank": 1,
+     "url": "https://api.vextorium.com/fear-greed-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.005",
+     "price_xrp_drops": 3850,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 2,
+     "url": "https://api.vextorium.com/v1/fear-greed",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.005",
+     "price_xrp_drops": 3850,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 3,
+     "url": "https://api.vextorium.com/v1/fear-greed-history",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 4,
+     "url": "https://api.vextorium.com/fear-greed-historico-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 5,
+     "url": "https://api.chainmarket-api.workers.dev/api/crypto/fear-greed-index",
+     "host": "api.chainmarket-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1534,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 6,
+     "url": "https://api.sitecheck-api.workers.dev/api/crypto/fear-greed",
+     "host": "api.sitecheck-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.001",
+     "price_xrp_drops": 726,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 7,
+     "url": "https://api.lumitrades.io/v1/fear-greed",
+     "host": "api.lumitrades.io",
+     "payto": [
+      "rM8kmmnz5qPMg7V3r7SHYXgDGvm8PhzLvM"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2300,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "5553444300000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 8,
+     "url": "https://api.jobsproperty-api.workers.dev/api/jobs/alternative-me-fear-greed",
+     "host": "api.jobsproperty-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1537,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 9,
+     "url": "https://macropulse.theaslangroupllc.com/api/crypto-pulse",
+     "host": "macropulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.05",
+     "price_xrp_drops": 50000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 10,
+     "url": "https://api.lumitrades.io/v1/sentiment",
+     "host": "api.lumitrades.io",
+     "payto": [
+      "rM8kmmnz5qPMg7V3r7SHYXgDGvm8PhzLvM"
+     ],
+     "price_rlusd": "0.005",
+     "price_xrp_drops": 3800,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "5553444300000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 11,
+     "url": "https://api.lumitrades.io/v1/brief",
+     "host": "api.lumitrades.io",
+     "payto": [
+      "rM8kmmnz5qPMg7V3r7SHYXgDGvm8PhzLvM"
+     ],
+     "price_rlusd": "0.02",
+     "price_xrp_drops": 15300,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "5553444300000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 12,
+     "url": "https://cryptopulse.theaslangroupllc.com/api/research-snapshot",
+     "host": "cryptopulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.25",
+     "price_xrp_drops": 250000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 13,
+     "url": "https://api.lumitrades.io/v1/market",
+     "host": "api.lumitrades.io",
+     "payto": [
+      "rM8kmmnz5qPMg7V3r7SHYXgDGvm8PhzLvM"
+     ],
+     "price_rlusd": "0.02",
+     "price_xrp_drops": 15200,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "5553444300000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q04",
+   "need": "Convert 250 EUR to USD at the latest exchange rate",
+   "n_results": 17,
+   "n_xrpl": 17,
+   "operators": 3,
+   "operator_counts": [
+    [
+     "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp",
+     12
+    ],
+    [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ",
+     3
+    ],
+    [
+     "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg",
+     2
+    ]
+   ],
+   "nonsettling_rank": null,
+   "qualifies": true,
+   "reason": "operators",
+   "stable": true,
+   "unfiltered_n": 12,
+   "unfiltered_xrpl": 1,
+   "unfiltered_operators": 1,
+   "top1": {
+    "rank": 1,
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "host": "api.stablecoingateways.com",
+    "payto": [
+     "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+    ],
+    "price_rlusd": null,
+    "price_xrp_drops": 790,
+    "assets": [
+     "XRP"
+    ],
+    "source_tags": [
+     26100012
+    ]
+   },
+   "rows": [
+    {
+     "rank": 1,
+     "url": "https://api.stablecoingateways.com/v1/fx/convert",
+     "host": "api.stablecoingateways.com",
+     "payto": [
+      "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+     ],
+     "price_rlusd": null,
+     "price_xrp_drops": 790,
+     "assets": [
+      "XRP"
+     ],
+     "source_tags": [
+      26100012
+     ]
+    },
+    {
+     "rank": 2,
+     "url": "https://api.stablecoingateways.com/v1/fx/rates",
+     "host": "api.stablecoingateways.com",
+     "payto": [
+      "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+     ],
+     "price_rlusd": null,
+     "price_xrp_drops": 791,
+     "assets": [
+      "XRP"
+     ],
+     "source_tags": [
+      26100007
+     ]
+    },
+    {
+     "rank": 3,
+     "url": "https://api.vextorium.com/v1/eur-fx-history",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.004",
+     "price_xrp_drops": 3080,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 4,
+     "url": "https://api.vextorium.com/v1/ecb-exchange-rates",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 5,
+     "url": "https://api.vextorium.com/v1/fx-rates",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.004",
+     "price_xrp_drops": 3080,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 6,
+     "url": "https://api.vextorium.com/divisas-serie-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.004",
+     "price_xrp_drops": 3080,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 7,
+     "url": "https://api.vextorium.com/divisas-bce-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 8,
+     "url": "https://api.vextorium.com/divisas-mundo-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.004",
+     "price_xrp_drops": 3080,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 9,
+     "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+     "host": "api.sitecheck-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.001",
+     "price_xrp_drops": 726,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 10,
+     "url": "https://api.vextorium.com/v1/ecb-rates-history",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 11,
+     "url": "https://api.vextorium.com/bce-historico-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 12,
+     "url": "https://api.vextorium.com/v1/crypto-convert",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 13,
+     "url": "https://api.vextorium.com/divisas-tesoro-eeuu-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 14,
+     "url": "https://api.vextorium.com/v1/us-treasury-fx-rates",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 15,
+     "url": "https://api.sitecheck-api.workers.dev/api/fx",
+     "host": "api.sitecheck-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.001",
+     "price_xrp_drops": 780,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 16,
+     "url": "https://api.tradeenergy-api.workers.dev/api/energy/bis-effective-exchange-rate",
+     "host": "api.tradeenergy-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1531,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 17,
+     "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.004",
+     "price_xrp_drops": 2990,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q05",
+   "need": "Latest Brent and WTI crude oil prices in USD per barrel",
+   "n_results": 9,
+   "n_xrpl": 9,
+   "operators": 4,
+   "operator_counts": [
+    [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ",
+     3
+    ],
+    [
+     "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32",
+     2
+    ],
+    [
+     "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp",
+     2
+    ],
+    [
+     "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7",
+     2
+    ]
+   ],
+   "nonsettling_rank": 6,
+   "qualifies": true,
+   "reason": "operators",
+   "stable": true,
+   "unfiltered_n": 20,
+   "unfiltered_xrpl": 2,
+   "unfiltered_operators": 2,
+   "top1": {
+    "rank": 1,
+    "url": "https://api.tradeenergy-api.workers.dev/api/energy/crude-oil-brent-wti",
+    "host": "api.tradeenergy-api.workers.dev",
+    "payto": [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+    ],
+    "price_rlusd": "0.002",
+    "price_xrp_drops": 1531,
+    "assets": [
+     "524C555344000000000000000000000000000000",
+     "XRP"
+    ],
+    "source_tags": [
+     804681468
+    ]
+   },
+   "rows": [
+    {
+     "rank": 1,
+     "url": "https://api.tradeenergy-api.workers.dev/api/energy/crude-oil-brent-wti",
+     "host": "api.tradeenergy-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1531,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 2,
+     "url": "https://macropulse.theaslangroupllc.com/api/commodities-pulse",
+     "host": "macropulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.1",
+     "price_xrp_drops": 100000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 3,
+     "url": "https://macropulse.theaslangroupllc.com/api/eia-inventory",
+     "host": "macropulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.1",
+     "price_xrp_drops": 100000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 4,
+     "url": "https://api.vextorium.com/v1/eu-fuel-prices",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1540,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 5,
+     "url": "https://api.tradeenergy-api.workers.dev/api/logistics/fuel-bunker-prices",
+     "host": "api.tradeenergy-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1551,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 6,
+     "url": "https://pay.edge-agents.ai/v1/services/wti-positioning-momentum",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 7,
+     "url": "https://api.vextorium.com/carburantes-ue-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 8,
+     "url": "https://pay.edge-agents.ai/v1/services/wti-open-interest-pressure",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 9,
+     "url": "https://api.tradeenergy-api.workers.dev/api/energy/eia-weekly-petroleum",
+     "host": "api.tradeenergy-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1531,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q06",
+   "need": "Latest US CPI inflation rate (year over year) and the current Federal Reserve funds target range",
+   "n_results": 18,
+   "n_xrpl": 18,
+   "operators": 4,
+   "operator_counts": [
+    [
+     "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp",
+     10
+    ],
+    [
+     "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7",
+     4
+    ],
+    [
+     "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32",
+     3
+    ],
+    [
+     "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg",
+     1
+    ]
+   ],
+   "nonsettling_rank": 7,
+   "qualifies": true,
+   "reason": "operators",
+   "stable": true,
+   "unfiltered_n": 14,
+   "unfiltered_xrpl": 4,
+   "unfiltered_operators": 2,
+   "top1": {
+    "rank": 1,
+    "url": "https://api.stablecoingateways.com/v1/us/rates-macro",
+    "host": "api.stablecoingateways.com",
+    "payto": [
+     "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+    ],
+    "price_rlusd": null,
+    "price_xrp_drops": 1559,
+    "assets": [
+     "XRP"
+    ],
+    "source_tags": [
+     26100010
+    ]
+   },
+   "rows": [
+    {
+     "rank": 1,
+     "url": "https://api.stablecoingateways.com/v1/us/rates-macro",
+     "host": "api.stablecoingateways.com",
+     "payto": [
+      "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+     ],
+     "price_rlusd": null,
+     "price_xrp_drops": 1559,
+     "assets": [
+      "XRP"
+     ],
+     "source_tags": [
+      26100010
+     ]
+    },
+    {
+     "rank": 2,
+     "url": "https://api.vextorium.com/v1/us-cpi",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 3,
+     "url": "https://api.vextorium.com/v1/fed-rates",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 4,
+     "url": "https://api.vextorium.com/ipc-eeuu-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 5,
+     "url": "https://api.vextorium.com/tipos-fed-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 6,
+     "url": "https://api.vextorium.com/v1/world-inflation",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.004",
+     "price_xrp_drops": 3080,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 7,
+     "url": "https://pay.edge-agents.ai/v1/services/us-core-cpi-pulse",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 8,
+     "url": "https://pay.edge-agents.ai/v1/services/us-cpi-headline-pulse",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 9,
+     "url": "https://api.vextorium.com/v1/us-debt-avg-interest",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 10,
+     "url": "https://macropulse.theaslangroupllc.com/api/macro/us",
+     "host": "macropulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": 10000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 11,
+     "url": "https://macropulse.theaslangroupllc.com/api/macro/bls-series",
+     "host": "macropulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.02",
+     "price_xrp_drops": 20000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 12,
+     "url": "https://api.vextorium.com/inflacion-mundo-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.004",
+     "price_xrp_drops": 3080,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 13,
+     "url": "https://api.vextorium.com/tipos-medios-deuda-eeuu-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 14,
+     "url": "https://api.vextorium.com/v1/economic-calendar",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 15,
+     "url": "https://econsignalpulse.theaslangroupllc.com/api/econsignal/inflation-signals",
+     "host": "econsignalpulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.08",
+     "price_xrp_drops": 80000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 16,
+     "url": "https://api.vextorium.com/calendario-economico-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 17,
+     "url": "https://pay.edge-agents.ai/v1/services/canada-macro-cpi-pulse",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 18,
+     "url": "https://pay.edge-agents.ai/v1/services/us-inflation-momentum",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q07",
+   "need": "Apple Inc. total revenue for its most recent fiscal year from SEC EDGAR filings",
+   "n_results": 15,
+   "n_xrpl": 15,
+   "operators": 4,
+   "operator_counts": [
+    [
+     "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp",
+     7
+    ],
+    [
+     "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32",
+     5
+    ],
+    [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ",
+     2
+    ],
+    [
+     "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg",
+     1
+    ]
+   ],
+   "nonsettling_rank": null,
+   "qualifies": true,
+   "reason": "operators",
+   "stable": true,
+   "unfiltered_n": 10,
+   "unfiltered_xrpl": 1,
+   "unfiltered_operators": 1,
+   "top1": {
+    "rank": 1,
+    "url": "https://api.stablecoingateways.com/v1/sec/company-facts",
+    "host": "api.stablecoingateways.com",
+    "payto": [
+     "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+    ],
+    "price_rlusd": null,
+    "price_xrp_drops": 2369,
+    "assets": [
+     "XRP"
+    ],
+    "source_tags": [
+     26100003
+    ]
+   },
+   "rows": [
+    {
+     "rank": 1,
+     "url": "https://api.stablecoingateways.com/v1/sec/company-facts",
+     "host": "api.stablecoingateways.com",
+     "payto": [
+      "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+     ],
+     "price_rlusd": null,
+     "price_xrp_drops": 2369,
+     "assets": [
+      "XRP"
+     ],
+     "source_tags": [
+      26100003
+     ]
+    },
+    {
+     "rank": 2,
+     "url": "https://filingspulse.theaslangroupllc.com/api/filings/quarterly",
+     "host": "filingspulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.02",
+     "price_xrp_drops": 20000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 3,
+     "url": "https://api.vextorium.com/v1/sec-company-ranking",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.006",
+     "price_xrp_drops": 4620,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 4,
+     "url": "https://filingspulse.theaslangroupllc.com/api/filings/search",
+     "host": "filingspulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.08",
+     "price_xrp_drops": 80000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 5,
+     "url": "https://api.vextorium.com/sec-8k-recientes-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.004",
+     "price_xrp_drops": 3080,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 6,
+     "url": "https://api.vextorium.com/v1/sec-8k-latest",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.004",
+     "price_xrp_drops": 3080,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 7,
+     "url": "https://api.vextorium.com/ranking-empresas-sec-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.006",
+     "price_xrp_drops": 4620,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 8,
+     "url": "https://filingspulse.theaslangroupllc.com/api/filings/earnings",
+     "host": "filingspulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.25",
+     "price_xrp_drops": 250000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 9,
+     "url": "https://filingspulse.theaslangroupllc.com/api/filings/transcript-search",
+     "host": "filingspulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.2",
+     "price_xrp_drops": 200000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 10,
+     "url": "https://api.fadeandco.workers.dev/api/agent-intel/sec-edgar-filings-search",
+     "host": "api.fadeandco.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2326,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 11,
+     "url": "https://api.tradeenergy-api.workers.dev/api/energy/sec-esg-climate-filings",
+     "host": "api.tradeenergy-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1536,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 12,
+     "url": "https://api.vextorium.com/v1/company-fundamentals",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.006",
+     "price_xrp_drops": 4620,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 13,
+     "url": "https://api.vextorium.com/empresa-fundamentales-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.006",
+     "price_xrp_drops": 4620,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 14,
+     "url": "https://filingspulse.theaslangroupllc.com/api/filings/summary",
+     "host": "filingspulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.15",
+     "price_xrp_drops": 150000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 15,
+     "url": "https://api.vextorium.com/v1/company-filings",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.004",
+     "price_xrp_drops": 3080,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q08",
+   "need": "Screen the company name Rosneft against OFAC and other sanctions lists",
+   "n_results": 17,
+   "n_xrpl": 17,
+   "operators": 5,
+   "operator_counts": [
+    [
+     "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp",
+     6
+    ],
+    [
+     "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32",
+     4
+    ],
+    [
+     "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg",
+     3
+    ],
+    [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ",
+     3
+    ],
+    [
+     "r9xmBsRr8Ao7jRgjjxreMiAwGiCK2FGwqw",
+     1
+    ]
+   ],
+   "nonsettling_rank": null,
+   "qualifies": true,
+   "reason": "operators",
+   "stable": true,
+   "unfiltered_n": 19,
+   "unfiltered_xrpl": 2,
+   "unfiltered_operators": 2,
+   "top1": {
+    "rank": 1,
+    "url": "https://compliancepulse.theaslangroupllc.com/api/screen/sanctions",
+    "host": "compliancepulse.theaslangroupllc.com",
+    "payto": [
+     "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+    ],
+    "price_rlusd": "0.02",
+    "price_xrp_drops": 20000,
+    "assets": [
+     "524C555344000000000000000000000000000000",
+     "XRP"
+    ],
+    "source_tags": [
+     804681468
+    ]
+   },
+   "rows": [
+    {
+     "rank": 1,
+     "url": "https://compliancepulse.theaslangroupllc.com/api/screen/sanctions",
+     "host": "compliancepulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.02",
+     "price_xrp_drops": 20000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 2,
+     "url": "https://api.stablecoingateways.com/v1/sanctions/screen",
+     "host": "api.stablecoingateways.com",
+     "payto": [
+      "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+     ],
+     "price_rlusd": null,
+     "price_xrp_drops": 3948,
+     "assets": [
+      "XRP"
+     ],
+     "source_tags": [
+      26100004
+     ]
+    },
+    {
+     "rank": 3,
+     "url": "https://api.vextorium.com/v1/sanctions-screening",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.006",
+     "price_xrp_drops": 4620,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 4,
+     "url": "https://api.stablecoingateways.com/v1/sanctions/address",
+     "host": "api.stablecoingateways.com",
+     "payto": [
+      "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+     ],
+     "price_rlusd": null,
+     "price_xrp_drops": 1576,
+     "assets": [
+      "XRP"
+     ],
+     "source_tags": [
+      26100014
+     ]
+    },
+    {
+     "rank": 5,
+     "url": "https://geopoliticalpulse.theaslangroupllc.com/api/geopolitical/sanctions-intel",
+     "host": "geopoliticalpulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.15",
+     "price_xrp_drops": 150000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 6,
+     "url": "https://api.vextorium.com/sanciones-buscar-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.006",
+     "price_xrp_drops": 4620,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 7,
+     "url": "https://tradepulse.theaslangroupllc.com/api/trade/sanctions",
+     "host": "tradepulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.12",
+     "price_xrp_drops": 120000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 8,
+     "url": "https://econsignalpulse.theaslangroupllc.com/api/econsignal/sanctions-impact",
+     "host": "econsignalpulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.2",
+     "price_xrp_drops": 200000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 9,
+     "url": "https://api.fadeandco.workers.dev/api/agent-intel/ofac-sanctions-preflight",
+     "host": "api.fadeandco.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1534,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 10,
+     "url": "https://api.vextorium.com/v1/wallet-sanctions-check",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1540,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 11,
+     "url": "https://api.vextorium.com/v1/eu-sanctions-latest",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.004",
+     "price_xrp_drops": 3080,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 12,
+     "url": "https://presign-guard.fizzl.eu/v1/screen",
+     "host": "presign-guard.fizzl.eu",
+     "payto": [
+      "r9xmBsRr8Ao7jRgjjxreMiAwGiCK2FGwqw"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 13,
+     "url": "https://api.vextorium.com/wallet-sancionada-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 14,
+     "url": "https://api.tradeenergy-api.workers.dev/api/logistics/sanctioned-vessel-check",
+     "host": "api.tradeenergy-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1555,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 15,
+     "url": "https://api.vextorium.com/sanciones-recientes-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.004",
+     "price_xrp_drops": 3080,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 16,
+     "url": "https://api.stablecoingateways.com/v1/counterparty-check",
+     "host": "api.stablecoingateways.com",
+     "payto": [
+      "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+     ],
+     "price_rlusd": null,
+     "price_xrp_drops": 7880,
+     "assets": [
+      "XRP"
+     ],
+     "source_tags": [
+      26100015
+     ]
+    },
+    {
+     "rank": 17,
+     "url": "https://api.companyrecords-api.workers.dev/api/gov/rfs-russia-business-registry",
+     "host": "api.companyrecords-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1540,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q09",
+   "need": "Is the Ethereum address 0x098B716B8Aaf21512996dC57EB0615e2383E2f96 on a sanctions list?",
+   "n_results": 16,
+   "n_xrpl": 16,
+   "operators": 5,
+   "operator_counts": [
+    [
+     "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp",
+     6
+    ],
+    [
+     "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32",
+     4
+    ],
+    [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ",
+     3
+    ],
+    [
+     "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg",
+     2
+    ],
+    [
+     "r9xmBsRr8Ao7jRgjjxreMiAwGiCK2FGwqw",
+     1
+    ]
+   ],
+   "nonsettling_rank": null,
+   "qualifies": true,
+   "reason": "operators",
+   "stable": true,
+   "unfiltered_n": 14,
+   "unfiltered_xrpl": 2,
+   "unfiltered_operators": 2,
+   "top1": {
+    "rank": 1,
+    "url": "https://api.stablecoingateways.com/v1/sanctions/address",
+    "host": "api.stablecoingateways.com",
+    "payto": [
+     "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+    ],
+    "price_rlusd": null,
+    "price_xrp_drops": 1576,
+    "assets": [
+     "XRP"
+    ],
+    "source_tags": [
+     26100014
+    ]
+   },
+   "rows": [
+    {
+     "rank": 1,
+     "url": "https://api.stablecoingateways.com/v1/sanctions/address",
+     "host": "api.stablecoingateways.com",
+     "payto": [
+      "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+     ],
+     "price_rlusd": null,
+     "price_xrp_drops": 1576,
+     "assets": [
+      "XRP"
+     ],
+     "source_tags": [
+      26100014
+     ]
+    },
+    {
+     "rank": 2,
+     "url": "https://api.vextorium.com/v1/wallet-sanctions-check",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1540,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 3,
+     "url": "https://api.vextorium.com/wallet-sancionada-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 4,
+     "url": "https://api.stablecoingateways.com/v1/sanctions/screen",
+     "host": "api.stablecoingateways.com",
+     "payto": [
+      "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+     ],
+     "price_rlusd": null,
+     "price_xrp_drops": 3948,
+     "assets": [
+      "XRP"
+     ],
+     "source_tags": [
+      26100004
+     ]
+    },
+    {
+     "rank": 5,
+     "url": "https://api.vextorium.com/v1/eu-sanctions-latest",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.004",
+     "price_xrp_drops": 3080,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 6,
+     "url": "https://compliancepulse.theaslangroupllc.com/api/screen/sanctions",
+     "host": "compliancepulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.02",
+     "price_xrp_drops": 20000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 7,
+     "url": "https://api.vextorium.com/v1/sanctions-screening",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.006",
+     "price_xrp_drops": 4620,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 8,
+     "url": "https://api.vextorium.com/sanciones-recientes-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.004",
+     "price_xrp_drops": 3080,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 9,
+     "url": "https://api.fadeandco.workers.dev/api/agent-intel/ofac-sanctions-preflight",
+     "host": "api.fadeandco.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1534,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 10,
+     "url": "https://api.vextorium.com/sanciones-buscar-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.006",
+     "price_xrp_drops": 4620,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 11,
+     "url": "https://api.chainmarket-api.workers.dev/api/crypto/sanctioned-crypto-wallets",
+     "host": "api.chainmarket-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1531,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 12,
+     "url": "https://geopoliticalpulse.theaslangroupllc.com/api/geopolitical/sanctions-intel",
+     "host": "geopoliticalpulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.15",
+     "price_xrp_drops": 150000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 13,
+     "url": "https://api.sitecheck-api.workers.dev/api/evm/address",
+     "host": "api.sitecheck-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1453,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 14,
+     "url": "https://econsignalpulse.theaslangroupllc.com/api/econsignal/sanctions-impact",
+     "host": "econsignalpulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.2",
+     "price_xrp_drops": 200000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 15,
+     "url": "https://tradepulse.theaslangroupllc.com/api/trade/sanctions",
+     "host": "tradepulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.12",
+     "price_xrp_drops": 120000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 16,
+     "url": "https://presign-guard.fizzl.eu/v1/screen",
+     "host": "presign-guard.fizzl.eu",
+     "payto": [
+      "r9xmBsRr8Ao7jRgjjxreMiAwGiCK2FGwqw"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q10",
+   "need": "Security risk check for the Ethereum token contract 0x6982508145454Ce325dDbE47a25d4ec3d2311933: honeypot, owner privileges, buy and sell tax",
+   "n_results": 10,
+   "n_xrpl": 10,
+   "operators": 3,
+   "operator_counts": [
+    [
+     "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32",
+     5
+    ],
+    [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ",
+     4
+    ],
+    [
+     "r9xmBsRr8Ao7jRgjjxreMiAwGiCK2FGwqw",
+     1
+    ]
+   ],
+   "nonsettling_rank": null,
+   "qualifies": true,
+   "reason": "operators",
+   "stable": true,
+   "unfiltered_n": 12,
+   "unfiltered_xrpl": 0,
+   "unfiltered_operators": 0,
+   "top1": {
+    "rank": 1,
+    "url": "https://onchainpulse.theaslangroupllc.com/api/facet/honeypot",
+    "host": "onchainpulse.theaslangroupllc.com",
+    "payto": [
+     "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+    ],
+    "price_rlusd": "0.005",
+    "price_xrp_drops": 5000,
+    "assets": [
+     "524C555344000000000000000000000000000000",
+     "XRP"
+    ],
+    "source_tags": [
+     804681468
+    ]
+   },
+   "rows": [
+    {
+     "rank": 1,
+     "url": "https://onchainpulse.theaslangroupllc.com/api/facet/honeypot",
+     "host": "onchainpulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.005",
+     "price_xrp_drops": 5000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 2,
+     "url": "https://onchainpulse.theaslangroupllc.com/api/evmtoken",
+     "host": "onchainpulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.015",
+     "price_xrp_drops": 15000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 3,
+     "url": "https://api.chainmarket-api.workers.dev/api/crypto/honeypot-detector",
+     "host": "api.chainmarket-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1532,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 4,
+     "url": "https://api.fadeandco.workers.dev/api/agent-intel/honeypot-trap-detector",
+     "host": "api.fadeandco.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2303,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 5,
+     "url": "https://onchainpulse.theaslangroupllc.com/api/token-safety",
+     "host": "onchainpulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.015",
+     "price_xrp_drops": 15000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 6,
+     "url": "https://api.fadeandco.workers.dev/api/agent-intel/token-verdict-engine",
+     "host": "api.fadeandco.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2304,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 7,
+     "url": "https://presign-guard.fizzl.eu/v1/token",
+     "host": "presign-guard.fizzl.eu",
+     "payto": [
+      "r9xmBsRr8Ao7jRgjjxreMiAwGiCK2FGwqw"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 8,
+     "url": "https://api.fadeandco.workers.dev/api/agent-intel/token-composite-safety-score",
+     "host": "api.fadeandco.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1548,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 9,
+     "url": "https://onchainpulse.theaslangroupllc.com/api/receipts",
+     "host": "onchainpulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.35",
+     "price_xrp_drops": 350000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 10,
+     "url": "https://onchainpulse.theaslangroupllc.com/api/asatoken",
+     "host": "onchainpulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.015",
+     "price_xrp_drops": 15000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q11",
+   "need": "USDC balance of the Ethereum address 0x28C6c06298d514Db089934071355E5743bf21d60",
+   "n_results": 4,
+   "n_xrpl": 4,
+   "operators": 2,
+   "operator_counts": [
+    [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ",
+     3
+    ],
+    [
+     "r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf",
+     1
+    ]
+   ],
+   "nonsettling_rank": null,
+   "qualifies": true,
+   "reason": "operators",
+   "stable": true,
+   "unfiltered_n": 7,
+   "unfiltered_xrpl": 0,
+   "unfiltered_operators": 0,
+   "top1": {
+    "rank": 1,
+    "url": "https://api.sitecheck-api.workers.dev/api/btc/address",
+    "host": "api.sitecheck-api.workers.dev",
+    "payto": [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+    ],
+    "price_rlusd": "0.002",
+    "price_xrp_drops": 1453,
+    "assets": [
+     "524C555344000000000000000000000000000000",
+     "XRP"
+    ],
+    "source_tags": [
+     804681468
+    ]
+   },
+   "rows": [
+    {
+     "rank": 1,
+     "url": "https://api.sitecheck-api.workers.dev/api/btc/address",
+     "host": "api.sitecheck-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1453,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 2,
+     "url": "https://api.sitecheck-api.workers.dev/api/evm/balance",
+     "host": "api.sitecheck-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1453,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 3,
+     "url": "https://api.sitecheck-api.workers.dev/api/evm/address",
+     "host": "api.sitecheck-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1453,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 4,
+     "url": "https://horizonpulse.dev/api/portfolio",
+     "host": "horizonpulse.dev",
+     "payto": [
+      "r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf"
+     ],
+     "price_rlusd": "0.04",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q12",
+   "need": "Current Ethereum gas price: base fee and priority fee in gwei",
+   "n_results": 11,
+   "n_xrpl": 11,
+   "operators": 4,
+   "operator_counts": [
+    [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ",
+     7
+    ],
+    [
+     "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7",
+     2
+    ],
+    [
+     "r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf",
+     1
+    ],
+    [
+     "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32",
+     1
+    ]
+   ],
+   "nonsettling_rank": 8,
+   "qualifies": true,
+   "reason": "operators",
+   "stable": true,
+   "unfiltered_n": 15,
+   "unfiltered_xrpl": 0,
+   "unfiltered_operators": 0,
+   "top1": {
+    "rank": 1,
+    "url": "https://horizonpulse.dev/api/gas",
+    "host": "horizonpulse.dev",
+    "payto": [
+     "r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf"
+    ],
+    "price_rlusd": "0.002",
+    "price_xrp_drops": null,
+    "assets": [
+     "524C555344000000000000000000000000000000"
+    ],
+    "source_tags": [
+     0
+    ]
+   },
+   "rows": [
+    {
+     "rank": 1,
+     "url": "https://horizonpulse.dev/api/gas",
+     "host": "horizonpulse.dev",
+     "payto": [
+      "r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      0
+     ]
+    },
+    {
+     "rank": 2,
+     "url": "https://api.chainmarket-api.workers.dev/api/crypto/ethereum-gas-telemetry",
+     "host": "api.chainmarket-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1534,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 3,
+     "url": "https://api.fadeandco.workers.dev/api/agent-intel/crosschain-gas-priority-fee",
+     "host": "api.fadeandco.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.001",
+     "price_xrp_drops": 770,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 4,
+     "url": "https://api.sitecheck-api.workers.dev/api/gas",
+     "host": "api.sitecheck-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.001",
+     "price_xrp_drops": 724,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 5,
+     "url": "https://api.sitecheck-api.workers.dev/api/evm/block",
+     "host": "api.sitecheck-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.001",
+     "price_xrp_drops": 727,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 6,
+     "url": "https://api.chainmarket-api.workers.dev/api/crypto/mantle-da-eigenlayer",
+     "host": "api.chainmarket-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1531,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 7,
+     "url": "https://api.chainmarket-api.workers.dev/api/crypto/linea-consensys-rollup",
+     "host": "api.chainmarket-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1531,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 8,
+     "url": "https://pay.edge-agents.ai/v1/services/eth-blob-demand-monitor",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 9,
+     "url": "https://arbipulse.theaslangroupllc.com/api/calculator",
+     "host": "arbipulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.02",
+     "price_xrp_drops": 20000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 10,
+     "url": "https://pay.edge-agents.ai/v1/services/eth-supply-burn-monitor",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 11,
+     "url": "https://api.sitecheck-api.workers.dev/api/btc/fees",
+     "host": "api.sitecheck-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.001",
+     "price_xrp_drops": 726,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q13",
+   "need": "Verify XRPL transaction 65A456656B9479457C0995E2FC770319C7636C39550DF4A4E127D265ADB90795: was it validated and what amount did it deliver?",
+   "n_results": 6,
+   "n_xrpl": 6,
+   "operators": 6,
+   "operator_counts": [
+    [
+     "rnFHPGmgTLSg7hjzfr8wiHaTdTh3PijrZZ",
+     3
+    ],
+    [
+     "r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf",
+     1
+    ],
+    [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ",
+     1
+    ],
+    [
+     "r9Y5kWQvZLXn4vuvqNJovoNpJFzpMCuP2d",
+     1
+    ],
+    [
+     "raUiAFeLjNsimQAfNTsHmV876xSCWeXi1B",
+     1
+    ],
+    [
+     "rpkhorcjzeFLxsBmui5sYmfVdpZAuMy8LZ",
+     1
+    ]
+   ],
+   "nonsettling_rank": null,
+   "qualifies": true,
+   "reason": "operators",
+   "stable": true,
+   "unfiltered_n": 2,
+   "unfiltered_xrpl": 0,
+   "unfiltered_operators": 0,
+   "top1": {
+    "rank": 1,
+    "url": "https://horizonpulse.dev/api/tx-status",
+    "host": "horizonpulse.dev",
+    "payto": [
+     "r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf"
+    ],
+    "price_rlusd": "0.002",
+    "price_xrp_drops": null,
+    "assets": [
+     "524C555344000000000000000000000000000000"
+    ],
+    "source_tags": [
+     0
+    ]
+   },
+   "rows": [
+    {
+     "rank": 1,
+     "url": "https://horizonpulse.dev/api/tx-status",
+     "host": "horizonpulse.dev",
+     "payto": [
+      "r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      0
+     ]
+    },
+    {
+     "rank": 2,
+     "url": "https://api.agentweather.io/v1/agent-weather/x402-activity",
+     "host": "api.agentweather.io",
+     "payto": [
+      "rnFHPGmgTLSg7hjzfr8wiHaTdTh3PijrZZ"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 3,
+     "url": "https://api.agentweather.io/v1/merchant/:address",
+     "host": "api.agentweather.io",
+     "payto": [
+      "rnFHPGmgTLSg7hjzfr8wiHaTdTh3PijrZZ"
+     ],
+     "price_rlusd": "0.03",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 4,
+     "url": "https://api.sitecheck-api.workers.dev/api/btc/tx",
+     "host": "api.sitecheck-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1448,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 5,
+     "url": "https://api.agentweather.io/v1/health/report",
+     "host": "api.agentweather.io",
+     "payto": [
+      "rnFHPGmgTLSg7hjzfr8wiHaTdTh3PijrZZ"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 6,
+     "url": "https://numba2witcheese.tail7d8d44.ts.net:10000/pde-mcp#verify_payment#verify_payment",
+     "host": "numba2witcheese.tail7d8d44.ts.net",
+     "payto": [
+      "r9Y5kWQvZLXn4vuvqNJovoNpJFzpMCuP2d",
+      "raUiAFeLjNsimQAfNTsHmV876xSCWeXi1B",
+      "rpkhorcjzeFLxsBmui5sYmfVdpZAuMy8LZ"
+     ],
+     "price_rlusd": "0.02",
+     "price_xrp_drops": 15562,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "PDC.raUiAFeLjNsimQAfNTsHmV876xSCWeXi1B",
+      "XRP"
+     ],
+     "source_tags": [
+      0,
+      804681468
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q14",
+   "need": "WHOIS registration data for the domain ripple.com: registrar, creation date and expiry date",
+   "n_results": 8,
+   "n_xrpl": 8,
+   "operators": 4,
+   "operator_counts": [
+    [
+     "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg",
+     3
+    ],
+    [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ",
+     3
+    ],
+    [
+     "rfryheo6yzFdLWj8qUQtZc7zG9MKkBkUEy",
+     1
+    ],
+    [
+     "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp",
+     1
+    ]
+   ],
+   "nonsettling_rank": null,
+   "qualifies": true,
+   "reason": "operators",
+   "stable": true,
+   "unfiltered_n": 17,
+   "unfiltered_xrpl": 1,
+   "unfiltered_operators": 1,
+   "top1": {
+    "rank": 1,
+    "url": "https://api.stablecoingateways.com/v1/whois",
+    "host": "api.stablecoingateways.com",
+    "payto": [
+     "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+    ],
+    "price_rlusd": null,
+    "price_xrp_drops": 2369,
+    "assets": [
+     "XRP"
+    ],
+    "source_tags": [
+     26100011
+    ]
+   },
+   "rows": [
+    {
+     "rank": 1,
+     "url": "https://api.stablecoingateways.com/v1/whois",
+     "host": "api.stablecoingateways.com",
+     "payto": [
+      "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+     ],
+     "price_rlusd": null,
+     "price_xrp_drops": 2369,
+     "assets": [
+      "XRP"
+     ],
+     "source_tags": [
+      26100011
+     ]
+    },
+    {
+     "rank": 2,
+     "url": "https://api.stablecoingateways.com/v1/domain-facts",
+     "host": "api.stablecoingateways.com",
+     "payto": [
+      "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+     ],
+     "price_rlusd": null,
+     "price_xrp_drops": 2369,
+     "assets": [
+      "XRP"
+     ],
+     "source_tags": [
+      26100002
+     ]
+    },
+    {
+     "rank": 3,
+     "url": "https://api.webintel-api.workers.dev/api/security/whois-rdap",
+     "host": "api.webintel-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1551,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 4,
+     "url": "https://api.sitecheck-api.workers.dev/api/domain",
+     "host": "api.sitecheck-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1453,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 5,
+     "url": "https://api.fadeandco.workers.dev/api/agent-intel/domain-authority-credibility",
+     "host": "api.fadeandco.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1537,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 6,
+     "url": "https://app.heinrichstech.com/v1/cdp/whois",
+     "host": "app.heinrichstech.com",
+     "payto": [
+      "rfryheo6yzFdLWj8qUQtZc7zG9MKkBkUEy"
+     ],
+     "price_rlusd": "0.010000",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "5553444300000000000000000000000000000000"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 7,
+     "url": "https://api.stablecoingateways.com/v1/merchant-check",
+     "host": "api.stablecoingateways.com",
+     "payto": [
+      "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+     ],
+     "price_rlusd": null,
+     "price_xrp_drops": 7880,
+     "assets": [
+      "XRP"
+     ],
+     "source_tags": [
+      26100013
+     ]
+    },
+    {
+     "rank": 8,
+     "url": "https://api.vextorium.com/v1/lei-search",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q15",
+   "need": "Current weather and 3-day forecast for New York City",
+   "n_results": 12,
+   "n_xrpl": 12,
+   "operators": 3,
+   "operator_counts": [
+    [
+     "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp",
+     5
+    ],
+    [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ",
+     5
+    ],
+    [
+     "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32",
+     2
+    ]
+   ],
+   "nonsettling_rank": null,
+   "qualifies": true,
+   "reason": "operators",
+   "stable": true,
+   "unfiltered_n": 13,
+   "unfiltered_xrpl": 0,
+   "unfiltered_operators": 0,
+   "top1": {
+    "rank": 1,
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "host": "api.vextorium.com",
+    "payto": [
+     "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+    ],
+    "price_rlusd": "0.004",
+    "price_xrp_drops": 3080,
+    "assets": [
+     "524C555344000000000000000000000000000000",
+     "XRP"
+    ],
+    "source_tags": [
+     804681468
+    ]
+   },
+   "rows": [
+    {
+     "rank": 1,
+     "url": "https://api.vextorium.com/v1/us-weather",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.004",
+     "price_xrp_drops": 3080,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 2,
+     "url": "https://api.vextorium.com/v1/weather",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.004",
+     "price_xrp_drops": 3080,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 3,
+     "url": "https://api.vextorium.com/tiempo-eeuu-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.004",
+     "price_xrp_drops": 3080,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 4,
+     "url": "https://travelpulse.theaslangroupllc.com/api/travel/weather",
+     "host": "travelpulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.15",
+     "price_xrp_drops": 150000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 5,
+     "url": "https://api.vextorium.com/tiempo-mundo-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.004",
+     "price_xrp_drops": 3080,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 6,
+     "url": "https://api.tradeenergy-api.workers.dev/api/energy/nyiso-new-york-grid",
+     "host": "api.tradeenergy-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1558,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 7,
+     "url": "https://api.fadeandco.workers.dev/api/agent-intel/marine-weather-tide-forecast",
+     "host": "api.fadeandco.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1551,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 8,
+     "url": "https://api.sitecheck-api.workers.dev/api/weather/alerts",
+     "host": "api.sitecheck-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.001",
+     "price_xrp_drops": 724,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 9,
+     "url": "https://api.healthtravel-api.workers.dev/api/travel/aviationweather-metar-taf",
+     "host": "api.healthtravel-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1556,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 10,
+     "url": "https://climatepulse.theaslangroupllc.com/api/climate/now",
+     "host": "climatepulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.05",
+     "price_xrp_drops": 50000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 11,
+     "url": "https://api.vextorium.com/v1/space-weather",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1540,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 12,
+     "url": "https://api.jobsproperty-api.workers.dev/api/realestate/nhc-current-storms-v2",
+     "host": "api.jobsproperty-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1536,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q16",
+   "need": "Fetch https://en.wikipedia.org/wiki/XRP_Ledger and return the article text as clean Markdown",
+   "n_results": 7,
+   "n_xrpl": 7,
+   "operators": 4,
+   "operator_counts": [
+    [
+     "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp",
+     3
+    ],
+    [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ",
+     2
+    ],
+    [
+     "r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf",
+     1
+    ],
+    [
+     "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg",
+     1
+    ]
+   ],
+   "nonsettling_rank": null,
+   "qualifies": true,
+   "reason": "operators",
+   "stable": true,
+   "unfiltered_n": 5,
+   "unfiltered_xrpl": 0,
+   "unfiltered_operators": 0,
+   "top1": {
+    "rank": 1,
+    "url": "https://horizonpulse.dev/api/fetch",
+    "host": "horizonpulse.dev",
+    "payto": [
+     "r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf"
+    ],
+    "price_rlusd": "0.02",
+    "price_xrp_drops": null,
+    "assets": [
+     "524C555344000000000000000000000000000000"
+    ],
+    "source_tags": [
+     0
+    ]
+   },
+   "rows": [
+    {
+     "rank": 1,
+     "url": "https://horizonpulse.dev/api/fetch",
+     "host": "horizonpulse.dev",
+     "payto": [
+      "r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf"
+     ],
+     "price_rlusd": "0.02",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      0
+     ]
+    },
+    {
+     "rank": 2,
+     "url": "https://api.stablecoingateways.com/v1/page-to-markdown",
+     "host": "api.stablecoingateways.com",
+     "payto": [
+      "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+     ],
+     "price_rlusd": null,
+     "price_xrp_drops": 1580,
+     "assets": [
+      "XRP"
+     ],
+     "source_tags": [
+      26100005
+     ]
+    },
+    {
+     "rank": 3,
+     "url": "https://api.webintel-api.workers.dev/api/search/article-extractor",
+     "host": "api.webintel-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1534,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 4,
+     "url": "https://api.vextorium.com/wikipedia-resumen-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 5,
+     "url": "https://api.vextorium.com/v1/wikipedia-summary",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1540,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 6,
+     "url": "https://api.sitecheck-api.workers.dev/api/markdown",
+     "host": "api.sitecheck-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.001",
+     "price_xrp_drops": 730,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 7,
+     "url": "https://api.vextorium.com/v1/text-chunk",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q17",
+   "need": "Is 2026-11-26 a US business day? List the US federal holidays in November 2026",
+   "n_results": 15,
+   "n_xrpl": 15,
+   "operators": 3,
+   "operator_counts": [
+    [
+     "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp",
+     11
+    ],
+    [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ",
+     3
+    ],
+    [
+     "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg",
+     1
+    ]
+   ],
+   "nonsettling_rank": null,
+   "qualifies": true,
+   "reason": "operators",
+   "stable": true,
+   "unfiltered_n": 12,
+   "unfiltered_xrpl": 1,
+   "unfiltered_operators": 1,
+   "top1": {
+    "rank": 1,
+    "url": "https://api.stablecoingateways.com/v1/business-days",
+    "host": "api.stablecoingateways.com",
+    "payto": [
+     "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+    ],
+    "price_rlusd": null,
+    "price_xrp_drops": 788,
+    "assets": [
+     "XRP"
+    ],
+    "source_tags": [
+     26100006
+    ]
+   },
+   "rows": [
+    {
+     "rank": 1,
+     "url": "https://api.stablecoingateways.com/v1/business-days",
+     "host": "api.stablecoingateways.com",
+     "payto": [
+      "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+     ],
+     "price_rlusd": null,
+     "price_xrp_drops": 788,
+     "assets": [
+      "XRP"
+     ],
+     "source_tags": [
+      26100006
+     ]
+    },
+    {
+     "rank": 2,
+     "url": "https://api.vextorium.com/v1/us-market-hours",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 3,
+     "url": "https://api.vextorium.com/v1/public-holidays",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 4,
+     "url": "https://api.vextorium.com/v1/business-days",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 5,
+     "url": "https://api.vextorium.com/festivos-pais-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 6,
+     "url": "https://api.vextorium.com/dias-habiles-pais-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 7,
+     "url": "https://api.vextorium.com/v1/spain-business-days",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 8,
+     "url": "https://api.vextorium.com/dias-habiles-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 9,
+     "url": "https://api.vextorium.com/v1/us-federal-register",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.02",
+     "price_xrp_drops": 15390,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 10,
+     "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+     "host": "api.sitecheck-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.001",
+     "price_xrp_drops": 724,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 11,
+     "url": "https://api.vextorium.com/v1/us-grants",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 12,
+     "url": "https://api.vextorium.com/horario-eeuu-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 13,
+     "url": "https://api.sitecheck-api.workers.dev/api/business-days",
+     "host": "api.sitecheck-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.001",
+     "price_xrp_drops": 724,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 14,
+     "url": "https://api.vextorium.com/v1/us-weather",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.004",
+     "price_xrp_drops": 3080,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 15,
+     "url": "https://api.chainmarket-api.workers.dev/api/finance/gov-uk-bank-holidays",
+     "host": "api.chainmarket-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1535,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q18",
+   "need": "Latest news headlines about XRP or Ripple from the past 24 hours, with source and link",
+   "n_results": 14,
+   "n_xrpl": 14,
+   "operators": 4,
+   "operator_counts": [
+    [
+     "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7",
+     7
+    ],
+    [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ",
+     3
+    ],
+    [
+     "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp",
+     3
+    ],
+    [
+     "r36sbDCAsaCj44ZUXWY2jjGE1jBpsCoRQ4",
+     1
+    ]
+   ],
+   "nonsettling_rank": 2,
+   "qualifies": true,
+   "reason": "operators+nonsettling",
+   "stable": true,
+   "unfiltered_n": 11,
+   "unfiltered_xrpl": 0,
+   "unfiltered_operators": 0,
+   "top1": {
+    "rank": 1,
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/news",
+    "host": "api.sitecheck-api.workers.dev",
+    "payto": [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+    ],
+    "price_rlusd": "0.002",
+    "price_xrp_drops": 1453,
+    "assets": [
+     "524C555344000000000000000000000000000000",
+     "XRP"
+    ],
+    "source_tags": [
+     804681468
+    ]
+   },
+   "rows": [
+    {
+     "rank": 1,
+     "url": "https://api.sitecheck-api.workers.dev/api/crypto/news",
+     "host": "api.sitecheck-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1453,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 2,
+     "url": "https://pay.edge-agents.ai/v1/services/xrp-onchain-derivatives-divergence",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.1",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 3,
+     "url": "https://pay.edge-agents.ai/v1/services/xrp-escrow-release-relock-history",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.1",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 4,
+     "url": "https://api.vextorium.com/v1/central-bank-press",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 5,
+     "url": "https://api.webintel-api.workers.dev/api/search/ap-news-articles",
+     "host": "api.webintel-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1555,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 6,
+     "url": "https://pay.edge-agents.ai/v1/services/xrp-large-transfer-monitor",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 7,
+     "url": "https://api.vextorium.com/comunicados-oficiales-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 8,
+     "url": "https://pay.edge-agents.ai/v1/services/xrp-float-intelligence",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.1",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 9,
+     "url": "https://api.fadeandco.workers.dev/api/dev/bloomberg-articles",
+     "host": "api.fadeandco.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1558,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 10,
+     "url": "https://pay.edge-agents.ai/v1/services/xrp-cftc-institutional-leverage-divergence",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 11,
+     "url": "https://api.vextorium.com/v1/us-crypto-regulation",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.018",
+     "price_xrp_drops": 13850,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 12,
+     "url": "https://pay.edge-agents.ai/v1/services/xrp-cftc-leveraged-fund-positioning",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 13,
+     "url": "https://pay.edge-agents.ai/v1/services/altcoin-liquidity-quality",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    },
+    {
+     "rank": 14,
+     "url": "https://bruk-agent-api.fly.dev/v1/ledger-moment",
+     "host": "bruk-agent-api.fly.dev",
+     "payto": [
+      "r36sbDCAsaCj44ZUXWY2jjGE1jBpsCoRQ4"
+     ],
+     "price_rlusd": "0.02",
+     "price_xrp_drops": 15500,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q19",
+   "need": "Recent arXiv papers on payments by AI agents or agentic commerce, with titles, authors and links",
+   "n_results": 6,
+   "n_xrpl": 6,
+   "operators": 4,
+   "operator_counts": [
+    [
+     "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp",
+     2
+    ],
+    [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ",
+     2
+    ],
+    [
+     "rhFHztjS63h6fs5vXgTotuL7jsuryUvDSF",
+     1
+    ],
+    [
+     "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7",
+     1
+    ]
+   ],
+   "nonsettling_rank": 6,
+   "qualifies": true,
+   "reason": "operators",
+   "stable": true,
+   "unfiltered_n": 14,
+   "unfiltered_xrpl": 4,
+   "unfiltered_operators": 2,
+   "top1": {
+    "rank": 1,
+    "url": "https://api.vextorium.com/v1/arxiv-search",
+    "host": "api.vextorium.com",
+    "payto": [
+     "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+    ],
+    "price_rlusd": "0.003",
+    "price_xrp_drops": 2310,
+    "assets": [
+     "524C555344000000000000000000000000000000",
+     "XRP"
+    ],
+    "source_tags": [
+     804681468
+    ]
+   },
+   "rows": [
+    {
+     "rank": 1,
+     "url": "https://api.vextorium.com/v1/arxiv-search",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 2,
+     "url": "https://api.vextorium.com/arxiv-buscar-pago",
+     "host": "api.vextorium.com",
+     "payto": [
+      "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+     ],
+     "price_rlusd": "0.003",
+     "price_xrp_drops": 2310,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 3,
+     "url": "https://api.sitecheck-api.workers.dev/api/arxiv",
+     "host": "api.sitecheck-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.001",
+     "price_xrp_drops": 724,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 4,
+     "url": "https://api.babyblueviper.com/agent-economy-brief",
+     "host": "api.babyblueviper.com",
+     "payto": [
+      "rhFHztjS63h6fs5vXgTotuL7jsuryUvDSF"
+     ],
+     "price_rlusd": null,
+     "price_xrp_drops": 50019,
+     "assets": [
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 5,
+     "url": "https://api.fadeandco.workers.dev/api/dev/huggingface-papers",
+     "host": "api.fadeandco.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1551,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 6,
+     "url": "https://pay.edge-agents.ai/v1/services/eurostat-ons-euro-area-retail-trade",
+     "host": "pay.edge-agents.ai",
+     "payto": [
+      "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7"
+     ],
+     "price_rlusd": "0.01",
+     "price_xrp_drops": null,
+     "assets": [
+      "524C555344000000000000000000000000000000"
+     ],
+     "source_tags": [
+      402402402
+     ]
+    }
+   ]
+  },
+  {
+   "id": "q20",
+   "need": "Recruiting clinical trials for type 2 diabetes in the United States, with NCT IDs",
+   "n_results": 5,
+   "n_xrpl": 5,
+   "operators": 2,
+   "operator_counts": [
+    [
+     "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32",
+     3
+    ],
+    [
+     "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ",
+     2
+    ]
+   ],
+   "nonsettling_rank": null,
+   "qualifies": true,
+   "reason": "operators",
+   "stable": true,
+   "unfiltered_n": 17,
+   "unfiltered_xrpl": 5,
+   "unfiltered_operators": 2,
+   "top1": {
+    "rank": 1,
+    "url": "https://clinicalintelpulse.theaslangroupllc.com/api/clinical/trial-check",
+    "host": "clinicalintelpulse.theaslangroupllc.com",
+    "payto": [
+     "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+    ],
+    "price_rlusd": "0.02",
+    "price_xrp_drops": 20000,
+    "assets": [
+     "524C555344000000000000000000000000000000",
+     "XRP"
+    ],
+    "source_tags": [
+     804681468
+    ]
+   },
+   "rows": [
+    {
+     "rank": 1,
+     "url": "https://clinicalintelpulse.theaslangroupllc.com/api/clinical/trial-check",
+     "host": "clinicalintelpulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.02",
+     "price_xrp_drops": 20000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 2,
+     "url": "https://api.sitecheck-api.workers.dev/api/clinical-trials",
+     "host": "api.sitecheck-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1453,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 3,
+     "url": "https://clinicalintelpulse.theaslangroupllc.com/api/clinical/trial-brief",
+     "host": "clinicalintelpulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.1",
+     "price_xrp_drops": 100000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 4,
+     "url": "https://longevitypulse.theaslangroupllc.com/api/longevity/clinical-trials",
+     "host": "longevitypulse.theaslangroupllc.com",
+     "payto": [
+      "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+     ],
+     "price_rlusd": "0.1",
+     "price_xrp_drops": 100000,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    },
+    {
+     "rank": 5,
+     "url": "https://api.healthtravel-api.workers.dev/api/health/clinical-trials-gov",
+     "host": "api.healthtravel-api.workers.dev",
+     "payto": [
+      "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+     ],
+     "price_rlusd": "0.002",
+     "price_xrp_drops": 1537,
+     "assets": [
+      "524C555344000000000000000000000000000000",
+      "XRP"
+     ],
+     "source_tags": [
+      804681468
+     ]
+    }
+   ]
+  }
+ ]
+}
