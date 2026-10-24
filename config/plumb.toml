@@ -1,0 +1,66 @@
+# Plumb configuration. Protocol constants, score parameters and every money cap live here, never in code (AGENTS.md rule 6).
+# Decimals are strings, parsed exactly.
+
+[xrpl]
+network = "xrpl:0"
+source_tag = 804681468
+rlusd_currency = "524C555344000000000000000000000000000000"
+rlusd_issuer = "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De"
+# Public full-history server on port 443 (U0). Quicknode replaces it in env/ledger.env for the ingest daemon.
+rpc_url = "https://s2.ripple.com/"
+
+[bazaar]
+base = "https://api.cdp.coinbase.com/platform/v2/x402/discovery"
+top_n = 20
+
+[t54]
+mainnet = "https://xrpl-facilitator-mainnet.t54.ai"
+testnet = "https://xrpl-facilitator-testnet.t54.ai"
+
+[vet402]
+export_csv = "https://vet402.com/api/v1/observatory/export.csv"
+
+[score]
+prior_strength_m = 4
+# E2: 64 of 202 XRPL purchases were usable.
+global_good_rate = "0.32"
+recency_tau_days = 7
+cluster_window_minutes = 10
+price_dishonest_factor = "0.5"
+# §3.5: weight of the global mean when it becomes a principal's prior.
+principal_strength_kappa = 8
+# settle_ok is false when an endpoint has at least this many unsettled attempts and none settled (until U3 preflight lands).
+unsettled_min_attempts = 3
+
+[rank]
+k_default = 3
+k_max = 5
+candidates_max = 40
+# A request reuses a known need's offline fit when their lexical similarity reaches this.
+need_match_threshold = "0.35"
+
+[judge]
+provider = "bedrock"          # bedrock | anthropic | lexical
+bedrock_model = "us.anthropic.claude-opus-5-5"
+anthropic_model = "claude-opus-5-5"
+effort = "low"
+max_listing_chars = 1200
+max_tokens = 16000
+
+[demo]
+seed = 7
+simulated_purchases_per_persona = 120
+
+[paths]
+db = "out/plumb.db"
+snapshot = "data/bazaar_snapshot.json"
+vet402_snapshot = "data/vet402_xrpl.csv"
+personas = "config/personas.toml"
+queries = "eval/queries.yaml"
+
+[caps]
+# Real-money caps (RLUSD). Spending needs --live plus these, and the user's go-ahead (AGENTS.md rule 1).
+audit_max_per_purchase = "0.01"
+audit_max_per_day = "1"
+audit_max_total = "5"
+eval_max_total = "3"
