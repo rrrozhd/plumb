@@ -1,0 +1,55 @@
+{
+ "at": "2026-10-24T21:55:51Z",
+ "mainnet": {
+  "url": "https://xrpl-facilitator-mainnet.t54.ai/supported",
+  "status": 200,
+  "body": {
+   "kinds": [
+    {
+     "x402Version": 2,
+     "scheme": "exact",
+     "network": "xrpl:0"
+    },
+    {
+     "x402Version": 2,
+     "scheme": "batch-settlement",
+     "network": "xrpl:0",
+     "extra": {
+      "binding": "xrpl-check-session",
+      "version": "1"
+     }
+    }
+   ],
+   "extensions": [
+    "x402Secure"
+   ],
+   "signers": {
+    "xrpl:*": []
+   }
+  }
+ },
+ "testnet": {
+  "url": "https://xrpl-facilitator-testnet.t54.ai/supported",
+  "status": 200,
+  "body": {
+   "kinds": [
+    {
+     "x402Version": 2,
+     "scheme": "exact",
+     "network": "xrpl:1"
+    },
+    {
+     "x402Version": 2,
+     "scheme": "upto",
+     "network": "xrpl:1"
+    }
+   ],
+   "extensions": [
+    "x402Secure"
+   ],
+   "signers": {
+    "xrpl:*": []
+   }
+  }
+ }
+}
