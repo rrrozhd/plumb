@@ -1,0 +1,289 @@
+{
+ "summary": {
+  "at": "2026-10-24T22:15:38Z",
+  "public_preimage_found": true,
+  "vet402_has_invoice_column": false,
+  "vet402_purchase_id_hits": 0,
+  "bazaar_cached_ids": 5606,
+  "onledger_ids_checked": 227,
+  "matched_invoice_ids": 8,
+  "matched_preimages": [
+   "ichimoku-signal.fizzl.eu GET /scan",
+   "ichimoku-signal.fizzl.eu GET /signal/:pair",
+   "presign-guard.fizzl.eu GET /v1/approvals",
+   "presign-guard.fizzl.eu GET /v1/screen",
+   "presign-guard.fizzl.eu POST /v1/check",
+   "presign-guard.fizzl.eu POST /v1/check/explain",
+   "presign-guard.fizzl.eu POST /v1/injection",
+   "x402-doctor.fizzl.eu"
+  ],
+  "matched_payments": 18,
+  "matched_payto": [
+   "r9xmBsRr8Ao7jRgjjxreMiAwGiCK2FGwqw"
+  ],
+  "x402_like_payments_checked": 242,
+  "challenge_ids_fresh_per_request": [
+   "https://api.vextorium.com/v1/crypto-price",
+   "https://api.sitecheck-api.workers.dev/api/crypto/fear-greed",
+   "https://api.stablecoingateways.com/v1/business-days",
+   "https://cryptopulse.theaslangroupllc.com/api/funding-check",
+   "https://pay.edge-agents.ai/v1/services/perp-funding-rates"
+  ],
+  "challenge_ids_static": [
+   "https://presign-guard.fizzl.eu/v1/screen",
+   "https://ichimoku-signal.fizzl.eu/scan"
+  ],
+  "challenge_endpoints_ok": 7
+ },
+ "vet402": {
+  "columns": [
+   "attempted_at",
+   "resource_key",
+   "network",
+   "status",
+   "amount_units",
+   "spent_units",
+   "tx_hash",
+   "http_status_paid",
+   "latency_ms",
+   "l2_schema",
+   "held_reason",
+   "request_body",
+   "request_body_sha256",
+   "settlement_source",
+   "request_query",
+   "request_query_sha256",
+   "confirmed_units",
+   "purchase_id",
+   "l2_reading"
+  ],
+  "invoice_like_columns": [],
+  "xrpl_rows": 203,
+  "settled_with_tx": 92,
+  "with_invoice_id": 91,
+  "purchase_id_hits": []
+ },
+ "bazaar": {
+  "listings": 3207,
+  "cached_invoice_ids": 5606,
+  "payto": 13,
+  "onledger_invoice_ids": 227,
+  "same_payto_hits": [
+   {
+    "payto": "r9xmBsRr8Ao7jRgjjxreMiAwGiCK2FGwqw",
+    "preimage": "presign-guard.fizzl.eu POST /v1/injection",
+    "variant": "sha256_utf8",
+    "invoice_id": "3991F33AAE6C5799E40F38AEC0DC1280C702A1723EB596C8639D1F3E76A56A54"
+   },
+   {
+    "payto": "r9xmBsRr8Ao7jRgjjxreMiAwGiCK2FGwqw",
+    "preimage": "presign-guard.fizzl.eu POST /v1/check",
+    "variant": "sha256_utf8",
+    "invoice_id": "F82583373BC06B72DC4F1303A3F9258DF062550F80DF4242303BB0964FB10885"
+   },
+   {
+    "payto": "r9xmBsRr8Ao7jRgjjxreMiAwGiCK2FGwqw",
+    "preimage": "presign-guard.fizzl.eu GET /v1/screen",
+    "variant": "sha256_utf8",
+    "invoice_id": "7A1338503998D6C8CDED8868A334850C4B865707383374515CB51816A98C4946"
+   },
+   {
+    "payto": "r9xmBsRr8Ao7jRgjjxreMiAwGiCK2FGwqw",
+    "preimage": "ichimoku-signal.fizzl.eu GET /scan",
+    "variant": "sha256_utf8",
+    "invoice_id": "06B477AFB7DE7CAD8BCBD47144EB68A624C0577920243D6A9DC5789DD76781CB"
+   },
+   {
+    "payto": "r9xmBsRr8Ao7jRgjjxreMiAwGiCK2FGwqw",
+    "preimage": "x402-doctor.fizzl.eu",
+    "variant": "sha256_utf8",
+    "invoice_id": "4D8C6763FA11C1DB9B4EDCC44362D7D340168A91DF262DC8F5C37A084099C90C"
+   },
+   {
+    "payto": "r9xmBsRr8Ao7jRgjjxreMiAwGiCK2FGwqw",
+    "preimage": "x402-doctor.fizzl.eu",
+    "variant": "sha256_lower",
+    "invoice_id": "4D8C6763FA11C1DB9B4EDCC44362D7D340168A91DF262DC8F5C37A084099C90C"
+   },
+   {
+    "payto": "r9xmBsRr8Ao7jRgjjxreMiAwGiCK2FGwqw",
+    "preimage": "presign-guard.fizzl.eu GET /v1/approvals",
+    "variant": "sha256_utf8",
+    "invoice_id": "26FBE1EA3C87AC456FBA50A8784A7BBD7F33AD22CD7757406F34168328C7FFD3"
+   },
+   {
+    "payto": "r9xmBsRr8Ao7jRgjjxreMiAwGiCK2FGwqw",
+    "preimage": "presign-guard.fizzl.eu POST /v1/check/explain",
+    "variant": "sha256_utf8",
+    "invoice_id": "6EC0CA10407DD3EB60F341FFC312EE89FAB6A601FC4C9E6C138CDA25621DA5A9"
+   },
+   {
+    "payto": "r9xmBsRr8Ao7jRgjjxreMiAwGiCK2FGwqw",
+    "preimage": "ichimoku-signal.fizzl.eu GET /signal/:pair",
+    "variant": "sha256_utf8",
+    "invoice_id": "8D33D3DD43B9E4F4C3360F499765BF00C90F302CB7AFB9545FA67F79DDFF9072"
+   }
+  ],
+  "any_hits": [
+   {
+    "preimage": "presign-guard.fizzl.eu GET /v1/approvals",
+    "variant": "sha256_utf8",
+    "invoice_id": "26FBE1EA3C87AC456FBA50A8784A7BBD7F33AD22CD7757406F34168328C7FFD3"
+   },
+   {
+    "preimage": "presign-guard.fizzl.eu POST /v1/check",
+    "variant": "sha256_utf8",
+    "invoice_id": "F82583373BC06B72DC4F1303A3F9258DF062550F80DF4242303BB0964FB10885"
+   },
+   {
+    "preimage": "ichimoku-signal.fizzl.eu GET /scan",
+    "variant": "sha256_utf8",
+    "invoice_id": "06B477AFB7DE7CAD8BCBD47144EB68A624C0577920243D6A9DC5789DD76781CB"
+   },
+   {
+    "preimage": "presign-guard.fizzl.eu POST /v1/injection",
+    "variant": "sha256_utf8",
+    "invoice_id": "3991F33AAE6C5799E40F38AEC0DC1280C702A1723EB596C8639D1F3E76A56A54"
+   },
+   {
+    "preimage": "presign-guard.fizzl.eu POST /v1/check/explain",
+    "variant": "sha256_utf8",
+    "invoice_id": "6EC0CA10407DD3EB60F341FFC312EE89FAB6A601FC4C9E6C138CDA25621DA5A9"
+   },
+   {
+    "preimage": "ichimoku-signal.fizzl.eu GET /signal/:pair",
+    "variant": "sha256_utf8",
+    "invoice_id": "8D33D3DD43B9E4F4C3360F499765BF00C90F302CB7AFB9545FA67F79DDFF9072"
+   },
+   {
+    "preimage": "presign-guard.fizzl.eu GET /v1/screen",
+    "variant": "sha256_utf8",
+    "invoice_id": "7A1338503998D6C8CDED8868A334850C4B865707383374515CB51816A98C4946"
+   },
+   {
+    "preimage": "x402-doctor.fizzl.eu",
+    "variant": "sha256_utf8",
+    "invoice_id": "4D8C6763FA11C1DB9B4EDCC44362D7D340168A91DF262DC8F5C37A084099C90C"
+   },
+   {
+    "preimage": "x402-doctor.fizzl.eu",
+    "variant": "sha256_lower",
+    "invoice_id": "4D8C6763FA11C1DB9B4EDCC44362D7D340168A91DF262DC8F5C37A084099C90C"
+   }
+  ],
+  "static_ids_per_payto": {
+   "r36sbDCAsaCj44ZUXWY2jjGE1jBpsCoRQ4": 8,
+   "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg": 14,
+   "r9Y5kWQvZLXn4vuvqNJovoNpJFzpMCuP2d": 12,
+   "raUiAFeLjNsimQAfNTsHmV876xSCWeXi1B": 6,
+   "r9xmBsRr8Ao7jRgjjxreMiAwGiCK2FGwqw": 13,
+   "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ": 2156,
+   "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp": 902,
+   "rKv7LTd19CUsKKirVzdZWK4HuFChHf4Hp7": 587,
+   "rM8kmmnz5qPMg7V3r7SHYXgDGvm8PhzLvM": 17,
+   "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32": 1815,
+   "rfryheo6yzFdLWj8qUQtZc7zG9MKkBkUEy": 37,
+   "rhFHztjS63h6fs5vXgTotuL7jsuryUvDSF": 21,
+   "rnFHPGmgTLSg7hjzfr8wiHaTdTh3PijrZZ": 18
+  }
+ },
+ "challenges": {
+  "https://api.vextorium.com/v1/crypto-price": {
+   "status_ok": true,
+   "distinct_per_request": true,
+   "invoice_ids": [
+    [
+     "1A2B7DB7BFFB4C7DA9B2C2425F8C72C7",
+     "D8AE18EA5B59419ABEDF80EFACA03C2E"
+    ],
+    [
+     "8CB45327EDC649F68608A00E0A01C9DB",
+     "EFA6CC2AD1CC41EA998CF4EDDA18D65B"
+    ]
+   ],
+   "preimage_on_ledger": false
+  },
+  "https://api.sitecheck-api.workers.dev/api/crypto/fear-greed": {
+   "status_ok": true,
+   "distinct_per_request": true,
+   "invoice_ids": [
+    [
+     "b243f9ee-7d43-4d2b-b8ea-c4f6d985c73f",
+     "e74898a9-f8be-4065-91ae-6113d94b4498"
+    ],
+    [
+     "024bef2d-f133-4fa1-b8af-452b71f248f2",
+     "3dbb4211-1911-4640-893a-ad738fbc351d"
+    ]
+   ],
+   "preimage_on_ledger": false
+  },
+  "https://api.stablecoingateways.com/v1/business-days": {
+   "status_ok": true,
+   "distinct_per_request": true,
+   "invoice_ids": [
+    [
+     "1792880732-27233ff3048343c8-d798-1dd823159cd97d3107efe4d2"
+    ],
+    [
+     "1792880733-77eec47d1bf14d93-d798-3ca7d24f6c7d7a2723f1560c"
+    ]
+   ],
+   "preimage_on_ledger": false
+  },
+  "https://cryptopulse.theaslangroupllc.com/api/funding-check": {
+   "status_ok": true,
+   "distinct_per_request": true,
+   "invoice_ids": [
+    [
+     "BAEB91791A3241FA9755EC43130C4BA4",
+     "CC37BC347BCF4C36B1AD833EF73FCFB4"
+    ],
+    [
+     "3A67CFA4D708406ABF1EFB55612AB067",
+     "A6B5A9395E7D41C1A4AC874ADC9E5257"
+    ]
+   ],
+   "preimage_on_ledger": false
+  },
+  "https://pay.edge-agents.ai/v1/services/perp-funding-rates": {
+   "status_ok": true,
+   "distinct_per_request": true,
+   "invoice_ids": [
+    [
+     "87cca3fe-c619-436d-afc9-c8e712d1c66e"
+    ],
+    [
+     "a662a56a-c22a-4452-b066-35abf43a6e4a"
+    ]
+   ],
+   "preimage_on_ledger": false
+  },
+  "https://presign-guard.fizzl.eu/v1/screen": {
+   "status_ok": true,
+   "distinct_per_request": false,
+   "invoice_ids": [
+    [
+     "presign-guard.fizzl.eu GET /v1/screen"
+    ],
+    [
+     "presign-guard.fizzl.eu GET /v1/screen"
+    ]
+   ],
+   "preimage_on_ledger": true
+  },
+  "https://ichimoku-signal.fizzl.eu/scan": {
+   "status_ok": true,
+   "distinct_per_request": false,
+   "invoice_ids": [
+    [
+     "ichimoku-signal.fizzl.eu GET /scan"
+    ],
+    [
+     "ichimoku-signal.fizzl.eu GET /scan"
+    ]
+   ],
+   "preimage_on_ledger": true
+  }
+ }
+}
