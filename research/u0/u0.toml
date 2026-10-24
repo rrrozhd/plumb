@@ -1,0 +1,30 @@
+# Constants for the U0 probes. The product reads config/plumb.toml (U1); these probes only read this file.
+[xrpl]
+source_tag = 804681468
+rlusd_currency = "524C555344000000000000000000000000000000"
+rlusd_issuer = "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De"
+# Public servers on port 443 (port 51234 is not reachable from every network). s2 is full-history.
+rpc_url = "https://s2.ripple.com/"
+wss_url = "wss://s1.ripple.com"
+ripple_epoch = 946684800
+
+[bazaar]
+base = "https://api.cdp.coinbase.com/platform/v2/x402/discovery"
+network = "xrpl:0"
+top_n = 20
+
+[t54]
+mainnet = "https://xrpl-facilitator-mainnet.t54.ai"
+testnet = "https://xrpl-facilitator-testnet.t54.ai"
+
+[vet402]
+export_csv = "https://vet402.com/api/v1/observatory/export.csv"
+
+[diversity]
+# A need qualifies with >= min_operators distinct XRPL payTo accounts in the top N,
+# or with a known non-settling storefront at rank <= nonsettling_max_rank.
+min_operators = 2
+nonsettling_max_rank = 3
+# E2: pay.edge-agents.ai went 0 for 88 in vet402's XRPL purchases.
+nonsettling_hosts = ["pay.edge-agents.ai"]
+min_qualifying = 8
