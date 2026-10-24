@@ -151,8 +151,78 @@ score(endpoint PK, alpha REAL, beta REAL, mean REAL, lower80 REAL, n_audits, n_r
 - learned ranking models.
 
 ## 11. Open questions (answered in BUILD_PLAN U0)
-1. Does the Bazaar's XRPL search return **at least two operators** for realistic needs? If not, the demo reranks endpoints within an operator and removes storefronts that won't settle.
-2. Does Quicknode's XRPL WebSocket `subscribe` stream every transaction, including the tagged payments? Can Streams' "Ledger" dataset stand in for it?
-3. What is the exact path of the Bazaar search endpoint, and does it filter by `network`?
-4. Will t54's mainnet facilitator settle to any `payTo`, so Plumb can collect its own fee?
-5. Which embedding and judge models are available on Bedrock in the event's region?
+U0 ran on 2026-10-24 from a cloud session with no secrets: no Quicknode URL, no AWS credentials, no seeds. Public rippled servers on port 443 (`s1`/`s2.ripple.com`) stood in for Quicknode. Nothing was signed, submitted or paid. The scripts and snapshots are in `research/u0/`.
+
+1. **Does the Bazaar's XRPL search return at least two operators for realistic needs?** If not, the demo reranks endpoints within an operator and removes storefronts that won't settle.
+   **`ANSWERED`: yes. The fallback demo isn't needed.**
+   - **All 20 needs qualify.** All 20 needs in `eval/queries.yaml` (written before any count was taken) have 2–6 distinct XRPL `payTo` in the top 20: median 4, and 11 needs have exactly 4. A repeat query returned identical results for every need (`p2.json`).
+   - **Caveat: this counts operators in the result list, not operators with a relevant endpoint.** Going by URL paths alone:
+     - q13 (verify an XRPL tx) has one plausibly relevant operator;
+     - q18 (XRP news) has one, plus `pay.edge-agents.ai` at ranks 2 and 3.
+   - **The Bazaar's own #1 XRPL pick:**
+     - it's `pay.edge-agents.ai` for q02;
+     - it's XRP-only for 6 needs (all `api.stablecoingateways.com`);
+     - it advertises a non-t54 SourceTag, or none, for 10 needs.
+
+     So the U7 eval wallet needs XRP as well as RLUSD. `eval/rubric.md` §1 covers XRP-only picks.
+2. **Does Quicknode's XRPL WebSocket `subscribe` stream every transaction, including the tagged payments? Can Streams' "Ledger" dataset stand in for it?**
+   **`BLOCKED_EXTERNAL` for Quicknode** (no endpoint in this environment). **`ANSWERED` for the same `subscribe` API on public rippled. The Streams dataset is `NOT_RUN`.**
+   - **Real time, yes.** Two 10-minute captures on `wss://s1.ripple.com` (`p3_run1.json`, `p3_run2.json`), 151 ledgers each:
+     - the ledgers held 54 and 51 t54-tagged Payments, about 7.6k and 7.1k a day, in line with E5;
+     - every streamed one (52 and 48) was validated with `tesSUCCESS` and carried an InvoiceID;
+     - each arrived a median 2.8 s and 4.3 s (p95 7.0 s and 6.6 s) after its ledger's close time, and about 0.25 s after that ledger's own `ledgerClosed` message.
+   - **Complete only with backfill.** The public connection dropped once in each run (a keepalive timeout, then an abrupt close).
+     - Run 1 missed 2 of 54 tagged payments and 135 of 6,122 Payments overall.
+     - Run 2 lost 5 consecutive ledgers: 3 of 51 tagged payments and 39 of 4,665 Payments.
+     - A JSON-RPC rescan of the same ledgers found every missing one.
+
+     The gap backfill in §6 is therefore required, not optional.
+   - **The tagged flow isn't the Bazaar's merchants.** None of the 100 streamed tagged payments went to a Bazaar-listed `payTo`. 64 came from the E4 farm senders, and 94 went to the farm's receivers (`p3b.json`).
+3. **What is the exact path of the Bazaar search endpoint, and does it filter by `network`?**
+   **`ANSWERED`.**
+   - **The path** is `GET https://api.cdp.coinbase.com/platform/v2/x402/discovery/search?query=<text>&network=xrpl:0&limit=<n>`. Both `/resources/search` and `/search/resources` return 404.
+   - **On `/search`, `network=xrpl:0` does filter**, server-side. This corrects the earlier evidence that it was ignored.
+     - Only XRPL listings come back.
+     - `network=xrpl`, `xrpl:1` and a made-up value return 0 results.
+     - `limit` is honoured (5 returns 5).
+     - Results stop at 20 and often fewer: 5–20 for our 8 probe words.
+   - **Without the filter, XRPL listings are crowded out:** 0–6 of the top 20, both for the probe words and for the eval needs.
+   - **The list endpoint `/resources` ignores `network`.** It returns the same total (42,241) with no XRPL rows on page 1, raises a `limit` below 20 to 20, and returns `items`, not `resources`. That's the likely source of the "ignored" finding.
+   - **Keep the client-side check** (`accepts[].network == "xrpl:0"`), because a listing can name several networks.
+   - **Listing shapes, for U2's parser** (`p1.json`, `catalog.json.gz`):
+     - RLUSD `amount` is a decimal string (`"0.003"`); XRP `amount` is integer drops (`"2310"`);
+     - 112 of 3,207 XRPL listings are XRP-only, and some also accept USDC on XRPL;
+     - `extra.invoiceId` is the value from the crawler's 402 challenge (question 8).
+4. **Will t54's mainnet facilitator settle to any `payTo`, so Plumb can collect its own fee?**
+   **`BLOCKED_EXTERNAL`:** `/verify` needs a blob signed by a funded mainnet seed.
+   - **The read-only part** (`p5.json`): mainnet `/supported` lists `exact` and `batch-settlement` (binding `xrpl-check-session`) on `xrpl:0`, the extension `x402Secure`, and an empty `signers` list. Testnet lists `exact` and `upto` on `xrpl:1`.
+   - **Indirect evidence:** 10 different Bazaar `payTo` accounts receive t54-tagged payments carrying an InvoiceID (`p1b.json`), so t54 isn't tied to one merchant. Whether it accepts a brand-new `payTo` like Plumb's is still open.
+5. **Which embedding and judge models are available on Bedrock in the event's region?**
+   **`BLOCKED_EXTERNAL`:** there are no AWS credentials in this environment.
+6. **U0 probe 6, the first live audit.**
+   **`NOT_RUN`:** it was out of scope for this session (no auditor seed, no go-ahead).
+7. **Extra check A: can one `account_info` call date an account?**
+   **`ANSWERED`: not an active one** (`xa.json`).
+   - **The starting `Sequence` is the creating ledger.** For 5 of 5 farm senders from `research/s1/p5.json`, the AccountRoot's starting `Sequence` (`NewFields.Sequence` in the creating Payment's metadata) equals that Payment's ledger index. The account's first own transaction uses that same `Sequence`.
+   - **`account_info` returns the *current* `Sequence`,** which is the start plus every transaction sent since. For these accounts that overshoots by 109,155–112,909 ledgers, about 5 days of ledgers, far beyond the 10-minute cluster window (§3).
+   - **Exact dating takes one different call:** `account_tx` with `forward: true, limit: 1` on a full-history server. It returns the creating transaction, giving the ledger, the close time, the funder and `NewFields.Sequence`.
+   - **For U2:** use that call for `account.created_ledger`. Treat `account_info.Sequence` only as an upper bound.
+8. **Extra check B: does any public invoiceId's SHA-256 match an on-ledger InvoiceID?**
+   **`ANSWERED`: yes, but only for a seller whose invoiceIds are static** (`xb.json`).
+   - **vet402:** its export has no invoiceId column, and its `purchase_id` isn't the preimage (0 of 92 settled XRPL rows).
+   - **The Bazaar** caches `extra.invoiceId` on 3,178 XRPL listings (5,606 values).
+     - fizzl.eu (`r9xmBs…`) uses static strings such as `"presign-guard.fizzl.eu POST /v1/check"`. SHA-256 (UTF-8, uppercase hex) of 8 of them equals the InvoiceID of 18 validated payments, out of 242 x402-like payments scanned across 13 `payTo`. That confirms `InvoiceID = SHA-256(invoiceId)` on mainnet, with public preimages.
+     - The other 5 operators sampled issue a fresh invoiceId per 402 challenge, and none of their cached values matched.
+   - **What it means:**
+     - showing the preimage proves "payer or merchant" only where invoiceIds are nonces; for static-ID sellers the preimage is public and proves nothing;
+     - for static-ID sellers, the InvoiceID names the endpoint on-ledger, so they have endpoint-level ledger evidence, an exception to "the ledger names the merchant, not the endpoint";
+     - a proof-of-purchase review can't be checked from public data alone. The reviewer has to supply the invoiceId from their own 402 challenge.
+9. **New, raised by U0: t54's SourceTag doesn't cover the whole XRPL market.**
+   - **In the catalogue,** 637 of 3,207 XRPL listings (20%) offer no option with t54's tag:
+     - `pay.edge-agents.ai` advertises `402402402` on all 587 of its listings;
+     - horizonpulse.dev advertises no tag (29);
+     - stablecoingateways uses `26100002`–`26100015` (14);
+     - bruk-agent-api advertises no tag on 7.
+   - **On-ledger,** 5 of 243 x402-like payments (those with an InvoiceID) to Bazaar `payTo` carry a non-t54 tag or none (`p1b.json`).
+   - **`pay.edge-agents.ai` has never been paid an x402 sale on-ledger:** none of its 20 incoming payments (2026-03-02 to 10-03) carries an InvoiceID or a tag. That backs up E2's 0 for 88.
+   - **Suggested for the `ledger` owner (§1 and §3 are unchanged here):** also keep Payments whose `Destination` is a catalogue `payTo`, and use InvoiceID presence as the x402 marker alongside the SourceTag.
