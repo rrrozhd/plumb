@@ -66,20 +66,23 @@ fit(need_key, endpoint FK, p_fit REAL, reason, provider, at, PK(need_key, endpoi
    - **`price_honest`:** the price in the 402 challenge must equal the listing. If not, multiply by 0.5 and flag it.
 4. **Outputs.** The `mean`, the 80% lower bound (`lower80`), and the counts.
 
-5. **Per-principal posterior (personalisation).** The global posterior is the *average* customer. Each principal gets its own Beta whose prior is the global mean at strength `κ` (config, default 8):
-   `α_p = κ·mean_g + Σ wᵢ·goodᵢ`, `β_p = κ·(1−mean_g) + Σ wᵢ·badᵢ`, over that principal's own outcomes only.
-   - A new principal ranks exactly like the global score; each of its outcomes moves its ranking away from the average.
+5. **Per-principal posterior (personalisation; full detail in `docs/RECOMMENDER.md` §4).** The global posterior is the *average* customer.
+   - With no personal outcomes on an endpoint, the principal's score **is** the global posterior.
+   - With outcomes, the global posterior becomes the prior, capped at strength `s = min(κ, α_g+β_g)` (κ in config, default 8): `α_p = s·mean_g + Σ wᵢ·goodᵢ`, `β_p = s·(1−mean_g) + Σ wᵢ·badᵢ`, over that principal's own outcomes only.
+   - Each of a principal's outcomes moves its ranking away from the average. (Re-priming at κ for every endpoint flipped near-ties at zero outcomes, so it was dropped.)
    - Personalisation is on **constraints and outcomes, not taste**: a principal's `profile` holds hard constraints (`max_price`, accepted `assets`, `max_latency_ms`, `require_output_schema`), and its outcomes carry what "usable" meant for it.
    - The principal is the paying XRPL account, so there is no signup. Its past x402 payments can seed `principal_outcome` (`source=report` once confirmed).
 
 **Payer clusters** come from account creation: accounts created within a 10-minute window from the same funder (exchange hot wallets included, E6) form one cluster.
 
 ## 4. Ranking
+**The recommendation layer is specified in `docs/RECOMMENDER.md`, which wins where it differs from this section.** It covers need templates, the settlement × quality decomposition, the cost key with a time term, operator-diverse slots and ledger-seeded principals.
+
 **No LLM call on the request path.** Time to a usable answer is a product benefit, so the judge runs offline and the request path is lookup plus arithmetic (target p95 < 100 ms).
 1. **Candidates.** Up to 40 endpoints: the top 20 from the Bazaar's XRPL search, plus our own lexical (BM25) search over the listings (description, URL path). Embeddings are a later swap behind the same function.
 2. **Relevance, offline.** An LLM judge reads a need plus each candidate's listing and returns `P(fit) ∈ [0,1]` with a one-line reason, as structured output, stored in `fit`.
    - **Provider is a config value:** Claude on **Bedrock** by default, the Anthropic API as fallback.
-   - The judge runs over known needs ahead of time. A request is matched to the nearest known need (lexical similarity ≥ a configured threshold) and reuses its `fit` rows. Below the threshold, `P(fit)` is the normalised BM25 score and the result is labelled `relevance=lexical`.
+   - The judge runs over known needs ahead of time. A request reuses judged `fit` rows only on an **exact need-template match** (entities masked, tickers kept). Otherwise `P(fit)` is calibrated absolute lexical coverage, the result is labelled `relevance=lexical`, and below `fit_min` the answer is empty.
    - Listing text is **untrusted data** and goes into the judge as quoted data.
 3. **Rank.** Drop candidates that break the principal's profile constraints, then rank by **expected cost per good answer** = `price / (P(fit) × lower80_p × P(settle))`, where `lower80_p` is the principal's posterior (§3.5), with ties broken by latency. Return the top `k` (default 3, maximum 5).
 4. **Exploration.** In `live` mode, 10% of slots are Thompson-sampled from endpoints with little evidence. In `demo` mode it's **off**, with fixed seeds, so runs reproduce.
