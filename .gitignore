@@ -1,0 +1,9 @@
+env/*.env
+*.db
+*.duckdb
+.venv/
+__pycache__/
+node_modules/
+out/
+*.HEIC
+.env
