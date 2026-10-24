@@ -35,6 +35,9 @@ audit(id PK, endpoint FK, need_id, at, preflight JSON, http_status, schema_ok, j
 outcome_report(payment_tx PK, shortlist_id FK, endpoint FK, reporter_payer, verdict ENUM(good,bad), at, weight REAL)
 shortlist(id PK, need_hash, need_text, at, paid_tx UNIQUE, results JSON, mode ENUM(demo,live))
 score(endpoint PK, alpha REAL, beta REAL, mean REAL, lower80 REAL, n_audits, n_reports, settle_ok BOOL, price_honest BOOL, updated_at)
+principal(addr PK, label, profile JSON, source ENUM(ledger,simulated))      -- the paying XRPL account = the customer's agent
+principal_outcome(id PK, principal FK, endpoint FK, verdict ENUM(good,bad), latency_ms, at, source ENUM(report,simulated))
+fit(need_key, endpoint FK, p_fit REAL, reason, provider, at, PK(need_key, endpoint))   -- computed offline (§4)
 ```
 **Invariants:**
 - `payment` holds only validated transactions with result `tesSUCCESS`.
@@ -63,20 +66,27 @@ score(endpoint PK, alpha REAL, beta REAL, mean REAL, lower80 REAL, n_audits, n_r
    - **`price_honest`:** the price in the 402 challenge must equal the listing. If not, multiply by 0.5 and flag it.
 4. **Outputs.** The `mean`, the 80% lower bound (`lower80`), and the counts.
 
+5. **Per-principal posterior (personalisation).** The global posterior is the *average* customer. Each principal gets its own Beta whose prior is the global mean at strength `κ` (config, default 8):
+   `α_p = κ·mean_g + Σ wᵢ·goodᵢ`, `β_p = κ·(1−mean_g) + Σ wᵢ·badᵢ`, over that principal's own outcomes only.
+   - A new principal ranks exactly like the global score; each of its outcomes moves its ranking away from the average.
+   - Personalisation is on **constraints and outcomes, not taste**: a principal's `profile` holds hard constraints (`max_price`, accepted `assets`, `max_latency_ms`, `require_output_schema`), and its outcomes carry what "usable" meant for it.
+   - The principal is the paying XRPL account, so there is no signup. Its past x402 payments can seed `principal_outcome` (`source=report` once confirmed).
+
 **Payer clusters** come from account creation: accounts created within a 10-minute window from the same funder (exchange hot wallets included, E6) form one cluster.
 
 ## 4. Ranking
-1. **Candidates.** Up to 40 endpoints: the top 20 from the Bazaar's XRPL search, plus our own embedding search over the listings (description, schemas, example).
-2. **Relevance.** An LLM judge reads the need plus each candidate's listing and returns `P(fit) ∈ [0,1]` with a one-line reason, as structured output.
+**No LLM call on the request path.** Time to a usable answer is a product benefit, so the judge runs offline and the request path is lookup plus arithmetic (target p95 < 100 ms).
+1. **Candidates.** Up to 40 endpoints: the top 20 from the Bazaar's XRPL search, plus our own lexical (BM25) search over the listings (description, URL path). Embeddings are a later swap behind the same function.
+2. **Relevance, offline.** An LLM judge reads a need plus each candidate's listing and returns `P(fit) ∈ [0,1]` with a one-line reason, as structured output, stored in `fit`.
    - **Provider is a config value:** Claude on **Bedrock** by default, the Anthropic API as fallback.
-   - Results are cached per `(need_hash, endpoint)`.
+   - The judge runs over known needs ahead of time. A request is matched to the nearest known need (lexical similarity ≥ a configured threshold) and reuses its `fit` rows. Below the threshold, `P(fit)` is the normalised BM25 score and the result is labelled `relevance=lexical`.
    - Listing text is **untrusted data** and goes into the judge as quoted data.
-3. **Rank.** By **expected cost per good answer** = `price / (P(fit) × lower80 × P(settle))`, with ties broken by latency. Return the top `k` (default 3, maximum 5).
+3. **Rank.** Drop candidates that break the principal's profile constraints, then rank by **expected cost per good answer** = `price / (P(fit) × lower80_p × P(settle))`, where `lower80_p` is the principal's posterior (§3.5), with ties broken by latency. Return the top `k` (default 3, maximum 5).
 4. **Exploration.** In `live` mode, 10% of slots are Thompson-sampled from endpoints with little evidence. In `demo` mode it's **off**, with fixed seeds, so runs reproduce.
 5. **Each result carries:** `trust{mean, lower80, n_audits, n_reports, settle_ok, price_honest}`, `price`, `why`, and `evidence[]` (audit tx hashes and sample payment tx hashes).
 
 ## 5. API (x402 seller on XRPL)
-- **`POST /v1/shortlist`** with body `{need: str ≤ 1000, max_price?: Decimal, k?: 1..5}`.
+- **`POST /v1/shortlist`** with body `{need: str ≤ 1000, max_price?: Decimal, k?: 1..5, principal?: r-address}`. `principal` defaults to the paying account.
   - With no payment, it returns `402` with `PAYMENT-REQUIRED` (`exact`, `xrpl:0`, RLUSD, the fee, `payTo` = Plumb's account, `extra.invoiceId` = a fresh UUID, `extra.sourceTag` = configured).
   - With a payment, it verifies and settles through the facilitator. Then `200 {shortlist_id, results[]}`.
   - A replayed `paid_tx` returns the stored result.
@@ -84,7 +94,7 @@ score(endpoint PK, alpha REAL, beta REAL, mean REAL, lower80 REAL, n_audits, n_r
   - It's accepted only if the invariants in §2 hold on the ledger: `400` if malformed, `409` if the `payment_tx` was already used, `422` if it doesn't qualify.
 - **`GET /v1/endpoints/{id}/score`** (free, rate-limited): the score with its evidence.
 - **Errors** share one body `{error:{code, message}}`. The codes are a closed list.
-- The MCP tool `plumb.shortlist(need, max_price?, k?)` calls the same service. The AgentCore Gateway target uses the OpenAPI spec.
+- The MCP tools `recommend(need, k?, principal?, max_price?)` and `report_outcome(principal, endpoint_id, verdict)` call the same service. The AgentCore Gateway target uses the OpenAPI spec.
 
 ### 5b. Payment rails
 - **AP4M on XRPL EVM Testnet** (Mastercard's kit, chain 1449000, RLUSD with 18 decimals) is **the demo rail and the Mastercard prize path**.
@@ -149,6 +159,18 @@ score(endpoint PK, alpha REAL, beta REAL, mean REAL, lower80 REAL, n_audits, n_r
 - staking or slashing;
 - a consumer UI beyond a one-page leaderboard view;
 - learned ranking models.
+
+## 10b. The demo mock (2026-10-24)
+The first build is a **realistic mock**: real market data, simulated customers, clearly labelled.
+| Input | Real or simulated | Source |
+|---|---|---|
+| Listings, prices, operators | real | Bazaar XRPL search for the 20 frozen needs, snapshotted |
+| Endpoint evidence (settled, HTTP, schema, latency) | real | vet402's public XRPL purchases (E2) |
+| `P(fit)` | real judge output when Bedrock is reachable, else lexical (labelled) | offline judge (§4) |
+| Customers (principals) and their outcomes | **simulated** | personas in `config/personas.toml`; outcomes drawn from the real endpoint evidence plus each persona's constraints |
+
+**Caveat, said on stage:** a simulated evaluation of personalisation is circular, because the simulator encodes the preferences the ranker then learns. It shows the mechanism, not real-world lift.
+Not in the mock: the x402-paid API (U6), live ledger ingest (U2), live audits (U3), payer clustering.
 
 ## 11. Open questions (answered in BUILD_PLAN U0)
 U0 ran on 2026-10-24 from a cloud session with no secrets: no Quicknode URL, no AWS credentials, no seeds. Public rippled servers on port 443 (`s1`/`s2.ripple.com`) stood in for Quicknode. Nothing was signed, submitted or paid. The scripts and snapshots are in `research/u0/`.
