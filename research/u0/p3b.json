@@ -1,0 +1,114 @@
+{
+ "p3_run1.json": {
+  "window": [
+   107879744,
+   107879894
+  ],
+  "tagged": 52,
+  "to_bazaar_payto": 0,
+  "from_s1_farm_senders": 31,
+  "to_s1_farm_receivers": 48,
+  "receivers": [
+   [
+    "ra9b6JX5aPVbdJhogDDddsRAcasWg7gzC3",
+    33
+   ],
+   [
+    "rMPwy3Ntx56Nyc2fKGNm7VRWdmpHSB92Z7",
+    12
+   ],
+   [
+    "rGYbaZwYqA5XwFcmxWVdyyut4vUeTD7KcQ",
+    3
+   ],
+   [
+    "rLddLrFv62hcP1eLQLP9dsqs7zPjydVFQh",
+    1
+   ],
+   [
+    "rDpVvZvYQ2QKRqUKtrmbkekXU7278r6XTp",
+    1
+   ]
+  ],
+  "value_by_currency": {
+   "RLUSD": "0.219",
+   "XRP": "4000"
+  },
+  "amounts": [
+   [
+    "0.006 RLUSD",
+    33
+   ],
+   [
+    "0.001 RLUSD",
+    9
+   ],
+   [
+    "0.002 RLUSD",
+    6
+   ],
+   [
+    "1000 XRP",
+    4
+   ]
+  ]
+ },
+ "p3_run2.json": {
+  "window": [
+   107880062,
+   107880212
+  ],
+  "tagged": 48,
+  "to_bazaar_payto": 0,
+  "from_s1_farm_senders": 33,
+  "to_s1_farm_receivers": 46,
+  "receivers": [
+   [
+    "ra9b6JX5aPVbdJhogDDddsRAcasWg7gzC3",
+    26
+   ],
+   [
+    "rMPwy3Ntx56Nyc2fKGNm7VRWdmpHSB92Z7",
+    15
+   ],
+   [
+    "rGYbaZwYqA5XwFcmxWVdyyut4vUeTD7KcQ",
+    3
+   ],
+   [
+    "r9oBwq2V9owRWioKVVTAbsCU77fuFifZMm",
+    1
+   ],
+   [
+    "rnJo3cMFJwatrN68MChPaHetN2ySv7Sjrv",
+    1
+   ]
+  ],
+  "value_by_currency": {
+   "RLUSD": "0.181",
+   "XRP": "5000"
+  },
+  "amounts": [
+   [
+    "0.006 RLUSD",
+    26
+   ],
+   [
+    "0.001 RLUSD",
+    11
+   ],
+   [
+    "0.002 RLUSD",
+    7
+   ],
+   [
+    "1000 XRP",
+    3
+   ],
+   [
+    "2000 XRP",
+    1
+   ]
+  ]
+ }
+}
