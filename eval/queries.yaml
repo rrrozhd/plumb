@@ -1,0 +1,212 @@
+# Plumb eval set. FROZEN on 2026-10-24, before any live purchase (AGENTS.md rule 7). Do not edit.
+# Labels follow eval/rubric.md (frozen in the same commit). A change means a new versioned file, with both results reported.
+version: 1
+status: frozen
+frozen_on: "2026-10-24"
+
+selection:
+  written: >-
+    20 candidate needs, written in one pass before any operator count was measured.
+    None was added, reworded, swapped or reordered afterwards.
+  search: >-
+    Each `need` is sent verbatim to the Bazaar: GET /search?query=<need>&network=xrpl:0&limit=20.
+    The same string goes to Plumb's POST /v1/shortlist.
+  rule: >-
+    Keep a need if its top 20 XRPL results hold >= 2 distinct payTo accounts (one payTo = one operator, SPEC §2),
+    or if pay.edge-agents.ai (E2, 0 for 88) ranks <= 3.
+  measured_by: research/u0/p2_diversity.py, snapshot research/u0/p2.json (2026-10-24)
+  result: "20 of 20 qualify. Operators per need: min 2, median 4, max 6."
+
+defaults:
+  max_price_rlusd: "0.05"   # a string, parsed as Decimal
+
+# Fields:
+#   need          what the agent asks, sent verbatim to both sides
+#   inputs        canonical parameter values the request builder maps onto an endpoint's input schema
+#   must_include  what a usable answer contains (rubric G4)
+#   check         ground truth the labeler verifies (rubric G4)
+#   freshness     maximum data age at purchase time (rubric G5); "n/a" = not time-sensitive
+#   diversity     measured at freeze time: distinct XRPL payTo in the top 20, XRPL results, rank of pay.edge-agents.ai
+queries:
+  - id: q01
+    need: "Current XRP price in USD"
+    category: crypto-market
+    inputs: {asset: XRP, quote: USD}
+    must_include: ["XRP price in USD, as a number"]
+    check: "Within 2% of the CoinGecko XRP/USD price at purchase time."
+    freshness: 15m
+    diversity: {operators: 4, xrpl_results: 11, nonsettling_rank: 4}
+
+  - id: q02
+    need: "Current BTC perpetual futures funding rate on major exchanges"
+    category: crypto-market
+    inputs: {asset: BTC}
+    must_include: ["BTC perpetual funding rate, as a number", "the exchange or venue each rate applies to"]
+    check: "Consistent with the named venue's published BTC perpetual funding rate for a period within the last 8 hours (same sign, within 0.005 percentage points)."
+    freshness: 8h
+    diversity: {operators: 4, xrpl_results: 15, nonsettling_rank: 1}
+
+  - id: q03
+    need: "Today's crypto Fear & Greed Index value"
+    category: crypto-market
+    inputs: {}
+    must_include: ["index value from 0 to 100", "its classification (for example Fear or Greed)"]
+    check: "Equals the value published for that date by the source the response names (alternative.me if none), within 1 point."
+    freshness: 1d
+    diversity: {operators: 4, xrpl_results: 13, nonsettling_rank: null}
+
+  - id: q04
+    need: "Convert 250 EUR to USD at the latest exchange rate"
+    category: fx
+    inputs: {amount: "250", from: EUR, to: USD}
+    must_include: ["EUR to USD exchange rate"]
+    check: "Rate within 1% of the latest ECB euro reference rate for USD. If a converted amount is given, it equals 250 x rate within 0.01 USD."
+    freshness: 3d
+    diversity: {operators: 3, xrpl_results: 17, nonsettling_rank: null}
+
+  - id: q05
+    need: "Latest Brent and WTI crude oil prices in USD per barrel"
+    category: commodities
+    inputs: {}
+    must_include: ["Brent price in USD per barrel", "WTI price in USD per barrel"]
+    check: "Each within 3% of the EIA daily spot price, or the front-month futures settlement, for the date given."
+    freshness: 3d
+    diversity: {operators: 4, xrpl_results: 9, nonsettling_rank: 6}
+
+  - id: q06
+    need: "Latest US CPI inflation rate (year over year) and the current Federal Reserve funds target range"
+    category: macro
+    inputs: {country: US}
+    must_include: ["US CPI 12-month change in %, with its reference month", "federal funds target range"]
+    check: "CPI matches the latest BLS CPI-U all-items 12-month change; the range matches the latest FOMC statement."
+    freshness: latest release
+    diversity: {operators: 4, xrpl_results: 18, nonsettling_rank: 7}
+
+  - id: q07
+    need: "Apple Inc. total revenue for its most recent fiscal year from SEC EDGAR filings"
+    category: company-data
+    inputs: {company: Apple Inc., ticker: AAPL, cik: "0000320193"}
+    must_include: ["total revenue in USD", "the fiscal year or period end it covers"]
+    check: "Within 0.5% of the revenue in Apple's latest 10-K, per SEC EDGAR companyfacts (data.sec.gov)."
+    freshness: latest 10-K
+    diversity: {operators: 4, xrpl_results: 15, nonsettling_rank: null}
+
+  - id: q08
+    need: "Screen the company name Rosneft against OFAC and other sanctions lists"
+    category: compliance
+    inputs: {name: Rosneft}
+    must_include: ["match or no-match result", "the list or lists screened"]
+    check: "Rosneft is on the OFAC SDN list (entry \"OPEN JOINT-STOCK COMPANY ROSNEFT OIL COMPANY\", checked 2026-10-24), so a usable answer reports a match."
+    freshness: n/a
+    diversity: {operators: 5, xrpl_results: 17, nonsettling_rank: null}
+
+  - id: q09
+    need: "Is the Ethereum address 0x098B716B8Aaf21512996dC57EB0615e2383E2f96 on a sanctions list?"
+    category: compliance
+    inputs: {address: "0x098B716B8Aaf21512996dC57EB0615e2383E2f96", chain: ethereum}
+    must_include: ["sanctioned yes or no", "the list or entity it matched"]
+    check: "The address is on the OFAC SDN list under LAZARUS GROUP (checked 2026-10-24), so a usable answer reports it as sanctioned."
+    freshness: n/a
+    diversity: {operators: 5, xrpl_results: 16, nonsettling_rank: null}
+
+  - id: q10
+    need: "Security risk check for the Ethereum token contract 0x6982508145454Ce325dDbE47a25d4ec3d2311933: honeypot, owner privileges, buy and sell tax"
+    category: onchain-risk
+    inputs: {contract: "0x6982508145454Ce325dDbE47a25d4ec3d2311933", chain: ethereum}
+    must_include: ["honeypot verdict", "buy and sell tax", "owner privileges or ownership status"]
+    check: "Consistent with GoPlus token_security for chain 1 at purchase time on honeypot, taxes and ownership."
+    freshness: 1d
+    diversity: {operators: 3, xrpl_results: 10, nonsettling_rank: null}
+
+  - id: q11
+    need: "USDC balance of the Ethereum address 0x28C6c06298d514Db089934071355E5743bf21d60"
+    category: onchain-data
+    inputs: {address: "0x28C6c06298d514Db089934071355E5743bf21d60", chain: ethereum, token: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"}
+    must_include: ["USDC balance of that address on Ethereum, as a number"]
+    check: "Within 5% of the address's USDC balance on Etherscan at purchase time."
+    freshness: 1h
+    diversity: {operators: 2, xrpl_results: 4, nonsettling_rank: null}
+
+  - id: q12
+    need: "Current Ethereum gas price: base fee and priority fee in gwei"
+    category: onchain-data
+    inputs: {chain: ethereum}
+    must_include: ["base fee in gwei", "priority fee in gwei, or fee tiers"]
+    check: "Base fee within 50% of the Etherscan gas tracker at purchase time."
+    freshness: 10m
+    diversity: {operators: 4, xrpl_results: 11, nonsettling_rank: 8}
+
+  - id: q13
+    need: "Verify XRPL transaction 65A456656B9479457C0995E2FC770319C7636C39550DF4A4E127D265ADB90795: was it validated and what amount did it deliver?"
+    category: onchain-data
+    inputs: {tx_hash: "65A456656B9479457C0995E2FC770319C7636C39550DF4A4E127D265ADB90795", network: xrpl-mainnet}
+    must_include: ["validated status or result code", "delivered amount with its currency"]
+    check: "Validated, tesSUCCESS, delivered 0.05 RLUSD to rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32 (research/s1/p1.json)."
+    freshness: n/a
+    diversity: {operators: 6, xrpl_results: 6, nonsettling_rank: null}
+
+  - id: q14
+    need: "WHOIS registration data for the domain ripple.com: registrar, creation date and expiry date"
+    category: web-infra
+    inputs: {domain: ripple.com}
+    must_include: ["registrar", "creation date", "expiry date"]
+    check: "Matches RDAP for ripple.com (rdap.verisign.com) at purchase time."
+    freshness: n/a
+    diversity: {operators: 4, xrpl_results: 8, nonsettling_rank: null}
+
+  - id: q15
+    need: "Current weather and 3-day forecast for New York City"
+    category: weather
+    inputs: {location: New York City, lat: "40.7128", lon: "-74.0060"}
+    must_include: ["current temperature", "current conditions", "a forecast for each of the next 3 days"]
+    check: "Current temperature within 4 °C of the NWS Central Park (KNYC) observation at purchase time."
+    freshness: 3h
+    diversity: {operators: 3, xrpl_results: 12, nonsettling_rank: null}
+
+  - id: q16
+    need: "Fetch https://en.wikipedia.org/wiki/XRP_Ledger and return the article text as clean Markdown"
+    category: web-content
+    inputs: {url: "https://en.wikipedia.org/wiki/XRP_Ledger"}
+    must_include: ["the article's lead section text", "the article's section headings, as Markdown headings"]
+    check: "Text matches the live article; navigation, menus and HTML tags are absent."
+    freshness: n/a
+    diversity: {operators: 4, xrpl_results: 7, nonsettling_rank: null}
+
+  - id: q17
+    need: "Is 2026-11-26 a US business day? List the US federal holidays in November 2026"
+    category: calendar
+    inputs: {date: "2026-11-26", country: US}
+    must_include: ["whether 2026-11-26 is a US business day", "the US federal holidays in November 2026"]
+    check: "2026-11-26 is Thanksgiving Day, so not a business day. November 2026 federal holidays: Veterans Day (2026-11-11) and Thanksgiving Day (2026-11-26)."
+    freshness: n/a
+    diversity: {operators: 3, xrpl_results: 15, nonsettling_rank: null}
+
+  - id: q18
+    need: "Latest news headlines about XRP or Ripple from the past 24 hours, with source and link"
+    category: news
+    inputs: {topic: "XRP OR Ripple", window: 24h}
+    must_include: ["at least 3 headlines about XRP or Ripple", "source name and link for each"]
+    check: "Links resolve; each item is about XRP or Ripple and was published within 24 hours before purchase."
+    freshness: 1d
+    diversity: {operators: 4, xrpl_results: 14, nonsettling_rank: 2}
+
+  - id: q19
+    need: "Recent arXiv papers on payments by AI agents or agentic commerce, with titles, authors and links"
+    category: research
+    inputs: {query: "AI agent payments OR agentic commerce", source: arxiv}
+    must_include: ["at least 3 arXiv papers", "title, authors and arXiv link or ID for each"]
+    check: "IDs resolve on arxiv.org; at least 3 papers are about payments, commerce or transactions by AI agents and were submitted within the last 24 months."
+    freshness: n/a
+    diversity: {operators: 4, xrpl_results: 6, nonsettling_rank: 6}
+
+  - id: q20
+    need: "Recruiting clinical trials for type 2 diabetes in the United States, with NCT IDs"
+    category: health
+    inputs: {condition: type 2 diabetes, country: United States, status: RECRUITING}
+    must_include: ["at least 3 trials", "NCT ID for each", "recruitment status"]
+    check: "Each NCT ID resolves on ClinicalTrials.gov to a type 2 diabetes trial with status Recruiting and at least one US site."
+    freshness: n/a
+    diversity: {operators: 2, xrpl_results: 5, nonsettling_rank: null}
+
+# Needs that failed the rule. Kept for the record; the eval does not run them.
+dropped: []
