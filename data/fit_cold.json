@@ -503,9 +503,7 @@
     "p_fit": 0.9,
     "reason": "Returns current USD price for SOL via symbol parameter; the declared input is empty but the description supports symbol=",
     "args": {
-     "queryParams": {
-      "symbol": "SOL"
-     }
+     "symbol": "SOL"
     }
    },
    "629015511aa3c3c28dfddf3a3343744a6e793cdbb93d03bdd7fc39d9a05e22a6": {

@@ -33,3 +33,12 @@ def test_a_matching_older_payment_does_not_count(monkeypatch):
     monkeypatch.setattr(eval_paid.time, "sleep", lambda s: None)
     lg = _Ledger({"OLD": ENTRY})  # same payer, payTo and static InvoiceID, but not this purchase's tx
     assert eval_paid.settled_on_ledger(lg, CFG, PAY["payer"], PAY["payto"], PAY["invoice_id"].upper(), "MINE") is None
+
+
+def test_a_payment_the_merchant_never_submitted_is_unsettled_not_a_crash(monkeypatch):
+    monkeypatch.setattr(eval_paid.time, "sleep", lambda s: None)
+
+    class NotFound(_Ledger):
+        def tx(self, h):
+            raise RuntimeError("tx: txnNotFound")
+    assert eval_paid.settled_on_ledger(NotFound({}), CFG, PAY["payer"], PAY["payto"], PAY["invoice_id"].upper(), "MINE") is None

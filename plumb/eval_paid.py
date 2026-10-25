@@ -119,7 +119,10 @@ def settled_on_ledger(lg, cfg, payer: str, payto: str, invoice_hash: str, tx_has
     Never search the account's history: merchants with a static invoiceId would let one payment count for two purchases.
     """
     for _ in range(10):
-        p = ledger.parse_payment(lg.tx(tx_hash), cfg)
+        try:
+            p = ledger.parse_payment(lg.tx(tx_hash), cfg)
+        except (RuntimeError, httpx.HTTPError):  # txnNotFound until (unless) the merchant submits it
+            p = None
         if p:
             return p if p["payer"] == payer and p["payto"] == payto and p["invoice_id"].upper() == invoice_hash else None
         time.sleep(3)
