@@ -1,0 +1,618 @@
+{
+ "at": "20261025T0246Z",
+ "mode": "live",
+ "spent_total_rlusd": "0.1242770633171272877899172469",
+ "summary": {
+  "bazaar": {
+   "good": 6,
+   "of": 20,
+   "spent_rlusd": "0.09727706331712728778991724688",
+   "cost_per_good_rlusd": "0.016213",
+   "planned_rlusd": "0"
+  },
+  "plumb": {
+   "good": 10,
+   "of": 20,
+   "spent_rlusd": "0.027",
+   "cost_per_good_rlusd": "0.002700",
+   "planned_rlusd": "0"
+  }
+ },
+ "rows": [
+  {
+   "id": "q01",
+   "need": "Current XRP price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "verdict": "bad",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Response is valid JSON and fresh (6 seconds old), but contains only BTC, ETH, SOL prices in EUR; no XRP price in USD."
+    },
+    "tx": "BE9B956BC61E9248DB513123BD1AAF593C5C15962977964DB53F8FAEF3FB59B8",
+    "ms": 7321,
+    "spent": "0.003",
+    "body_head": "{\"currency\":\"EUR\",\"prices\":{\"BTC\":72196.90878,\"ETH\":2111.927097,\"SOL\":91.43214509},\"without_price\":null,\"date\":\"2026-10-25T02:38:23+00:00\",\"source\":\"Data from alternative.me (Crypto API: free to use, including commercial projects; https://alternative.me/crypto/api/); currency conversion: Source: ECB statistics (euro foreign exchange reference rates)\"}"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "verdict": "bad",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Response is valid JSON but gives BTC/EUR rate, not XRP price in USD. Timestamp is fresh (8 seconds old), but wrong entity."
+    },
+    "tx": "5FBC7835543A4F17A2375C2E37AFBECC7AFDCE19022D76420B419B095655FB44",
+    "ms": 8184,
+    "spent": "0.001",
+    "body_head": "{\"from\":\"BTC\",\"to\":\"EUR\",\"amount\":1,\"rate\":72219.475,\"converted\":72219.475,\"path\":[\"BTC-EUR\"],\"checkedAt\":\"2026-10-25T02:38:33.193Z\",\"disclaimer\":\"Information only, not financial advice.\",\"source\":\"Coinbase spot (spot, not an executable quote)\"}"
+   }
+  },
+  {
+   "id": "q02",
+   "need": "Current BTC perpetual futures funding rate on major exchanges",
+   "bazaar": {
+    "url": "https://pay.edge-agents.ai/v1/services/perp-funding-rates",
+    "verdict": "unsettled",
+    "http": 402,
+    "spent": "0",
+    "detail": "{\"x402_error\": \"No matching payment requirements\"}"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/funding",
+    "verdict": "good",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid JSON with numeric BTC funding rates for four named venues; checkedAt 02:39:15Z is seconds before now, within 8h. Values plausible and consistent in form."
+    },
+    "tx": "C7609D67F982E1C1EE13A1F36BDBD79D87A2469801BC747376FDB2FA287647FA",
+    "ms": 4964,
+    "spent": "0.002",
+    "body_head": "{\"coin\":\"BTC\",\"count\":4,\"venues\":[{\"venue\":\"Hyperliquid\",\"symbol\":\"BTC-PERP\",\"fundingRate\":0.0000125,\"fundingIntervalHours\":1,\"nextFundingTime\":\"2026-10-25T03:00:00.000Z\",\"openInterestCoins\":42477.03896,\"openInterestUsd\":3437709240.0717597,\"markPrice\":80931,\"annualisedRate\":0.10950000000000001},{\"venue\":\"OKX\",\"symbol\":\"BTC-USDT-SWAP\",\"fundingRate\":0.0000515635909881,\"fundingIntervalHours\":8,\"nextF"
+   }
+  },
+  {
+   "id": "q03",
+   "need": "Today's crypto Fear & Greed Index value",
+   "bazaar": {
+    "url": "https://api.vextorium.com/fear-greed-pago",
+    "verdict": "good",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid JSON with value 54 and classification Neutral from Alternative.me; timestamp 1792886400 is 2026-10-25 00:00 UTC, which is today. Value is plausible but not independently verified."
+    },
+    "tx": "CB951C2AE467258AB7D07BEE60F7A3F005920CE29D2BD37E3D2663C786F152F2",
+    "ms": 6221,
+    "spent": "0.005",
+    "body_head": "{\"valor\":54,\"clasificacion\":\"Neutral\",\"fecha\":\"1792886400\",\"fuente\":\"Alternative.me Crypto Fear & Greed Index\",\"aviso\":\"Este indice mide el sentimiento del mercado, no es una recomendacion de inversion.\"}"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/fear-greed",
+    "verdict": "good",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid JSON with today's value 54 (0-100) and classification Neutral, dated 2026-10-25 from alternative.me; I cannot verify the published value, but nothing contradicts it. Fresh within 1d."
+    },
+    "tx": "50781A2FABF6422CB0B306CF5ACC8E753C0C29A88CCDE8603859162F7ECB5DC1",
+    "ms": 8480,
+    "spent": "0.001",
+    "body_head": "{\"today\":{\"value\":54,\"classification\":\"Neutral\",\"date\":\"2026-10-25\"},\"history\":[{\"value\":51,\"classification\":\"Neutral\",\"date\":\"2026-10-24\"},{\"value\":50,\"classification\":\"Neutral\",\"date\":\"2026-10-23\"}],\"checkedAt\":\"2026-10-25T02:39:35.149Z\",\"source\":\"https://api.alternative.me/fng/\",\"attribution\":\"alternative.me\",\"disclaimer\":\"Information only, not financial advice.\"}"
+   }
+  },
+  {
+   "id": "q04",
+   "need": "Convert 250 EUR to USD at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "verdict": "good",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid ECB-sourced EUR to USD rate 1.1193; 250 x 1.1193 = 279.825 matches. Rate date 2026-10-23 is within 3 days of now (2026-10-25)."
+    },
+    "tx": "9C09936BC09626BC47061F9E1807B1D4FFC6D5A5A9C0B6DB21153A9128563638",
+    "ms": 8806,
+    "spent": "0.001023305044837772665374951403",
+    "body_head": "{\"data\":{\"from\":\"EUR\",\"amount\":250,\"rate_date\":\"2026-10-23\",\"requested_date\":null,\"conversions\":{\"USD\":{\"rate\":1.1193,\"amount\":279.825}},\"cross_rates_derived\":false,\"window\":[\"2026-07-27\",\"2026-10-23\"],\"source\":\"European Central Bank euro foreign exchange reference rates. Source: ECB. This information may be obtained free of charge at https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_"
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/ecb-institutional-fx-rates",
+    "verdict": "good",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid ECB EUR/USD rate 1.1193; 250 x 1.1193 = 279.825 matches. Dated 2026-10-23, about 2 days old, within the 3d limit."
+    },
+    "tx": "4B84BBCCEBFF6A37C0975746A43C137EDE4DED2923760205817A9D058E92E66C",
+    "ms": 7964,
+    "spent": "0.001",
+    "body_head": "{\"date\":\"2026-10-23\",\"from\":\"EUR\",\"to\":\"USD\",\"rate\":1.1193,\"amount\":250,\"converted\":279.825,\"currenciesListed\":30,\"note\":\"ECB daily reference rate (not a live quote); published on working days only.\",\"checkedAt\":\"2026-10-25T02:39:59.225Z\",\"source\":\"https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml\"}"
+   }
+  },
+  {
+   "id": "q05",
+   "need": "Latest Brent and WTI crude oil prices in USD per barrel",
+   "bazaar": {
+    "url": "https://api.tradeenergy-api.workers.dev/api/energy/crude-oil-brent-wti",
+    "verdict": "bad",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": false,
+     "reason": "Both Brent and WTI present with USD/barrel values from EIA via FRED, but latest data is 2026-10-20, about 4.9 days before now, exceeding the 3d limit."
+    },
+    "tx": "EDFD4A569E8520A5D98115DA95F83EE0DE2A0DFBA3F3CC93395CCD1F7AE30B6D",
+    "ms": 9210,
+    "spent": "0.002",
+    "body_head": "{\"wti\":{\"unit\":\"USD per barrel, WTI Cushing (EIA spot, via FRED)\",\"latest\":{\"date\":\"2026-10-20\",\"value\":107.89},\"history\":[{\"date\":\"2026-10-20\",\"value\":107.89},{\"date\":\"2026-10-19\",\"value\":110.01},{\"date\":\"2026-10-16\",\"value\":108.21}]},\"brent\":{\"unit\":\"USD per barrel, Brent (EIA spot, via FRED)\",\"latest\":{\"date\":\"2026-10-20\",\"value\":115.22},\"history\":[{\"date\":\"2026-10-20\",\"value\":115.22},{\"date\":\""
+   },
+   "plumb": {
+    "url": "https://api.tradeenergy-api.workers.dev/api/energy/crude-oil-brent-wti",
+    "verdict": "bad",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": false,
+     "reason": "Both Brent and WTI present with USD/barrel values from EIA via FRED, but latest data is 2026-10-20, about 4.9 days before now, exceeding the 3d limit."
+    },
+    "tx": "EDFD4A569E8520A5D98115DA95F83EE0DE2A0DFBA3F3CC93395CCD1F7AE30B6D",
+    "ms": 9210,
+    "spent": "0.002",
+    "body_head": "{\"wti\":{\"unit\":\"USD per barrel, WTI Cushing (EIA spot, via FRED)\",\"latest\":{\"date\":\"2026-10-20\",\"value\":107.89},\"history\":[{\"date\":\"2026-10-20\",\"value\":107.89},{\"date\":\"2026-10-19\",\"value\":110.01},{\"date\":\"2026-10-16\",\"value\":108.21}]},\"brent\":{\"unit\":\"USD per barrel, Brent (EIA spot, via FRED)\",\"latest\":{\"date\":\"2026-10-20\",\"value\":115.22},\"history\":[{\"date\":\"2026-10-20\",\"value\":115.22},{\"date\":\"",
+    "shared": true
+   }
+  },
+  {
+   "id": "q06",
+   "need": "Latest US CPI inflation rate (year over year) and the current Federal Reserve funds target range",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/us/rates-macro",
+    "verdict": "bad",
+    "grade": {
+     "g3_well_formed": false,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Response is truncated mid-JSON (not parseable) and lacks any federal funds target range; only Treasury yields and CPI (Sept 2026 YoY 3.74%) appear. CPI data is the latest release."
+    },
+    "tx": "15733F70DB9056EA38FA8BD1AD656156A6C26CA0CFBF0C1A320766B495D5C3BE",
+    "ms": 8868,
+    "spent": "0.002046610089675545330749902805",
+    "body_head": "{\"data\":{\"series\":[\"treasury\",\"cpi\"],\"retrieved_from_cache_as_of\":{\"treasury\":\"2026-10-23\",\"bls\":\"2026-09\"},\"treasury_par_yield_curve\":{\"latest\":{\"date\":\"2026-10-23\",\"par_yields_pct\":{\"1MONTH\":4.11,\"1_5MONTH\":4.11,\"2MONTH\":4.16,\"3MONTH\":4.22,\"4MONTH\":4.3,\"6MONTH\":4.3,\"1YEAR\":4.44,\"2YEAR\":4.69,\"3YEAR\":4.75,\"5YEAR\":4.82,\"7YEAR\":4.89,\"10YEAR\":5,\"20YEAR\":5.37,\"30YEAR\":5.33}},\"one_week_earlier\":{\"date\""
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/tipos-fed-pago",
+    "verdict": "bad",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Fed target range 3.75-4.00 is present, but US CPI 12-month change and its reference month are entirely missing from the response."
+    },
+    "tx": "6D1E02D85EB1D07C2B272B3CC2C7AFB65C909D845565113B7CC33CD3902266C4",
+    "ms": 8263,
+    "spent": "0.003",
+    "body_head": "{\"rango_objetivo_fed\":{\"desde_pct\":3.75,\"hasta_pct\":4,\"fecha_decision\":\"2026-09-17\",\"cambio_pb\":25},\"fed_funds_efectivo\":{\"ultimo_pct\":3.88,\"fecha\":\"2026-10-22\",\"serie\":{\"2026-10-16\":3.88,\"2026-10-19\":3.88,\"2026-10-20\":3.88,\"2026-10-21\":3.88,\"2026-10-22\":3.88}},\"papel_comercial_no_financiero\":{\"1-month\":{\"ultimo_pct\":3.95,\"fecha\":\"2026-10-22\",\"serie\":{\"2026-10-16\":3.98,\"2026-10-19\":3.98,\"2026-10-2"
+   }
+  },
+  {
+   "id": "q07",
+   "need": "Apple Inc. total revenue for its most recent fiscal year from SEC EDGAR filings",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/sec/company-facts",
+    "verdict": "bad",
+    "grade": {
+     "g3_well_formed": false,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Response is truncated mid-string in provenance, so it does not parse as valid JSON. Content has FY2025 revenue $416.161B for period ending 2025-09-27, the latest 10-K as of now."
+    },
+    "tx": "2ED1076B8ACA8AB2944CB9C44CC391F6A52687C241EBBF9C3C62D0499EF1EAAC",
+    "ms": 7808,
+    "spent": "0.003068616524050325898833769244",
+    "body_head": "{\"data\":{\"cik\":\"0000320193\",\"name\":\"Apple Inc.\",\"tickers\":[\"AAPL\"],\"exchanges\":[\"Nasdaq\"],\"sic\":\"3571\",\"sic_description\":\"Electronic Computers\",\"fiscal_year_end\":\"0926\",\"state_of_incorporation\":\"CA\",\"xbrl_available\":true,\"latest_annual\":{\"revenue\":{\"concept\":\"RevenueFromContractWithCustomerExcludingAssessedTax\",\"unit\":\"USD\",\"value\":416161000000,\"start\":\"2024-09-29\",\"end\":\"2025-09-27\",\"form\":\"10-K\""
+   },
+   "plumb": {
+    "url": "https://api.stablecoingateways.com/v1/sec/company-facts",
+    "verdict": "bad",
+    "grade": {
+     "g3_well_formed": false,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Response is truncated mid-string in provenance, so it does not parse as valid JSON. Content has FY2025 revenue $416.161B for period ending 2025-09-27, the latest 10-K as of now."
+    },
+    "tx": "2ED1076B8ACA8AB2944CB9C44CC391F6A52687C241EBBF9C3C62D0499EF1EAAC",
+    "ms": 7808,
+    "spent": "0.003068616524050325898833769244",
+    "body_head": "{\"data\":{\"cik\":\"0000320193\",\"name\":\"Apple Inc.\",\"tickers\":[\"AAPL\"],\"exchanges\":[\"Nasdaq\"],\"sic\":\"3571\",\"sic_description\":\"Electronic Computers\",\"fiscal_year_end\":\"0926\",\"state_of_incorporation\":\"CA\",\"xbrl_available\":true,\"latest_annual\":{\"revenue\":{\"concept\":\"RevenueFromContractWithCustomerExcludingAssessedTax\",\"unit\":\"USD\",\"value\":416161000000,\"start\":\"2024-09-29\",\"end\":\"2025-09-27\",\"form\":\"10-K\"",
+    "shared": true
+   }
+  },
+  {
+   "id": "q08",
+   "need": "Screen the company name Rosneft against OFAC and other sanctions lists",
+   "bazaar": {
+    "url": "https://compliancepulse.theaslangroupllc.com/api/screen/sanctions",
+    "verdict": "good",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Real screening result: match=true with Rosneft hits, and lists screened (SDN and Consolidated non-SDN) are named. Freshness is n/a. Truncated disclaimer is immaterial."
+    },
+    "tx": "9BD37102EC208E524490193812A61545F20F25616EF0619D1B7517108EA8E446",
+    "ms": 7610,
+    "spent": "0.02",
+    "body_head": "{\"attribution\":[\"Sanctions data from the US Treasury OFAC list (treasury.gov), a public government source.\"],\"terms\":\"https://compliancepulse.theaslangroupllc.com/terms.html\",\"query\":{\"name\":\"Rosneft\",\"type\":null,\"country\":\"RU\",\"country_name\":\"Russia\",\"threshold\":85},\"match\":true,\"hits\":[{\"name\":\"ROSNEFT\",\"matched_on\":\"aka\",\"aka_category\":\"aka\",\"primary_name\":\"OPEN JOINT-STOCK COMPANY ROSNEFT OIL "
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/ofac-sanctions-preflight",
+    "verdict": "good",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid real response reporting match (MATCH_FOUND_REVIEW) with the Rosneft SDN entry and lists screened (OFAC SDN, UN consolidated). Freshness n/a."
+    },
+    "tx": "C77597CACEE4F602BAF4733740E9B1F658B81099133553DB0E72731E219E004B",
+    "ms": 9574,
+    "spent": "0.002",
+    "body_head": "{\"query\":\"Rosneft\",\"fuzzy\":false,\"verdict\":\"MATCH_FOUND_REVIEW\",\"ofacSdn\":{\"matches\":[{\"entNum\":17022,\"name\":\"OPEN JOINT-STOCK COMPANY ROSNEFT OIL COMPANY\",\"type\":\"Entity\",\"aliases\":[\"OJSC ROSNEFT OIL COMPANY\",\"ROSNEFT OIL COMPANY\",\"OAO ROSNEFT OIL COMPANY\",\"OIL COMPANY ROSNEFT\",\"ROSNEFT\"],\"programs\":[\"UKRAINE-EO13662\",\"RUSSIA-EO14024\"],\"countries\":[\"RU\"],\"nationalities\":[],\"datesOfBirth\":[]},{\"en"
+   }
+  },
+  {
+   "id": "q09",
+   "need": "Is the Ethereum address 0x098B716B8Aaf21512996dC57EB0615e2383E2f96 on a sanctions list?",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/sanctions/address",
+    "verdict": "good",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Response is valid real data reporting listed:true with match on SDN list, entity LAZARUS GROUP, consistent with the check. Freshness is n/a."
+    },
+    "tx": "BC47747744B282FDE3DEB2422225C4AD5F3327F6E630377CB79420A6EEB9172F",
+    "ms": 8634,
+    "spent": "0.002046610089675545330749902805",
+    "body_head": "{\"data\":{\"notice\":\"This is a data lookup, not a compliance determination.\",\"query\":{\"address\":\"0x098B716B8Aaf21512996dC57EB0615e2383E2f96\"},\"listed\":true,\"matches\":[{\"uid\":27307,\"list\":\"SDN\",\"currency\":\"ETH\",\"entry_type\":\"entity\",\"name\":\"LAZARUS GROUP\",\"name_withheld\":false,\"programs\":[\"DPRK3\"]}],\"method\":\"exact match, case-insensitive (0x EVM or bech32 address)\",\"coverage\":{\"what\":\"Crypto address"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/wallet-sanctions-check",
+    "verdict": "good",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid JSON, real-looking data; reports sanctioned true with match to LAZARUS GROUP on OFAC SDN, consistent with check. Freshness n/a."
+    },
+    "tx": "C6A37F2AD9A62B1B0491CF5745983A17E0C143F428E948F32F75EF86CD50AD82",
+    "ms": 8292,
+    "spent": "0.002",
+    "body_head": "{\"address\":\"0x098B716B8Aaf21512996dC57EB0615e2383E2f96\",\"sanctioned\":true,\"match\":{\"address\":\"0x098B716B8Aaf21512996dC57EB0615e2383E2f96\",\"currency\":\"ETH\",\"name\":\"LAZARUS GROUP\",\"type\":\"-0-\",\"program\":\"DPRK3\",\"id_sdn\":\"27307\"},\"addresses_in_list\":506,\"updated_list\":\"2026-10-24T15:04:04+00:00\",\"source\":\"OFAC SDN (US Department of the Treasury, public domain)\",\"note\":\"Only checks the address itself,"
+   }
+  },
+  {
+   "id": "q10",
+   "need": "Security risk check for the Ethereum token contract 0x6982508145454Ce325dDbE47a25d4ec3d2311933: honeypot, owner privileges, buy and sell tax",
+   "bazaar": {
+    "url": "https://onchainpulse.theaslangroupllc.com/api/facet/honeypot",
+    "verdict": "bad",
+    "why": "G2: HTTP 500",
+    "tx": "09864DEB59D7B027785710A88846E98BDBD2AF09149EA7E8192C507FF1BA0502",
+    "spent": "0.005"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/honeypot-detector",
+    "verdict": "bad",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Response is for USDT (0xdAC17...), not the requested token 0x6982...1933. It also lacks owner privileges or ownership status. Timestamp is fresh."
+    },
+    "tx": "37AB6328E24C1D772CED858102E0BB2C09153E0B91381AE228AC60C8700E6DC6",
+    "ms": 5613,
+    "spent": "0.002",
+    "body_head": "{\"address\":\"0xdAC17F958D2ee523a2206206994597C13D831ec7\",\"chainId\":\"1\",\"chain\":\"Ethereum\",\"name\":\"Tether USD\",\"symbol\":\"USDT\",\"decimals\":6,\"totalHolders\":15345534,\"simulationSuccess\":true,\"isHoneypot\":false,\"risk\":\"low\",\"riskLevel\":1,\"flags\":[],\"buyTax\":0,\"sellTax\":0,\"transferTax\":0,\"openSource\":true,\"isProxy\":false,\"mainPair\":\"Uniswap V3: WETH-USDT\",\"pairAddress\":\"0x4e68Ccd3E89f51C3074ca5072bbAC77"
+   }
+  },
+  {
+   "id": "q11",
+   "need": "USDC balance of the Ethereum address 0x28C6c06298d514Db089934071355E5743bf21d60",
+   "bazaar": {
+    "url": "https://api.sitecheck-api.workers.dev/api/btc/address",
+    "verdict": "unsettled",
+    "http": 400,
+    "spent": "0",
+    "detail": "{\"error\":\"address must be a Bitcoin mainnet address (bc1\u2026 or 1\u2026 / 3\u2026)\"}"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/evm/balance",
+    "verdict": "good",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid JSON with USDC balance 52116.50822 for the correct address and the correct USDC contract on Ethereum; checkedAt is 5 seconds before now, within 1h."
+    },
+    "tx": "865DB1608E7CF1ED0F84B0BB346192D7E86D4B4B7E3A2D16B0CA6646DE814A80",
+    "ms": 5861,
+    "spent": "0.002",
+    "body_head": "{\"chain\":\"ethereum\",\"holder\":\"0x28C6c06298d514Db089934071355E5743bf21d60\",\"token\":{\"address\":\"0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48\",\"name\":\"USD Coin\",\"symbol\":\"USDC\",\"decimals\":6},\"raw\":\"52116508220\",\"amount\":52116.50822,\"usdPrice\":1,\"usdValue\":52116.51,\"checkedAt\":\"2026-10-25T02:42:34.539Z\",\"disclaimer\":\"Information only, not financial advice.\",\"source\":\"https://ethereum-rpc.publicnode.com "
+   }
+  },
+  {
+   "id": "q12",
+   "need": "Current Ethereum gas price: base fee and priority fee in gwei",
+   "bazaar": {
+    "url": "https://horizonpulse.dev/api/gas",
+    "verdict": "good",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid live-looking JSON with Ethereum baseFeeGwei 0.0614 and priority fee 0.0121 plus percentile tiers; asOf 02:42:44 is ~11s old, within 10m. Base fee plausible for the post-upgrade low-fee regime."
+    },
+    "tx": "795ABBD7E1DDB1E4DEFCE374B4B7DEF29EDCDC0AE211C299DBEA236EB1C3A016",
+    "ms": 13059,
+    "spent": "0.002",
+    "body_head": "{\"ok\":true,\"source\":\"rpc+coinbase\",\"priced\":{\"amountUsd\":\"$0.002\",\"amountAtomic\":\"2000\",\"asset\":\"524C555344000000000000000000000000000000.rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De\",\"network\":\"xrpl:0\",\"payTo\":\"r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf\"},\"asOf\":\"2026-10-25T02:42:44.657Z\",\"ethUsd\":2365.08,\"networks\":[{\"network\":\"base\",\"chainId\":8453,\"caip2\":\"eip155:8453\",\"ok\":true,\"rpc\":\"https://base.publicnode.co"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/gas",
+    "verdict": "good",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid real-looking JSON with baseFeeGwei and priority fee tiers; block time 02:42:47 and checkedAt 02:42:59 are within 10m of now. Base fee plausible, no Etherscan contradiction visible."
+    },
+    "tx": "5960B41E51B3C55E9043AD6C173D25065D6371D4FCD8FFCC56EBB481B35DC3B7",
+    "ms": 8889,
+    "spent": "0.001",
+    "body_head": "{\"chain\":\"ethereum\",\"nativeSymbol\":\"ETH\",\"nativePriceUsd\":2365.735,\"block\":{\"number\":26266770,\"time\":\"2026-10-25T02:42:47.000Z\"},\"baseFeeGwei\":0.058866901,\"priorityFeeGwei\":{\"slow\":0.0012443,\"normal\":0.012257415,\"fast\":1.225832821},\"transfer\":{\"gasUnits\":21000,\"native\":0.000001493611,\"usd\":0.003533},\"erc20Transfer\":{\"gasUnits\":65000,\"native\":0.000004623081,\"usd\":0.010937},\"costBasis\":\"base fee + n"
+   }
+  },
+  {
+   "id": "q13",
+   "need": "Verify XRPL transaction 65A456656B9479457C0995E2FC770319C7636C39550DF4A4E127D265ADB90795: was it validated and what amount did it deliver?",
+   "bazaar": {
+    "url": "https://horizonpulse.dev/api/tx-status",
+    "verdict": "bad",
+    "why": "G2: HTTP 400",
+    "tx": "795ABBD7E1DDB1E4DEFCE374B4B7DEF29EDCDC0AE211C299DBEA236EB1C3A016",
+    "spent": "0.002"
+   },
+   "plumb": {
+    "url": "https://horizonpulse.dev/api/tx-status",
+    "verdict": "bad",
+    "why": "G2: HTTP 400",
+    "tx": "795ABBD7E1DDB1E4DEFCE374B4B7DEF29EDCDC0AE211C299DBEA236EB1C3A016",
+    "spent": "0.002",
+    "shared": true
+   }
+  },
+  {
+   "id": "q14",
+   "need": "WHOIS registration data for the domain ripple.com: registrar, creation date and expiry date",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/whois",
+    "verdict": "good",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "RDAP block for ripple.com gives registrar MarkMonitor, registered 1998-03-13, expires 2028-03-12 from Verisign RDAP; freshness n/a. Response is truncated at the end but the data parses."
+    },
+    "tx": "1C2B0620A869D27CF188DE51067E1DDCC95DBE2A8489A18F7378A4E1B9760B4F",
+    "ms": 8417,
+    "spent": "0.003068616524050325898833769244",
+    "body_head": "{\"data\":{\"domain\":\"ripple.com\",\"exists\":true,\"checked_at\":\"2026-10-25T02:43:14.543Z\",\"dns\":{\"a\":[\"64.239.109.1\"],\"aaaa\":[],\"mx\":[{\"priority\":10,\"host\":\"mxa-00324c01.gslb.pphosted.com\"},{\"priority\":10,\"host\":\"mxb-00324c01.gslb.pphosted.com\"}],\"ns\":[\"ns-1069.awsdns-05.org\",\"ns-144.awsdns-18.com\",\"ns-1843.awsdns-38.co.uk\",\"ns-924.awsdns-51.net\"],\"caa\":[\"0 issue \\\"amazon.com\\\"\",\"0 issue \\\"digicert.com"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/domain",
+    "verdict": "good",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid JSON with real RDAP data for ripple.com including registrar (MarkMonitor), creation date (1998-03-13) and expiry (2028-03-12); freshness n/a. daysUntilExpiry is consistent with the date."
+    },
+    "tx": "CBCBCD635BA28049B62C5E952754B3F29A7E0BF529302B2B5CF45B9DB7104176",
+    "ms": 5609,
+    "spent": "0.002",
+    "body_head": "{\"domain\":\"ripple.com\",\"registeredDomain\":\"ripple.com\",\"registered\":true,\"availability\":\"registered\",\"rdapAvailable\":true,\"registrar\":\"MarkMonitor Inc.\",\"registrarIanaId\":\"292\",\"createdAt\":\"1998-03-13T05:00:00.000Z\",\"updatedAt\":\"2026-02-08T11:33:08.000Z\",\"expiresAt\":\"2028-03-12T05:00:00.000Z\",\"daysUntilExpiry\":504,\"ageDays\":10452,\"statusCodes\":[\"client delete prohibited\",\"client transfer prohibite"
+   }
+  },
+  {
+   "id": "q15",
+   "need": "Current weather and 3-day forecast for New York City",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "verdict": "bad",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Valid forecast data, but no current temperature or current conditions observation is included; only forecast periods (the 'Tonight' low is a forecast, not an observation). Forecast start times appear current."
+    },
+    "tx": "A4D3FBBFAB78BEAA70008575AD4DD83CAE8FB51CD6B9321A0087D31D837DA158",
+    "ms": 6287,
+    "spent": "0.004",
+    "body_head": "{\"place\":\"New York, NY\",\"timezone\":\"America/New_York\",\"forecasts\":[{\"name\":\"Tonight\",\"start\":\"2026-10-24T18:00:00-04:00\",\"temperature\":51,\"unit\":\"F\",\"temperature_c\":10.6,\"rain_prob_pct\":0,\"wind\":\"5 mph W\",\"summary\":\"Mostly Clear\",\"detail\":\"Mostly clear, with a low around 51. West wind around 5 mph.\"},{\"name\":\"Sunday\",\"start\":\"2026-10-25T06:00:00-04:00\",\"temperature\":65,\"unit\":\"F\",\"temperature_c\":1"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/tiempo-mundo-pago",
+    "verdict": "good",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid weather data for NYC coordinates with current temperature, sky conditions, and 3 daily forecasts. Updated 01:16Z, about 1.5h before now, within the 3h limit. Temperature check cannot be verified, but it is plausible."
+    },
+    "tx": "8B2A105A4CF537CB750C113200E1A08961AFBB2ABAD0DABAB814AD48A066D6FC",
+    "ms": 8561,
+    "spent": "0.004",
+    "body_head": "{\"lat\":40.7128,\"lon\":-74.006,\"actualizado\":\"2026-10-25T01:16:47Z\",\"ahora\":{\"temperatura_c\":11,\"humedad_pct\":53.6,\"viento_kmh\":6,\"direccion_viento\":246.6,\"nubosidad_pct\":0,\"presion_hpa\":1034,\"cielo\":\"despejado\"},\"dias\":[{\"fecha\":\"2026-10-25\",\"max_c\":18.9,\"min_c\":4.9,\"lluvia_mm\":0,\"viento_max_kmh\":8,\"cielo\":\"despejado\"},{\"fecha\":\"2026-10-26\",\"max_c\":20.8,\"min_c\":7.9,\"lluvia_mm\":0,\"viento_max_kmh\":13"
+   }
+  },
+  {
+   "id": "q16",
+   "need": "Fetch https://en.wikipedia.org/wiki/XRP_Ledger and return the article text as clean Markdown",
+   "bazaar": {
+    "url": "https://horizonpulse.dev/api/fetch",
+    "verdict": "bad",
+    "grade": {
+     "g3_well_formed": false,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Content includes raw wikitext/JSON infobox residue and navigation ('Jump to content'), and is cut off mid-sentence despite truncated:false; not clean Markdown matching the check."
+    },
+    "tx": "C5F565B565DD76A00E85066C74BB21D10E5A9A1A818ABE7294CB0052863F3E4A",
+    "ms": 9205,
+    "spent": "0.02",
+    "body_head": "{\"ok\":true,\"source\":\"fetch\",\"priced\":{\"amountUsd\":\"$0.02\",\"amountAtomic\":\"20000\",\"asset\":\"524C555344000000000000000000000000000000.rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De\",\"network\":\"xrpl:0\",\"payTo\":\"r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf\"},\"asOf\":\"2026-10-25T02:43:55.844Z\",\"requestedUrl\":\"https://en.wikipedia.org/wiki/XRP_Ledger\",\"finalUrl\":\"https://en.wikipedia.org/wiki/XRP_Ledger\",\"upstreamStatus\":200,\""
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/reader-markdown-extract",
+    "verdict": "bad",
+    "grade": {
+     "g3_well_formed": false,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Output is truncated and polluted with language links and raw template/wikitext; no lead section text or section headings appear, and navigation content is present."
+    },
+    "tx": "251E2289350BD7ECB1227ABADDF9576E1419A2B6EA836315527AABDA3EC025FA",
+    "ms": 9032,
+    "spent": "0.001",
+    "body_head": "{\"url\":\"https://en.wikipedia.org/wiki/XRP_Ledger\",\"title\":\"XRP Ledger - Wikipedia\",\"markdown\":\"# XRP Ledger\\n\\n36 languages\\n\\n- [Afrikaans](https://af.wikipedia.org/wiki/Ripple)\\n- [\u0627\u0644\u0639\u0631\u0628\u064a\u0629](https://ar.wikipedia.org/wiki/%D8%B1%D9%8A%D8%A8%D9%84)\\n- [\u0627\u0644\u062f\u0627\u0631\u062c\u0629](https://ary.wikipedia.org/wiki/%D8%B1%D9%8A%D9%BE%D9%84)\\n- [Az\u0259rbaycanca](https://az.wikipedia.org/wiki/Ripple)\\n- [\u062a\u06c6\u0631\u06a9\u062c\u0647](https://azb.wi"
+   }
+  },
+  {
+   "id": "q17",
+   "need": "Is 2026-11-26 a US business day? List the US federal holidays in November 2026",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/business-days",
+    "verdict": "bad",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Response is a valid add-3-business-days result; it doesn't state whether 2026-11-26 is a business day nor list November 2026 federal holidays (holidays_skipped is empty)."
+    },
+    "tx": "8F21E6E11628EFB5B5D2895C9C0B438D7A790476F3F33143A0B14B8B2E811CF1",
+    "ms": 7822,
+    "spent": "0.001023305044837772665374951403",
+    "body_head": "{\"data\":{\"calendar\":\"US-NY\",\"weekend_days\":[\"Sun\",\"Sat\"],\"coverage\":[\"2025-01-01\",\"2030-12-31\"],\"source\":\"python-holidays (MIT) public/financial holiday data; observed-day rules as implemented there. Verify critical deadlines with the official authority.\",\"op\":\"add\",\"start\":\"2026-11-26\",\"days\":3,\"result\":\"2026-12-01\",\"holidays_skipped\":[],\"provenance\":{\"schema\":\"sg-provenance/1\",\"evidence_only\":tr"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "verdict": "good",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid holiday data for US 2026 lists Veterans Day 2026-11-11 and Thanksgiving 2026-11-26 as nationwide, so 11-26 is not a business day. Freshness n/a."
+    },
+    "tx": "B46A1F69F258ABB07D06FA83F91AD8956DF8B48ECC683E233DF5C171C173F00D",
+    "ms": 5618,
+    "spent": "0.001",
+    "body_head": "{\"country\":\"US\",\"year\":2026,\"count\":17,\"holidays\":[{\"date\":\"2026-01-01\",\"localName\":\"New Year's Day\",\"name\":\"New Year's Day\",\"nationwide\":true,\"counties\":null},{\"date\":\"2026-01-19\",\"localName\":\"Martin Luther King, Jr. Day\",\"name\":\"Martin Luther King, Jr. Day\",\"nationwide\":true,\"counties\":null},{\"date\":\"2026-02-12\",\"localName\":\"Lincoln's Birthday\",\"name\":\"Lincoln's Birthday\",\"nationwide\":false,\"cou"
+   }
+  },
+  {
+   "id": "q18",
+   "need": "Latest news headlines about XRP or Ripple from the past 24 hours, with source and link",
+   "bazaar": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/news",
+    "verdict": "bad",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Response is well-formed and recent, but all five items are about Bitcoin (coins: BTC); none concern XRP or Ripple, so the required 3 headlines are missing."
+    },
+    "tx": "B9685E8263C2637A19C31D60FF0DC4F0CA5C8B8AFC5C80D5F36C31EFF9D3D1B6",
+    "ms": 5396,
+    "spent": "0.002",
+    "body_head": "{\"count\":5,\"items\":[{\"title\":\"Crypto longs lose $404 million in four hours as bitcoin briefly slips below $80,000\",\"link\":\"https://www.theblock.co/news/markets/2026-10-24-crypto-longs-lose-404-million-in-four-hours-as-bitcoin-briefly-slips-below-80000-431608\",\"publisher\":\"The Block\",\"publishedAt\":\"2026-10-24T17:44:36.000Z\",\"summary\":\"Spot bitcoin ETFs lost $773 million on Thursday and Friday after"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/news",
+    "verdict": "bad",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Response is well-formed and recent, but all five items are about Bitcoin (coins: BTC); none concern XRP or Ripple, so the required 3 headlines are missing."
+    },
+    "tx": "B9685E8263C2637A19C31D60FF0DC4F0CA5C8B8AFC5C80D5F36C31EFF9D3D1B6",
+    "ms": 5396,
+    "spent": "0.002",
+    "body_head": "{\"count\":5,\"items\":[{\"title\":\"Crypto longs lose $404 million in four hours as bitcoin briefly slips below $80,000\",\"link\":\"https://www.theblock.co/news/markets/2026-10-24-crypto-longs-lose-404-million-in-four-hours-as-bitcoin-briefly-slips-below-80000-431608\",\"publisher\":\"The Block\",\"publishedAt\":\"2026-10-24T17:44:36.000Z\",\"summary\":\"Spot bitcoin ETFs lost $773 million on Thursday and Friday after",
+    "shared": true
+   }
+  },
+  {
+   "id": "q19",
+   "need": "Recent arXiv papers on payments by AI agents or agentic commerce, with titles, authors and links",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/arxiv-search",
+    "verdict": "unsettled",
+    "http": 502,
+    "spent": "0",
+    "detail": "<!DOCTYPE html>\n<!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 7]>    <html class=\"no-js ie7 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 8]>    <html class=\"no-"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/arxiv",
+    "verdict": "unsettled",
+    "http": 503,
+    "spent": "0",
+    "detail": "{\"error\":\"arXiv timed out, you were not charged. Please retry later.\"}"
+   }
+  },
+  {
+   "id": "q20",
+   "need": "Recruiting clinical trials for type 2 diabetes in the United States, with NCT IDs",
+   "bazaar": {
+    "url": "https://clinicalintelpulse.theaslangroupllc.com/api/clinical/trial-check",
+    "verdict": "bad",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Response returns a single completed lung cancer trial, not at least 3 recruiting type 2 diabetes trials in the US; fails the need."
+    },
+    "tx": "39227C99790CA38681C8FE1342FDC31324E6279145B1F1DD4435A2937DC53378",
+    "ms": 8670,
+    "spent": "0.02",
+    "body_head": "{\"mode\":\"single\",\"found\":true,\"trial\":{\"nctId\":\"NCT02142738\",\"title\":\"Study of Pembrolizumab (MK-3475) Compared to Platinum-Based Chemotherapies in Participants With Metastatic Non-Small Cell Lung Cancer (MK-3475-024/KEYNOTE-024)\",\"status\":\"COMPLETED\",\"phase\":[\"PHASE3\"],\"conditions\":[\"Non-Small Cell Lung Carcinoma\"],\"interventions\":[{\"type\":\"DRUG\",\"name\":\"Pembrolizumab\"},{\"type\":\"DRUG\",\"name\":\"Pac"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/clinical-trials",
+    "verdict": "bad",
+    "grade": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Only 2 studies returned, below the required 3. One is type 1 diabetes, and the other is a Seoul trial with likely no US site. So 0 qualifying trials."
+    },
+    "tx": "F6DBDB5A87411039DFCBCEDA87FA345B4B36D3F472BC756D147980E2AABFFDE6",
+    "ms": 8143,
+    "spent": "0.002",
+    "body_head": "{\"query\":{\"q\":\"insulin\",\"status\":\"RECRUITING\",\"phase\":null},\"studies\":[{\"nctId\":\"NCT07154251\",\"title\":\"Utilizing Community Health Workers as Diabetes Technology Coaches for Children With Type 1 Diabetes Using Automated Insulin Delivery\",\"status\":\"RECRUITING\",\"phases\":[\"NA\"],\"conditions\":[\"Type 1 Diabetes (T1D)\"],\"sponsor\":\"University Hospitals Cleveland Medical Center\",\"start\":\"2025-11-06\",\"comple"
+   }
+  }
+ ]
+}

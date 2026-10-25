@@ -84,7 +84,9 @@ def pay_and_fetch(http, req, opt, wallet, client, cfg) -> dict:
     inv = extra.get("invoiceId") or ""
     amount = str(opt["amount"]) if opt["asset"] == "XRP" else IssuedCurrencyAmount(
         currency=opt["asset"], issuer=extra.get("issuer", cfg["xrpl"]["rlusd_issuer"]), value=str(opt["amount"]))
-    tx = Payment(account=wallet.classic_address, destination=opt["payTo"], amount=amount,
+    # t54 rejects issued-currency payments without SendMax ("unsupported_payment_features"; LIMITS L25).
+    send_max = None if opt["asset"] == "XRP" else amount
+    tx = Payment(account=wallet.classic_address, destination=opt["payTo"], amount=amount, send_max=send_max,
                  invoice_id=hashlib.sha256(inv.encode()).hexdigest().upper(), source_tag=extra.get("sourceTag"))
     blob = sign(autofill(tx, client), wallet).blob()
     payload = {"x402Version": 2, "accepted": opt, "payload": {"signedTxBlob": blob, "invoiceId": inv}}
@@ -95,6 +97,8 @@ def pay_and_fetch(http, req, opt, wallet, client, cfg) -> dict:
         r = http.request(method, url, params=params or None, json=body if method != "GET" else None,
                          headers={"PAYMENT-SIGNATURE": header, "X-PAYMENT": header}, timeout=30)
         status, text = r.status_code, r.text[:20_000]
+        if status == 402:
+            text = json.dumps({"x402_error": (r.json() or {}).get("error")}) if r.headers.get("content-type", "").startswith("application/json") else text
         resp_hdr = r.headers.get("payment-response")
     except httpx.HTTPError as e:
         status, text, resp_hdr = None, f"{type(e).__name__}", None
@@ -133,7 +137,7 @@ def grade(client, cfg, q: dict, body: str) -> dict:
     return json.loads(next(b.text for b in msg.content if b.type == "text"))
 
 
-def run(cfg: dict, live: bool) -> dict:
+def run(cfg: dict, live: bool, resume: str | None = None) -> dict:
     root = config.ROOT / "data"
     picks_path = root / "u7_paid_picks.json"
     if picks_path.exists():
@@ -169,6 +173,13 @@ def run(cfg: dict, live: bool) -> dict:
         grader = AnthropicBedrock(aws_region=cfg["judge"]["region"])
 
     spent, bought, rows = Decimal(0), {}, []
+    if resume:  # rubric §1.5: retry only purchases where no payment was submitted; keep every completed result
+        for prev in json.loads(open(resume).read())["rows"]:
+            for side in ("bazaar", "plumb"):
+                r = prev[side]
+                if r.get("url") and r["verdict"] != "unsettled" and not r.get("shared"):
+                    bought[r["url"]] = r
+                    spent += Decimal(r.get("spent", "0"))
     with httpx.Client(timeout=15) as http:
         for p in picks:
             q = queries[p["id"]]
@@ -202,7 +213,7 @@ def run(cfg: dict, live: bool) -> dict:
                         real = (money.drops_to_rlusd(int(amt), mid) if paid and paid["asset"] == "XRP" else amt)
                         spent += real
                         if not paid:
-                            res = {"url": url, "verdict": "unsettled", "http": out["http"], "spent": str(real)}
+                            res = {"url": url, "verdict": "unsettled", "http": out["http"], "spent": str(real), "detail": out["body"][:200]}
                         elif not out["http"] or not 200 <= out["http"] < 300:
                             res = {"url": url, "verdict": "bad", "why": f"G2: HTTP {out['http']}", "tx": paid["tx_hash"], "spent": str(real)}
                         else:

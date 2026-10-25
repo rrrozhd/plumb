@@ -153,6 +153,7 @@ def main(argv: list[str] | None = None) -> None:
     sub.add_parser("liveness", help="offline: probe every judged candidate unpaid; dead endpoints are excluded from ranking")
     ep = sub.add_parser("eval-paid", help="U7 paid head-to-head; dry-run unless --live")
     ep.add_argument("--live", action="store_true")
+    ep.add_argument("--resume", help="earlier live report: keep its completed purchases, retry the unsettled ones")
     sub.add_parser("eval-free", help="U7 without money: probe Bazaar #1 vs Plumb #1 for each frozen need")
     args = ap.parse_args(argv)
     cfg = config.load()
@@ -174,7 +175,7 @@ def main(argv: list[str] | None = None) -> None:
         return
     if args.cmd == "eval-paid":
         from plumb import eval_paid
-        rep = eval_paid.run(cfg, live=args.live)
+        rep = eval_paid.run(cfg, live=args.live, resume=args.resume)
         print(json.dumps({"mode": rep["mode"], "summary": rep["summary"], "spent_total_rlusd": rep["spent_total_rlusd"], "report": rep["path"]}, indent=1))
         return
     if args.cmd == "eval-free":
