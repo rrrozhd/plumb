@@ -171,7 +171,8 @@ function agentRun(body) {
   run = { id, child };
   child.on('exit', (code) => {
     log('agent_exit', { id, code });
-    if (code) appendTrail(id, { event: 'error', reason: err.split('\n').filter(Boolean).slice(-3).join(' | ').slice(0, 400) || `exit ${code}` });
+    const message = err.split('\n').find((l) => /Error|error:/.test(l)) ?? err.split('\n').filter(Boolean).slice(-1)[0];
+    if (code) appendTrail(id, { event: 'error', reason: (message || `exit ${code}`).trim().slice(0, 400) });
     run = null;
   });
   log('agent_start', { id, perPurchase, cap, needs: needs.length });

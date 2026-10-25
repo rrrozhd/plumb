@@ -39,8 +39,12 @@ if (channel && process.env.PLUMB_NEW_CHANNEL) { // demo: close the used channel 
   log('channel_closed', { channel_id: channel.channel_id });
   channel = undefined;
 }
-if (!channel) {
-  channel = await sdk.requestChannel(AP4M.api, session.token, wallet, { capRlusd: CAP_RLUSD });
+for (let attempt = 0; !channel; attempt++) { // the service can lag a just-closed channel by a few blocks
+  try { channel = await sdk.requestChannel(AP4M.api, session.token, wallet, { capRlusd: CAP_RLUSD }); } catch (error) {
+    if (attempt >= 4) throw error;
+    log('retry_open_channel', { reason: error.message.slice(0, 120) });
+    await new Promise((r) => setTimeout(r, 10000));
+  }
 }
 log('channel_open', { channel_id: channel.channel_id, cap_rlusd: ethers.formatUnits(channel.cap_wei, 18), merchant: channel.merchant_id,
   per_purchase_rlusd: PER_PURCHASE });

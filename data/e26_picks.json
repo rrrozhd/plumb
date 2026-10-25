@@ -1,0 +1,2226 @@
+{
+ "frozen_at": "20261025T0447Z",
+ "picks": [
+  {
+   "id": "f001",
+   "need": "Current BTC price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "BTC",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "method": "GET",
+    "args": {
+     "amount": "1",
+     "from": "BTC",
+     "to": "USD"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f002",
+   "need": "Current BNB price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "BNB",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "method": "GET",
+    "args": {
+     "amount": "1",
+     "from": "BNB",
+     "to": "USD"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f003",
+   "need": "Current ADA price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "ADA",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/finance/dia-crypto-oracle",
+    "method": "GET",
+    "args": {
+     "symbol": "ADA"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f004",
+   "need": "Current DOGE price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "DOGE",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "method": "GET",
+    "args": {
+     "amount": "1",
+     "from": "DOGE",
+     "to": "USD"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f005",
+   "need": "Current AVAX price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "AVAX",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/finance/alpha-vantage-public",
+    "method": "GET",
+    "args": {
+     "symbol": "AVAX"
+    },
+    "match": "partial",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f006",
+   "need": "Current DOT price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "DOT",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/candles",
+    "method": "GET",
+    "args": {
+     "pair": "DOT-USD",
+     "granularity": "1h",
+     "limit": "1"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f007",
+   "need": "Current LINK price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "LINK",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.webintel-api.workers.dev/api/search/bingx-markets",
+    "method": "GET",
+    "args": {
+     "symbol": "LINK-USDT"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f008",
+   "need": "Current LTC price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "LTC",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "method": "GET",
+    "args": {
+     "amount": "1",
+     "from": "LTC",
+     "to": "USD"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f009",
+   "need": "Current TRX price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "TRX",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "method": "GET",
+    "args": {
+     "amount": "1",
+     "from": "TRX",
+     "to": "USD"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f010",
+   "need": "Current XLM price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "XLM",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/dydx-chain-markets",
+    "method": "GET",
+    "args": {
+     "ticker": "XLM-USD"
+    },
+    "match": "partial",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f011",
+   "need": "Current ATOM price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "ATOM",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "ATOM",
+     "currency": "USD"
+    },
+    "match": "exact",
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   }
+  },
+  {
+   "id": "f012",
+   "need": "Current NEAR price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "NEAR",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "NEAR",
+     "currency": "USD"
+    },
+    "match": "exact",
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   }
+  },
+  {
+   "id": "f013",
+   "need": "Current UNI price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "method": "POST",
+    "args": {
+     "coin": "uniswap",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": null
+  },
+  {
+   "id": "f014",
+   "need": "Current BCH price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "BCH",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "method": "GET",
+    "args": {
+     "amount": "1",
+     "from": "BCH",
+     "to": "USD"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f015",
+   "need": "Current ETC price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "ETC",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "method": "GET",
+    "args": {
+     "amount": "1",
+     "from": "ETC",
+     "to": "USD"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f016",
+   "need": "Current FIL price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/precio-simple-pago",
+    "method": "POST",
+    "args": {
+     "monedas": "FIL"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/precio-simple-pago",
+    "method": "POST",
+    "args": {
+     "monedas": "FIL"
+    },
+    "match": "exact",
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   }
+  },
+  {
+   "id": "f017",
+   "need": "Current APT price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "APT",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/leverage-liquidation-levels",
+    "method": "GET",
+    "args": {
+     "coin": "APT"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f018",
+   "need": "Current ARB price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "ARB",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.shopsocial-api.workers.dev/api/ecommerce/gmx-arbitrum-prices",
+    "method": "GET",
+    "args": {},
+    "match": "partial",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f019",
+   "need": "Current OP price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "OP",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/pyth-network-oracles",
+    "method": "GET",
+    "args": {
+     "symbols": "OPUSD"
+    },
+    "match": "partial",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f020",
+   "need": "Current SUI price in USD",
+   "bazaar": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/sui-move-objects",
+    "method": "GET",
+    "args": {},
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/finance/coincap-rates",
+    "method": "GET",
+    "args": {
+     "id": "SUI"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f021",
+   "need": "Current TON price in USD",
+   "bazaar": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/ton-blockchain-jettons",
+    "method": "GET",
+    "args": {},
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   },
+   "plumb": null
+  },
+  {
+   "id": "f022",
+   "need": "Current SHIB price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "SHIB",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/finance/coincap-rates",
+    "method": "GET",
+    "args": {
+     "id": "SHIB"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f023",
+   "need": "Current HBAR price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "HBAR",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/finance/huobi-tickers",
+    "method": "GET",
+    "args": {
+     "symbol": "hbarusdt"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f024",
+   "need": "Current ICP price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "ICP",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/finance/coincap-rates",
+    "method": "GET",
+    "args": {
+     "id": "ICP"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f025",
+   "need": "Current AAVE price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "AAVE",
+     "currency": "USD"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/aave-lending-markets",
+    "method": "GET",
+    "args": {
+     "symbol": "AAVE"
+    },
+    "match": "partial",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f026",
+   "need": "Current BTC price in EUR",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "method": "POST",
+    "args": {
+     "coin": "bitcoin",
+     "currency": "EUR"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "method": "GET",
+    "args": {
+     "amount": "1",
+     "from": "BTC",
+     "to": "EUR"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f027",
+   "need": "Current ETH price in EUR",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "method": "POST",
+    "args": {
+     "coin": "ethereum",
+     "currency": "EUR"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "method": "GET",
+    "args": {
+     "amount": "1",
+     "from": "ETH",
+     "to": "EUR"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f028",
+   "need": "Current XRP price in EUR",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "method": "POST",
+    "args": {
+     "coin": "ripple",
+     "currency": "EUR"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "method": "POST",
+    "args": {
+     "coin": "ripple",
+     "currency": "EUR"
+    },
+    "match": "exact",
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   }
+  },
+  {
+   "id": "f029",
+   "need": "Current SOL price in EUR",
+   "bazaar": {
+    "url": "https://horizonpulse.dev/api/pulse",
+    "method": "GET",
+    "args": {
+     "symbol": "SOL"
+    },
+    "operator": "r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "SOL",
+     "currency": "EUR"
+    },
+    "match": "exact",
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   }
+  },
+  {
+   "id": "f030",
+   "need": "Current ADA price in EUR",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "method": "POST",
+    "args": {
+     "coin": "cardano",
+     "currency": "EUR"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/finance/dia-crypto-oracle",
+    "method": "GET",
+    "args": {
+     "symbol": "ADA"
+    },
+    "match": "partial",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f031",
+   "need": "Current DOGE price in EUR",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "method": "POST",
+    "args": {
+     "coin": "dogecoin",
+     "currency": "EUR"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "method": "GET",
+    "args": {
+     "amount": "1",
+     "from": "DOGE",
+     "to": "EUR"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f032",
+   "need": "Current LTC price in EUR",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "method": "POST",
+    "args": {
+     "coin": "litecoin",
+     "currency": "EUR"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "method": "GET",
+    "args": {
+     "amount": "1",
+     "from": "LTC",
+     "to": "EUR"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f033",
+   "need": "Current DOT price in EUR",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "method": "POST",
+    "args": {
+     "coin": "polkadot",
+     "currency": "EUR"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "method": "GET",
+    "args": {
+     "amount": "1",
+     "from": "DOT",
+     "to": "EUR"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f034",
+   "need": "Current LINK price in EUR",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "method": "POST",
+    "args": {
+     "coin": "chainlink",
+     "currency": "EUR"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/precio-simple-pago",
+    "method": "POST",
+    "args": {
+     "monedas": "LINK"
+    },
+    "match": "exact",
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   }
+  },
+  {
+   "id": "f035",
+   "need": "Current BNB price in EUR",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "method": "POST",
+    "args": {
+     "coin": "binancecoin",
+     "currency": "EUR"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/finance/binance-prices",
+    "method": "GET",
+    "args": {
+     "symbol": "BNBEUR"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f036",
+   "need": "Convert 100 USD to JPY at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "JPY"
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/fx",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "JPY"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f037",
+   "need": "Convert 100 EUR to GBP at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "EUR",
+     "to": "GBP"
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/ecb-institutional-fx-rates",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "EUR",
+     "to": "GBP"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f038",
+   "need": "Convert 100 USD to CHF at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "method": "GET",
+    "args": {
+     "base": "USD",
+     "symbols": "CHF",
+     "amount": 100
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "CHF"
+    },
+    "match": "exact",
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   }
+  },
+  {
+   "id": "f039",
+   "need": "Convert 100 CAD to USD at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "method": "GET",
+    "args": {
+     "base": "CAD",
+     "symbols": "USD",
+     "amount": 100
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "CAD",
+     "to": "USD"
+    },
+    "match": "exact",
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   }
+  },
+  {
+   "id": "f040",
+   "need": "Convert 100 AUD to USD at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "method": "GET",
+    "args": {
+     "base": "AUD",
+     "symbols": "USD",
+     "amount": "100"
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://macropulse.theaslangroupllc.com/api/fx/convert",
+    "method": "GET",
+    "args": {
+     "from": "AUD",
+     "to": "USD",
+     "amount": 100
+    },
+    "match": "exact",
+    "operator": "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+   }
+  },
+  {
+   "id": "f041",
+   "need": "Convert 100 USD to CNY at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "method": "GET",
+    "args": {
+     "base": "USD",
+     "symbols": "CNY",
+     "amount": 100
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "CNY"
+    },
+    "match": "exact",
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   }
+  },
+  {
+   "id": "f042",
+   "need": "Convert 100 USD to INR at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/fx-rates",
+    "method": "POST",
+    "args": {
+     "currencies": "INR"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.healthtravel-api.workers.dev/api/travel/rag-web-browser",
+    "method": "GET",
+    "args": {},
+    "match": "partial",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f043",
+   "need": "Convert 100 EUR to CHF at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "method": "GET",
+    "args": {
+     "base": "EUR",
+     "symbols": "CHF",
+     "amount": 100
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/ecb-institutional-fx-rates",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "EUR",
+     "to": "CHF"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f044",
+   "need": "Convert 100 GBP to EUR at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "GBP",
+     "to": "EUR"
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/ecb-institutional-fx-rates",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "GBP",
+     "to": "EUR"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f045",
+   "need": "Convert 100 USD to MXN at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/fx-rates",
+    "method": "POST",
+    "args": {
+     "currencies": "MXN"
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/fx",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "MXN"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f046",
+   "need": "Convert 100 USD to BRL at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "method": "GET",
+    "args": {
+     "base": "USD",
+     "symbols": "BRL",
+     "amount": 100
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/crypto-convert",
+    "method": "POST",
+    "args": {
+     "amount": 100,
+     "from": "USD",
+     "to": "BRL"
+    },
+    "match": "exact",
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   }
+  },
+  {
+   "id": "f047",
+   "need": "Convert 100 NZD to USD at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "method": "GET",
+    "args": {
+     "base": "NZD",
+     "symbols": "USD",
+     "amount": 100
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/crypto-convert",
+    "method": "POST",
+    "args": {
+     "amount": 100,
+     "from": "NZD",
+     "to": "USD"
+    },
+    "match": "exact",
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   }
+  },
+  {
+   "id": "f048",
+   "need": "Convert 100 USD to SEK at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "method": "GET",
+    "args": {
+     "base": "USD",
+     "symbols": "SEK",
+     "amount": 100
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/ecb-institutional-fx-rates",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "SEK"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f049",
+   "need": "Convert 100 USD to NOK at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "method": "GET",
+    "args": {
+     "base": "USD",
+     "symbols": "NOK",
+     "amount": 100
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/finance/norges-bank-norway",
+    "method": "GET",
+    "args": {
+     "currency": "USD",
+     "last": "1"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f050",
+   "need": "Convert 100 USD to KRW at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "method": "GET",
+    "args": {
+     "base": "USD",
+     "symbols": "KRW",
+     "amount": 100
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/cripto-convertir-pago",
+    "method": "POST",
+    "args": {
+     "cantidad": 100,
+     "de": "USD",
+     "a": "KRW"
+    },
+    "match": "partial",
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   }
+  },
+  {
+   "id": "f051",
+   "need": "Convert 100 EUR to JPY at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "EUR",
+     "to": "JPY"
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/ecb-institutional-fx-rates",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "EUR",
+     "to": "JPY"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f052",
+   "need": "Convert 100 USD to SGD at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "SGD"
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/fx",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "SGD"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f053",
+   "need": "Convert 100 USD to HKD at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "method": "GET",
+    "args": {
+     "base": "USD",
+     "symbols": "HKD",
+     "amount": 100
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": null
+  },
+  {
+   "id": "f054",
+   "need": "Convert 100 EUR to PLN at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "method": "GET",
+    "args": {
+     "base": "EUR",
+     "symbols": "PLN",
+     "amount": 100
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "EUR",
+     "to": "PLN"
+    },
+    "match": "exact",
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   }
+  },
+  {
+   "id": "f055",
+   "need": "Convert 100 USD to ZAR at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "method": "GET",
+    "args": {
+     "base": "USD",
+     "symbols": "ZAR",
+     "amount": 100
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "ZAR"
+    },
+    "match": "exact",
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   }
+  },
+  {
+   "id": "f056",
+   "need": "Convert 100 USD to TRY at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "method": "GET",
+    "args": {
+     "base": "USD",
+     "symbols": "TRY",
+     "amount": 100
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "TRY"
+    },
+    "match": "exact",
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   }
+  },
+  {
+   "id": "f057",
+   "need": "Convert 100 EUR to CZK at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "method": "GET",
+    "args": {
+     "base": "EUR",
+     "symbols": "CZK",
+     "amount": 100
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/ecb-institutional-fx-rates",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "EUR",
+     "to": "CZK"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f058",
+   "need": "Convert 100 USD to DKK at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "method": "GET",
+    "args": {
+     "base": "USD",
+     "symbols": "DKK",
+     "amount": 100
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "method": "POST",
+    "args": {
+     "need": "Convert 100 USD to DKK at the latest exchange rate"
+    },
+    "match": "partial",
+    "operator": "r9xmBsRr8Ao7jRgjjxreMiAwGiCK2FGwqw"
+   }
+  },
+  {
+   "id": "f059",
+   "need": "Convert 100 GBP to JPY at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "GBP",
+     "to": "JPY"
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/fx",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "GBP",
+     "to": "JPY"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f060",
+   "need": "Convert 100 CHF to EUR at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "method": "GET",
+    "args": {
+     "base": "CHF",
+     "symbols": "EUR",
+     "amount": 100
+    },
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/ecb-institutional-fx-rates",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "CHF",
+     "to": "EUR"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f061",
+   "need": "Current weather in Los Angeles",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "method": "POST",
+    "args": {
+     "lat": 34.0522,
+     "lon": -118.2437
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": null
+  },
+  {
+   "id": "f062",
+   "need": "Current weather in Seattle",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/weather",
+    "method": "POST",
+    "args": {
+     "lat": 47.6062,
+     "lon": -122.3321,
+     "days": 1
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/tiempo-eeuu-pago",
+    "method": "POST",
+    "args": {
+     "lat": 47.6062,
+     "lon": -122.3321
+    },
+    "match": "exact",
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   }
+  },
+  {
+   "id": "f063",
+   "need": "Current weather in Denver",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "method": "POST",
+    "args": {
+     "lat": 39.7392,
+     "lon": -104.9903
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": null
+  },
+  {
+   "id": "f064",
+   "need": "Current weather in Miami",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "method": "POST",
+    "args": {
+     "lat": 25.7617,
+     "lon": -80.1918
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/tiempo-eeuu-pago",
+    "method": "POST",
+    "args": {
+     "lat": 25.7617,
+     "lon": -80.1918
+    },
+    "match": "exact",
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   }
+  },
+  {
+   "id": "f065",
+   "need": "Current weather in Boston",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "method": "POST",
+    "args": {
+     "lat": 42.3601,
+     "lon": -71.0589
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": null
+  },
+  {
+   "id": "f066",
+   "need": "Current weather in Atlanta",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "method": "POST",
+    "args": {
+     "lat": 33.749,
+     "lon": -84.388
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": null
+  },
+  {
+   "id": "f067",
+   "need": "Current weather in Phoenix",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "method": "POST",
+    "args": {
+     "lat": 33.4484,
+     "lon": -112.074
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/tiempo-eeuu-pago",
+    "method": "POST",
+    "args": {
+     "lat": 33.4484,
+     "lon": -112.074
+    },
+    "match": "partial",
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   }
+  },
+  {
+   "id": "f068",
+   "need": "Current weather in Dallas",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "method": "POST",
+    "args": {
+     "lat": 32.7767,
+     "lon": -96.797
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "method": "POST",
+    "args": {
+     "lat": 32.7767,
+     "lon": -96.797
+    },
+    "match": "exact",
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   }
+  },
+  {
+   "id": "f069",
+   "need": "Current weather in Houston",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "method": "POST",
+    "args": {
+     "lat": 29.7604,
+     "lon": -95.3698
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "method": "POST",
+    "args": {
+     "lat": 29.7604,
+     "lon": -95.3698
+    },
+    "match": "exact",
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   }
+  },
+  {
+   "id": "f070",
+   "need": "Current weather in San Francisco",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "method": "POST",
+    "args": {
+     "lat": 37.7749,
+     "lon": -122.4194
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/weather",
+    "method": "POST",
+    "args": {
+     "days": 1,
+     "lat": 37.7749,
+     "lon": -122.4194
+    },
+    "match": "exact",
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   }
+  },
+  {
+   "id": "f071",
+   "need": "Current weather in Minneapolis",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/weather",
+    "method": "POST",
+    "args": {
+     "lat": 44.9778,
+     "lon": -93.265,
+     "days": 1
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.healthtravel-api.workers.dev/api/travel/aviationweather-metar-taf",
+    "method": "GET",
+    "args": {
+     "icao": "KMSP"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f072",
+   "need": "Current weather in Detroit",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "method": "POST",
+    "args": {
+     "lat": 42.3314,
+     "lon": -83.0458
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "method": "POST",
+    "args": {
+     "lat": 42.3314,
+     "lon": -83.0458
+    },
+    "match": "exact",
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   }
+  },
+  {
+   "id": "f073",
+   "need": "Current weather in Philadelphia",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "method": "POST",
+    "args": {
+     "lat": 39.9526,
+     "lon": -75.1652
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://climatepulse.theaslangroupllc.com/api/climate/now",
+    "method": "GET",
+    "args": {
+     "location": "Philadelphia, PA",
+     "units": "imperial",
+     "lang": "en"
+    },
+    "match": "exact",
+    "operator": "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+   }
+  },
+  {
+   "id": "f074",
+   "need": "Current weather in Las Vegas",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "method": "POST",
+    "args": {
+     "lat": 36.1699,
+     "lon": -115.1398
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/sun",
+    "method": "GET",
+    "args": {
+     "lat": "36.1699",
+     "lon": "-115.1398"
+    },
+    "match": "partial",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f075",
+   "need": "Current weather in Washington, DC",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "method": "POST",
+    "args": {
+     "lat": 38.9072,
+     "lon": -77.0369
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://climatepulse.theaslangroupllc.com/api/climate/now",
+    "method": "GET",
+    "args": {
+     "location": "Washington, DC",
+     "units": "imperial",
+     "lang": "en"
+    },
+    "match": "exact",
+    "operator": "rMnHeutYALco8RYFVcmuU4BCgSzBpPEh32"
+   }
+  },
+  {
+   "id": "f076",
+   "need": "Latest block number on Polygon",
+   "bazaar": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/polygon-pos-checkpoints",
+    "method": "GET",
+    "args": {
+     "count": "1"
+    },
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   },
+   "plumb": {
+    "url": "https://horizonpulse.dev/api/chain/head",
+    "method": "GET",
+    "args": {
+     "network": "polygon"
+    },
+    "match": "exact",
+    "operator": "r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf"
+   }
+  },
+  {
+   "id": "f077",
+   "need": "Latest block number on BNB Smart Chain",
+   "bazaar": {
+    "url": "https://horizonpulse.dev/api/chain/head",
+    "method": "GET",
+    "args": {},
+    "operator": "r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf"
+   },
+   "plumb": null
+  },
+  {
+   "id": "f078",
+   "need": "Latest block number on Arbitrum One",
+   "bazaar": {
+    "url": "https://api.fadeandco.workers.dev/api/dev/gmx-arbitrum-stats",
+    "method": "GET",
+    "args": {},
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/evm/block",
+    "method": "GET",
+    "args": {
+     "chain": "arbitrum",
+     "number": "latest"
+    },
+    "match": "partial",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f079",
+   "need": "Latest block number on Base",
+   "bazaar": {
+    "url": "https://api.sitecheck-api.workers.dev/api/evm/block",
+    "method": "GET",
+    "args": {
+     "chain": "base",
+     "number": "latest"
+    },
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/evm/block",
+    "method": "GET",
+    "args": {
+     "chain": "base",
+     "number": "latest"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f080",
+   "need": "Latest block number on Optimism",
+   "bazaar": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/optimism-superchain-tx",
+    "method": "GET",
+    "args": {
+     "blocks": "1"
+    },
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/optimism-superchain-tx",
+    "method": "GET",
+    "args": {
+     "blocks": "1"
+    },
+    "match": "partial",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f081",
+   "need": "Latest block number on Avalanche C-Chain",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/chain-info",
+    "method": "POST",
+    "args": {
+     "chain_id": 43114
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": null
+  },
+  {
+   "id": "f082",
+   "need": "Latest block number on Gnosis Chain",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/chain-info",
+    "method": "POST",
+    "args": {
+     "chain_id": 100
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://horizonpulse.dev/api/chain/head",
+    "method": "GET",
+    "args": {},
+    "match": "partial",
+    "operator": "r3FbirL83RAB2CwnUdxE5pCohMkuo6LQcf"
+   }
+  },
+  {
+   "id": "f083",
+   "need": "Latest block number on Linea",
+   "bazaar": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/linea-consensys-rollup",
+    "method": "GET",
+    "args": {},
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/linea-consensys-rollup",
+    "method": "GET",
+    "args": {},
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f084",
+   "need": "Latest block number on Scroll",
+   "bazaar": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/scroll-l2-zk-proofs",
+    "method": "GET",
+    "args": {
+     "blocks": "1"
+    },
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/scroll-l2-zk-proofs",
+    "method": "GET",
+    "args": {
+     "blocks": "1"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f085",
+   "need": "Latest block number on XRP Ledger",
+   "bazaar": {
+    "url": "https://bruk-agent-api.fly.dev/v1/ledger-moment",
+    "method": "GET",
+    "args": {
+     "network": "mainnet"
+    },
+    "operator": "r36sbDCAsaCj44ZUXWY2jjGE1jBpsCoRQ4"
+   },
+   "plumb": {
+    "url": "https://bruk-agent-api.fly.dev/v1/pulse",
+    "method": "GET",
+    "args": {},
+    "match": "exact",
+    "operator": "r36sbDCAsaCj44ZUXWY2jjGE1jBpsCoRQ4"
+   }
+  },
+  {
+   "id": "f086",
+   "need": "Is 2026-12-25 a public holiday in Germany? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "method": "POST",
+    "args": {
+     "country": "DE",
+     "year": 2026
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "method": "GET",
+    "args": {
+     "country": "DE",
+     "year": "2026"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f087",
+   "need": "Is 2026-12-25 a public holiday in United Kingdom? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "method": "POST",
+    "args": {
+     "country": "GB",
+     "year": 2026
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "method": "GET",
+    "args": {
+     "country": "GB",
+     "year": "2026"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f088",
+   "need": "Is 2026-11-01 a public holiday in France? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "method": "POST",
+    "args": {
+     "country": "FR",
+     "year": 2026
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "method": "GET",
+    "args": {
+     "country": "FR",
+     "year": "2026"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f089",
+   "need": "Is 2026-11-03 a public holiday in Japan? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "method": "POST",
+    "args": {
+     "country": "JP",
+     "year": 2026
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "method": "GET",
+    "args": {
+     "country": "JP",
+     "year": "2026"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f090",
+   "need": "Is 2026-12-25 a public holiday in Canada? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "method": "POST",
+    "args": {
+     "country": "CA",
+     "year": 2026
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "method": "GET",
+    "args": {
+     "country": "CA",
+     "year": "2026"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f091",
+   "need": "Is 2026-12-25 a public holiday in Australia? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "method": "POST",
+    "args": {
+     "country": "AU",
+     "year": 2026
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "method": "GET",
+    "args": {
+     "country": "AU",
+     "year": "2026"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f092",
+   "need": "Is 2026-11-02 a public holiday in Brazil? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "method": "POST",
+    "args": {
+     "country": "BR",
+     "year": 2026
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "method": "GET",
+    "args": {
+     "country": "BR",
+     "year": "2026"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f093",
+   "need": "Is 2026-11-01 a public holiday in Italy? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "method": "POST",
+    "args": {
+     "country": "IT",
+     "year": 2026
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "method": "GET",
+    "args": {
+     "country": "IT",
+     "year": "2026"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f094",
+   "need": "Is 2026-11-01 a public holiday in Spain? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "method": "POST",
+    "args": {
+     "country": "ES",
+     "year": 2026
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "method": "GET",
+    "args": {
+     "country": "ES",
+     "year": "2026"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f095",
+   "need": "Is 2026-12-25 a public holiday in Netherlands? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "method": "POST",
+    "args": {
+     "country": "NL",
+     "year": 2026
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "method": "GET",
+    "args": {
+     "country": "NL",
+     "year": "2026"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f096",
+   "need": "Is 2026-11-16 a public holiday in Mexico? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "method": "POST",
+    "args": {
+     "country": "MX",
+     "year": 2026
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "method": "GET",
+    "args": {
+     "country": "MX",
+     "year": "2026"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f097",
+   "need": "Is 2026-12-25 a public holiday in South Korea? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "method": "POST",
+    "args": {
+     "country": "KR",
+     "year": 2026
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "method": "GET",
+    "args": {
+     "country": "KR",
+     "year": "2026"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f098",
+   "need": "Is 2026-10-26 a public holiday in New Zealand? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "method": "POST",
+    "args": {
+     "country": "NZ",
+     "year": 2026
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "method": "GET",
+    "args": {
+     "country": "NZ",
+     "year": "2026"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f099",
+   "need": "Is 2026-10-31 a public holiday in Sweden? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "method": "POST",
+    "args": {
+     "country": "SE",
+     "year": 2026
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "method": "GET",
+    "args": {
+     "country": "SE",
+     "year": "2026"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f100",
+   "need": "Is 2026-12-25 a public holiday in Switzerland? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "method": "POST",
+    "args": {
+     "country": "CH",
+     "year": 2026
+    },
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "method": "GET",
+    "args": {
+     "country": "CH",
+     "year": "2026"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  }
+ ]
+}

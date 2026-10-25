@@ -49,3 +49,9 @@ No two needs share a template, and none was seen before. `tests/test_e26_needs.p
 - Caps: 0.05 per purchase and 3 in total, from `config/plumb.toml`.
 - The live run writes its report after every need and resumes by (need, arm), so a crash never re-buys.
 - After the dry-run, changes are allowed only as a dated addendum. The need set is never edited.
+
+## Addendum, 2026-10-25 05:40 UTC: dry-run gate, before any E26 purchase
+- Picks frozen in `data/e26_picks.json`; the cold-path labels behind Plumb's picks are in `data/fit_cold.json`.
+- **Independence:** the two arms pick different endpoints on 80 needs, which collapse to **40 distinct (Bazaar URL, Plumb URL) pairs** (≥ 30, so the cluster test can reach significance if the effect holds). By family: crypto USD 20, crypto EUR 9, FX 24, weather 8, blocks 4, holidays 15.
+- **No pick:** Plumb returns none on 9 needs; they count as not good for Plumb, as pre-registered.
+- **Spend:** 180 purchases, expected **0.502 RLUSD + 0.030 RLUSD-eq in XRP** to merchants (plus 0.2 notional fee). The auditor wallet holds about 0.30 RLUSD, so **the live run waits for an RLUSD top-up of at least 0.3**; running dry mid-run would leave later RLUSD purchases unsettled on whichever arm pays in RLUSD.
