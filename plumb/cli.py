@@ -151,6 +151,8 @@ def main(argv: list[str] | None = None) -> None:
     r.add_argument("-k", type=int, default=3)
     sub.add_parser("bench", help="p50/p95 shortlist latency over the known needs")
     sub.add_parser("liveness", help="offline: probe every judged candidate unpaid; dead endpoints are excluded from ranking")
+    ep = sub.add_parser("eval-paid", help="U7 paid head-to-head; dry-run unless --live")
+    ep.add_argument("--live", action="store_true")
     sub.add_parser("eval-free", help="U7 without money: probe Bazaar #1 vs Plumb #1 for each frozen need")
     args = ap.parse_args(argv)
     cfg = config.load()
@@ -169,6 +171,11 @@ def main(argv: list[str] | None = None) -> None:
         return
     if args.cmd == "liveness":
         liveness(cfg)
+        return
+    if args.cmd == "eval-paid":
+        from plumb import eval_paid
+        rep = eval_paid.run(cfg, live=args.live)
+        print(json.dumps({"mode": rep["mode"], "summary": rep["summary"], "spent_total_rlusd": rep["spent_total_rlusd"], "report": rep["path"]}, indent=1))
         return
     if args.cmd == "eval-free":
         from plumb import eval_free

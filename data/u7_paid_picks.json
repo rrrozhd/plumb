@@ -1,0 +1,126 @@
+{
+ "frozen_at": "2026-10-25T02:18:31+00:00",
+ "note": "frozen before any paid purchase; after the liveness preflight",
+ "picks": [
+  {
+   "id": "q01",
+   "need": "Current XRP price in USD",
+   "bazaar": "https://api.vextorium.com/v1/crypto-price",
+   "plumb": "https://api.sitecheck-api.workers.dev/api/crypto/convert"
+  },
+  {
+   "id": "q02",
+   "need": "Current BTC perpetual futures funding rate on major exchanges",
+   "bazaar": "https://pay.edge-agents.ai/v1/services/perp-funding-rates",
+   "plumb": "https://api.sitecheck-api.workers.dev/api/crypto/funding"
+  },
+  {
+   "id": "q03",
+   "need": "Today's crypto Fear & Greed Index value",
+   "bazaar": "https://api.vextorium.com/fear-greed-pago",
+   "plumb": "https://api.sitecheck-api.workers.dev/api/crypto/fear-greed"
+  },
+  {
+   "id": "q04",
+   "need": "Convert 250 EUR to USD at the latest exchange rate",
+   "bazaar": "https://api.stablecoingateways.com/v1/fx/convert",
+   "plumb": "https://api.fadeandco.workers.dev/api/agent-intel/ecb-institutional-fx-rates"
+  },
+  {
+   "id": "q05",
+   "need": "Latest Brent and WTI crude oil prices in USD per barrel",
+   "bazaar": "https://api.tradeenergy-api.workers.dev/api/energy/crude-oil-brent-wti",
+   "plumb": "https://api.tradeenergy-api.workers.dev/api/energy/crude-oil-brent-wti"
+  },
+  {
+   "id": "q06",
+   "need": "Latest US CPI inflation rate (year over year) and the current Federal Reserve funds target range",
+   "bazaar": "https://api.stablecoingateways.com/v1/us/rates-macro",
+   "plumb": "https://api.vextorium.com/tipos-fed-pago"
+  },
+  {
+   "id": "q07",
+   "need": "Apple Inc. total revenue for its most recent fiscal year from SEC EDGAR filings",
+   "bazaar": "https://api.stablecoingateways.com/v1/sec/company-facts",
+   "plumb": "https://api.stablecoingateways.com/v1/sec/company-facts"
+  },
+  {
+   "id": "q08",
+   "need": "Screen the company name Rosneft against OFAC and other sanctions lists",
+   "bazaar": "https://compliancepulse.theaslangroupllc.com/api/screen/sanctions",
+   "plumb": "https://api.fadeandco.workers.dev/api/agent-intel/ofac-sanctions-preflight"
+  },
+  {
+   "id": "q09",
+   "need": "Is the Ethereum address 0x098B716B8Aaf21512996dC57EB0615e2383E2f96 on a sanctions list?",
+   "bazaar": "https://api.stablecoingateways.com/v1/sanctions/address",
+   "plumb": "https://api.vextorium.com/v1/wallet-sanctions-check"
+  },
+  {
+   "id": "q10",
+   "need": "Security risk check for the Ethereum token contract 0x6982508145454Ce325dDbE47a25d4ec3d2311933: honeypot, owner privileges, buy and sell tax",
+   "bazaar": "https://onchainpulse.theaslangroupllc.com/api/facet/honeypot",
+   "plumb": "https://api.chainmarket-api.workers.dev/api/crypto/honeypot-detector"
+  },
+  {
+   "id": "q11",
+   "need": "USDC balance of the Ethereum address 0x28C6c06298d514Db089934071355E5743bf21d60",
+   "bazaar": "https://api.sitecheck-api.workers.dev/api/btc/address",
+   "plumb": "https://api.sitecheck-api.workers.dev/api/evm/balance"
+  },
+  {
+   "id": "q12",
+   "need": "Current Ethereum gas price: base fee and priority fee in gwei",
+   "bazaar": "https://horizonpulse.dev/api/gas",
+   "plumb": "https://api.sitecheck-api.workers.dev/api/gas"
+  },
+  {
+   "id": "q13",
+   "need": "Verify XRPL transaction 65A456656B9479457C0995E2FC770319C7636C39550DF4A4E127D265ADB90795: was it validated and what amount did it deliver?",
+   "bazaar": "https://horizonpulse.dev/api/tx-status",
+   "plumb": "https://horizonpulse.dev/api/tx-status"
+  },
+  {
+   "id": "q14",
+   "need": "WHOIS registration data for the domain ripple.com: registrar, creation date and expiry date",
+   "bazaar": "https://api.stablecoingateways.com/v1/whois",
+   "plumb": "https://api.sitecheck-api.workers.dev/api/domain"
+  },
+  {
+   "id": "q15",
+   "need": "Current weather and 3-day forecast for New York City",
+   "bazaar": "https://api.vextorium.com/v1/us-weather",
+   "plumb": "https://api.vextorium.com/tiempo-mundo-pago"
+  },
+  {
+   "id": "q16",
+   "need": "Fetch https://en.wikipedia.org/wiki/XRP_Ledger and return the article text as clean Markdown",
+   "bazaar": "https://horizonpulse.dev/api/fetch",
+   "plumb": "https://api.fadeandco.workers.dev/api/agent-intel/reader-markdown-extract"
+  },
+  {
+   "id": "q17",
+   "need": "Is 2026-11-26 a US business day? List the US federal holidays in November 2026",
+   "bazaar": "https://api.stablecoingateways.com/v1/business-days",
+   "plumb": "https://api.sitecheck-api.workers.dev/api/holidays"
+  },
+  {
+   "id": "q18",
+   "need": "Latest news headlines about XRP or Ripple from the past 24 hours, with source and link",
+   "bazaar": "https://api.sitecheck-api.workers.dev/api/crypto/news",
+   "plumb": "https://api.sitecheck-api.workers.dev/api/crypto/news"
+  },
+  {
+   "id": "q19",
+   "need": "Recent arXiv papers on payments by AI agents or agentic commerce, with titles, authors and links",
+   "bazaar": "https://api.vextorium.com/v1/arxiv-search",
+   "plumb": "https://api.sitecheck-api.workers.dev/api/arxiv"
+  },
+  {
+   "id": "q20",
+   "need": "Recruiting clinical trials for type 2 diabetes in the United States, with NCT IDs",
+   "bazaar": "https://clinicalintelpulse.theaslangroupllc.com/api/clinical/trial-check",
+   "plumb": "https://api.sitecheck-api.workers.dev/api/clinical-trials"
+  }
+ ]
+}

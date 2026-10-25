@@ -11,6 +11,7 @@ dependencies = [
     "mpmath>=1.4.1",
     "numpy>=2.5.4",
     "pyyaml>=6",
+    "xrpl-py>=5.2.0",
 ]
 
 [project.scripts]
