@@ -375,8 +375,12 @@ def run_e21(cfg: dict, live: bool) -> dict:
     return report
 
 
-def run_e22(cfg: dict, live: bool) -> dict:
-    """E22 per eval/e22_prereg.md: held-out needs; Bazaar #1 vs Plumb v2 #1, both called with judge-v2 arguments."""
+def run_e22(cfg: dict, live: bool, name: str = "e22") -> dict:
+    """E22/E26 per eval/<name>_prereg.md: Bazaar #1 vs Plumb v2 #1, both called with judge-v2 arguments.
+
+    Needs from eval/queries_<name>.yaml, picks frozen to data/<name>_picks.json; the live report is rewritten after
+    every purchase to out/<name>-live.json, and a rerun resumes from it by (need, arm), so a crash never re-buys.
+    """
     import gzip
     from anthropic.lib.bedrock import AnthropicBedrock
     from plumb import catalog, grader as G, judge, rank, relevance
@@ -384,17 +388,17 @@ def run_e22(cfg: dict, live: bool) -> dict:
     _load_env("judge.env")
     root = config.ROOT / "data"
     cfg = {**cfg, "paths": {**cfg["paths"], "fit": "data/fit_v2.json"}}
-    needs = yaml.safe_load((config.ROOT / "eval" / "queries_e22.yaml").read_text())["queries"]
+    needs = yaml.safe_load((config.ROOT / "eval" / f"queries_{name}.yaml").read_text())["queries"]
     rk = rank.load(cfg, root, embed=relevance.Titan(cfg).embed, with_principals=False, judge=_cold_judge(cfg))
     jclient = AnthropicBedrock(aws_region=cfg["judge"]["region"])
     bz = catalog.Bazaar(cfg)
     mid = Decimal(json.loads((root / "meta.json").read_text())["xrp_in_rlusd"])
     cap_each, cap_total = Decimal("0.05"), money.rlusd(cfg["caps"]["eval_max_total"])
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%MZ")
-    bodies = config.ROOT / "out" / f"e22-bodies-{stamp}"
+    bodies = config.ROOT / "out" / f"{name}-bodies-{stamp}"
     bodies.mkdir(parents=True, exist_ok=True)
 
-    picks, frozen = [], root / "e22_picks.json"
+    picks, frozen = [], root / f"{name}_picks.json"
     if live and frozen.exists():  # buy exactly the committed dry-run picks; a fresh search or judge call could differ
         picks = json.loads(frozen.read_text())["picks"]
     for q in needs if not picks else []:  # picks and arguments frozen before any purchase, written to disk first
@@ -409,8 +413,9 @@ def run_e22(cfg: dict, live: bool) -> dict:
         out = rk.shortlist(q["need"], k=1, constraints={"max_price": str(cap)})["results"]
         p = out[0] if out else None
         picks.append({"id": q["id"], "need": q["need"],
-                      "bazaar": {"url": b.url, "method": b.method, "args": b_args} if b else None,
-                      "plumb": {"url": p["url"], "method": p["method"], "args": p["call"]["args"], "match": p["match"]} if p else None})
+                      "bazaar": {"url": b.url, "method": b.method, "args": b_args, "operator": b.payto} if b else None,
+                      "plumb": {"url": p["url"], "method": p["method"], "args": p["call"]["args"], "match": p["match"],
+                                "operator": p["operator"]} if p else None})
     if not (live and frozen.exists()):
         frozen.write_text(json.dumps({"frozen_at": stamp, "picks": picks}, indent=1))
     if not live:
@@ -422,13 +427,27 @@ def run_e22(cfg: dict, live: bool) -> dict:
                 if line.startswith("AUDITOR_SEED="))
     wallet, lg = Wallet.from_seed(seed), ledger.Ledger(cfg)
     client = JsonRpcClient(lg.url)
+    state = config.ROOT / "out" / f"{name}-live.json"
+    prev = {r["id"]: r for r in json.loads(state.read_text())["rows"]} if state.exists() else {}
     spent, done, rows = Decimal(0), {}, []
+    for r in prev.values():  # resume: every recorded (need, arm) is final, one attempt per pick
+        for arm in ("bazaar", "plumb"):
+            if arm in r and not r[arm].get("shared"):
+                spent += Decimal(r[arm].get("spent", "0"))
+                if r[arm].get("url"):
+                    done[(r["id"], r[arm]["url"])] = r[arm]
+
+    def save(partial):
+        state.write_text(json.dumps({"at": stamp, "prereg": f"eval/{name}_prereg.md", "rows": rows + [partial]}, indent=1, default=str))
+
     with httpx.Client(timeout=15) as http:
         for pk in picks:
             q = next(x for x in needs if x["id"] == pk["id"])
-            row = {"id": pk["id"], "need": pk["need"]}
+            row = dict(prev.get(pk["id"]) or {"id": pk["id"], "need": pk["need"]})
             for arm in ("bazaar", "plumb"):
                 pick = pk[arm]
+                if arm in row:
+                    continue
                 if not pick:
                     row[arm] = {"verdict": "refused", "why": "no pick", "spent": "0"}
                     continue
@@ -465,6 +484,7 @@ def run_e22(cfg: dict, live: bool) -> dict:
                                    "verdict_llm_only": "good" if (g1["g3_well_formed"] and g1["g4_answers_need"] and g1["g5_fresh_enough"]) else "bad"}
                 done[(pk["id"], pick["url"])] = res
                 row[arm] = res
+                save(row)
             rows.append(row)
     summary = {}
     for arm in ("bazaar", "plumb"):
@@ -475,8 +495,8 @@ def run_e22(cfg: dict, live: bool) -> dict:
             good = sum(r.get(field) == "good" for r in rs)
             summary[f"{arm}/{gname}"] = {"good": good, "of": len(rs), "cost_rlusd": str(merchant + fee),
                                          "cost_per_good": str(((merchant + fee) / good).quantize(Decimal("0.000001"))) if good else None}
-    report = {"at": stamp, "mode": "live", "prereg": "eval/e22_prereg.md", "spent_total_rlusd": str(spent), "summary": summary, "rows": rows}
-    out_path = config.ROOT / "out" / f"e22-live-{stamp}.json"
+    report = {"at": stamp, "mode": "live", "prereg": f"eval/{name}_prereg.md", "grader": G.VERSION, "spent_total_rlusd": str(spent), "summary": summary, "rows": rows}
+    out_path = config.ROOT / "out" / f"{name}-live-{stamp}.json"
     out_path.write_text(json.dumps(report, indent=1, default=str))
     report["path"] = str(out_path)
     return report

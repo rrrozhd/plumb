@@ -173,6 +173,8 @@ def main(argv: list[str] | None = None) -> None:
     e21.add_argument("--live", action="store_true")
     e22 = sub.add_parser("e22", help="E22 held-out needs, judge v2, per eval/e22_prereg.md; dry-run unless --live")
     e22.add_argument("--live", action="store_true")
+    e26 = sub.add_parser("e26", help="E26 powered needs (100, code-checked), per eval/e26_prereg.md; dry-run unless --live")
+    e26.add_argument("--live", action="store_true")
     sub.add_parser("eval-free", help="U7 without money: probe Bazaar #1 vs Plumb #1 for each frozen need")
     args = ap.parse_args(argv)
     cfg = config.load()
@@ -198,9 +200,9 @@ def main(argv: list[str] | None = None) -> None:
     if args.cmd == "liveness":
         liveness(cfg)
         return
-    if args.cmd == "e22":
+    if args.cmd in ("e22", "e26"):
         from plumb import eval_paid
-        rep = eval_paid.run_e22(cfg, live=args.live)
+        rep = eval_paid.run_e22(cfg, live=args.live, name=args.cmd)
         print(json.dumps({k: rep[k] for k in ("mode", "summary", "spent_total_rlusd", "path")} | ({"picks": rep["picks"]} if rep["mode"] == "dry-run" else {}), indent=1, default=str))
         return
     if args.cmd == "e21":
