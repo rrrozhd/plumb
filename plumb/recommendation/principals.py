@@ -8,8 +8,8 @@ import random
 import tomllib
 from decimal import Decimal
 
-from plumb.models import Profile
-from plumb.recommender import HybridRecommender, Principal
+from plumb.core.models import Profile
+from plumb.recommendation.recommender import HybridRecommender, Principal
 
 
 def seed_from_ledger(ledger, addr: str, cfg: dict) -> dict:

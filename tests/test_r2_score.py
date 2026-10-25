@@ -3,8 +3,9 @@ from pathlib import Path
 
 import pytest
 
-from plumb import config, score
-from plumb.score import Attempt
+from plumb.core import config
+from plumb.recommendation import score
+from plumb.recommendation.score import Attempt
 
 pytestmark = pytest.mark.p0
 CFG = config.load()

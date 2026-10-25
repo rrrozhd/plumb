@@ -6,7 +6,8 @@ from math import comb
 
 import pytest
 
-from plumb import config, score
+from plumb.core import config
+from plumb.recommendation import score
 
 pytestmark = pytest.mark.p0
 DATA = config.ROOT / "data"
@@ -63,7 +64,7 @@ def test_e2_and_e16_e17_from_vet402():
 
 
 def test_e15_evidence_coverage():
-    from plumb import recommender
+    from plumb.recommendation import recommender
     fit = json.loads((DATA / "fit.json").read_text())  # the v1 labels E15 was measured on
     rec = recommender.fit(config.load(), DATA)
     cands = {e for v in fit.values() for e in v["labels"]}
@@ -97,7 +98,7 @@ def test_e24_pooled():
 
 def test_e26_powered():
     import yaml
-    from plumb import stats
+    from plumb.evaluation import stats
     rows = json.loads((DATA / "e26_result.json").read_text())["rows"]
     fam = {q["id"]: q["family"] for q in yaml.safe_load((config.ROOT / "eval" / "queries_e26.yaml").read_text())["queries"]}
     r = stats.report(rows, fam)

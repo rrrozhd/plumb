@@ -4,8 +4,8 @@ import json
 
 import httpx
 
-from plumb import money
-from plumb.models import Endpoint
+from plumb.core import money
+from plumb.core.models import Endpoint
 
 
 def endpoint_id(url: str, method: str) -> str:

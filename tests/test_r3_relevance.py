@@ -3,8 +3,8 @@ import json
 import numpy as np
 import pytest
 
-from plumb import judge, relevance
-from plumb.relevance import Lexical, template
+from plumb.recommendation import judge, relevance
+from plumb.recommendation.relevance import Lexical, template
 
 pytestmark = pytest.mark.p0
 
@@ -75,7 +75,7 @@ class _StubClient:
 
 
 def test_judge_uses_structured_output_with_configured_model():
-    from plumb import config
+    from plumb.core import config
     cfg = config.load()
     c = _StubClient()
     out = judge.judge(c, cfg, "XRP price", [{"id": "e1", "description": "prices"}])

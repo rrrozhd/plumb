@@ -14,7 +14,9 @@ from decimal import Decimal
 import httpx
 import yaml
 
-from plumb import catalog, config, ledger, rank
+from plumb.sources import catalog, ledger
+from plumb.core import config
+from plumb.recommendation import rank
 
 
 def freeze_picks(cfg: dict, root) -> list[dict]:
@@ -97,7 +99,7 @@ def probe(res: dict, cfg: dict, lg, http: httpx.Client, vet: dict, pay_counts: d
 
 
 def run(cfg: dict) -> dict:
-    from plumb import score
+    from plumb.recommendation import score
     root = config.ROOT / "data"
     picks = freeze_picks(cfg, root)
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%MZ")

@@ -2,9 +2,9 @@
 import tomllib
 from pathlib import Path
 
-from plumb import money
+from plumb.core import money
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 REQUIRED_CAPS = ("audit_max_per_purchase", "audit_max_per_day", "audit_max_total", "eval_max_total")
 
 

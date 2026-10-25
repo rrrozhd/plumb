@@ -5,7 +5,9 @@ from collections import Counter
 import pytest
 import yaml
 
-from plumb import config, grader, relevance
+from plumb.core import config
+from plumb.evaluation import grader
+from plumb.recommendation import relevance
 
 pytestmark = pytest.mark.p0
 EVAL = config.ROOT / "eval"

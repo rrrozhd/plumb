@@ -14,9 +14,10 @@ from unittest.mock import patch
 import numpy as np
 import yaml
 
-from plumb import config, rank, recommender, relevance
-from plumb.models import Profile
-from plumb.recommender import Principal
+from plumb.core import config
+from plumb.recommendation import rank, recommender, relevance
+from plumb.core.models import Profile
+from plumb.recommendation.recommender import Principal
 
 ARMS = ("global", "personal", "collaborative")
 
@@ -132,7 +133,8 @@ def source_hashes(root):
     paths = ["config/plumb.toml", "config/personas.toml", "eval/queries.yaml", "eval/personalization.toml",
              "eval/personalization_protocol.md", "eval/personalization.py", "data/catalog.json.gz",
              "data/vet402_xrpl.csv", "data/ledger_payments.json", "data/meta.json", "data/fit.json", "data/liveness.json"]
-    paths += [f"plumb/{name}.py" for name in ("config", "models", "catalog", "score", "recommender", "rank", "relevance")]
+    paths += [f"plumb/{name}.py" for name in ("core/config", "core/models", "sources/catalog", "recommendation/score",
+                                                   "recommendation/recommender", "recommendation/rank", "recommendation/relevance")]
     return {p: hashlib.sha256((root / p).read_bytes()).hexdigest() for p in paths}
 
 

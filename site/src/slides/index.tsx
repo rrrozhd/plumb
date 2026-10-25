@@ -169,23 +169,45 @@ export function Mandate({ active, auto }: SlideProps) {
   )
 }
 
+type Proof = {
+  run: string; at: string
+  identities: Record<string, string>
+  channel: { id: string; cap_rlusd: string }
+  purchases: { requirement: Record<string, string | number>; voucher: Record<string, string>; redeemed_tx: string; claim_id: string;
+    resource: { status: number; content: { product: string } | null }; shortlist: { id: string; budget_left_rlusd: string } }[]
+  refused: { spent_rlusd: string; fee_rlusd: string; cap_rlusd: string }
+  settlement: { claims_settled: number; payout_tx: string; settlement_tx: string; receipt_url: string;
+    receipt: { status: string; channel_id: string; claim_id: string; payout_tx: string; cumulative_disbursed_rlusd: string } }
+}
+
+const EVM = "https://explorer.testnet.xrplevm.org"
+const h = (x: string) => `${x.slice(0, 6)}…${x.slice(-4)}`
+const Tx = ({ tx, label }: { tx: string; label: string }) => (
+  <div className="flex justify-between gap-3"><span className="text-muted-foreground">{label}</span><Ext href={`${EVM}/tx/${tx}`} className="font-mono text-sky-300">{h(tx)}</Ext></div>
+)
+const Row = ({ k, v, mono = true }: { k: string; v: string; mono?: boolean }) => (
+  <div className="flex justify-between gap-3"><span className="text-muted-foreground">{k}</span><span className={cn(mono && "font-mono")}>{v}</span></div>
+)
+const Step = ({ n, title, children }: { n: number; title: string; children: React.ReactNode }) => (
+  <div className="flex min-h-0 flex-col gap-2.5 rounded-xl border bg-card/60 p-5 text-sm leading-snug">
+    <div className="text-lg font-semibold"><span className="mr-2 text-brand">{n}</span>{title}</div>
+    {children}
+  </div>
+)
+
 export function Ap4m({ active }: SlideProps) {
+  const [p, setP] = useState<Proof>()
   const [events, setEvents] = useState<TrailEvent[]>([])
-  const [run, setRun] = useState<string | null>(null)
   const [live, setLive] = useState(false)
   const [error, setError] = useState<string>()
   const source = useRef<EventSource | null>(null)
-  const box = useRef<HTMLDivElement>(null)
-  useEffect(() => { box.current?.scrollTo({ top: box.current.scrollHeight, behavior: "smooth" }) }, [events.length])
-  useEffect(() => {
-    if (active && !events.length && !live) api.trail("latest").then((t) => { setEvents(t.events); setRun(t.run) }).catch(() => {})
-  }, [active, events.length, live])
+  useEffect(() => { if (active && !p) fetch("/ap4m-proof.json").then((r) => r.json()).then(setP).catch(() => {}) }, [active, p])
   useEffect(() => () => source.current?.close(), [])
   const start = async () => {
     setError(undefined)
     try {
       const { run: id } = await api.runAgent({ per_purchase: DEMO.openMandate, cap: DEMO.agentCap, needs: DEMO.agentNeeds })
-      setRun(id); setEvents([]); setLive(true)
+      setEvents([]); setLive(true)
       const es = new EventSource(`/api/agent/stream?run=${id}`)
       source.current = es
       es.onmessage = (m) => setEvents((x) => [...x, JSON.parse(m.data)])
@@ -193,23 +215,56 @@ export function Ap4m({ active }: SlideProps) {
       es.onerror = () => { setLive(false); es.close() }
     } catch (e) { setError((e as Error).message) }
   }
+  if (live || events.length) return (
+    <div><Head i={5} /><div className="max-h-[62vh] overflow-y-auto pr-1"><Trail events={events} live={live} /></div></div>
+  )
   return (
     <div>
       <Head i={5} />
-      <div className="grid grid-cols-[1fr_2fr] gap-8">
-        <div className="space-y-4">
-          <Stat value={`${DEMO.agentCap} RLUSD`} label="channel cap: the agent's spending mandate" />
-          <Stat value="0.002" label="RLUSD per shortlist, paid with a signed AP4M voucher" />
-          <div className="flex gap-2">
-            <Button size="lg" onClick={start} disabled={live}><Play />{live ? "running on testnet…" : "Run live on AP4M testnet"}</Button>
-          </div>
-          {error && <div className="text-sm text-bad">{error}</div>}
-          <div className="text-sm text-muted-foreground">{run && <>{live ? "live run" : "last completed run"} <span className="font-mono">{run}</span> · </>}every row links to its receipt<Cite id={E.e18.id} /></div>
+      {p && (
+        <div className="grid grid-cols-[1fr_1.45fr_1fr] gap-4">
+          <Step n={1} title="Identities and a funded channel cap">
+            <Row k="agent wallet (signer)" v={h(p.identities.agent)} />
+            <Row k="agent PSP" v={h(p.identities.agent_psp)} />
+            <Row k="merchant: Plumb" v={h(p.identities.merchant)} />
+            <Row k="merchant PSP" v={h(p.identities.merchant_psp)} />
+            <Row k="merchant payout" v={h(p.identities.payout)} />
+            <Row k="team budget deposit" v={`${Number(p.identities.team_budget_rlusd)} RLUSD`} />
+            <div className="space-y-1 rounded-lg border border-brand/50 p-3"><Row k="channel" v={h(p.channel.id)} /><Row k="funded cap" v={`${p.channel.cap_rlusd} RLUSD`} /></div>
+            <div className="rounded-lg border border-bad/50 bg-bad/10 p-3">
+              <div className="font-semibold text-bad">Over-cap attempt refused</div>
+              <div className="text-muted-foreground">spent {p.refused.spent_rlusd} + {p.refused.fee_rlusd} &gt; cap {p.refused.cap_rlusd}: no voucher signed, nothing paid</div>
+            </div>
+          </Step>
+          <Step n={2} title="HTTP 402 → agent-signed voucher → resource">
+            {p.purchases.map((x, i) => (
+              <div key={x.redeemed_tx} className="space-y-1 rounded-lg border p-3 font-mono text-sm">
+                <div className="font-sans font-semibold text-muted-foreground">purchase {i + 1}</div>
+                <div><b className="text-brand">HTTP 402</b> · {x.requirement.amount_rlusd} RLUSD · {x.requirement.scheme} · pay to {h(String(x.requirement.pay_to))}</div>
+                <div>↓ agent signs voucher: cumulative {x.voucher.previous_rlusd} → {x.voucher.cumulative_rlusd} · sig {h(x.voucher.agent_signature)}</div>
+                <div>↓ VoucherRedeemed <Ext href={`${EVM}/tx/${x.redeemed_tx}`} className="text-sky-300">{h(x.redeemed_tx)}</Ext></div>
+                <div>↓ <b className="text-good">HTTP {x.resource.status}</b> · resource released: {x.resource.content?.product ?? "resource"}</div>
+              </div>
+            ))}
+          </Step>
+          <Step n={3} title="Settlement and a receipt linking it all">
+            <Row k="status" v={`${p.settlement.receipt.status} · ${p.settlement.claims_settled} claims`} mono={false} />
+            <Row k="paid out to merchant" v={`${p.settlement.receipt.cumulative_disbursed_rlusd} RLUSD`} />
+            <Tx tx={p.settlement.payout_tx} label="payout tx" />
+            <Tx tx={p.settlement.settlement_tx} label="settlement tx" />
+            <div className="space-y-1 rounded-lg border border-good/50 p-3">
+              <div className="flex justify-between"><span className="font-semibold text-good">Mastercard AP4M receipt</span><Ext href={p.settlement.receipt_url} className="text-good">open</Ext></div>
+              <Row k={`channel ${p.settlement.receipt.channel_id === p.channel.id ? "✓ = 1" : "✗"}`} v={h(p.settlement.receipt.channel_id)} />
+              <Row k={`claim ${p.purchases.some((x) => x.claim_id === p.settlement.receipt.claim_id) ? "✓ = 2" : "✗"}`} v={h(p.settlement.receipt.claim_id)} />
+              <Row k={`payout ${p.settlement.receipt.payout_tx === p.settlement.payout_tx ? "✓ = tx" : "✗"}`} v={h(p.settlement.receipt.payout_tx)} />
+            </div>
+          </Step>
         </div>
-        <div ref={box} className="max-h-[54vh] overflow-y-auto pr-1">
-          <Trail events={events} live={live} />
-          {!events.length && !live && <div className="text-muted-foreground">No run yet: press Run.</div>}
-        </div>
+      )}
+      <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground">
+        {p && <span>Recorded run {p.run} · {p.at.slice(0, 16).replace("T", " ")} UTC · XRPL EVM testnet (chain {p.identities.chain_id}) · every hash opens the explorer<Cite id={E.e18.id} /></span>}
+        <Button size="sm" variant="ghost" onClick={start}><Play />run live</Button>
+        {error && <span className="text-bad">{error}</span>}
       </div>
     </div>
   )
@@ -329,7 +384,7 @@ export function Transfer() {
   const rows: [string, string, string, string, string, string][] = [
     ["XRPL x402", "payTo account", "validated payment + InvoiceID", "code-checked purchases", "built", "good"],
     ["Mastercard AP4M", "attested merchant registry", "voucher and settlement events", "reviews bound to receipts", "high · no ranking yet", "good"],
-    ["x402 on other chains (Base first)", "payTo address", "token transfer events", "same purchases", "high · 39k listings", "good"],
+    ["x402, other chains", "payTo address", "token transfer events", "same purchases", "high · 39k listings", "good"],
     ["MCP tool registries", "publisher", "none: tools are mostly free", "needs signed agent identity", "medium", "mid"],
     ["Card checkout", "card merchant", "card network", "delivery and returns", "low · no goods data", "bad"],
   ]
@@ -340,7 +395,7 @@ export function Transfer() {
         <span className="text-sm uppercase tracking-[0.18em] text-brand">travels unchanged · </span>
         trust from settlement × verified answers · rank by cost per good answer · one merchant per company · the mandate gate
       </div>
-      <Table className="text-lg">
+      <Table className="text-base">
         <TableHeader><TableRow><TableHead>market</TableHead><TableHead>who gets paid</TableHead><TableHead>did it clear</TableHead><TableHead>was it usable</TableHead><TableHead>fit</TableHead></TableRow></TableHeader>
         <TableBody>
           {rows.map(([m, who, clear, usable, fit, tone]) => (
@@ -371,7 +426,7 @@ export function Close() {
         <Stat value="10 / 14" label="failures recovered after fixing our own bug, bought again" cite="E28" tone="good" />
         <Stat value="0.13 ms" label="worst-5% ranking time, in-process bench" cite="E25" />
       </div>
-      <div className="mt-10 text-muted-foreground">Evidence: <Ext href="https://github.com/rrrozhd/plumb/blob/mock-personalized/docs/EVIDENCE.md">docs/EVIDENCE.md</Ext></div>
+      <div className="mt-10 text-muted-foreground">Evidence: <Ext href="https://github.com/rrrozhd/plumb/blob/main/docs/EVIDENCE.md">docs/EVIDENCE.md</Ext></div>
     </div>
   )
 }

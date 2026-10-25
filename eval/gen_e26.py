@@ -1,7 +1,7 @@
 """Generate eval/queries_e26.yaml once (2026-10-25), before any E26 pick or purchase. Kept for provenance; never re-run after freezing.
 
 Needs come from fixed lists written here, not from the catalogue, so the set is not shaped by what is for sale.
-Every need has a code oracle against a free public source (family + params), graded by plumb.grader v3.
+Every need has a code oracle against a free public source (family + params), graded by plumb.evaluation.grader v3.
 """
 import json
 import urllib.request

@@ -5,7 +5,8 @@ from pathlib import Path
 
 import pytest
 
-from plumb import catalog, config, ledger
+from plumb.sources import catalog, ledger
+from plumb.core import config
 
 pytestmark = pytest.mark.p0
 FIX = Path(__file__).parent / "fixtures"

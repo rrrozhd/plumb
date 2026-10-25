@@ -3,7 +3,8 @@ from decimal import Decimal
 
 import pytest
 
-from plumb import config, rank, relevance
+from plumb.core import config
+from plumb.recommendation import rank, relevance
 
 pytestmark = pytest.mark.p0
 CFG = config.load()
@@ -78,8 +79,8 @@ def test_injection_text_does_not_raise_lexical_fit():
 
 
 def test_anonymous_and_new_principal_rank_identically(ranker):
-    from plumb.models import Profile
-    from plumb.recommender import Principal
+    from plumb.core.models import Profile
+    from plumb.recommendation.recommender import Principal
     ranker.rec.principals["sim:new"] = Principal("sim:new", "new", Profile(), "simulated")
     need = known_need(ranker)
     a = [x["endpoint_id"] for x in ranker.shortlist(need)["results"]]

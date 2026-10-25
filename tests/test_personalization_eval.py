@@ -5,10 +5,11 @@ import numpy as np
 import pytest
 
 from eval import personalization as study
-from plumb import config, rank, relevance
-from plumb.models import Endpoint
-from plumb.recommender import HybridRecommender
-from plumb.score import Trust
+from plumb.core import config
+from plumb.recommendation import rank, relevance
+from plumb.core.models import Endpoint
+from plumb.recommendation.recommender import HybridRecommender
+from plumb.recommendation.score import Trust
 
 pytestmark = pytest.mark.p0
 

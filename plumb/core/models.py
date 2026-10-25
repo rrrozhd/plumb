@@ -1,4 +1,4 @@
-"""Shared value types. Probabilities are floats; money is Decimal or int drops (plumb.money)."""
+"""Shared value types. Probabilities are floats; money is Decimal or int drops (plumb.core.money)."""
 from dataclasses import dataclass, field
 from datetime import datetime
 from decimal import Decimal

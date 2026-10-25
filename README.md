@@ -29,6 +29,13 @@ Sources and caveats: [`docs/EVIDENCE.md`](docs/EVIDENCE.md) (E18–E23) and [`do
 Full spec: [`docs/RECOMMENDER.md`](docs/RECOMMENDER.md) and [`SPEC.md`](SPEC.md).
 
 ## Run it
+
+This source snapshot includes the market data and frozen evaluation results needed
+for cached recommendations and the offline tests. Raw purchase response bodies,
+customer databases, cloud receipts, AP4M replay trails and backup videos are local
+artifacts and are not included. The memory demo can show historical payment
+metadata without the saved response body. Live integrations need your own
+credentials and resources; see [reproducibility notes](docs/REPRODUCIBILITY.md).
 ```bash
 uv sync
 uv run pytest -m p0                                  # offline gate; zero selected tests is a failure
@@ -62,19 +69,50 @@ The managed AWS rehearsal restored exact simulated feedback into a fresh
 database and reproduced that customer's learned ranking (EVIDENCE MEM2).
 Backup is an explicit operator action; ordinary ranking uses local SQLite.
 
-**Mastercard AP4M (XRPL EVM testnet).** It needs `env/ap4m.env` and an onboarded team:
+**Mastercard AP4M (XRPL EVM testnet).** First complete the [AP4M setup](ap4m/README.md), including the sponsor helper downloads, your `env/ap4m.env`, and team onboarding:
 ```bash
 uv run python -m plumb.api &
-cd ap4m && npm install && node merchant.mjs &
-PLUMB_NEW_CHANNEL=1 node agent.mjs
+(cd ap4m && node merchant.mjs) &
+(cd ap4m && node agent.mjs)
 ```
 **Refresh data** (network; Bedrock needs `env/judge.env`, Quicknode needs `env/ledger.env`): `uv run plumb snapshot`, then `uv run plumb build`, then `uv run plumb liveness`.
 
 **Evals** (dry-run by default; `--live` spends mainnet RLUSD within the caps in `config/plumb.toml`): `uv run plumb eval-free`, `uv run plumb e21`.
 
 ## Layout
-- `plumb/`: catalogue, ledger, scorer, relevance, judge, recommender, ranker, customer memory, outcomes, browser demo, grader, evals, MCP server, API.
+
+The Python package groups implementation by responsibility:
+
+```text
+plumb/
+├── core/             # config.py, db.py, models.py, money.py: shared foundations
+├── interfaces/       # cli.py, api.py, mcp_server.py, memory_demo.py and HTML
+├── sources/          # catalog.py, ledger.py: marketplace and XRPL evidence
+├── recommendation/   # recommender.py, rank.py, score.py, relevance.py,
+│                     # judge.py, principals.py: fit and rank recommendations
+├── customer/         # memory.py, outcomes.py, agentcore_memory.py: feedback and backup
+├── evaluation/       # eval_free.py, eval_paid.py, grader.py, stats.py
+├── __init__.py
+└── cli.py, api.py, mcp_server.py, memory_demo.py, agentcore_memory.py
+                      # small compatibility launchers
+```
+
+Only package initialization and compatibility launchers remain at the root, so
+the commands above remain unchanged. Import implementation modules from their
+owning package, for example `from plumb.core import config`,
+`from plumb.interfaces import api` or `from plumb.customer import memory`.
+
+CLI, HTTP and MCP requests enter through `interfaces/` and call
+`recommendation/rank.py`, which loads the snapshot fit, applies customer memory,
+and ranks eligible endpoints. The fit combines `sources/catalog.py` with saved
+audit and ledger evidence; customer feedback persists through
+`customer/outcomes.py` and `customer/memory.py`. Shared configuration, value
+types, money handling and SQLite access live in `core/`. Evaluation runners and
+response grading live together in `evaluation/`.
+
+The surrounding repository keeps its existing roles:
+
 - `ap4m/`: Mastercard AP4M merchant shim and buyer agent (Node).
 - `data/`: the committed market snapshot, judge labels and eval results.
 - `eval/`: the frozen needs, the rubric and the E21 pre-registration.
-- `docs/`: pitch, demo script, evidence, limits, markets, prep.
+- `docs/`: pitch, demo script, evidence, limits, markets and reproducibility.

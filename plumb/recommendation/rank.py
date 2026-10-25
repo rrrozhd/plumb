@@ -13,9 +13,10 @@ from decimal import Decimal
 
 import numpy as np
 
-from plumb import db, relevance
-from plumb.models import Profile
-from plumb.recommender import HybridRecommender, Principal
+from plumb.core import db
+from plumb.recommendation import relevance
+from plumb.core.models import Profile
+from plumb.recommendation.recommender import HybridRecommender, Principal
 
 
 @dataclass
@@ -44,7 +45,7 @@ class Ranker:
 
     @db.serialized
     def refresh_principal(self, addr: str) -> None:
-        from plumb import memory
+        from plumb.customer import memory
         if self.memory_conn is not None:
             p = memory.load_principal(self.memory_conn, addr, self._memory_base.get(addr))
             if p is not None:
@@ -196,7 +197,8 @@ def _merge(prof: Profile, c: dict) -> Profile:
 
 def load(cfg: dict, root, embed=None, with_principals: bool = True, judge=None, conn: sqlite3.Connection | None = None) -> Ranker:
     """Fit the recommender from data/: real ledger principals and simulated personas (outcomes labelled simulated)."""
-    from plumb import config, principals as P, recommender
+    from plumb.core import config
+    from plumb.recommendation import principals as P, recommender
     fit_path = config.path(cfg, "fit")
     fit = json.loads(fit_path.read_text()) if fit_path.exists() else {}
     cold_path = config.path(cfg, "fit_cold")

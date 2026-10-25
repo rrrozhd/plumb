@@ -6,7 +6,9 @@ from pathlib import Path
 
 import pytest
 
-from plumb import config, ledger, outcomes
+from plumb.core import config
+from plumb.sources import ledger
+from plumb.customer import outcomes
 
 pytestmark = pytest.mark.p0
 CFG = config.load()
@@ -61,12 +63,12 @@ def test_unvalidated_tx_fails_everything_payment_related():
 
 @pytest.fixture(scope="module")
 def ranker():
-    from plumb import rank
+    from plumb.recommendation import rank
     return rank.load(CFG, config.ROOT / "data", with_principals=False)
 
 
 def _shortlisted(ranker, tmp_path, t):
-    from plumb import db
+    from plumb.core import db
     conn = db.connect(tmp_path / "t.db")
     out = ranker.shortlist(ranker.fit[t]["need"], principal=None)
     outcomes.save_shortlist(conn, out, ranker.fit[t]["need"], AT - timedelta(minutes=5))

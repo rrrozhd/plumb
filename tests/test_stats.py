@@ -2,7 +2,7 @@ from decimal import Decimal
 
 import pytest
 
-from plumb import stats
+from plumb.evaluation import stats
 
 pytestmark = pytest.mark.p0
 

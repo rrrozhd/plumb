@@ -14,7 +14,9 @@ from decimal import Decimal
 import httpx
 import yaml
 
-from plumb import catalog, config, eval_free, ledger, money
+from plumb.sources import catalog, ledger
+from plumb.core import config, money
+from plumb.evaluation import eval_free
 
 GRADE_SCHEMA = {
     "type": "object",
@@ -130,7 +132,7 @@ def settled_on_ledger(lg, cfg, payer: str, payto: str, invoice_hash: str, tx_has
 
 
 def llm_residual(client, cfg):
-    """Tier 3 of plumb.grader: the LLM sees the whole response and answers only G4 coverage and G5 freshness."""
+    """Tier 3 of plumb.evaluation.grader: the LLM sees the whole response and answers only G4 coverage and G5 freshness."""
     def call(q: dict, body: str) -> dict:
         g = grade(client, cfg, q, body, cap=200_000)
         return {"g4_answers_need": g["g4_answers_need"], "g5_fresh_enough": g["g5_fresh_enough"], "reason": g["reason"]}
@@ -176,7 +178,7 @@ def run(cfg: dict, live: bool, resume: str | None = None, grader_version: int = 
         from anthropic.lib.bedrock import AnthropicBedrock
         from xrpl.clients import JsonRpcClient
         from xrpl.wallet import Wallet
-        from plumb.cli import _load_env
+        from plumb.interfaces.cli import _load_env
         _load_env("judge.env")
         seed = next(line.split("=", 1)[1].strip().strip('"') for line in (config.ROOT / "env" / "auditor.env").read_text().splitlines()
                     if line.startswith("AUDITOR_SEED="))
@@ -235,7 +237,7 @@ def run(cfg: dict, live: bool, resume: str | None = None, grader_version: int = 
                             body_file = bodies / f"{p['id']}-{side}.txt"
                             body_file.write_text(out["body"])
                             if grader_version == 2:
-                                from plumb import grader as G
+                                from plumb.evaluation import grader as G
                                 info = ((raw[url].get("extensions") or {}).get("bazaar") or {})
                                 declared_json = ((info.get("info") or {}).get("output") or {}).get("type") == "json"
                                 g = G.grade(q, out["body"], declared_json, None, llm=llm_residual(grader, cfg))
@@ -274,7 +276,7 @@ PLUMB_FEE = Decimal("0.002")
 def run_e21(cfg: dict, live: bool) -> dict:
     """E21 per eval/e21_prereg.md: Bazaar vs Plumb (+ its fee) vs fizzl, grader v2 primary and LLM-only secondary."""
     import gzip
-    from plumb import grader as G
+    from plumb.evaluation import grader as G
     root = config.ROOT / "data"
     picks = json.loads((root / "u7_paid_picks.json").read_text())["picks"]
     queries = {q["id"]: q for q in yaml.safe_load(config.path(cfg, "queries").read_text())["queries"]}
@@ -294,7 +296,7 @@ def run_e21(cfg: dict, live: bool) -> dict:
         from anthropic.lib.bedrock import AnthropicBedrock
         from xrpl.clients import JsonRpcClient
         from xrpl.wallet import Wallet
-        from plumb.cli import _load_env
+        from plumb.interfaces.cli import _load_env
         _load_env("judge.env")
         seed = next(line.split("=", 1)[1].strip().strip('"') for line in (config.ROOT / "env" / "auditor.env").read_text().splitlines()
                     if line.startswith("AUDITOR_SEED="))
@@ -383,8 +385,10 @@ def run_e22(cfg: dict, live: bool, name: str = "e22") -> dict:
     """
     import gzip
     from anthropic.lib.bedrock import AnthropicBedrock
-    from plumb import catalog, grader as G, judge, rank, relevance
-    from plumb.cli import _cold_judge, _load_env
+    from plumb.sources import catalog
+    from plumb.evaluation import grader as G
+    from plumb.recommendation import judge, rank, relevance
+    from plumb.interfaces.cli import _cold_judge, _load_env
     _load_env("judge.env")
     root = config.ROOT / "data"
     cfg = {**cfg, "paths": {**cfg["paths"], "fit": "data/fit_v2.json"}}

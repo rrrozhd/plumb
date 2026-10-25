@@ -7,3 +7,37 @@ node_modules/
 out/
 *.HEIC
 .env
+
+# Local credentials, customer state and developer tooling.
+.env.*
+*.env
+!*.env.example
+*.sqlite
+*.sqlite-*
+*.db-*
+*.pem
+*.key
+.DS_Store
+.pytest_cache/
+.claude/
+.codex/
+.agents/
+dist/
+
+# Internal notes, agent settings and local experiments.
+/AGENTS.md
+/CLAUDE.md
+/BUILD_PLAN.md
+/PUBLIC_REPO.md
+/ALS.md
+/.explainers/
+/als/
+/archive/
+/spike/
+/docs/PREP.md
+/docs/PROPOSAL.md
+/docs/SUBMIT.md
+/ap4m/fetch-docs.mjs
+# Download sponsor helpers locally; do not redistribute them.
+/ap4m/ap4m-hackathon-sdk.cjs
+/ap4m/ap4m-x402.mjs

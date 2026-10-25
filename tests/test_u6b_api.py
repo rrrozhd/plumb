@@ -11,7 +11,9 @@ pytestmark = pytest.mark.p0
 
 @pytest.fixture(scope="module")
 def base(tmp_path_factory):
-    from plumb import api, config, db, rank
+    from plumb.interfaces import api
+    from plumb.core import config, db
+    from plumb.recommendation import rank
     api.CONN = db.connect(tmp_path_factory.mktemp("db") / "t.db")
     api.RANKER = rank.load(api.CFG, config.ROOT / "data", with_principals=False, conn=api.CONN)
     srv = ThreadingHTTPServer(("127.0.0.1", 0), api.Handler)
@@ -42,7 +44,10 @@ def test_missing_need_is_400(base):
 
 
 def test_http_recommendations_restore_customer_feedback(base):
-    from plumb import api, config, outcomes, rank
+    from plumb.interfaces import api
+    from plumb.core import config
+    from plumb.customer import outcomes
+    from plumb.recommendation import rank
     need = "Current BTC perpetual futures funding rate on major exchanges"
     req = {"need": need, "principal": "sim:http"}
     _, before = post(base, req)

@@ -10,9 +10,11 @@ from decimal import Decimal
 
 import pytest
 
-from plumb import config, db, outcomes, rank
-from plumb.models import Profile
-from plumb.recommender import Principal
+from plumb.core import config, db
+from plumb.customer import outcomes
+from plumb.recommendation import rank
+from plumb.core.models import Profile
+from plumb.recommendation.recommender import Principal
 
 pytestmark = pytest.mark.p0
 CFG = config.load()
@@ -95,7 +97,8 @@ def test_fresh_process_restores_memory_and_leaves_another_customer_unchanged(bas
     conn.close()
     script = """
 import json, sys
-from plumb import config, db, rank
+from plumb.core import config, db
+from plumb.recommendation import rank
 c = db.connect(sys.argv[1])
 r = rank.load(config.load(), config.ROOT / 'data', with_principals=False, conn=c)
 def signature(p):
@@ -125,7 +128,7 @@ def test_storage_failure_rolls_back_and_does_not_change_ranking(base, tmp_path):
 
 
 def test_export_restore_preserves_exact_profile_and_deduplicates(base, tmp_path):
-    from plumb import memory
+    from plumb.customer import memory
     rk, conn, out = case(base, tmp_path)
     rk.rec.principals["sim:fast"].profile = Profile(max_price_rlusd=Decimal("0.020000000000000001"))
     report(rk, conn, out)
@@ -153,7 +156,7 @@ def test_legacy_database_upgrade_retains_existing_customer_outcome(tmp_path):
 
 
 def test_other_request_cannot_commit_a_failed_reports_memory(base, tmp_path, monkeypatch):
-    from plumb import memory
+    from plumb.customer import memory
     rk, conn, first = case(base, tmp_path)
     other = rk.shortlist(NEED, principal="sim:control")
     outcomes.save_shortlist(conn, other, NEED, datetime.now(timezone.utc))
@@ -215,7 +218,8 @@ def test_retired_endpoint_history_is_retained_but_excluded_from_scoring(base, tm
 
 def test_cli_recommendation_loads_and_records_customer_memory(base, tmp_path, monkeypatch, capsys):
     from types import SimpleNamespace
-    from plumb import cli, relevance
+    from plumb.interfaces import cli
+    from plumb.recommendation import relevance
     rk, conn, out = case(base, tmp_path)
     assert report(rk, conn, out, verdict="good")["accepted"]
     conn.close()
@@ -230,7 +234,7 @@ def test_cli_recommendation_loads_and_records_customer_memory(base, tmp_path, mo
 
 
 def test_mcp_tools_restore_feedback_in_a_new_ranker(base, tmp_path, monkeypatch):
-    from plumb import mcp_server
+    from plumb.interfaces import mcp_server
     conn = db.connect(tmp_path / "tools.sqlite")
     monkeypatch.setattr(mcp_server, "CONN", conn)
     monkeypatch.setattr(mcp_server, "RANKER", rank.load(CFG, config.ROOT / "data", with_principals=False, conn=conn))

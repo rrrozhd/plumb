@@ -40,7 +40,7 @@ def cloud_event(raw, actor=ACTOR):
 
 
 def test_write_preserves_exact_money_and_scopes_actor():
-    from plumb.agentcore_memory import EventStore, event_token
+    from plumb.customer.agentcore_memory import EventStore, event_token
     raw = event()
     api = client()
     with Stubber(api) as stub:
@@ -56,7 +56,7 @@ def test_write_preserves_exact_money_and_scopes_actor():
 
 
 def test_read_paginates_only_requested_actor_and_preserves_event_data():
-    from plumb.agentcore_memory import EventStore
+    from plumb.customer.agentcore_memory import EventStore
     first, second = event(), event("shortlist-two")
     api = client()
     expected = {"memoryId": MEMORY, "actorId": ACTOR, "sessionId": SESSION,
@@ -71,7 +71,7 @@ def test_read_paginates_only_requested_actor_and_preserves_event_data():
 @pytest.mark.parametrize("damage", ["other_actor", "real_principal", "money_float", "missing_key", "unknown_key",
                                    "bad_verdict", "missing_time_zone", "wrong_profile_type", "empty_shortlist", "wrong_provenance"])
 def test_rejects_malformed_or_cross_actor_payload_before_any_write(damage):
-    from plumb.agentcore_memory import EventStore
+    from plumb.customer.agentcore_memory import EventStore
     raw = event()
     if damage == "other_actor":
         raw["principal"]["addr"] = "sim:other"
@@ -99,7 +99,7 @@ def test_rejects_malformed_or_cross_actor_payload_before_any_write(damage):
 
 
 def test_read_rejects_mismatched_aws_actor_envelope():
-    from plumb.agentcore_memory import EventStore
+    from plumb.customer.agentcore_memory import EventStore
     api = client()
     with Stubber(api) as stub:
         stub.add_response("list_events", {"events": [cloud_event(event(), "sim:other")]})
@@ -108,14 +108,14 @@ def test_read_rejects_mismatched_aws_actor_envelope():
 
 
 def test_rejects_real_wallet_before_aws_request():
-    from plumb.agentcore_memory import EventStore
+    from plumb.customer.agentcore_memory import EventStore
     api = client()
     with Stubber(api), pytest.raises(ValueError, match="sim:"):
         EventStore(api, CFG, MEMORY).read("rRealWallet")
 
 
 def test_conflicting_duplicate_event_rejected_before_aws_request():
-    from plumb.agentcore_memory import EventStore
+    from plumb.customer.agentcore_memory import EventStore
     raw, conflict = event(), event()
     conflict["verdict"] = "good"
     api = client()
@@ -124,7 +124,7 @@ def test_conflicting_duplicate_event_rejected_before_aws_request():
 
 
 def test_read_has_a_hard_event_bound():
-    from plumb.agentcore_memory import EventStore
+    from plumb.customer.agentcore_memory import EventStore
     api = client()
     with Stubber(api) as stub:
         stub.add_response("list_events", {"events": [cloud_event(event(str(i))) for i in range(6)]})
@@ -133,7 +133,7 @@ def test_read_has_a_hard_event_bound():
 
 
 def test_create_uses_basic_memory_without_extraction_or_role():
-    from plumb.agentcore_memory import create_memory
+    from plumb.customer.agentcore_memory import create_memory
     api = client("bedrock-agentcore-control")
     with Stubber(api) as stub:
         stub.add_response("create_memory", {"memory": {"arn": "arn:aws:bedrock-agentcore:us-west-2:123456789012:memory/" + MEMORY,
@@ -146,7 +146,7 @@ def test_create_uses_basic_memory_without_extraction_or_role():
 
 
 def test_credentials_require_only_the_agentcore_file(tmp_path, monkeypatch):
-    from plumb.agentcore_memory import aws_session
+    from plumb.customer.agentcore_memory import aws_session
     monkeypatch.setenv("AWS_ACCESS_KEY_ID", "unrelated-process")
     monkeypatch.setenv("AWS_SECRET_ACCESS_KEY", "unrelated-secret")
     path = tmp_path / "agentcore.env"
@@ -159,14 +159,16 @@ def test_credentials_require_only_the_agentcore_file(tmp_path, monkeypatch):
 
 @pytest.fixture(scope="module")
 def real_ranker():
-    from plumb import config, rank
+    from plumb.core import config
+    from plumb.recommendation import rank
     return rank.load(config.load(), config.ROOT / "data", with_principals=False)
 
 
 def test_cloud_roundtrip_restores_real_store_once_and_preserves_global_trust(real_ranker, tmp_path):
     from decimal import Decimal
-    from plumb import db, memory
-    from plumb.agentcore_memory import EventStore, event_token
+    from plumb.core import db
+    from plumb.customer import memory
+    from plumb.customer.agentcore_memory import EventStore, event_token
     raw = event()
     raw["endpoint_id"] = next(iter(real_ranker.rec.endpoints))
     before = copy.deepcopy(real_ranker.rec.trust)
@@ -204,7 +206,10 @@ def test_cloud_roundtrip_restores_real_store_once_and_preserves_global_trust(rea
 
 
 def test_restore_command_reads_cloud_into_fresh_database(real_ranker, tmp_path, monkeypatch, capsys):
-    from plumb import agentcore_memory as ac, db, memory, rank
+    from plumb.customer import agentcore_memory as ac
+    from plumb.core import db
+    from plumb.customer import memory
+    from plumb.recommendation import rank
     raw = event()
     raw["endpoint_id"] = next(iter(real_ranker.rec.endpoints))
     api = client()
@@ -230,7 +235,7 @@ def test_restore_command_reads_cloud_into_fresh_database(real_ranker, tmp_path, 
 
 
 def test_cli_aws_errors_never_print_service_response_message(monkeypatch, capsys):
-    from plumb import agentcore_memory as ac
+    from plumb.customer import agentcore_memory as ac
     api = client("bedrock-agentcore-control")
     class Session:
         def client(self, *args, **kwargs):
@@ -246,7 +251,9 @@ def test_cli_aws_errors_never_print_service_response_message(monkeypatch, capsys
 
 
 def test_push_command_exports_only_named_simulated_customer(real_ranker, tmp_path, monkeypatch, capsys):
-    from plumb import agentcore_memory as ac, db, memory
+    from plumb.customer import agentcore_memory as ac
+    from plumb.core import db
+    from plumb.customer import memory
     raw = event()
     raw["endpoint_id"] = next(iter(real_ranker.rec.endpoints))
     other = copy.deepcopy(raw)
@@ -273,7 +280,7 @@ def test_push_command_exports_only_named_simulated_customer(real_ranker, tmp_pat
 
 
 def test_repeated_page_token_fails_instead_of_looping():
-    from plumb.agentcore_memory import EventStore
+    from plumb.customer.agentcore_memory import EventStore
     api = client()
     with Stubber(api) as stub:
         stub.add_response("list_events", {"events": [], "nextToken": "same"})
@@ -284,7 +291,7 @@ def test_repeated_page_token_fails_instead_of_looping():
 
 
 def test_json_blob_preserves_punctuation_and_unicode():
-    from plumb.agentcore_memory import EventStore
+    from plumb.customer.agentcore_memory import EventStore
     raw = event()
     raw["principal"]["label"] = 'Customer, {label=not data}, "quoted" ☃'
     api = client()
@@ -295,7 +302,7 @@ def test_json_blob_preserves_punctuation_and_unicode():
 
 @pytest.mark.parametrize("blob", ['{principal={addr=sim:memory-test}, verdict=bad}', '{"principal":', '"just a string"'])
 def test_rejects_lossy_or_malformed_blob_without_echoing_content(blob):
-    from plumb.agentcore_memory import EventStore
+    from plumb.customer.agentcore_memory import EventStore
     envelope = cloud_event(event())
     envelope["payload"] = [{"blob": blob}]
     api = client()

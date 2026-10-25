@@ -6,9 +6,9 @@ from dataclasses import asdict
 from datetime import datetime
 from decimal import Decimal
 
-from plumb import db
-from plumb.models import Profile
-from plumb.recommender import HybridRecommender, Principal
+from plumb.core import db
+from plumb.core.models import Profile
+from plumb.recommendation.recommender import HybridRecommender, Principal
 
 
 def _profile(profile: Profile) -> dict:

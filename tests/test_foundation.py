@@ -3,7 +3,7 @@ from decimal import Decimal
 
 import pytest
 
-from plumb import config, db, money
+from plumb.core import config, db, money
 
 pytestmark = pytest.mark.p0
 

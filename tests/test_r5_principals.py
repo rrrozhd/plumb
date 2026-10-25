@@ -1,6 +1,7 @@
 import pytest
 
-from plumb import config, principals, rank
+from plumb.core import config
+from plumb.recommendation import principals, rank
 
 pytestmark = pytest.mark.p0
 CFG = config.load()

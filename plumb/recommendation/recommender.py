@@ -12,8 +12,9 @@ from dataclasses import dataclass, field
 from decimal import Decimal
 from typing import Protocol
 
-from plumb import catalog, score
-from plumb.models import Endpoint, Profile
+from plumb.sources import catalog
+from plumb.recommendation import score
+from plumb.core.models import Endpoint, Profile
 
 
 @dataclass

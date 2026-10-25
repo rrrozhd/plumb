@@ -11,7 +11,7 @@ from urllib.parse import urlparse
 
 import numpy as np
 
-from plumb.models import Endpoint
+from plumb.core.models import Endpoint
 
 MASKS = [(re.compile(rx, re.I), sub) for rx, sub in (
     (r"https?://\S+", " <url> "),

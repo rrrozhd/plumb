@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 
 import pytest
 
-from plumb import grader
+from plumb.evaluation import grader
 
 pytestmark = pytest.mark.p0
 NOW = datetime(2026, 10, 25, 3, 0, tzinfo=timezone.utc)

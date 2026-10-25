@@ -5,7 +5,9 @@ from pathlib import Path
 
 import pytest
 
-from plumb import config, eval_paid, ledger
+from plumb.core import config
+from plumb.evaluation import eval_paid
+from plumb.sources import ledger
 
 pytestmark = pytest.mark.p0
 CFG = config.load()

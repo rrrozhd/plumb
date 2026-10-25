@@ -1,0 +1,121 @@
+{
+ "run": "run-mvndvux0",
+ "at": "2026-10-25T05:25:44.306Z",
+ "identities": {
+  "team": "Plumb",
+  "agent": "0x498d0bA9E55014756BbD8d7E46b5261100b08c7A",
+  "team_budget_rlusd": "20.000000",
+  "merchant": "0xb26064422195ed9c04d83c67a4ca2394ac34fe7f506ffaad933c64e0b8504c3c",
+  "payout": "0xb2EA0A3C1bD260BBC91B65244d0E952C78645D82",
+  "agent_psp": "0x0c4b348ab956f7857398d44662cf18c4df241fb8b4befcc8f0c304119e74fc0a",
+  "merchant_psp": "0x54e87b1804dbdb7797f40df9a47552c932f4b929a4095ac3e1ede8663f1a7249",
+  "ledger": "0xcAB42800A5ECF0D253Fa2581Bb3334B4DAEfaE91",
+  "chain_id": "1449000"
+ },
+ "channel": {
+  "id": "0x4f9686506c5bb84cdc8bd355b589691999834dfc6169abd9c3fa5633ffaeb46c",
+  "cap_rlusd": "0.005",
+  "per_purchase_rlusd": "0.05"
+ },
+ "purchases": [
+  {
+   "need": "Current weather and 3-day forecast for New York City",
+   "requirement": {
+    "status": 402,
+    "scheme": "batch-settlement",
+    "network": "eip155:1449000",
+    "amount_rlusd": "0.002",
+    "asset": "0x27b57a9D0b8d24EB97259c4E2279e45255e016f3",
+    "pay_to": "0xb2EA0A3C1bD260BBC91B65244d0E952C78645D82",
+    "channel_id": "0x4f9686506c5bb84cdc8bd355b589691999834dfc6169abd9c3fa5633ffaeb46c",
+    "merchant": "0xb26064422195ed9c04d83c67a4ca2394ac34fe7f506ffaad933c64e0b8504c3c",
+    "valid_before": 1792906235,
+    "challenge_digest": "0x1dc061711c78d740fee941c2205f1639574ec3492e1e571769860db2cdb2a69d"
+   },
+   "voucher": {
+    "cumulative_rlusd": "0.002",
+    "previous_rlusd": "0",
+    "agent_signature": "0x079629b135dcca453cf118f7cea68ff2cd9a08343acb085319c40bd68adf949b7deda212bab67246412eebda47306a404cda77c924a732874ef8ce93e7af1f2f1b",
+    "resource_digest": "0x64debe5ef569a7ca16df322d33de52df7b3edb41b1da9f75aa475e9f5fe841c6"
+   },
+   "redeemed_tx": "0x579b69f6a75321e64aa71eacbf894026fbca35b56a52a0805fe8740eb3be528d",
+   "claim_id": "0x6badb457634dd386f294db5c80286a0b8f9721add588466a1bb34d60b39458c9",
+   "resource": {
+    "status": 200,
+    "content": {
+     "price_rlusd": "0.002",
+     "product": "plumb.shortlist-credit",
+     "redeem": "POST http://localhost:8404/shortlist"
+    }
+   },
+   "shortlist": {
+    "id": "578a12d0-6dca-47b6-9f83-842e493effcf",
+    "budget_left_rlusd": "0.003",
+    "top": "https://api.sitecheck-api.workers.dev/api/weather/alerts"
+   }
+  },
+  {
+   "need": "Current weather and 3-day forecast for New York City",
+   "requirement": {
+    "status": 402,
+    "scheme": "batch-settlement",
+    "network": "eip155:1449000",
+    "amount_rlusd": "0.002",
+    "asset": "0x27b57a9D0b8d24EB97259c4E2279e45255e016f3",
+    "pay_to": "0xb2EA0A3C1bD260BBC91B65244d0E952C78645D82",
+    "channel_id": "0x4f9686506c5bb84cdc8bd355b589691999834dfc6169abd9c3fa5633ffaeb46c",
+    "merchant": "0xb26064422195ed9c04d83c67a4ca2394ac34fe7f506ffaad933c64e0b8504c3c",
+    "valid_before": 1792906252,
+    "challenge_digest": "0x6c3436935a6dfe4fd6c9938b172451528d44d3949a518e50200febde0b409677"
+   },
+   "voucher": {
+    "cumulative_rlusd": "0.004",
+    "previous_rlusd": "0.002",
+    "agent_signature": "0x0fda4e04f75e368f1c5f095259725b0a52d2f19b733d2452c6db6306e1fc0d112b1a02f9132eb1e52658445ff2772e0a90084e65767f963c9641467fe113896a1c",
+    "resource_digest": "0x64debe5ef569a7ca16df322d33de52df7b3edb41b1da9f75aa475e9f5fe841c6"
+   },
+   "redeemed_tx": "0x4454ee721d6d73319700278fedf58a915e0a18f4a8a1ae81df700e6dfd4cb9fd",
+   "claim_id": "0x3709b15be7059c3082e1002cd461b218e1514c86878016bca0639059a2b51237",
+   "resource": {
+    "status": 200,
+    "content": {
+     "price_rlusd": "0.002",
+     "product": "plumb.shortlist-credit",
+     "redeem": "POST http://localhost:8404/shortlist"
+    }
+   },
+   "shortlist": {
+    "id": "6db135ab-a8aa-444d-ae89-e65d224578f0",
+    "budget_left_rlusd": "0.001",
+    "top": "https://api.sitecheck-api.workers.dev/api/weather/alerts"
+   }
+  }
+ ],
+ "refused": {
+  "at": "2026-10-25T05:26:20.807Z",
+  "run": "run-mvndvux0",
+  "event": "refused_over_cap",
+  "need": "Current XRP price in USD",
+  "spent_rlusd": "0.004",
+  "fee_rlusd": "0.002",
+  "cap_rlusd": "0.005"
+ },
+ "settlement": {
+  "claims_settled": 2,
+  "payout_tx": "0xc9ee3c13e1d2176eb7f3dbd4024918d34ca2c9837088da8e28f3d49eb35f1b0f",
+  "settlement_tx": "0xfe87b41b079a035903cb8011d89e3d14115f847109f9cc76b7d4b789be650e25",
+  "recipient": "0xb2ea0a3c1bd260bbc91b65244d0e952c78645d82",
+  "receipt_url": "https://hackathon.ap4m.build/public/evidence/claims/0x3709b15be7059c3082e1002cd461b218e1514c86878016bca0639059a2b51237/0x1ce9bc44659dd77b413c9f4296e8e508ddafa092e171c9ac3a760d802f8edaea.json",
+  "receipt": {
+   "schema": "ap4m.claim-receipt.v1",
+   "status": "settled",
+   "channel_id": "0x4f9686506c5bb84cdc8bd355b589691999834dfc6169abd9c3fa5633ffaeb46c",
+   "claim_id": "0x3709b15be7059c3082e1002cd461b218e1514c86878016bca0639059a2b51237",
+   "amount_rlusd": "0.002",
+   "payout_tx": "0xc9ee3c13e1d2176eb7f3dbd4024918d34ca2c9837088da8e28f3d49eb35f1b0f",
+   "cumulative_disbursed_rlusd": "0.004",
+   "settlement_tx": "0xfe87b41b079a035903cb8011d89e3d14115f847109f9cc76b7d4b789be650e25",
+   "venue": "pooled-escrow-vault"
+  }
+ }
+}

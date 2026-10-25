@@ -11,10 +11,12 @@ import sqlite3
 from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 
-from plumb import db, ledger as L, memory
-from plumb.models import Profile
-from plumb.recommender import Principal
-from plumb.rank import Ranker
+from plumb.core import db
+from plumb.sources import ledger as L
+from plumb.customer import memory
+from plumb.core.models import Profile
+from plumb.recommendation.recommender import Principal
+from plumb.recommendation.rank import Ranker
 
 VERDICTS = ("good", "bad", "wrong_answer")
 

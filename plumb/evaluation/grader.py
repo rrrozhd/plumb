@@ -301,7 +301,8 @@ def o_e08(data, text):
 
 
 def o_e09(data, text):
-    from plumb import config, ledger
+    from plumb.core import config
+    from plumb.sources import ledger
     bal = int(ledger.Ledger(config.load()).account_info("rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De")["Balance"])
     xrp = bal / 1e6
     vals = numbers(data)
@@ -372,7 +373,8 @@ def f_weather(o, data, text):
 
 def f_block(o, data, text):
     if o["rpc"] == "xrpl":
-        from plumb import config, ledger
+        from plumb.core import config
+        from plumb.sources import ledger
         ref = int(ledger.Ledger(config.load()).rpc("ledger", ledger_index="validated")["ledger_index"])
     else:
         r = httpx.post(o["rpc"], json={"jsonrpc": "2.0", "id": 1, "method": "eth_blockNumber", "params": []}, timeout=20)

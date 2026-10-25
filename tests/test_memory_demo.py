@@ -5,13 +5,13 @@ from decimal import Decimal
 
 import pytest
 
-from plumb import config
+from plumb.core import config
 
 pytestmark = pytest.mark.p0
 
 
 def demo_module():
-    return importlib.import_module("plumb.memory_demo")
+    return importlib.import_module("plumb.interfaces.memory_demo")
 
 
 def comparable(rows):
