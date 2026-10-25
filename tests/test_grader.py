@@ -81,3 +81,32 @@ def test_frozen_truth_oracles_are_deterministic():
     assert not grader.o_q17(None, json.dumps({"isBusinessDay": True, "holidays": ["2026-11-11", "2026-11-26"]}))[0]
     assert grader.o_q09(None, json.dumps({"sanctioned": True, "entity": "LAZARUS GROUP"}))[0]
     assert not grader.o_q09(None, json.dumps({"sanctioned": False}))[0]
+
+
+def test_v3_utc_offset_is_respected():
+    # 2026-10-24T21:00-05:00 is 02:00Z, one hour before NOW: fresh at 3h (v2 read it as 21:00Z and failed it)
+    assert grader.g5('{"start": "2026-10-24T21:00:00-05:00"}', "3h", NOW)[0] is True
+    assert grader.g5('{"at": "2026-10-25T02:58:00.123Z"}', "15m", NOW)[0] is True
+
+
+def test_v3_one_number_inside_a_string():
+    assert grader.numbers({"p": "$1.31", "q": "1.31 USD", "r": "XRP/USD: 1.31"}) == [1.31, 1.31, 1.31]
+    assert grader.numbers({"d": "2026-10-25", "t": "14:00"}) == []  # dates and times are not values
+
+
+def test_v3_metadata_only_error_body_fails_g3():
+    assert not grader.g3('{"error": "upstream timeout", "status": 504, "request_id": "abc"}', True, None)[0]
+    assert grader.g3('{"error": "partial", "price": 1.3}', True, None)[0]
+
+
+def test_weather_oracle_reads_only_temperature_fields(monkeypatch):
+    monkeypatch.setattr(grader, "_cached", lambda key, fn, ttl=60: 15.0)
+    o = {"kind": "weather", "station": "KXXX", "tol_c": 4}
+    assert grader.f_weather(o, {"humidity": 15, "temperature_c": 30}, "")[0] is False
+    assert grader.f_weather(o, {"temp_f": 59}, "")[0] is True
+
+
+def test_family_oracle_dispatch_and_holiday_rule(monkeypatch):
+    q = {"id": "f999", "oracle": {"kind": "holiday", "date": "2026-12-25", "names": ["Christmas Day", "Weihnachtstag"]}}
+    assert grader.oracle(q, '{"date": "2026-12-25", "name": "Christmas Day"}')[0] is True
+    assert grader.oracle(q, '{"date": "2026-12-25", "is_holiday": false}')[0] is False

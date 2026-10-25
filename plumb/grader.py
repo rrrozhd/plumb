@@ -5,6 +5,8 @@ G5 newest timestamp in the body vs the need's freshness limit.
 Tier 2 (needs with a free public source of truth): numeric or factual check against that source, fetched at grading time.
 Tier 3: anything left (G4 coverage without an oracle, G5 without timestamps) goes to the LLM with the full body.
 Response text is untrusted: it is parsed and compared here, never executed or followed.
+v3 (2026-10-25, before E26): UTC offsets in timestamps, one number inside a string ("$1.31"), metadata-only error
+bodies, and family oracles driven by each query's `oracle` params. E21 and E23 were graded with v2.
 """
 import json
 import re
@@ -15,7 +17,11 @@ import httpx
 
 UA = {"User-Agent": "plumb-eval/0.1 (hackathon research; contact via repo)"}
 PLACEHOLDER = re.compile(r"lorem ipsum|coming soon|payment required|\bmock(ed)? data\b|\bsample (data|response)\b|not implemented", re.I)
-ISO = re.compile(r"\b(20\d\d-\d\d-\d\d)(?:[T ](\d\d:\d\d(?::\d\d)?))?")
+VERSION = 3
+ISO = re.compile(r"\b(20\d\d-\d\d-\d\d)(?:[T ](\d\d:\d\d(?::\d\d)?)(?:\.\d+)?(Z|[+-]\d\d:?\d\d)?)?")
+ONE_NUMBER = re.compile(r"[^\d\-]*?(-?\d+(?:\.\d+)?)\s*[A-Za-z%°/ ]*")  # "$1.31", "1.31 USD", "XRP/USD: 1.31"
+ERROR_META = {"status", "code", "statuscode", "status_code", "message", "request_id", "requestid", "detail", "details",
+              "timestamp", "path", "success", "ok", "error_code", "errorcode", "type"}
 
 
 # ---------- tier 1 --------------------------------------------------------------------------------------------------
@@ -38,7 +44,8 @@ def numbers(obj) -> list[float]:
         try:
             return [float(s)]
         except ValueError:
-            return []
+            m = ONE_NUMBER.fullmatch(s)
+            return [float(m.group(1))] if m else []
     items = obj.values() if isinstance(obj, dict) else obj if isinstance(obj, list) else []
     for v in items:
         out += numbers(v)
@@ -51,7 +58,8 @@ def g3(body: str, declared_json: bool, schema: dict | None) -> tuple[bool, str]:
     data = parse(body)
     if declared_json and data is None:
         return False, "declared JSON but does not parse"
-    if isinstance(data, dict) and data.get("error") and not any(k for k in data if k != "error" and data[k] not in (None, "", [], {})):
+    if isinstance(data, dict) and data.get("error") and all(k.lower() in ERROR_META for k in data
+                                                            if k != "error" and data[k] not in (None, "", [], {})):
         return False, f"error body: {str(data.get('error'))[:60]}"
     if isinstance(data, (list, dict)) and not data:
         return False, "empty JSON"
@@ -89,9 +97,10 @@ def g5(body: str, freshness: str, now: datetime) -> tuple[bool | None, str]:
     unit = {"m": "minutes", "h": "hours", "d": "days"}[m.group(2)]
     limit = timedelta(**{unit: int(m.group(1))})
     stamps = []  # (time, date_only)
-    for d, t in ISO.findall(body[:200000]):
+    for d, t, tz in ISO.findall(body[:200000]):
         try:
-            stamps.append((datetime.fromisoformat(f"{d}T{t or '00:00'}").replace(tzinfo=timezone.utc), not t))
+            at = datetime.fromisoformat(f"{d}T{t or '00:00'}{tz.replace('Z', '+00:00') if t else ''}")
+            stamps.append((at if at.tzinfo else at.replace(tzinfo=timezone.utc), not t))
         except ValueError:
             pass
     stamps = [s for s in stamps if s[0] <= now + timedelta(minutes=10)]  # forecast dates are not data age
@@ -198,8 +207,9 @@ ORACLES = {"q01": o_q01, "q03": o_q03, "q04": o_q04, "q07": o_q07, "q08": o_q08,
            "q12": o_q12, "q13": o_q13, "q14": o_q14, "q15": o_q15, "q17": o_q17}
 
 
-def oracle(qid: str, body: str) -> tuple[bool | None, str]:
-    fn = ORACLES.get(qid)
+def oracle(q: dict, body: str) -> tuple[bool | None, str]:
+    spec = q.get("oracle")
+    fn = (lambda d, t: FAMILY[spec["kind"]](spec, d, t)) if spec else ORACLES.get(q["id"])
     if not fn:
         return None, "no oracle"
     try:
@@ -215,7 +225,7 @@ def grade(q: dict, body: str, declared_json: bool, schema: dict | None, llm=None
     ok3, why3 = g3(body, declared_json, schema)
     ent_ok, why_ent = g4_entity(body, entities(q.get("inputs") or {}))
     fresh, why5 = g5(body, q.get("freshness", "n/a"), now)
-    orc, why_o = oracle(q["id"], body) if ok3 else (None, "skipped: G3 failed")
+    orc, why_o = oracle(q, body) if ok3 else (None, "skipped: G3 failed")
     out = {"g3": ok3, "g3_why": why3, "g4_entity": ent_ok, "g4_entity_why": why_ent, "g5": fresh, "g5_why": why5,
            "oracle": orc, "oracle_why": why_o, "llm": None, "method": {}}
     g4 = None
@@ -305,3 +315,75 @@ def o_e10(data, text):
 
 ORACLES.update({"e01": o_e01, "e02": o_e02, "e03": o_e03, "e04": o_e04, "e05": o_e05, "e06": o_e06,
                 "e07": o_e07, "e08": o_e08, "e09": o_e09, "e10": o_e10})
+
+
+# ---------- E26 family oracles (eval/queries_e26.yaml): params live in each query, sources are free and public ------
+_CACHE: dict = {}
+
+
+def _cached(key, fn, ttl=60):
+    """One reference per minute per key: 190 purchases must not hit public rate limits and fall through to the LLM."""
+    import time
+    hit = _CACHE.get(key)
+    if hit and time.monotonic() - hit[0] < ttl:
+        return hit[1]
+    val = fn()
+    _CACHE[key] = (time.monotonic(), val)
+    return val
+
+
+def keyed(obj, rx) -> list[float]:
+    """Numeric values under keys matching rx (anywhere in the tree)."""
+    out = []
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            out += numbers(v) if rx.search(str(k)) and not isinstance(v, (dict, list)) else keyed(v, rx)
+    elif isinstance(obj, list):
+        for v in obj:
+            out += keyed(v, rx)
+    return out
+
+
+def f_price(o, data, text):
+    ref = _cached(("cg", o["coin"], o["vs"]), lambda: _get("https://api.coingecko.com/api/v3/simple/price",
+                                                         params={"ids": o["coin"], "vs_currencies": o["vs"]})[o["coin"]][o["vs"]])
+    return _near(numbers(data), ref, o["tol"]), f"CoinGecko {o['coin']}/{o['vs']} {ref}"
+
+
+def f_fx(o, data, text):
+    rate = _cached(("fx", o["from"], o["to"]), lambda: _get("https://api.frankfurter.app/latest",
+                                                           params={"from": o["from"], "to": o["to"]})["rates"][o["to"]], ttl=600)
+    vals = numbers(data)
+    return _near(vals, rate, o["tol"]) or _near(vals, o["amount"] * rate, o["tol"] / 10), f"ECB {o['from']}/{o['to']} {rate}"
+
+
+TEMP = re.compile(r"temp", re.I)
+
+
+def f_weather(o, data, text):
+    obs = _cached(("nws", o["station"]), lambda: _get(f"https://api.weather.gov/stations/{o['station']}/observations/latest")
+                  ["properties"]["temperature"]["value"], ttl=600)
+    if obs is None:
+        return None, f"NWS {o['station']} has no current temperature"
+    vals = keyed(data, TEMP)  # only temperature fields: bodies are full of humidity, wind and hours
+    ok = any(abs(v - obs) <= o["tol_c"] or abs((v - 32) * 5 / 9 - obs) <= o["tol_c"] for v in vals)
+    return ok, f"NWS {o['station']} {obs:.1f} C"
+
+
+def f_block(o, data, text):
+    if o["rpc"] == "xrpl":
+        from plumb import config, ledger
+        ref = int(ledger.Ledger(config.load()).rpc("ledger", ledger_index="validated")["ledger_index"])
+    else:
+        r = httpx.post(o["rpc"], json={"jsonrpc": "2.0", "id": 1, "method": "eth_blockNumber", "params": []}, timeout=20)
+        ref = int(r.json()["result"], 16)
+    return any(abs(v - ref) <= o["tol"] for v in numbers(data)), f"head {ref} (tol {o['tol']})"
+
+
+def f_holiday(o, data, text):
+    t = text.lower()
+    yes = bool(re.search(r'"(is_?)?(public_?)?holiday"\s*:\s*true', t)) or any(n.lower() in t for n in o["names"])
+    return yes and o["date"] in text, f"nager.date: {o['date']} is {o['names'][0]}"
+
+
+FAMILY = {"price": f_price, "fx": f_fx, "weather": f_weather, "block": f_block, "holiday": f_holiday}

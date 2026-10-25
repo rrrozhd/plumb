@@ -1,0 +1,1478 @@
+# E26 powered needs. FROZEN 2026-10-25 by eval/gen_e26.py, before any E26 pick or purchase.
+version: 1
+status: frozen
+frozen_on: '2026-10-25'
+defaults:
+  max_price_rlusd: '0.05'
+queries:
+- id: f001
+  family: crypto_usd
+  need: Current BTC price in USD
+  inputs:
+    asset: BTC
+    quote: USD
+  must_include:
+  - BTC price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: bitcoin
+    vs: usd
+    tol: 0.02
+- id: f002
+  family: crypto_usd
+  need: Current BNB price in USD
+  inputs:
+    asset: BNB
+    quote: USD
+  must_include:
+  - BNB price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: binancecoin
+    vs: usd
+    tol: 0.02
+- id: f003
+  family: crypto_usd
+  need: Current ADA price in USD
+  inputs:
+    asset: ADA
+    quote: USD
+  must_include:
+  - ADA price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: cardano
+    vs: usd
+    tol: 0.02
+- id: f004
+  family: crypto_usd
+  need: Current DOGE price in USD
+  inputs:
+    asset: DOGE
+    quote: USD
+  must_include:
+  - DOGE price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: dogecoin
+    vs: usd
+    tol: 0.02
+- id: f005
+  family: crypto_usd
+  need: Current AVAX price in USD
+  inputs:
+    asset: AVAX
+    quote: USD
+  must_include:
+  - AVAX price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: avalanche-2
+    vs: usd
+    tol: 0.02
+- id: f006
+  family: crypto_usd
+  need: Current DOT price in USD
+  inputs:
+    asset: DOT
+    quote: USD
+  must_include:
+  - DOT price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: polkadot
+    vs: usd
+    tol: 0.02
+- id: f007
+  family: crypto_usd
+  need: Current LINK price in USD
+  inputs:
+    asset: LINK
+    quote: USD
+  must_include:
+  - LINK price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: chainlink
+    vs: usd
+    tol: 0.02
+- id: f008
+  family: crypto_usd
+  need: Current LTC price in USD
+  inputs:
+    asset: LTC
+    quote: USD
+  must_include:
+  - LTC price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: litecoin
+    vs: usd
+    tol: 0.02
+- id: f009
+  family: crypto_usd
+  need: Current TRX price in USD
+  inputs:
+    asset: TRX
+    quote: USD
+  must_include:
+  - TRX price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: tron
+    vs: usd
+    tol: 0.02
+- id: f010
+  family: crypto_usd
+  need: Current XLM price in USD
+  inputs:
+    asset: XLM
+    quote: USD
+  must_include:
+  - XLM price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: stellar
+    vs: usd
+    tol: 0.02
+- id: f011
+  family: crypto_usd
+  need: Current ATOM price in USD
+  inputs:
+    asset: ATOM
+    quote: USD
+  must_include:
+  - ATOM price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: cosmos
+    vs: usd
+    tol: 0.02
+- id: f012
+  family: crypto_usd
+  need: Current NEAR price in USD
+  inputs:
+    asset: NEAR
+    quote: USD
+  must_include:
+  - NEAR price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: near
+    vs: usd
+    tol: 0.02
+- id: f013
+  family: crypto_usd
+  need: Current UNI price in USD
+  inputs:
+    asset: UNI
+    quote: USD
+  must_include:
+  - UNI price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: uniswap
+    vs: usd
+    tol: 0.02
+- id: f014
+  family: crypto_usd
+  need: Current BCH price in USD
+  inputs:
+    asset: BCH
+    quote: USD
+  must_include:
+  - BCH price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: bitcoin-cash
+    vs: usd
+    tol: 0.02
+- id: f015
+  family: crypto_usd
+  need: Current ETC price in USD
+  inputs:
+    asset: ETC
+    quote: USD
+  must_include:
+  - ETC price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: ethereum-classic
+    vs: usd
+    tol: 0.02
+- id: f016
+  family: crypto_usd
+  need: Current FIL price in USD
+  inputs:
+    asset: FIL
+    quote: USD
+  must_include:
+  - FIL price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: filecoin
+    vs: usd
+    tol: 0.02
+- id: f017
+  family: crypto_usd
+  need: Current APT price in USD
+  inputs:
+    asset: APT
+    quote: USD
+  must_include:
+  - APT price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: aptos
+    vs: usd
+    tol: 0.02
+- id: f018
+  family: crypto_usd
+  need: Current ARB price in USD
+  inputs:
+    asset: ARB
+    quote: USD
+  must_include:
+  - ARB price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: arbitrum
+    vs: usd
+    tol: 0.02
+- id: f019
+  family: crypto_usd
+  need: Current OP price in USD
+  inputs:
+    asset: OP
+    quote: USD
+  must_include:
+  - OP price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: optimism
+    vs: usd
+    tol: 0.02
+- id: f020
+  family: crypto_usd
+  need: Current SUI price in USD
+  inputs:
+    asset: SUI
+    quote: USD
+  must_include:
+  - SUI price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: sui
+    vs: usd
+    tol: 0.02
+- id: f021
+  family: crypto_usd
+  need: Current TON price in USD
+  inputs:
+    asset: TON
+    quote: USD
+  must_include:
+  - TON price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: the-open-network
+    vs: usd
+    tol: 0.02
+- id: f022
+  family: crypto_usd
+  need: Current SHIB price in USD
+  inputs:
+    asset: SHIB
+    quote: USD
+  must_include:
+  - SHIB price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: shiba-inu
+    vs: usd
+    tol: 0.02
+- id: f023
+  family: crypto_usd
+  need: Current HBAR price in USD
+  inputs:
+    asset: HBAR
+    quote: USD
+  must_include:
+  - HBAR price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: hedera-hashgraph
+    vs: usd
+    tol: 0.02
+- id: f024
+  family: crypto_usd
+  need: Current ICP price in USD
+  inputs:
+    asset: ICP
+    quote: USD
+  must_include:
+  - ICP price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: internet-computer
+    vs: usd
+    tol: 0.02
+- id: f025
+  family: crypto_usd
+  need: Current AAVE price in USD
+  inputs:
+    asset: AAVE
+    quote: USD
+  must_include:
+  - AAVE price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: aave
+    vs: usd
+    tol: 0.02
+- id: f026
+  family: crypto_eur
+  need: Current BTC price in EUR
+  inputs:
+    asset: BTC
+    quote: EUR
+  must_include:
+  - BTC price in EUR, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: bitcoin
+    vs: eur
+    tol: 0.02
+- id: f027
+  family: crypto_eur
+  need: Current ETH price in EUR
+  inputs:
+    asset: ETH
+    quote: EUR
+  must_include:
+  - ETH price in EUR, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: ethereum
+    vs: eur
+    tol: 0.02
+- id: f028
+  family: crypto_eur
+  need: Current XRP price in EUR
+  inputs:
+    asset: XRP
+    quote: EUR
+  must_include:
+  - XRP price in EUR, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: ripple
+    vs: eur
+    tol: 0.02
+- id: f029
+  family: crypto_eur
+  need: Current SOL price in EUR
+  inputs:
+    asset: SOL
+    quote: EUR
+  must_include:
+  - SOL price in EUR, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: solana
+    vs: eur
+    tol: 0.02
+- id: f030
+  family: crypto_eur
+  need: Current ADA price in EUR
+  inputs:
+    asset: ADA
+    quote: EUR
+  must_include:
+  - ADA price in EUR, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: cardano
+    vs: eur
+    tol: 0.02
+- id: f031
+  family: crypto_eur
+  need: Current DOGE price in EUR
+  inputs:
+    asset: DOGE
+    quote: EUR
+  must_include:
+  - DOGE price in EUR, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: dogecoin
+    vs: eur
+    tol: 0.02
+- id: f032
+  family: crypto_eur
+  need: Current LTC price in EUR
+  inputs:
+    asset: LTC
+    quote: EUR
+  must_include:
+  - LTC price in EUR, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: litecoin
+    vs: eur
+    tol: 0.02
+- id: f033
+  family: crypto_eur
+  need: Current DOT price in EUR
+  inputs:
+    asset: DOT
+    quote: EUR
+  must_include:
+  - DOT price in EUR, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: polkadot
+    vs: eur
+    tol: 0.02
+- id: f034
+  family: crypto_eur
+  need: Current LINK price in EUR
+  inputs:
+    asset: LINK
+    quote: EUR
+  must_include:
+  - LINK price in EUR, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: chainlink
+    vs: eur
+    tol: 0.02
+- id: f035
+  family: crypto_eur
+  need: Current BNB price in EUR
+  inputs:
+    asset: BNB
+    quote: EUR
+  must_include:
+  - BNB price in EUR, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: binancecoin
+    vs: eur
+    tol: 0.02
+- id: f036
+  family: fx
+  need: Convert 100 USD to JPY at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: USD
+    to: JPY
+  must_include:
+  - USD to JPY exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: USD
+    to: JPY
+    amount: 100
+    tol: 0.01
+- id: f037
+  family: fx
+  need: Convert 100 EUR to GBP at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: EUR
+    to: GBP
+  must_include:
+  - EUR to GBP exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: EUR
+    to: GBP
+    amount: 100
+    tol: 0.01
+- id: f038
+  family: fx
+  need: Convert 100 USD to CHF at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: USD
+    to: CHF
+  must_include:
+  - USD to CHF exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: USD
+    to: CHF
+    amount: 100
+    tol: 0.01
+- id: f039
+  family: fx
+  need: Convert 100 CAD to USD at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: CAD
+    to: USD
+  must_include:
+  - CAD to USD exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: CAD
+    to: USD
+    amount: 100
+    tol: 0.01
+- id: f040
+  family: fx
+  need: Convert 100 AUD to USD at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: AUD
+    to: USD
+  must_include:
+  - AUD to USD exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: AUD
+    to: USD
+    amount: 100
+    tol: 0.01
+- id: f041
+  family: fx
+  need: Convert 100 USD to CNY at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: USD
+    to: CNY
+  must_include:
+  - USD to CNY exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: USD
+    to: CNY
+    amount: 100
+    tol: 0.01
+- id: f042
+  family: fx
+  need: Convert 100 USD to INR at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: USD
+    to: INR
+  must_include:
+  - USD to INR exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: USD
+    to: INR
+    amount: 100
+    tol: 0.01
+- id: f043
+  family: fx
+  need: Convert 100 EUR to CHF at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: EUR
+    to: CHF
+  must_include:
+  - EUR to CHF exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: EUR
+    to: CHF
+    amount: 100
+    tol: 0.01
+- id: f044
+  family: fx
+  need: Convert 100 GBP to EUR at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: GBP
+    to: EUR
+  must_include:
+  - GBP to EUR exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: GBP
+    to: EUR
+    amount: 100
+    tol: 0.01
+- id: f045
+  family: fx
+  need: Convert 100 USD to MXN at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: USD
+    to: MXN
+  must_include:
+  - USD to MXN exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: USD
+    to: MXN
+    amount: 100
+    tol: 0.01
+- id: f046
+  family: fx
+  need: Convert 100 USD to BRL at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: USD
+    to: BRL
+  must_include:
+  - USD to BRL exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: USD
+    to: BRL
+    amount: 100
+    tol: 0.01
+- id: f047
+  family: fx
+  need: Convert 100 NZD to USD at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: NZD
+    to: USD
+  must_include:
+  - NZD to USD exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: NZD
+    to: USD
+    amount: 100
+    tol: 0.01
+- id: f048
+  family: fx
+  need: Convert 100 USD to SEK at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: USD
+    to: SEK
+  must_include:
+  - USD to SEK exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: USD
+    to: SEK
+    amount: 100
+    tol: 0.01
+- id: f049
+  family: fx
+  need: Convert 100 USD to NOK at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: USD
+    to: NOK
+  must_include:
+  - USD to NOK exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: USD
+    to: NOK
+    amount: 100
+    tol: 0.01
+- id: f050
+  family: fx
+  need: Convert 100 USD to KRW at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: USD
+    to: KRW
+  must_include:
+  - USD to KRW exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: USD
+    to: KRW
+    amount: 100
+    tol: 0.01
+- id: f051
+  family: fx
+  need: Convert 100 EUR to JPY at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: EUR
+    to: JPY
+  must_include:
+  - EUR to JPY exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: EUR
+    to: JPY
+    amount: 100
+    tol: 0.01
+- id: f052
+  family: fx
+  need: Convert 100 USD to SGD at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: USD
+    to: SGD
+  must_include:
+  - USD to SGD exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: USD
+    to: SGD
+    amount: 100
+    tol: 0.01
+- id: f053
+  family: fx
+  need: Convert 100 USD to HKD at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: USD
+    to: HKD
+  must_include:
+  - USD to HKD exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: USD
+    to: HKD
+    amount: 100
+    tol: 0.01
+- id: f054
+  family: fx
+  need: Convert 100 EUR to PLN at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: EUR
+    to: PLN
+  must_include:
+  - EUR to PLN exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: EUR
+    to: PLN
+    amount: 100
+    tol: 0.01
+- id: f055
+  family: fx
+  need: Convert 100 USD to ZAR at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: USD
+    to: ZAR
+  must_include:
+  - USD to ZAR exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: USD
+    to: ZAR
+    amount: 100
+    tol: 0.01
+- id: f056
+  family: fx
+  need: Convert 100 USD to TRY at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: USD
+    to: TRY
+  must_include:
+  - USD to TRY exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: USD
+    to: TRY
+    amount: 100
+    tol: 0.01
+- id: f057
+  family: fx
+  need: Convert 100 EUR to CZK at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: EUR
+    to: CZK
+  must_include:
+  - EUR to CZK exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: EUR
+    to: CZK
+    amount: 100
+    tol: 0.01
+- id: f058
+  family: fx
+  need: Convert 100 USD to DKK at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: USD
+    to: DKK
+  must_include:
+  - USD to DKK exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: USD
+    to: DKK
+    amount: 100
+    tol: 0.01
+- id: f059
+  family: fx
+  need: Convert 100 GBP to JPY at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: GBP
+    to: JPY
+  must_include:
+  - GBP to JPY exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: GBP
+    to: JPY
+    amount: 100
+    tol: 0.01
+- id: f060
+  family: fx
+  need: Convert 100 CHF to EUR at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: CHF
+    to: EUR
+  must_include:
+  - CHF to EUR exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: CHF
+    to: EUR
+    amount: 100
+    tol: 0.01
+- id: f061
+  family: weather
+  need: Current weather in Los Angeles
+  inputs:
+    location: Los Angeles
+    lat: '34.0522'
+    lon: '-118.2437'
+  must_include:
+  - current temperature
+  - current conditions
+  freshness: 3h
+  oracle:
+    kind: weather
+    station: KLAX
+    tol_c: 4
+- id: f062
+  family: weather
+  need: Current weather in Seattle
+  inputs:
+    location: Seattle
+    lat: '47.6062'
+    lon: '-122.3321'
+  must_include:
+  - current temperature
+  - current conditions
+  freshness: 3h
+  oracle:
+    kind: weather
+    station: KSEA
+    tol_c: 4
+- id: f063
+  family: weather
+  need: Current weather in Denver
+  inputs:
+    location: Denver
+    lat: '39.7392'
+    lon: '-104.9903'
+  must_include:
+  - current temperature
+  - current conditions
+  freshness: 3h
+  oracle:
+    kind: weather
+    station: KDEN
+    tol_c: 4
+- id: f064
+  family: weather
+  need: Current weather in Miami
+  inputs:
+    location: Miami
+    lat: '25.7617'
+    lon: '-80.1918'
+  must_include:
+  - current temperature
+  - current conditions
+  freshness: 3h
+  oracle:
+    kind: weather
+    station: KMIA
+    tol_c: 4
+- id: f065
+  family: weather
+  need: Current weather in Boston
+  inputs:
+    location: Boston
+    lat: '42.3601'
+    lon: '-71.0589'
+  must_include:
+  - current temperature
+  - current conditions
+  freshness: 3h
+  oracle:
+    kind: weather
+    station: KBOS
+    tol_c: 4
+- id: f066
+  family: weather
+  need: Current weather in Atlanta
+  inputs:
+    location: Atlanta
+    lat: '33.749'
+    lon: '-84.388'
+  must_include:
+  - current temperature
+  - current conditions
+  freshness: 3h
+  oracle:
+    kind: weather
+    station: KATL
+    tol_c: 4
+- id: f067
+  family: weather
+  need: Current weather in Phoenix
+  inputs:
+    location: Phoenix
+    lat: '33.4484'
+    lon: '-112.074'
+  must_include:
+  - current temperature
+  - current conditions
+  freshness: 3h
+  oracle:
+    kind: weather
+    station: KPHX
+    tol_c: 4
+- id: f068
+  family: weather
+  need: Current weather in Dallas
+  inputs:
+    location: Dallas
+    lat: '32.7767'
+    lon: '-96.797'
+  must_include:
+  - current temperature
+  - current conditions
+  freshness: 3h
+  oracle:
+    kind: weather
+    station: KDFW
+    tol_c: 4
+- id: f069
+  family: weather
+  need: Current weather in Houston
+  inputs:
+    location: Houston
+    lat: '29.7604'
+    lon: '-95.3698'
+  must_include:
+  - current temperature
+  - current conditions
+  freshness: 3h
+  oracle:
+    kind: weather
+    station: KIAH
+    tol_c: 4
+- id: f070
+  family: weather
+  need: Current weather in San Francisco
+  inputs:
+    location: San Francisco
+    lat: '37.7749'
+    lon: '-122.4194'
+  must_include:
+  - current temperature
+  - current conditions
+  freshness: 3h
+  oracle:
+    kind: weather
+    station: KSFO
+    tol_c: 4
+- id: f071
+  family: weather
+  need: Current weather in Minneapolis
+  inputs:
+    location: Minneapolis
+    lat: '44.9778'
+    lon: '-93.265'
+  must_include:
+  - current temperature
+  - current conditions
+  freshness: 3h
+  oracle:
+    kind: weather
+    station: KMSP
+    tol_c: 4
+- id: f072
+  family: weather
+  need: Current weather in Detroit
+  inputs:
+    location: Detroit
+    lat: '42.3314'
+    lon: '-83.0458'
+  must_include:
+  - current temperature
+  - current conditions
+  freshness: 3h
+  oracle:
+    kind: weather
+    station: KDTW
+    tol_c: 4
+- id: f073
+  family: weather
+  need: Current weather in Philadelphia
+  inputs:
+    location: Philadelphia
+    lat: '39.9526'
+    lon: '-75.1652'
+  must_include:
+  - current temperature
+  - current conditions
+  freshness: 3h
+  oracle:
+    kind: weather
+    station: KPHL
+    tol_c: 4
+- id: f074
+  family: weather
+  need: Current weather in Las Vegas
+  inputs:
+    location: Las Vegas
+    lat: '36.1699'
+    lon: '-115.1398'
+  must_include:
+  - current temperature
+  - current conditions
+  freshness: 3h
+  oracle:
+    kind: weather
+    station: KLAS
+    tol_c: 4
+- id: f075
+  family: weather
+  need: Current weather in Washington, DC
+  inputs:
+    location: Washington, DC
+    lat: '38.9072'
+    lon: '-77.0369'
+  must_include:
+  - current temperature
+  - current conditions
+  freshness: 3h
+  oracle:
+    kind: weather
+    station: KDCA
+    tol_c: 4
+- id: f076
+  family: block
+  need: Latest block number on Polygon
+  inputs:
+    chain: Polygon
+  must_include:
+  - latest block number
+  freshness: 10m
+  oracle:
+    kind: block
+    rpc: https://polygon-bor.publicnode.com
+    tol: 60
+- id: f077
+  family: block
+  need: Latest block number on BNB Smart Chain
+  inputs:
+    chain: BNB Smart Chain
+  must_include:
+  - latest block number
+  freshness: 10m
+  oracle:
+    kind: block
+    rpc: https://bsc-dataseed.bnbchain.org
+    tol: 300
+- id: f078
+  family: block
+  need: Latest block number on Arbitrum One
+  inputs:
+    chain: Arbitrum One
+  must_include:
+  - latest block number
+  freshness: 10m
+  oracle:
+    kind: block
+    rpc: https://arbitrum-one-rpc.publicnode.com
+    tol: 500
+- id: f079
+  family: block
+  need: Latest block number on Base
+  inputs:
+    chain: Base
+  must_include:
+  - latest block number
+  freshness: 10m
+  oracle:
+    kind: block
+    rpc: https://base-rpc.publicnode.com
+    tol: 60
+- id: f080
+  family: block
+  need: Latest block number on Optimism
+  inputs:
+    chain: Optimism
+  must_include:
+  - latest block number
+  freshness: 10m
+  oracle:
+    kind: block
+    rpc: https://optimism-rpc.publicnode.com
+    tol: 60
+- id: f081
+  family: block
+  need: Latest block number on Avalanche C-Chain
+  inputs:
+    chain: Avalanche C-Chain
+  must_include:
+  - latest block number
+  freshness: 10m
+  oracle:
+    kind: block
+    rpc: https://avalanche-c-chain-rpc.publicnode.com
+    tol: 70
+- id: f082
+  family: block
+  need: Latest block number on Gnosis Chain
+  inputs:
+    chain: Gnosis Chain
+  must_include:
+  - latest block number
+  freshness: 10m
+  oracle:
+    kind: block
+    rpc: https://gnosis-rpc.publicnode.com
+    tol: 25
+- id: f083
+  family: block
+  need: Latest block number on Linea
+  inputs:
+    chain: Linea
+  must_include:
+  - latest block number
+  freshness: 10m
+  oracle:
+    kind: block
+    rpc: https://linea-rpc.publicnode.com
+    tol: 60
+- id: f084
+  family: block
+  need: Latest block number on Scroll
+  inputs:
+    chain: Scroll
+  must_include:
+  - latest block number
+  freshness: 10m
+  oracle:
+    kind: block
+    rpc: https://scroll-rpc.publicnode.com
+    tol: 40
+- id: f085
+  family: block
+  need: Latest block number on XRP Ledger
+  inputs:
+    chain: XRP Ledger
+  must_include:
+  - latest block number
+  freshness: 10m
+  oracle:
+    kind: block
+    rpc: xrpl
+    tol: 35
+- id: f086
+  family: holiday
+  need: Is 2026-12-25 a public holiday in Germany? If so, name it
+  inputs:
+    date: '2026-12-25'
+    country: DE
+  must_include:
+  - whether 2026-12-25 is a public holiday in Germany
+  - its name
+  freshness: n/a
+  oracle:
+    kind: holiday
+    date: '2026-12-25'
+    names:
+    - Christmas Day
+    - Erster Weihnachtstag
+- id: f087
+  family: holiday
+  need: Is 2026-12-25 a public holiday in United Kingdom? If so, name it
+  inputs:
+    date: '2026-12-25'
+    country: GB
+  must_include:
+  - whether 2026-12-25 is a public holiday in United Kingdom
+  - its name
+  freshness: n/a
+  oracle:
+    kind: holiday
+    date: '2026-12-25'
+    names:
+    - Christmas Day
+- id: f088
+  family: holiday
+  need: Is 2026-11-01 a public holiday in France? If so, name it
+  inputs:
+    date: '2026-11-01'
+    country: FR
+  must_include:
+  - whether 2026-11-01 is a public holiday in France
+  - its name
+  freshness: n/a
+  oracle:
+    kind: holiday
+    date: '2026-11-01'
+    names:
+    - All Saints' Day
+    - Toussaint
+- id: f089
+  family: holiday
+  need: Is 2026-11-03 a public holiday in Japan? If so, name it
+  inputs:
+    date: '2026-11-03'
+    country: JP
+  must_include:
+  - whether 2026-11-03 is a public holiday in Japan
+  - its name
+  freshness: n/a
+  oracle:
+    kind: holiday
+    date: '2026-11-03'
+    names:
+    - Culture Day
+    - 文化の日
+- id: f090
+  family: holiday
+  need: Is 2026-12-25 a public holiday in Canada? If so, name it
+  inputs:
+    date: '2026-12-25'
+    country: CA
+  must_include:
+  - whether 2026-12-25 is a public holiday in Canada
+  - its name
+  freshness: n/a
+  oracle:
+    kind: holiday
+    date: '2026-12-25'
+    names:
+    - Christmas Day
+- id: f091
+  family: holiday
+  need: Is 2026-12-25 a public holiday in Australia? If so, name it
+  inputs:
+    date: '2026-12-25'
+    country: AU
+  must_include:
+  - whether 2026-12-25 is a public holiday in Australia
+  - its name
+  freshness: n/a
+  oracle:
+    kind: holiday
+    date: '2026-12-25'
+    names:
+    - Christmas Day
+- id: f092
+  family: holiday
+  need: Is 2026-11-02 a public holiday in Brazil? If so, name it
+  inputs:
+    date: '2026-11-02'
+    country: BR
+  must_include:
+  - whether 2026-11-02 is a public holiday in Brazil
+  - its name
+  freshness: n/a
+  oracle:
+    kind: holiday
+    date: '2026-11-02'
+    names:
+    - All Souls' Day
+    - Dia de Finados
+- id: f093
+  family: holiday
+  need: Is 2026-11-01 a public holiday in Italy? If so, name it
+  inputs:
+    date: '2026-11-01'
+    country: IT
+  must_include:
+  - whether 2026-11-01 is a public holiday in Italy
+  - its name
+  freshness: n/a
+  oracle:
+    kind: holiday
+    date: '2026-11-01'
+    names:
+    - All Saints Day
+    - Tutti i Santi
+- id: f094
+  family: holiday
+  need: Is 2026-11-01 a public holiday in Spain? If so, name it
+  inputs:
+    date: '2026-11-01'
+    country: ES
+  must_include:
+  - whether 2026-11-01 is a public holiday in Spain
+  - its name
+  freshness: n/a
+  oracle:
+    kind: holiday
+    date: '2026-11-01'
+    names:
+    - All Saints Day
+    - Día de todos los Santos
+- id: f095
+  family: holiday
+  need: Is 2026-12-25 a public holiday in Netherlands? If so, name it
+  inputs:
+    date: '2026-12-25'
+    country: NL
+  must_include:
+  - whether 2026-12-25 is a public holiday in Netherlands
+  - its name
+  freshness: n/a
+  oracle:
+    kind: holiday
+    date: '2026-12-25'
+    names:
+    - Christmas Day
+    - Eerste Kerstdag
+- id: f096
+  family: holiday
+  need: Is 2026-11-16 a public holiday in Mexico? If so, name it
+  inputs:
+    date: '2026-11-16'
+    country: MX
+  must_include:
+  - whether 2026-11-16 is a public holiday in Mexico
+  - its name
+  freshness: n/a
+  oracle:
+    kind: holiday
+    date: '2026-11-16'
+    names:
+    - Día de la Revolución
+    - Revolution Day
+- id: f097
+  family: holiday
+  need: Is 2026-12-25 a public holiday in South Korea? If so, name it
+  inputs:
+    date: '2026-12-25'
+    country: KR
+  must_include:
+  - whether 2026-12-25 is a public holiday in South Korea
+  - its name
+  freshness: n/a
+  oracle:
+    kind: holiday
+    date: '2026-12-25'
+    names:
+    - Christmas Day
+    - 크리스마스
+- id: f098
+  family: holiday
+  need: Is 2026-10-26 a public holiday in New Zealand? If so, name it
+  inputs:
+    date: '2026-10-26'
+    country: NZ
+  must_include:
+  - whether 2026-10-26 is a public holiday in New Zealand
+  - its name
+  freshness: n/a
+  oracle:
+    kind: holiday
+    date: '2026-10-26'
+    names:
+    - Labour Day
+- id: f099
+  family: holiday
+  need: Is 2026-10-31 a public holiday in Sweden? If so, name it
+  inputs:
+    date: '2026-10-31'
+    country: SE
+  must_include:
+  - whether 2026-10-31 is a public holiday in Sweden
+  - its name
+  freshness: n/a
+  oracle:
+    kind: holiday
+    date: '2026-10-31'
+    names:
+    - All Saints' Day
+    - Alla helgons dag
+- id: f100
+  family: holiday
+  need: Is 2026-12-25 a public holiday in Switzerland? If so, name it
+  inputs:
+    date: '2026-12-25'
+    country: CH
+  must_include:
+  - whether 2026-12-25 is a public holiday in Switzerland
+  - its name
+  freshness: n/a
+  oracle:
+    kind: holiday
+    date: '2026-12-25'
+    names:
+    - Christmas Day
+    - Weihnachten
