@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from "react"
-import { Bar, BarChart, Cell, LabelList, ResponsiveContainer, XAxis, YAxis } from "recharts"
 import { Play, RotateCcw, ShieldCheck, Zap } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Busy, Cite, Ext, Kicker, PickCard, Stat, Trail, useTask } from "@/components/deck"
 import { api, short, type TrailEvent } from "@/lib/api"
-import { DEMO, E, E21, POOLED, SLIDES } from "@/content"
+import { DEMO, E, POOLED, SLIDES } from "@/content"
 import { cn } from "@/lib/utils"
 
 export type SlideProps = { active: boolean; auto: boolean }
@@ -241,10 +240,10 @@ export function Trust() {
     ["÷ cost", "rank by cost per good answer: price and time over fit × settle × quality"],
   ]
   const rules = [
-    "A review moves global trust only with a validated payment to that merchant, after the shortlist",
+    "Feedback is remembered per customer; a review will count for everyone only with a validated on-ledger payment",
     "Listing and response text are untrusted data, never instructions",
     "The score uses only checks every merchant faces equally; graders and LLMs are for evaluation only",
-    "No LLM on the request path: new needs are judged once, offline, then cached",
+    "No LLM on the request path for known needs; a new need is judged once (~20 s), then cached",
   ]
   return (
     <div>
@@ -268,47 +267,49 @@ export function Trust() {
 }
 
 export function Evidence() {
-  const bars = [{ arm: "Bazaar #1", good: POOLED.bazaar }, { arm: "Plumb #1", good: POOLED.plumb }]
+  const steps = [
+    { id: "E26", head: "77 vs 72", sub: "100 pre-registered needs, graded by code: no significant edge (p = 0.40); Bazaar cheaper per good answer", tone: "default" as const },
+    { id: "E27", head: "44 → 72 of 72", sub: "root cause: new needs searched by embeddings only; union with keyword search recalls the right merchant", tone: "default" as const },
+    { id: "E28", head: "10 of 14", sub: "E26's failures bought again after the fix (was 0; Bazaar 9). Recovery on failures, not overall accuracy", tone: "good" as const },
+  ]
+  return (
+    <div>
+      <Head i={8} />
+      <div className="grid grid-cols-3 gap-4">
+        {steps.map((x, i) => (
+          <div key={x.id} className={cn("relative rounded-xl border bg-card/60 p-6", i === 2 && "border-good/50")}>
+            <div className="mb-2 font-mono text-sm text-muted-foreground">{x.id}</div>
+            <div className={cn("font-heading text-5xl font-semibold tabular-nums tracking-tight", x.tone === "good" && "text-good")}>{x.head}</div>
+            <div className="mt-3 text-base leading-snug text-muted-foreground">{x.sub}</div>
+          </div>
+        ))}
+      </div>
+      <ul className="mt-8 space-y-2 text-lg text-muted-foreground">
+        <li>Every number bought on XRPL mainnet with real RLUSD: 130 needs head-to-head plus the re-test; needs and grading frozen before buying.</li>
+        <li>Never chose the Bazaar's 0-for-88 #1<Cite id="E19–E21" /> · fizzl costs <b className="text-foreground">{POOLED.fizzlCi}</b> more per good answer than Plumb<Cite id="E24" /></li>
+      </ul>
+    </div>
+  )
+}
+
+export function Sponsors() {
+  const rows: [string, string, string][] = [
+    ["XRP Ledger", "Merchants are paid in RLUSD and XRP on mainnet; settled payments are the trust evidence; trust lines decide what an agent can pay", "E20–E28: 200+ real payments"],
+    ["Quicknode", "Full-history XRPL RPC: the payment history behind trust, each purchase verified by its own tx hash, live account reads per agent", "slide 6, live"],
+    ["AWS", "Bedrock: Claude Sonnet judges fit and fills call arguments; Titan embeds listings. AgentCore Memory backs up and restores customer feedback", "MEM2: restore verified"],
+    ["Mastercard AP4M", "The agent pays Plumb per shortlist with signed vouchers in a capped channel; the mandate limits what Plumb may recommend; receipts", "E18 + the run on slide 5"],
+  ]
   return (
     <div>
       <Head i={7} />
-      <div className="grid grid-cols-[1fr_1.2fr] gap-10">
-        <div>
-          <div className="mb-1 text-sm text-muted-foreground">good answers, 30 paid needs on mainnet<Cite id="E24" /></div>
-          <div className="h-64">
-            <ResponsiveContainer>
-              <BarChart data={bars} layout="vertical" margin={{ left: 10, right: 50 }}>
-                <XAxis type="number" hide domain={[0, 30]} />
-                <YAxis type="category" dataKey="arm" width={130} tick={{ fill: "var(--muted-foreground)", fontSize: 20 }} axisLine={false} tickLine={false} />
-                <Bar dataKey="good" radius={6} barSize={44}>
-                  {bars.map((b) => <Cell key={b.arm} fill={b.arm.startsWith("Plumb") ? "var(--brand)" : "var(--muted-foreground)"} />)}
-                  <LabelList dataKey="good" position="right" fill="var(--foreground)" fontSize={26} fontWeight={600} />
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
+      <div className="space-y-3">
+        {rows.map(([name, what, proof]) => (
+          <div key={name} className="grid grid-cols-[220px_1fr_220px] items-center gap-6 rounded-xl border bg-card/60 px-6 py-4">
+            <div className="font-heading text-2xl font-semibold">{name}</div>
+            <div className="text-lg leading-snug text-muted-foreground">{what}</div>
+            <div className="text-right font-mono text-sm text-good">{proof}</div>
           </div>
-          <div className="grid grid-cols-2 gap-3">
-            <Stat value={`${POOLED.won}–${POOLED.lost}`} label={`needs where only one arm was right (p = ${POOLED.p}: suggestive, not proof)`} cite="E24" tone="good" />
-            <Stat value={`${POOLED.heldOut.plumb} vs ${POOLED.heldOut.bazaar}`} label="10 held-out needs, pre-registered" cite="E23" />
-          </div>
-        </div>
-        <div className="space-y-4">
-          <Table>
-            <TableHeader><TableRow><TableHead>E21 · 20 frozen needs</TableHead><TableHead className="text-right">good</TableHead><TableHead className="text-right">RLUSD per good answer</TableHead></TableRow></TableHeader>
-            <TableBody>
-              {E21.map((r) => (
-                <TableRow key={r.arm} className={cn(r.arm.startsWith("Plumb") && "bg-brand/10 font-semibold")}>
-                  <TableCell>{r.arm}</TableCell><TableCell className="text-right tabular-nums">{r.good} / 20</TableCell><TableCell className="text-right font-mono">{r.cost}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-          <ul className="space-y-2 text-base text-muted-foreground">
-            <li>Pooled cost per good answer, fee included: Plumb {POOLED.costPlumb} vs Bazaar {POOLED.costBazaar}; interval {POOLED.ratioCi}× includes parity<Cite id="E24" /></li>
-            <li>fizzl costs <b className="text-foreground">{POOLED.fizzlCi}</b> more per good answer than Plumb<Cite id="E24" /></li>
-            <li>Bought with real RLUSD; needs and grading frozen before buying; graded mostly by code against public sources</li>
-          </ul>
-        </div>
+        ))}
       </div>
     </div>
   )
@@ -318,11 +319,11 @@ export function Production() {
   const cols: [string, string[]][] = [
     ["Live today", ["Router + trust on real XRPL x402 data", "AP4M: mandate, capped channel, receipts", "Customer memory, backed up to AWS AgentCore (MEM2)", "Mainnet evals with frozen rubric · MCP tool"]],
     ["Next", ["Adapters: AP4M merchants, x402 on Base", "Success fee, priced on independently checked answers", "Real audits folding into trust", "Feedback that moves global trust, proof-gated"]],
-    ["Blockers we name", ["AP4M is testnet and pays only our own merchant (L19)", "XRPL AI Hub has no public API yet", "Few real buyers today (L2): the trust prior carries most weight", "Accuracy edge not yet significant (E24)"]],
+    ["Blockers we name", ["AP4M is testnet, pays only our own merchant, and caps channels (L19, L27)", "XRPL AI Hub has no public API yet", "Few real buyers today (L2): the trust prior carries most weight", "Accuracy edge not significant at 100 needs (E26)"]],
   ]
   return (
     <div>
-      <Head i={8} />
+      <Head i={9} />
       <div className="grid grid-cols-3 gap-6">
         {cols.map(([h, xs], i) => (
           <div key={h} className={cn("rounded-xl border bg-card/60 p-6", i === 0 && "border-brand/50")}>
@@ -331,7 +332,7 @@ export function Production() {
           </div>
         ))}
       </div>
-      <div className="mt-8 text-xl">Business: <b>0.002 RLUSD per shortlist</b> through AP4M today; the channel cap is the agent's spending mandate.</div>
+      <div className="mt-8 text-xl">Business: <b>0.002 RLUSD per shortlist</b> through AP4M today → <b>5% of the pick's price</b> next (below the 7.5% break-even across 130 paid needs).</div>
     </div>
   )
 }
@@ -345,7 +346,7 @@ export function Close() {
       </h1>
       <div className="mt-10 grid max-w-4xl grid-cols-3 gap-4">
         <Stat value="0 / 88" label="the Bazaar's #1, never chosen by Plumb" cite="E2" tone="bad" />
-        <Stat value="19 vs 14" label="good answers over 30 paid needs" cite="E24" tone="good" />
+        <Stat value="10 / 14" label="failures recovered after fixing our own bug, bought again" cite="E28" tone="good" />
         <Stat value="0.13 ms" label="worst-5% ranking time, in-process bench" cite="E25" />
       </div>
       <div className="mt-10 text-muted-foreground">Evidence: <Ext href="https://github.com/rrrozhd/plumb/blob/mock-personalized/docs/EVIDENCE.md">docs/EVIDENCE.md</Ext></div>
@@ -353,4 +354,4 @@ export function Close() {
   )
 }
 
-export const SLIDE_COMPONENTS = [Title, Problem, Router, Mandate, Ap4m, Personal, Trust, Evidence, Production, Close]
+export const SLIDE_COMPONENTS = [Title, Problem, Router, Mandate, Ap4m, Personal, Trust, Sponsors, Evidence, Production, Close]
