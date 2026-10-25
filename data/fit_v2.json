@@ -1621,11 +1621,7 @@
     "p_fit": 0.9,
     "reason": "Returns SEC EDGAR XBRL revenue from latest 10-K for ticker AAPL.",
     "args": {
-     "method": "GET",
-     "queryParams": {
-      "ticker": "AAPL"
-     },
-     "body": null
+     "ticker": "AAPL"
     }
    },
    "1c8654d6b9abbef8837e07f4538cfbb58c7355de94411d39943e02e47f348633": {
@@ -2211,11 +2207,7 @@
     "p_fit": 0.9,
     "reason": "Screens EVM addresses against OFAC SDN list; accepts address query parameter.",
     "args": {
-     "method": "GET",
-     "queryParams": {
-      "address": "0x098B716B8Aaf21512996dC57EB0615e2383E2f96"
-     },
-     "body": null
+     "address": "0x098B716B8Aaf21512996dC57EB0615e2383E2f96"
     }
    },
    "150141bdf23ed59e41cc8a181c6b8af7e910e58b1269caea6d23afa714eb581c": {
@@ -3195,10 +3187,8 @@
     "p_fit": 0.5,
     "reason": "Checks payment against expected payee and amount; needs those inputs, not direct delivered amount.",
     "args": {
-     "body": {
-      "chain": "xrpl",
-      "tx_hash": "65A456656B9479457C0995E2FC770319C7636C39550DF4A4E127D265ADB90795"
-     }
+     "chain": "xrpl",
+     "tx_hash": "65A456656B9479457C0995E2FC770319C7636C39550DF4A4E127D265ADB90795"
     }
    },
    "8a9222cc99b1fb89a111a6c4ca47118480125b781d4b5ac12c2c919f0bc2f95c": {
@@ -3206,9 +3196,7 @@
     "p_fit": 0.9,
     "reason": "Proves XRPL transaction validation and returns full fields and metadata including delivered amount.",
     "args": {
-     "body": {
-      "tx_hash": "65A456656B9479457C0995E2FC770319C7636C39550DF4A4E127D265ADB90795"
-     }
+     "tx_hash": "65A456656B9479457C0995E2FC770319C7636C39550DF4A4E127D265ADB90795"
     }
    },
    "008870b369f12ec24cf55ca3f64ec37a0b723f84ee6fe0d585aa79ec938058f4": {
@@ -3216,14 +3204,12 @@
     "p_fit": 0.5,
     "reason": "Batch payment verification; needs expected payee and amount, less direct for delivered amount.",
     "args": {
-     "body": {
-      "payments": [
-       {
-        "chain": "xrpl",
-        "tx_hash": "65A456656B9479457C0995E2FC770319C7636C39550DF4A4E127D265ADB90795"
-       }
-      ]
-     }
+     "payments": [
+      {
+       "chain": "xrpl",
+       "tx_hash": "65A456656B9479457C0995E2FC770319C7636C39550DF4A4E127D265ADB90795"
+      }
+     ]
     }
    },
    "39923a004f64ce7c3eeb476b0e194b43c777e20a217d98b69b2bb34a2acfecdf": {
@@ -3992,11 +3978,7 @@
     "p_fit": 0.9,
     "reason": "Converts a given public URL's main content to clean Markdown, matching the need.",
     "args": {
-     "method": "GET",
-     "queryParams": {
-      "url": "https://en.wikipedia.org/wiki/XRP_Ledger"
-     },
-     "body": null
+     "url": "https://en.wikipedia.org/wiki/XRP_Ledger"
     }
    },
    "e3040f8b931892b562d78e69e0f435d2fb22da07c892e4b9031ff6c6179e279a": {
@@ -4193,12 +4175,8 @@
     "p_fit": 0.9,
     "reason": "Renders any URL and returns article extracted as clean markdown; accepts the Wikipedia URL.",
     "args": {
-     "method": "POST",
-     "queryParams": null,
-     "body": {
-      "extract": "article",
-      "url": "https://en.wikipedia.org/wiki/XRP_Ledger"
-     }
+     "extract": "article",
+     "url": "https://en.wikipedia.org/wiki/XRP_Ledger"
     }
    },
    "0f4f617385ccc7ec5110c6fc4b0350a66e443352ee11e5619720e7d20a6e21c2": {

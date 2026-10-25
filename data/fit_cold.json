@@ -1,0 +1,2427 @@
+{
+ "current eth price in usd": {
+  "need_id": null,
+  "need": "Current ETH price in USD",
+  "labels": {
+   "6bd3d63f864cac0e0d61d9c8d6a33fcdc1752791bc2a717c8ef09c3113beb0bb": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns current USD price for ticker ETH.",
+    "args": {
+     "monedas": "ETH"
+    }
+   },
+   "608581c7276ba3f18a320ed103af867caba25139402c2f53db525399f4b863d8": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Current ETH price in USD by ticker and currency.",
+    "args": {
+     "coins": "ETH",
+     "currency": "USD"
+    }
+   },
+   "d37c16da098de5c9507d8da93c81bacfc140886f0330cc86d8058c24456696dc": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "On-chain price of ethereum; USD likely supported as base currency.",
+    "args": {
+     "coin": "ethereum",
+     "currency": "USD"
+    }
+   },
+   "94a6e00ccc1d58afc24dd4dfbb6f9f8d68545faa9c98052bc100fb8e1361b21d": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Includes current price but focused on percentage changes.",
+    "args": {
+     "coins": "ETH",
+     "period": "1h"
+    }
+   },
+   "66ea00cc01be15d96bbba087a51dd1150dd0c87cdd7046acca3ad2525f627b43": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Inflation data, not crypto prices.",
+    "args": {}
+   },
+   "f9bfc6a25023a69dbfe18a271174959535e122c502fccc7e9400d50c47a39f3c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Electricity prices, unrelated.",
+    "args": {}
+   },
+   "8da14d4e443bfc8fadc614ad4b7964d990328d96d6539ce60d1966a1b0c307f7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Mortgage rates, unrelated.",
+    "args": {}
+   },
+   "334329a94f8607461e706a2d9a66b4dd3b2c138b47b36591e5c408457d57a3e1": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Mortgage rates, unrelated.",
+    "args": {}
+   },
+   "5f68f99efcd7df1d85409ba57498cad11d371157b39cff2099b8429cedaae59b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Inflation data, not crypto prices.",
+    "args": {}
+   },
+   "4f54472645e3ae58be273709ce6cee28b098a7d6542fe1ccdfaf3f5d48d9be27": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Chainlink ETH/USD latest price in USD directly.",
+    "args": {
+     "feed": "eth-usd"
+    }
+   },
+   "787ff7fd8c4a640dcd509519d287d4e0f20d0c02fc2410a0722fe33f4247a612": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Includes ETH USD price but focused on stETH peg; no input.",
+    "args": {}
+   },
+   "758430cecf1c0da450183b9a41eaa15e820629cf217db316b9b6e9bf5d70e914": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Converts 1 ETH to USD at current spot price.",
+    "args": {
+     "amount": "1",
+     "from": "ETH",
+     "to": "USD"
+    }
+   },
+   "b70154e434b6857d523caf933f3b5a18074bc83612854de0ddda6c4937c763fc": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Gas prices, not ETH price.",
+    "args": {
+     "chain": "ethereum"
+    }
+   },
+   "48c48f6d20064739230936ef098bf1d98747cae4167e30c595e84fa0b108a830": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Swap quote ETH to USDC gives indirect price, with slippage.",
+    "args": {
+     "amount": "1",
+     "chain": "ethereum",
+     "tokenIn": "native",
+     "tokenOut": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+    }
+   },
+   "f321e03ac0f9a44cc6d17460a768f329ff1dd51f3853d720eba596e4dc2d138a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "ENS resolution, unrelated to price.",
+    "args": {}
+   },
+   "acd2e20ed32d4d7ef14cf2ad9e3f4978cab5edb15ccfd3e8bfe6b3db48b282e3": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Gas fee telemetry in gwei, not ETH USD price.",
+    "args": {}
+   },
+   "79d2c748a2de5619329d4cff8d89a121fdbf7995311a895ca80139e5a027e555": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns USD value of one ETH by symbol.",
+    "args": {
+     "id": "ETH"
+    }
+   },
+   "2a4224b0e7925c955cd48f24732a5bacdfd326ae88229754c294674ef40eda90": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Binance ETHUSDT last price approximates ETH in USD.",
+    "args": {
+     "symbol": "ETHUSDT"
+    }
+   },
+   "02c336358f9900242fcfc7d77d82182539cde6f3841dab7575a23e59c5b058ff": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "WETH to USDT swap quote implies price, with impact and gas.",
+    "args": {
+     "amountIn": "1000000000000000000",
+     "chainId": "1",
+     "tokenIn": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+     "tokenOut": "0xdAC17F958D2ee523a2206206994597C13D831ec7"
+    }
+   },
+   "33df0bedae15cda7cf3ad6d3f7922cf2d3b9d54a3c6d587150909d8107d60636": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Gas priority fees, not price.",
+    "args": {
+     "chain": "ethereum"
+    }
+   },
+   "7d16e095e45de278eb8e3ea0a02c8fd6f6d6dbeb7776add9a36a440bb7ecb030": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitcoin transaction lookup, unrelated.",
+    "args": {}
+   },
+   "bb5767a0a9b369a5c945e50922d7e440cd0948c39bf7ed88171467687bfd53e0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Staking yield and finality, not price.",
+    "args": {}
+   },
+   "234e513de89fdb0f407b6b2f6069e844c17213179adf8142737e5f158283c54e": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Gas fee API only incidentally includes ethUsd; not its main purpose.",
+    "args": {}
+   },
+   "375e06fc636bee43671ca85e8c244bcc475992f6e17da0c8d3afb441ce6fe537": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns current USD price for ETH via symbol parameter.",
+    "args": {
+     "symbol": "ETH"
+    }
+   },
+   "9c7da41f8fcfb116cc742dbc6e4981c9f5cb664075b0b005ce4051631913f832": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Market overview focused on BTC; only ETH dominance, no ETH USD price.",
+    "args": {}
+   },
+   "8e4b29a41307e65466c03f5ffa702e5957b7aaca202289f25b61d46ffa4a9b03": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Returns price for a top-50 coin via :coin path; ETH likely supported, but input schema unclear.",
+    "args": {
+     "coin": "ETH"
+    }
+   },
+   "acaa24d97628e201fc44a3ab3762b6a4a8022d487664547f7d7d336a3f9bf93f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Sentiment and funding data; no ETH price returned.",
+    "args": {}
+   },
+   "05264acd26c1085510dfef5e260d600645082413dd0335e680efb96feb8c1d96": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Compares ETH among alts with price agreement; not a direct ETH USD price.",
+    "args": {}
+   },
+   "de2f08d34d941d2a01559d2578eb6af5333f942fb86eb4474e13210e902c483c": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Includes ETH spot among cycle context evidence; not a plain price quote.",
+    "args": {}
+   },
+   "5c641b01f7250e6be62743aa9e11fafa1b1f014e05b9a45f84e30383a28d40ac": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Market-pricing context for ETH, but not a direct USD spot price.",
+    "args": {}
+   },
+   "3c98f4fa0877ea496cd9225aca9b4aa9b9ed450b835b856fe7ad03e3c3b36864": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Turnover regime classification, not ETH price.",
+    "args": {}
+   },
+   "e2988f1d7c3b62992aea91ee21efb0b52c38d3b3ecf9b100a36921e6bbb8c9be": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "ETH relative performance versus BTC; price not directly returned.",
+    "args": {}
+   },
+   "7d77123333815457b144949c82aaf144202a6d6a4230576570da08e8b783482f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Large ETH transfers, not price.",
+    "args": {}
+   },
+   "8794f27589c55ea453a63b5535397c153edd32754ba8fd98177b7e453bac6ea6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "ETH fee burn evidence, not price.",
+    "args": {}
+   },
+   "09d8422d2cd0754c0564c5d43bec5f504714c0ef8883acab14708ec33fabe141": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Macro scenarios outlook, not current spot price.",
+    "args": {}
+   },
+   "c326cc282f3a469cdfaf96b70e664a07f47adde5a1659bdf3e4396b3a4e1e91c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Thailand trade openness data, unrelated.",
+    "args": {}
+   },
+   "b1287902d752d1fb8291be3a13c3b55b765adea66f635501f51a7e0e09e4e858": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Snapshot includes ETH price in USD; no input needed, ETH is fixed in output.",
+    "args": {}
+   },
+   "11b32ee74a6b2fd55dbec89264228ec69c6c89e286230b094661e37ee2f5b713": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Returns DEX price for a token address; WETH could proxy ETH, indirect.",
+    "args": {
+     "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+     "chain": "ethereum"
+    }
+   },
+   "8b77e65b3041f1c8aad232a6a7a8dbcb4ec9094942aea46ba885066441e7282c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "EV charging cost calculator, unrelated to ETH price.",
+    "args": {}
+   },
+   "6cb1a6d8e2b471c3e353e32c38487e2a5a84322312e363ca0c98ea06c3fe55a3": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns ERC-20 wallet balances, not ETH market price in USD.",
+    "args": {}
+   }
+  },
+  "cold": true
+ },
+ "current sol price in usd": {
+  "need_id": null,
+  "need": "Current SOL price in USD",
+  "labels": {
+   "6bd3d63f864cac0e0d61d9c8d6a33fcdc1752791bc2a717c8ef09c3113beb0bb": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns current SOL price by ticker; USD is the default currency.",
+    "args": {
+     "monedas": "SOL"
+    }
+   },
+   "608581c7276ba3f18a320ed103af867caba25139402c2f53db525399f4b863d8": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns current SOL price in USD via coins and currency parameters.",
+    "args": {
+     "coins": "SOL",
+     "currency": "USD"
+    }
+   },
+   "822edb710a5ac5000a8b05ac296b9c09cec5bd6f135f8df352dcbf29fac917da": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Wallet holdings include SOL USD price, but require a wallet address; indirect.",
+    "args": {}
+   },
+   "ea01f59d495e8dbdee4a94a21e639eaaf8c455576024dbd962b335646b5510b2": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Account inventory includes SOL price only via a wallet address; indirect.",
+    "args": {}
+   },
+   "3159bfa6d2e374b5a28a76af71c4092d38e46ec9db1a957dc382235c5cdbd496": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Jet fuel price, unrelated.",
+    "args": {}
+   },
+   "6b42f8b105ac4679551aee8f3744cadeebb3abb0f011cd6c181fdb8bc1ea1632": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Uranium price, unrelated.",
+    "args": {}
+   },
+   "dedaebf48f071f887f89acec6d67f5a5903f654ad21f7be3c9265e99e418a359": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Fertilizer indexes, unrelated.",
+    "args": {}
+   },
+   "93c4fe73b29244f73688c5dbde512798e08a57f6e52c6a61163f711c56cc992f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Coal price, unrelated.",
+    "args": {}
+   },
+   "80202f6ae3d01c2286ea1fa2ccf511a11497690f13232394ad7c9383854f9790": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "European gas price, unrelated.",
+    "args": {}
+   },
+   "b131ea7ec28bb8b77c6d1fe4d3919364eba62d2090da84e7bddfc9f25b80b7ce": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Nickel price, unrelated.",
+    "args": {}
+   },
+   "3b31a541baf0e03af2bfe0ae1a2e904379c395321d6646081a3a3a7d232baae0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Gold/silver spot only, not SOL.",
+    "args": {}
+   },
+   "c2c7b9172e640abdbac7150bac534731d8b7e39906ff7bcc7d01f23a5c5c1df4": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bunker fuel prices, unrelated.",
+    "args": {}
+   },
+   "dd58326970dfc9a2b7e86c6d358872a506c907d44bbf4b64aa962cde9a24d80b": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Quote for 1 SOL to USDC gives implied price, needs interpretation.",
+    "args": {
+     "amount": "1000000000",
+     "inputMint": "So11111111111111111111111111111111111111112",
+     "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "slippageBps": "50"
+    }
+   },
+   "3647154928c6577251166e4dfa21f9e7d3aef066af8b2a0d3bcb5ca871b0f345": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Iron ore price, unrelated.",
+    "args": {}
+   },
+   "a35810284e071e028215e99e9d879d680834978a2798c898b3c723741d6f6395": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Options stats for SOL, no spot price.",
+    "args": {
+     "currency": "SOL"
+    }
+   },
+   "38718f2153b0a17d0b9bba56954355c8c0becc6e9dcd68b85dbd7531bac60f29": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Soft commodity prices, unrelated.",
+    "args": {}
+   },
+   "586c149a0a00b5d40aadf3d780846c38a8ae69a7e48abd3aa1405fa1244cf11d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crude oil prices, unrelated.",
+    "args": {}
+   },
+   "e37c6cbb800007400cf179b1fafa659c52326c8a1abb7290cadaa2a8cfcbf68f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Base metals prices, unrelated.",
+    "args": {}
+   },
+   "4c1adca84adf73462839a465e4198aa866ce915381c593d59cdb3c330badab31": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Agricultural prices, unrelated.",
+    "args": {}
+   },
+   "94742ef00c4c7888009237565b11639874e338db4e628663a24b5a7c143f7461": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "MVRV for BTC/ETH only.",
+    "args": {}
+   },
+   "b70154e434b6857d523caf933f3b5a18074bc83612854de0ddda6c4937c763fc": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Gas fees, not SOL price.",
+    "args": {}
+   },
+   "c8cae701f027b728da578eb27274166baf12e6a417069d0309bc4d25dd20ecf7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Prediction market quote, unrelated.",
+    "args": {}
+   },
+   "b12bf9af749e70d301878b6c8656d0e8512313dff342e4333df2df0f6eb9e4bb": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Food price index, unrelated.",
+    "args": {}
+   },
+   "4413d90fffa96fef5736a37c9b3e26956f864650f84a42bf5d481e8540ba02fd": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Returns SOL perp mark price (USDT), not spot, plus funding data.",
+    "args": {
+     "symbol": "SOL"
+    }
+   },
+   "bb07d48e679677f87715670ac9fa4dcc2576cbf8ddbcb582f8ae1d17b539bd9b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Hydrogen cost calculator, unrelated.",
+    "args": {}
+   },
+   "09346cb09bf50f7f2bcba426f3714bc223b31330cb393ba6d6dd4dc891589e0a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "NY electricity prices, unrelated.",
+    "args": {}
+   },
+   "d2ed1de8ce62dc63fc08106ca3e2ac9a99755f3a4b664132ebcf50e4993354d6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Solar resource data, unrelated.",
+    "args": {}
+   },
+   "67b78dbaa057ebae146768df27fc8df0c696f168af14a2a41bacf8bc33a2209a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitcoin SOPR, unrelated.",
+    "args": {}
+   },
+   "309dee60dd7b9909d741615eae21e38804b2bbfdda9aea8aafc65f6fd44cc0e1": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Carbon credit registry, unrelated.",
+    "args": {}
+   },
+   "7c41b602f897fb5ed7107908e16c8c4e6d08c6255eeaba32553fda5e526b595d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Italian open data catalogue, unrelated.",
+    "args": {}
+   },
+   "4cc2245611e86d504be2aad7841da45e1fb349563b39abe0c9ecbc3f36eaf187": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "European electricity prices, unrelated.",
+    "args": {}
+   },
+   "9eb2033deed1c29e37e49141dc19ecbde15f6d7678dcd1f86301710919b9960c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Domain registration data, unrelated.",
+    "args": {}
+   },
+   "375e06fc636bee43671ca85e8c244bcc475992f6e17da0c8d3afb441ce6fe537": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns current USD price for SOL via symbol parameter; the declared input is empty but the description supports symbol=",
+    "args": {
+     "queryParams": {
+      "symbol": "SOL"
+     }
+    }
+   },
+   "629015511aa3c3c28dfddf3a3343744a6e793cdbb93d03bdd7fc39d9a05e22a6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns x402 resource price index, not SOL cryptocurrency price; no asset input.",
+    "args": {}
+   },
+   "73f9b7a5f5419349c53cfff7d5e17ce6783de94260c0fc6e1a77409c1eb317e4": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns state electricity retail rates, not Solana cryptocurrency price.",
+    "args": {}
+   },
+   "0e947b63d3de7dd057e8cb3b9d9a2eeec6acf085aef496b41fad00889f1f720e": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Skincare price per active ingredient; unrelated to SOL cryptocurrency price.",
+    "args": {}
+   },
+   "d3d8354960e317d3442ec957ed4b6e3aee5e588b8e7527c478ec90efaa6ade5d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Italy inflation data; unrelated to SOL price.",
+    "args": {}
+   },
+   "05e5fd9ce4c7fd9b44c093e9ada69cd4efddcd525c819b3362a53a4129c509ff": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Argentina inflation data; unrelated to SOL price.",
+    "args": {}
+   },
+   "ee18c18c400d14a42d36fac251a8e0ef5fe0251431cd602605a81e544fb347c1": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Argentina real interest rate; unrelated to SOL price.",
+    "args": {}
+   },
+   "f320bf7f77a2dd480aa844d7f78af6aadd83f8b3d6bf2cc586c722cfc9880bfa": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Argentina current account data; unrelated to SOL price.",
+    "args": {}
+   }
+  },
+  "cold": true
+ },
+ "convert <num> gbp to usd at the latest exchange rate": {
+  "need_id": null,
+  "need": "Convert 100 GBP to USD at the latest exchange rate",
+  "labels": {
+   "8fb361ab2d278ffecf6ef2706a2a3b5abbce1ae03f5ade366ace8b40dd542530": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Converter takes amount, from, to; returns latest ECB converted amount for GBP to USD.",
+    "args": {
+     "amount": "100",
+     "from": "GBP",
+     "to": "USD"
+    }
+   },
+   "d13f8981822d5108d5bb2b6f18d9a3bb8927403dece207e5b54cf72ba4322731": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Returns GBP-USD rate; amount conversion mentioned but no amount parameter declared in input.",
+    "args": {
+     "base": "GBP",
+     "symbols": "USD"
+    }
+   },
+   "f014eb2ce3bd3b26dc4cf70032d73a579babcea6dff587b36adfbea0ca1cc4b5": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Converts amount between currencies at latest ECB rate; supports from, to, amount.",
+    "args": {
+     "from": "GBP",
+     "to": "USD",
+     "amount": 100
+    }
+   },
+   "5c3eb0ad5def2ba2613589ede29572434e56e07708efee97fcf75100bfee453b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crypto onboarding guide, no currency conversion.",
+    "args": {}
+   },
+   "36371410a092ce3a22045e6081e159ea19c2686e80692ad62df8137e0b4ca01b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Stablecoin peg monitoring, not GBP to USD conversion.",
+    "args": {}
+   },
+   "6aac938a86aec4b438bc5a5b16d906ad7489724677c4cc6f8f699a4d332f93b7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Cocoa ethics data, unrelated to currency conversion.",
+    "args": {}
+   },
+   "b1287902d752d1fb8291be3a13c3b55b765adea66f635501f51a7e0e09e4e858": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crypto market snapshot, no fiat exchange rates or conversion.",
+    "args": {}
+   },
+   "cafdfb42259e710b6cf4cf06ba04ada402397818dde5b976f5396c99aca7ceef": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Returns GBP rate vs USD; conversion of 100 needs a manual multiplication.",
+    "args": {
+     "currencies": "GBP"
+    }
+   },
+   "61025f17739eddc3836a1130d123978f6d7ce9f414b7c009a17e74ade8a901f8": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Quarterly rate only, not the latest; no amount conversion.",
+    "args": {
+     "country": "United Kingdom"
+    }
+   },
+   "2c6eca03236ef742521ac2c9af2abb2a2a2797f4bbe5cb4e417718a08c2ccbee": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Quarterly Treasury rate, not latest; requires manual multiplication.",
+    "args": {
+     "pais": "United Kingdom"
+    }
+   },
+   "6f617b8601b44f59c02eade4d5aa3c82ac44580765debc4cde790b1a99b299db": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Daily GBP rate vs USD; amount conversion needs another step.",
+    "args": {
+     "divisas": "GBP"
+    }
+   },
+   "378efa0504fbd8a6dbfa8de3e3d8d33ddf47c43925b65a45310cd3cb84007758": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Converts amount between fiat currencies using ECB rates.",
+    "args": {
+     "a": "USD",
+     "cantidad": 100,
+     "de": "GBP"
+    }
+   },
+   "f03780794e1e92aad71c090a0db1afd2070cc03cfe13e5a661ee03ff4b420040": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Converts amounts between ECB currencies including GBP and USD.",
+    "args": {
+     "amount": 100,
+     "from": "GBP",
+     "to": "USD"
+    }
+   },
+   "5c3ee89b1e43b68b319f935305dec8de81a3358d7baa88619457e9da89871ed0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Number base converter, unrelated to currency.",
+    "args": {}
+   },
+   "4b493ef0ee04cd0ac70b396cae2d8e116ae3e284acf2399915e62596b39f140f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Number base converter, unrelated to currency.",
+    "args": {}
+   },
+   "911aae8cb5da5169b9e6b40b2aafffa4d64f0871bfc64d88d820dd49c19b8c3e": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Converts between any two ECB currencies with reference date.",
+    "args": {
+     "amount": 100,
+     "from": "GBP",
+     "to": "USD"
+    }
+   },
+   "f33217c7cbe3a2ead65fb7c8ae8c19ab8e315bed3134c9330ede97c0343a04e9": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Converts 100 GBP to USD using latest ECB rates.",
+    "args": {
+     "a": "USD",
+     "de": "GBP",
+     "importe": 100
+    }
+   },
+   "758430cecf1c0da450183b9a41eaa15e820629cf217db316b9b6e9bf5d70e914": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crypto converter; explicitly refuses fiat-to-fiat conversions.",
+    "args": {
+     "amount": "100",
+     "from": "GBP",
+     "to": "USD"
+    }
+   },
+   "8a12e1b0f0a2f42a9f7da6cb06267381a6da7f6fa9d2f4dc1b7514b1405aca73": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Broad effective index per country, not a bilateral GBP/USD rate.",
+    "args": {}
+   },
+   "79d2c748a2de5619329d4cff8d89a121fdbf7995311a895ca80139e5a027e555": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Gives USD rate per currency; needs separate lookup and manual multiplication.",
+    "args": {
+     "id": "british-pound-sterling"
+    }
+   },
+   "3ec5ad4317059b84f2c582e5e23f9c593222e93fb86cf82af0c12a5167b28489": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "DEX token pools, unrelated to fiat currency conversion.",
+    "args": {}
+   },
+   "666097e6d720b63d1e25a62ad65e53f2c7091070ee412f783f7eea7d8d848301": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Coinbase crypto order book, not GBP/USD fiat conversion.",
+    "args": {}
+   },
+   "15176899928c8661673b08e76a09924376add052a07fcbe7ba855d5b6a2b4f50": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "ECB latest rates with amount conversion supports GBP to USD directly.",
+    "args": {
+     "amount": "100",
+     "from": "GBP",
+     "to": "USD"
+    }
+   },
+   "7d16e095e45de278eb8e3ea0a02c8fd6f6d6dbeb7776add9a36a440bb7ecb030": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitcoin transaction lookup, unrelated.",
+    "args": {}
+   },
+   "01813c590523b7e6dbea0f67f86629e14e3fd2884c25afef65a4970a4edc5aae": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "DEX pool snapshot, unrelated to fiat exchange rates.",
+    "args": {}
+   },
+   "a5fb9eede1c95ebac56841fa430b83b6360f3780d9974f808e00157eb3050f2e": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Stablecoin peg prices, not GBP conversion.",
+    "args": {}
+   },
+   "94598fdfa3a0f4528d1a7e3dd056e5254685f0df9969ac04bcb30ba20e9be933": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "MLB stats, unrelated.",
+    "args": {}
+   },
+   "a287948ef26af08ad7d166c0587212cd0663a7e2c1da6f77f45885553a1a4359": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Facebook photos, unrelated.",
+    "args": {}
+   },
+   "5a6e1277a7294d622b1fd6a5228e34392781d6f1392b5d2bb24a33a9c763cb44": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "World Bank annual indicators, not live exchange rates.",
+    "args": {}
+   },
+   "0368102b572e303491aac724c3f090f7b15a0e3db66caba386ac7193b2ea361b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Sports betting odds, unrelated.",
+    "args": {}
+   },
+   "3ce5fc33f340b88f86b863dc6b492ba1668ab5b0d312df2b3a6377b4a1934a26": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns Bank of England policy rate, not GBP/USD exchange rate or conversion.",
+    "args": {}
+   },
+   "a3a58eb6194e49a9a99f07633f18f3828e51e2b0daee2090e682654d3a0f13a7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "CFTC leveraged-fund positioning changes, not an exchange rate.",
+    "args": {}
+   },
+   "a3d546c59fc9981323d1bf40b2614194f2a4562cada511abaad8f81797259e2a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "CFTC asset-manager positioning data, not an exchange rate.",
+    "args": {}
+   },
+   "2a524571cd167cb01ff4e34a305b9346434fd536c72f6b553982f1b3b4723fd5": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "CFTC leveraged-fund positioning data, not an exchange rate.",
+    "args": {}
+   },
+   "8c39bde6b35a10729b56013138134eae8edc2e18b3a3330d27ef4efb0a46e6a8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "UK CPI services price index, unrelated to currency conversion.",
+    "args": {}
+   },
+   "6cb1a6d8e2b471c3e353e32c38487e2a5a84322312e363ca0c98ea06c3fe55a3": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns ERC-20 wallet balances, not fiat currency exchange rates or conversion.",
+    "args": {}
+   },
+   "6d62663d07257ae40630c8cf53e9b4792d2917a9f1ba0ed08fcbab3b7bf00e3a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Echo endpoint only returns the message sent; no exchange rate data.",
+    "args": {}
+   },
+   "9f8cc1a8456f7783c2500cfeb6c154714bea9a12e303ce0d0feb85386fc381d0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Scans wallet holdings on Base; unrelated to GBP to USD conversion.",
+    "args": {}
+   },
+   "fd6e190c6184aa2bec83483ff7a8db8930f38541a4df2e05e3ea15a39d4e1c5f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Ingredient nutrition data; unrelated to currency conversion.",
+    "args": {}
+   },
+   "1d49b247d96e60241904d2bd819da9065cfd4430abaa7f517448efa5d9548f18": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Blockchain transaction status; no exchange rate or currency conversion.",
+    "args": {}
+   }
+  },
+  "cold": true
+ },
+ "convert <num> jpy to eur at the latest exchange rate": {
+  "need_id": null,
+  "need": "Convert 1000 JPY to EUR at the latest exchange rate",
+  "labels": {
+   "8fb361ab2d278ffecf6ef2706a2a3b5abbce1ae03f5ade366ace8b40dd542530": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Converts amount between currencies at latest ECB rate; accepts amount, from, to.",
+    "args": {
+     "amount": "1000",
+     "from": "JPY",
+     "to": "EUR"
+    }
+   },
+   "d13f8981822d5108d5bb2b6f18d9a3bb8927403dece207e5b54cf72ba4322731": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Returns rates; optional amount conversion mentioned but no amount parameter declared in input.",
+    "args": {
+     "base": "JPY",
+     "symbols": "EUR"
+    }
+   },
+   "f014eb2ce3bd3b26dc4cf70032d73a579babcea6dff587b36adfbea0ca1cc4b5": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Converts amounts between currencies at the latest ECB rate; supports JPY to EUR.",
+    "args": {
+     "from": "JPY",
+     "to": "EUR",
+     "amount": 1000
+    }
+   },
+   "77ab9a0231aaa35223aea9f1d61283115426db6a30cc273b8e0421520f7baedc": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Stablecoin peg monitoring, not fiat currency conversion.",
+    "args": {}
+   },
+   "a7a73931b7b09c79025016dfb10433204c3e950ad21875a5d7ffb53a5fed8fe7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Country tax information, unrelated to currency conversion.",
+    "args": {}
+   },
+   "1c79c7c51fc108dba57537b36d377352ad24b9ade6f369a15c9ec2c1e1404694": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Earthquake data, unrelated to exchange rates.",
+    "args": {}
+   },
+   "029cf36edac51c069c7876547305538ea192ce42ffc77d534e8a244c666c4065": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Merchant deal and promo verification, not currency conversion.",
+    "args": {}
+   },
+   "cafdfb42259e710b6cf4cf06ba04ada402397818dde5b976f5396c99aca7ceef": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Gives USD-based rates for EUR and JPY; no amount conversion, needs a manual step.",
+    "args": {
+     "currencies": "EUR,JPY"
+    }
+   },
+   "fcda20b3e905269ac3a3639d134baa2bf0554a97358694f1a40441a1c1815b4a": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Historical conversion needing a date; latest may work, but it targets history.",
+    "args": {
+     "amount": 1000,
+     "from": "JPY",
+     "to": "EUR"
+    }
+   },
+   "71a844d5a282ca68482c0e3daa2303f5402dcce74c9e39dd05c14133cd47164e": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Returns latest EUR/JPY rate; the conversion must be calculated separately.",
+    "args": {
+     "currency": "JPY",
+     "days": 1
+    }
+   },
+   "a66ba1290a082943976d7ef52bcd5d8dc48d03d39f6ffafcefe4d5483786974f": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Returns latest EUR/JPY rate; the conversion must be calculated separately.",
+    "args": {
+     "divisa": "JPY",
+     "dias": 1
+    }
+   },
+   "911aae8cb5da5169b9e6b40b2aafffa4d64f0871bfc64d88d820dd49c19b8c3e": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Converts amount between two ECB currencies at the latest reference rate.",
+    "args": {
+     "amount": 1000,
+     "from": "JPY",
+     "to": "EUR"
+    }
+   },
+   "f33217c7cbe3a2ead65fb7c8ae8c19ab8e315bed3134c9330ede97c0343a04e9": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Same ECB conversion endpoint with Spanish parameter names; handles JPY to EUR.",
+    "args": {
+     "importe": 1000,
+     "de": "JPY",
+     "a": "EUR"
+    }
+   },
+   "a180f884b0a1d573d6e648b8f972b8bd323d98f0118506463bc70ae749236a4d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Real effective exchange rates, not currency conversion.",
+    "args": {}
+   },
+   "6f617b8601b44f59c02eade4d5aa3c82ac44580765debc4cde790b1a99b299db": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "USD-based rates only; no amount conversion; EUR coverage uncertain.",
+    "args": {
+     "divisas": "JPY,EUR"
+    }
+   },
+   "568a5c4ce973fecede60f576f6fd487418bc30c9c3f67322046b05ada93ead86": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Real interest rates, unrelated to currency conversion.",
+    "args": {}
+   },
+   "813c362d016554e593c42218824192b61a508bba47d99ce6948a8ea57af23cf8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "ECB interest rates, not exchange rates.",
+    "args": {}
+   },
+   "7d7552beae7e2752c3bec8297a3eb3639a651f69cacced70d9c1546cc8d05f65": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Real interest rates, unrelated to currency conversion.",
+    "args": {}
+   },
+   "b2f746ff1fa59d8be88544bdaa496f24335a5f21eaed37f2d528038b30f7f1bf": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "ECB interest rates, not exchange rates.",
+    "args": {}
+   },
+   "758430cecf1c0da450183b9a41eaa15e820629cf217db316b9b6e9bf5d70e914": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crypto converter; fiat to fiat explicitly refused.",
+    "args": {}
+   },
+   "fe03405aa1a22f2d34e35d1cd68214dfdd983b1f806b39151afaa181ef110b12": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Rakuten product search, not currency conversion.",
+    "args": {}
+   },
+   "15176899928c8661673b08e76a09924376add052a07fcbe7ba855d5b6a2b4f50": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "ECB latest rates with amount conversion supports JPY to EUR.",
+    "args": {
+     "amount": "1000",
+     "from": "JPY",
+     "to": "EUR"
+    }
+   },
+   "d8df2a3dafefe9b7c259755b5dd0c647b64e1c77261fb896911f2e044369f27c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Japan customs tariff data, unrelated.",
+    "args": {}
+   },
+   "88f275d72fd1376664c57828b3322159df32d793f4fe36cf4a04db9008f3f51a": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "ECB daily reference conversion between listed currencies, includes JPY and EUR.",
+    "args": {
+     "amount": "1000",
+     "from": "JPY",
+     "to": "EUR"
+    }
+   },
+   "53d03523e91026ba1c892f25ffb3c0cf4c4003d6fecb8606f56df63f2a5a47fb": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Instagram account stats, unrelated.",
+    "args": {}
+   },
+   "e170269fa5b6c7b267e2438c014c684de27cfc5ea7e69989748c10d4c731e1f6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "RDP exposure check, unrelated.",
+    "args": {}
+   },
+   "7e41f6f034018a1c2cc7d5ada8d02886d05f24a0c8e891ad5c73c73aba4de51d": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Mentions ECB USD/JPY cross only; no JPY/EUR conversion and no inputs.",
+    "args": {}
+   },
+   "eb3708ed8cbbe1ede85cff5634932446360c580622d726981a5a3ac286b2c56f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "CFTC yen positioning, not exchange rates.",
+    "args": {}
+   },
+   "66de83255f1a0e51c324481cc9efff3bfd3aebe3afc0eb1e6f038a73484a7ea0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Asset-manager yen positioning, not a conversion rate.",
+    "args": {}
+   },
+   "4ec0777c7e8189bafc2bef9978bbb6a51a5eb31a8c366ee394a1c5474215c537": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Euro futures positioning, not exchange rate.",
+    "args": {}
+   },
+   "9959e65757b5eaffd5310a304e08315243ccbadd28bf859d56d37e622f149b43": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Sweden real interest rate; unrelated.",
+    "args": {}
+   },
+   "4d8ae131644b77e724f4c1b21bb2e26c069b2775dd9743aa4354104fe0d008be": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Germany real interest rate; unrelated.",
+    "args": {}
+   },
+   "1e7faabb1b91a9528b1a2c063a843575360ea54878b3365cbd0adaec71138280": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Malaysia real interest rate; unrelated.",
+    "args": {}
+   },
+   "8d47534530fe70307a824f47f2acbb880ce22573c999e1ebe591a7cb44e1ee47": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "UAE real interest rate; unrelated.",
+    "args": {}
+   },
+   "9a16c9bd41141be79da630d14b240acf5a0e7a904fcf028f4827a219a2d1444f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Japan inflation; not currency conversion.",
+    "args": {}
+   },
+   "35147e877c6bcbe2de14cf6dc6a2b21382e16dd4f4670c37473aa80922dcabca": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Japan trade openness; unrelated.",
+    "args": {}
+   },
+   "09a518256673b0b18dd11bdc204766bd5e12977228a255e27878f33c294fb86b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Japan unemployment; unrelated.",
+    "args": {}
+   },
+   "501cb183f79ad4ce5b9ca7b39bc2b62841892402abdc490493e8e23406b0fd30": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Japan government debt; unrelated.",
+    "args": {}
+   },
+   "3d0e14f9a0ac170f8cef05ffe3de4e76e858104bcbfef48318f9c363767092c9": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Gives USD/JPY risk data, not JPY to EUR conversion; no input parameters.",
+    "args": {}
+   },
+   "b2c76c102093e6782ca2834502a7260baec55e9b7ba02b2fafbd62db6fd44fc5": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Economic events calendar; provides no exchange rates or currency conversion.",
+    "args": {}
+   }
+  },
+  "cold": true
+ },
+ "current ethereum mainnet block number": {
+  "need_id": null,
+  "need": "Current Ethereum mainnet block number",
+  "labels": {
+   "f9115a913845ba9a9909582fc73df808a9ba80b2a3159b21ada80a8306fcb5b8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns static chain reference data, not the current block number.",
+    "args": {
+     "chain_id": 1
+    }
+   },
+   "81d90fc17f89028d40f1fa2da165e97f73fedaa72110f27c2c55d8deb60a3cf1": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Gives public RPC URLs; a further RPC call is needed for block number.",
+    "args": {
+     "red": "ethereum"
+    }
+   },
+   "eab891255e9e366d3d701e216e507dc20f3ab8a8f86aac52f06229eead7b5383": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Gives public RPC URLs; a further RPC call is needed for block number.",
+    "args": {
+     "network": "ethereum"
+    }
+   },
+   "b7c0ca75b7aecf59002d90dda810a11033508676f637023c1e1e735fe66b9592": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Optimism blocks, not Ethereum mainnet.",
+    "args": {}
+   },
+   "4f54472645e3ae58be273709ce6cee28b098a7d6542fe1ccdfaf3f5d48d9be27": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns price feed round data, not block number.",
+    "args": {}
+   },
+   "d35cc6dd7a0bba898e6c2d5d1d7f2b5ed6382f56a53a605c334f397022021652": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Latest EVM block for chosen chain includes block number.",
+    "args": {
+     "chain": "ethereum",
+     "number": "latest"
+    }
+   },
+   "acd2e20ed32d4d7ef14cf2ad9e3f4978cab5edb15ccfd3e8bfe6b3db48b282e3": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Ethereum fee history may imply block but doesn't state number.",
+    "args": {
+     "blockCount": "1"
+    }
+   },
+   "b04f5b1830c9a6bf630a16030176abd0309afe2fcf7610937f2ae3ca948e7b88": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Ethereum stats include block counts, likely near current height.",
+    "args": {
+     "chain": "ethereum"
+    }
+   },
+   "234fa8f410cea5800f6fe45b2292f189862a688f8db249673ffcef9f09e83c17": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Newest MEV-Boost blocks may show number; only relay-delivered blocks.",
+    "args": {
+     "limit": "1"
+    }
+   },
+   "64f36b3b1a2865c86a2582f328e90d4e4898f785cd6b01a20b8456786ed5ba12": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "News headlines only.",
+    "args": {}
+   },
+   "07c67d8d9cd5efe44603eaf8ef79f88f926d96bf96cd93c4acc7d8667c6ef71b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Mantle network, not Ethereum.",
+    "args": {}
+   },
+   "eee6bbed9e7b964e0d780c5bda4e6b53e59f2d729c0c7b96ba5211a576193443": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Transfers include block numbers, but only large transfers.",
+    "args": {
+     "blocks": "1"
+    }
+   },
+   "9f03462a7275e95db04566d7bb24f3ebc129cd6d48c7f3954d715cca77a99b97": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitcoin only.",
+    "args": {}
+   },
+   "a1f65cadf4db03265302f62858b17342441260282eb8c1b4ab1c86de8b3b724a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Compound market stats.",
+    "args": {}
+   },
+   "cf159d3f82bf2ac96525e46e22790b0e9b1edfd4ca82fa652d09ed1c90fd52e3": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Contract verification data.",
+    "args": {}
+   },
+   "bb5767a0a9b369a5c945e50922d7e440cd0948c39bf7ed88171467687bfd53e0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Staking yield and epochs, not execution block number.",
+    "args": {}
+   },
+   "3f6f92ba3f8bbd738a061f3287aa833fdeab67f3ad7209ad10985e620eea8c10": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Base contract events.",
+    "args": {}
+   },
+   "41a244ef7c13d5209ee4d7c9a0782f79a1bee47c041173ebf4708401fe0b8b20": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Berachain telemetry.",
+    "args": {}
+   },
+   "2763417e6a6c7c33d9805ea36dd3a84f38acffa608894bc995d60cc5686249c4": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "USDT supply events.",
+    "args": {}
+   },
+   "01202b00922640bd10d927a603b65a15dce9416f9e01e39215424980fa4269a8": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "JSON-RPC eth_blockNumber on ethereum returns current block number.",
+    "args": {
+     "chain": "ethereum",
+     "method": "eth_blockNumber",
+     "params": []
+    }
+   },
+   "29488cdeded25a7bbf33ca4864fe23935fa55c2d2337a66eab055774cb811b30": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Wallet balances.",
+    "args": {}
+   },
+   "0754691f9a0464bec4fb4984e73c8439370788ba07b3c1d3dea92e016b939dbb": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Market tickers.",
+    "args": {}
+   },
+   "48c48f6d20064739230936ef098bf1d98747cae4167e30c595e84fa0b108a830": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Swap quotes.",
+    "args": {}
+   },
+   "a9bca3eb07b62d69550eba22c8b14e50ecbfb20664362f006f7949703f7d6c1b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Hyperliquid perps data.",
+    "args": {}
+   },
+   "60fb7092b8457d33bb7977ededb4d22df52152c224a6db443335b1d660e2a19a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token vesting schedules.",
+    "args": {}
+   },
+   "b765f625c1ecb362007990eaf18763bb379b1f9e748231c36947526add6e113b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitcoin mempool.",
+    "args": {}
+   },
+   "08d3aa8adba5563b53d80666cd86a4b57f7afca2b81e77b231bd884c63e541c9": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Hack leaderboard.",
+    "args": {}
+   },
+   "d5fd2ac7a6d519503f9ce18f63a5168a9d4d260e7e915eaf3e3c1840d3c2d714": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "New token listings.",
+    "args": {}
+   },
+   "7bc2769b3d56c42cdf6435a480fe176a46f266ba35114e6ef490f7152e7196f7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Binance order book.",
+    "args": {}
+   },
+   "b65ceec856eb66ab293026383e9d0e030dc7476dffef8dc9be7c99c886d0d00d": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns current block height per network including Ethereum; network param selects it.",
+    "args": {
+     "network": "ethereum"
+    }
+   },
+   "375e06fc636bee43671ca85e8c244bcc475992f6e17da0c8d3afb441ce6fe537": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns crypto prices, not block numbers.",
+    "args": {}
+   },
+   "7d77123333815457b144949c82aaf144202a6d6a4230576570da08e8b783482f": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Scans Ethereum blocks for large transfers; may reference block but not the block number itself.",
+    "args": {}
+   },
+   "8794f27589c55ea453a63b5535397c153edd32754ba8fd98177b7e453bac6ea6": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Uses latest eligible block for burn evidence; block number likely included but unconfirmed.",
+    "args": {}
+   },
+   "0c96497df651b46469697f3b0cd44b10f8e5ffcba0c524f5da946d80a29c5274": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Stablecoin large transfer logs, not current block number.",
+    "args": {}
+   },
+   "273f254f15c1a6cd19da50713b8f28982edd8c7f862cc7c82ebbc090d54a9680": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitcoin transfers, wrong chain.",
+    "args": {}
+   },
+   "09d8422d2cd0754c0564c5d43bec5f504714c0ef8883acab14708ec33fabe141": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Macro outlook scenarios, no block number.",
+    "args": {}
+   },
+   "008870b369f12ec24cf55ca3f64ec37a0b723f84ee6fe0d585aa79ec938058f4": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Verifies payments in batches; does not return the current Ethereum block number.",
+    "args": {}
+   },
+   "08fef55237afbc4724c07cfd4ba036892610a0370a652b60b893bb23653d011c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Pool exit-depth estimator; does not return the Ethereum block number.",
+    "args": {}
+   },
+   "b2c76c102093e6782ca2834502a7260baec55e9b7ba02b2fafbd62db6fd44fc5": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Events calendar; does not return Ethereum block numbers.",
+    "args": {}
+   },
+   "757ac21d568dee4f47f4457ed1d5744c2d1a1857e2d13f951fb598944290c759": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Daily market brief on BTC and news; no Ethereum block number.",
+    "args": {}
+   }
+  },
+  "cold": true
+ },
+ "current weather in chicago": {
+  "need_id": null,
+  "need": "Current weather in Chicago",
+  "labels": {
+   "c790e817b2dc3324fc0b23a24f3bfa30e7f950efbdeb60e1542e8c7db9a747d2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Business licenses in Chicago, not weather.",
+    "args": {}
+   },
+   "7f51a3c5765e94abc7fb76f990ed175c916e26e3c0f176f4fb73fa9e52b88bd2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Property parcel records, not weather.",
+    "args": {}
+   },
+   "c250153832335d50f4ad894c9d12b8cfe4d8f4b416d273e9162e6bf555a5459a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "YouTube channel details, unrelated to weather.",
+    "args": {}
+   },
+   "919eea9c2b671af039c11d4acf9ce282205a7aa8d6bb80a0f19ba11a2045626d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token security verdict, not weather.",
+    "args": {}
+   },
+   "35a16144893bab08de9a78df3ef26da3cbcb8289dd7fa6ddcdbc4aa890fdae4f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token safety score, not weather.",
+    "args": {}
+   },
+   "191b387782d85b40633c6826c86def1fc8f3a434746fb9c408dbae4d8c150f8c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "IP abuse reputation, not weather.",
+    "args": {}
+   },
+   "1175fcf9974726dfd56f15ca1d13343d9295b3dc68e85d17f9f05ebd5f488324": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Threat indicator search, not weather.",
+    "args": {}
+   },
+   "09b660673dfcb3ebf31ce4b639d76ea8aab3a0fc0137a2a20fb84effd378b07b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Wallet token value estimate, not weather.",
+    "args": {}
+   },
+   "d6f613126c39f79eea3bcc43963402833b2b36facf2f1ab89582ba8ebca6d0f8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Disposable email check, not weather.",
+    "args": {}
+   },
+   "9f62a17691c52480d726bb04f651dd9f893686106154379d91a0f251af32634e": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Phishing URL lookup, not weather.",
+    "args": {}
+   },
+   "2ba181c4d3fca07d8b60d69e600e30d2e0fea7e900aee7ef2b3d614922aaf4dd": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Software product reviews, not weather.",
+    "args": {}
+   },
+   "b04f5b1830c9a6bf630a16030176abd0309afe2fcf7610937f2ae3ca948e7b88": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Blockchain statistics, not weather.",
+    "args": {}
+   },
+   "870c298a7704e57eb4ed72751acb6303a90e0820ee693754d835a31b949da64c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token holder concentration, not weather.",
+    "args": {}
+   },
+   "33df0bedae15cda7cf3ad6d3f7922cf2d3b9d54a3c6d587150909d8107d60636": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Blockchain gas fees, not weather.",
+    "args": {}
+   },
+   "928347049df676eca59408d045aff4c8ee675c9468faaeec45c639a973c30849": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Google Play app details, not weather.",
+    "args": {}
+   },
+   "1cbcf43ca23de97115f314d564f325b6dc33ed1c097a427825326e43e2ce5f1a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Solidity linter, not weather.",
+    "args": {}
+   },
+   "c4dc08a2173c2a10ffd75dcb7fddf18d9e53dc7acd64d249270d136cfc1014e4": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "DeFi yield ranking, not weather.",
+    "args": {}
+   },
+   "a50a8da2b25274be6fcf154fcf7e4e2c2b23c098687c5e91f903ead605141c7c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "VPN IP range check, not weather.",
+    "args": {}
+   },
+   "c584c675547a3054dcd3b4be7f4d85199d699d6039ca3e0c2ae866796276eac4": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "NWS forecast by coordinates; Chicago coordinates give current temperature, wind, conditions.",
+    "args": {
+     "lat": 41.8781,
+     "lon": -87.6298
+    }
+   },
+   "4efe574cfbd7ca97ea373da50659e5528e33f94bec9a9114b960ea58178cddc1": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token claims verification; unrelated to weather.",
+    "args": {}
+   },
+   "18f3067ed4cd9852c586bf478240bf52c24d2c8874a21e2b7bda46ea57861432": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Conspiracy analysis; not weather.",
+    "args": {}
+   },
+   "e8aad2984ecc769771f0133a2fcf88eac5e1a73b4bf700868b0e8fac36367452": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Car-free feasibility score, not current weather.",
+    "args": {
+     "cities": "Chicago"
+    }
+   },
+   "7d4c1f0a5a3839a96c81c25b0f4191facf98fd157d7f9ec7b4737b28d7ba7025": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token due-diligence report; not weather.",
+    "args": {}
+   },
+   "56b7a3bbb81400ed60a9f26db8849df8d23ab24d1c608c0aa34c95e74f1c88f1": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Tokenized RWA risk; unrelated to weather.",
+    "args": {}
+   },
+   "0d93d57a4e0117ff91f0816ccd06c67a6c3a3329121af1266e260b87071d4c8a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "FOIA letter generator; not weather.",
+    "args": {}
+   },
+   "ff9e67fc1d1d5bc8f870ee100cb14bf2cbd335400a52c36af5fcd456c6cfe288": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token safety scanner; not weather.",
+    "args": {}
+   },
+   "37cf18f12dd1033ecb9c22f2135fb8f5f5d343c4bbaf9df06513ea3cbb6faf20": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Tokenized gold comparison; not weather.",
+    "args": {}
+   },
+   "8e433f3a0a65e3acdf7e51ff88c710f3601eba8b9b7289b02d7ef94afaebc92d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Cyber attack-surface assessment; not weather.",
+    "args": {}
+   },
+   "89dd29f49d310f3808e277f993044c507a501e7c5d6eab7ecd50c7a21f1234f5": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "BTC derivatives and on-chain data, not weather.",
+    "args": {}
+   },
+   "c882649cddd275586e4cfc29df075899a052b3c439aea914cbc4991f207278ff": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "ETH derivatives data, unrelated to weather.",
+    "args": {}
+   },
+   "30b11ad2aa172ecd78b7229849236af1d6002cb3ea2166662f4176c09e14f8fe": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "XRP derivatives data, unrelated to weather.",
+    "args": {}
+   },
+   "99b22357703b4c5aacae1d75f9b9ae3e8a4b3e3ae31b9004afa6bffe45a7caa2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Forecast ensemble evidence quality for finance, not weather.",
+    "args": {}
+   },
+   "3febe0ed89b6b390beebc6c41c5ff40f73fd3cfe426f1dd8a1e956ab08a7b9f5": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Audits crypto/macro forecasts, not weather conditions.",
+    "args": {}
+   },
+   "12c75dc3004b1bf6023a3d700a52bc7505bc47543ba07bd80423fc985c803ea8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitcoin scarcity analysis, unrelated to weather.",
+    "args": {}
+   },
+   "46cc8293d89d4fa6ea53492eb079484e5c985f445eb34ea90c7e2671cb0f11e9": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Narrative-evidence divergence for markets, not weather.",
+    "args": {}
+   },
+   "273f254f15c1a6cd19da50713b8f28982edd8c7f862cc7c82ebbc090d54a9680": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitcoin large transfer monitor, unrelated to weather.",
+    "args": {}
+   },
+   "2098e4908db82f2b42c37fd75bfdcce49770976dfc220203341524cf6a067bf3": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Deduplicates data rows; provides no weather information for Chicago.",
+    "args": {}
+   },
+   "7270acc7226e308db48e7ddf0b56af66fc66830646fa2dbf123bd992efe7495a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token safety checker for crypto; unrelated to weather and cannot take a location.",
+    "args": {}
+   }
+  },
+  "cold": true
+ },
+ "is <date> a us business day? list the us federal holidays in december <num>": {
+  "need_id": null,
+  "need": "Is 2026-12-25 a US business day? List the US federal holidays in December 2026",
+  "labels": {
+   "39c9c87f8c86fd4db8972bd567abee36d39dbdea25ee6257ffdda6e24238bc3b": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Supports business-day checks and holiday listing for US calendar; covers 2026.",
+    "args": {
+     "calendar": "US",
+     "date": "2026-12-25",
+     "op": "check"
+    }
+   },
+   "d354cbf84abb415d82fa6ea77beea86173292176e8d10fc97a49a90ef95c921b": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns US 2026 public holidays; December ones list federal holidays and show whether Dec 25 is one.",
+    "args": {
+     "country": "US",
+     "year": "2026"
+    }
+   },
+   "792322778a304425c03162e43ed50e933cb33a9774422af50f13c7beec3d607a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bankruptcy dockets, unrelated to holidays.",
+    "args": {}
+   },
+   "27a798ae103e3e3f1a7b7c1266fa09650417be6f09ac75eb87c4d05bc242def5": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "GSA contractor data, not holidays.",
+    "args": {}
+   },
+   "33ede40156f738b7f55945daf2acbd9cebd19c98f52738137bd0cfaa6272598e": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Can reveal if Dec 25 is skipped as a holiday, but doesn't list December holidays directly.",
+    "args": {
+     "country": "US",
+     "mode": "between",
+     "from": "2026-12-24",
+     "to": "2026-12-25"
+    }
+   },
+   "f8fe4f3639570e7b029f8ec7035b53f8c2640850dc0dc24aad25699955390abf": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "NYC business licenses, unrelated.",
+    "args": {}
+   },
+   "2ce384f7e7da513e5fa580eb43098568bb35f863e24f0e618b0d513dbc1b0578": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Grant opportunities, unrelated.",
+    "args": {}
+   },
+   "6c488064dfe2c8b14b90df1b3fa899d94ff8be51da616deb9813530f86981b83": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "NYC certified businesses, unrelated.",
+    "args": {}
+   },
+   "503dea25b6784c58f7c29a5cd47879b00942f19e92d5329f08560e7f385a58da": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Contract awards, unrelated.",
+    "args": {}
+   },
+   "b245a46a7592c60bfa59e7a4ea69623edc13f375b7c8c0a5cbb2235015488665": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Government bid solicitations, unrelated.",
+    "args": {}
+   },
+   "674c1b6e2a7d5167b2ba41104aaf53b929b862b108c0f1fad93ccdd8593258b2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Open dataset catalog search, not holiday data.",
+    "args": {}
+   },
+   "9a6f8734302018343dc94eecf64bde96d739b53989073238ec1c65930da81cba": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "EU product safety reports, unrelated.",
+    "args": {}
+   },
+   "435b7972c1d7b090c819a7f4c11faa6b71a5a0b6743a1a045e9dbd98ae32fb88": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Import records, unrelated.",
+    "args": {}
+   },
+   "f3d9e0935d1cb5997ba0bd60afc2113ea6ee36584018a8226fce2b7decd6185d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Foreign-trade zone applications, unrelated.",
+    "args": {}
+   },
+   "f21acbe81940ddf875446589794e037dcfea1d392006781dbd95e47c7e2d0e51": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Commercial real estate listings, unrelated.",
+    "args": {}
+   },
+   "4c75a071beba341d52f0f35240aa1a63f74d0b02ad8fa42eb3f3c3ec6042d92a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Case law volume metadata, unrelated.",
+    "args": {}
+   },
+   "db7492d1bc80a56789588002223dc0d27c057b13d93cdea0001f16db4aff4300": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Text embeddings, unrelated.",
+    "args": {}
+   },
+   "c95a640005ca3bd2c0085148eb66616ea340f38221c963915200bfabbca3b67a": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns US public holidays for 2026 and checks whether a date is a holiday.",
+    "args": {
+     "country": "US",
+     "year": 2026
+    }
+   },
+   "4b0a4b058248538c870cf9b87ee4afd68dcfe870a371d35a573ae6fe845097c9": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Same holiday service in Spanish parameters; covers US 2026 holidays.",
+    "args": {
+     "pais": "US",
+     "anio": 2026
+    }
+   },
+   "71f18d0674ea9da9cada9e3071c28a58ad9b463aeda8070cdaf7fb6b716faf40": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Lists holidays in a range and skips them, but is indirect for the date check.",
+    "args": {
+     "country": "US",
+     "since": "2026-12-01",
+     "add_days": 30
+    }
+   },
+   "fa6b2fd269243662277631e1c48167ccc8c0c1a724a689b08657f61f4bf1b505": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Business-day calculator listing holidays in range; indirect for the question.",
+    "args": {
+     "pais": "US",
+     "desde": "2026-12-01",
+     "sumar_dias": 30
+    }
+   },
+   "d7b716924cced998a2727158bf76eac5cdf14a00445ca28d1129c97e42955668": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Market holidays only, no date input; not federal holiday list.",
+    "args": {}
+   },
+   "8110e81a8504d46327ddfee59fc0fc108d22b6755a22d79340e52b4b43798ff9": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Federal contracts search, unrelated to holidays.",
+    "args": {}
+   },
+   "429eec4a4d4d55b9a0d88a332e81408f1976059285741cc48bf3a373d27c74b2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Federal Register search, not holiday calendar.",
+    "args": {}
+   },
+   "8e9cd79a043e99f31f3a6b8eb27ffc844dae1d71833eea40bc37be863054caeb": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Macro event calendar, not federal holidays.",
+    "args": {}
+   },
+   "6be6c0851fecebb4f4a74b4800d7d04b269afcf33c8ee03a5b83ea0638b8a873": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Macro event calendar, not federal holidays.",
+    "args": {}
+   },
+   "1da26d658d4995f67b28c4498f68f177a406b0569460a5e476122a4ee5df1fb9": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "EU industrial production data, irrelevant.",
+    "args": {}
+   },
+   "25ff463da24b303aae5fe54e6760ac5a7070a069a3d7786399bb66dc4e0b3997": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "EU industrial production data, irrelevant.",
+    "args": {}
+   },
+   "d4ce8c7a6caca1af3a7a8472f9155c867c1b7bbd7ae7228f1914f45084e9c684": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Federal contract awards search, not holidays or business days.",
+    "args": {}
+   },
+   "a4d6d5f0997075b23e1bff467d20a1299a0b84909e8a0fc709a9ce6a78ef1cda": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Grant finder, unrelated to holidays.",
+    "args": {}
+   },
+   "feaac8bb1111f0491eafd16a91d3ac1cdfb725a68e5377d1bf23466037f855bf": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Federal Register rule search, not a holiday calendar.",
+    "args": {}
+   },
+   "76332f01032de6817e0a290f723ec8cc66bc937f454114b01d9a43c6c7b9a65b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Grants.gov search, unrelated.",
+    "args": {}
+   },
+   "ea68b2c647bae12a75d883192a84ac0f43dd13e3b415a614556f0a7a63f3d452": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Country business risk, not holidays.",
+    "args": {}
+   },
+   "7363165523d2fdefe850b74b2a353577ecb0e0d9c1c2304c5427d9a750a698d3": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Scholarship programs, unrelated.",
+    "args": {}
+   },
+   "38fe26d4b2a156d8d29a65d43de86537d82b6e7c89dd979b88284026ab602460": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Visa bulletin priority dates, unrelated.",
+    "args": {}
+   },
+   "c129b5cc70184abab05dd5469e1285ba02878e26455ab90c2356452e89d4c9d0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Workplace mental health, unrelated.",
+    "args": {}
+   },
+   "d9ed871a7cce506d994b21e55c41f867051c215321d434e7127ff23f940544fc": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Product safety alerts, unrelated.",
+    "args": {}
+   },
+   "d6d09adfbdfa26f8412568e4eea729dec793714089c09a5056c156ce9f4317c0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Regulatory deadlines calendar, not federal holidays; no date input.",
+    "args": {
+     "jurisdiction": "us"
+    }
+   },
+   "ebbfd6f09da4767ccd672b6d3f2dda08d677704f18c1e8f4968dfb38198b878a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Child product recalls, unrelated.",
+    "args": {}
+   },
+   "31ebeae33664943d5220b64f45534e02816a77045ac98b2d950ba2c4af5d22f6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Water stress data, unrelated.",
+    "args": {}
+   }
+  },
+  "cold": true
+ },
+ "xrp balance of the xrpl account <xrpl>": {
+  "need_id": null,
+  "need": "XRP balance of the XRPL account rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+  "labels": {
+   "ac09272fb67bc1b2df950cba797bf998e3305b62a12e65c804c3ee5ecae6a425": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Takes an endpoint URL; reports payTo account balance only indirectly, not arbitrary address.",
+    "args": {}
+   },
+   "a9031d5aafe4088840fbf61dc1778c823673477075558d820ec0ac4e541216c6": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Merchant readings by XRPL address; no explicit XRP balance listed.",
+    "args": {
+     "address": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De"
+    }
+   },
+   "ed2942ce7086f3b161621ffc543e36de48b1a07a40f554005561544584562f81": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Aggregate status record; no account input or balance.",
+    "args": {}
+   },
+   "57b4f3d90b034b97f6d2d5e9f2b9e1523b9df14279dcc656187799f443e294c6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Network-wide x402 activity, not account balance.",
+    "args": {}
+   },
+   "629015511aa3c3c28dfddf3a3343744a6e793cdbb93d03bdd7fc39d9a05e22a6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Price index of x402 resources; unrelated to account balance.",
+    "args": {}
+   },
+   "1066cbe5a7ae062c79bbc969178774f782ef516c0189e7875f4e67ba55f5be2b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "AI model pricing readings; unrelated.",
+    "args": {}
+   },
+   "6a29c3b18954fd3634a2f7fb2c4ff81977ba9840fcf9d09b8af17507c57b5159": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Endpoint health report; no account balance.",
+    "args": {}
+   },
+   "f2df32f89ef8ddb3bb009315919a136a92e4eef69531f8eb1b817dc28438ea07": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Large transfer monitor; no per-account balance or address input.",
+    "args": {}
+   },
+   "0a2f523664ba1251dd862717ea6bc3cda745faf8a93a339a31d6e10bd15170db": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Aggregate XRP supply/float data, not a specific account balance.",
+    "args": {}
+   },
+   "0bb8819be7c970d1077b2c09048726c0570d93140a4033696316f1ad16ceaee7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Network adoption metrics, not an account balance.",
+    "args": {}
+   },
+   "51560ae3ffba266b1f2da644b0f62fc48320358161c99046f4243277b0a3db38": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Macro outlook scenarios; no account balance.",
+    "args": {}
+   },
+   "eeb05b0007ce1c5e7f5596b5022c4740ee1e3e939c9a0eaa35e7847cd6f48b5f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Aggregate escrow history, not an individual account balance.",
+    "args": {}
+   },
+   "cc282d97bcc64287fcdeb3480149e7b2045da95cda19ee71863417070cae5300": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Poland current account macro data; unrelated.",
+    "args": {}
+   },
+   "acb66150bdb8dbd9edf352a1b73c742997fd07227118d402cd112cf55899a16f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Mexico macro data; unrelated.",
+    "args": {}
+   },
+   "b59bc6d2a645d89a8576aeb4752e425c978902a676024dcfbbd5be8dcd45d496": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Singapore macro data; unrelated.",
+    "args": {}
+   },
+   "d71e7e703f9fa29ad36449aceb517b54be27ceb07d94868242773320d529cad7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "T\u00fcrkiye macro data; unrelated.",
+    "args": {}
+   },
+   "258de76b00b737142395a3db5ff9d65b627d0f29232ba7e9ab9570c80b2f0751": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "RLUSD supply and liquidity; not an XRP account balance.",
+    "args": {}
+   },
+   "05264acd26c1085510dfef5e260d600645082413dd0335e680efb96feb8c1d96": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Altcoin trading activity comparison; not account balances.",
+    "args": {}
+   },
+   "6938a86ccb4e42d8d0848418124ad737db000ea164ba96062f24da86904e3e5a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "CFTC fund positioning; unrelated to account balance.",
+    "args": {}
+   },
+   "cf7a5923deb7bca55e9159190207eef3184903947bbb6af03d11f43c5d5904c8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "CFTC positioning divergence; unrelated.",
+    "args": {}
+   },
+   "30b11ad2aa172ecd78b7229849236af1d6002cb3ea2166662f4176c09e14f8fe": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Derivatives and whale activity fusion; no account balance.",
+    "args": {}
+   },
+   "7e41f6f034018a1c2cc7d5ada8d02886d05f24a0c8e891ad5c73c73aba4de51d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Yen carry regime analysis; unrelated.",
+    "args": {}
+   },
+   "ca2a1b3074a0c9ef4aa361c00d2733e394cba8d4f0472335bb518f4c13867386": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Poland reserves macro data; unrelated.",
+    "args": {}
+   },
+   "52f5037a8e50a8a402e5b2681ca39d5b397c00e63496b20ba31b657c160bec3d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Malaysia reserves macro data; unrelated.",
+    "args": {}
+   },
+   "0e2f1663b30472c3728b57a39857bb0e5146cf712986f3a91a9281275014830f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "T\u00fcrkiye reserves macro data; unrelated.",
+    "args": {}
+   },
+   "44f56d2bb99494284dfd9f0a925ca9cfdda51e64805b1c02b4055698bac04fde": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "South Korea reserves macro data; unrelated.",
+    "args": {}
+   },
+   "28ce42cf575aab1b804181770842fc3a4087629a8effb20505c467840553f2ff": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Japan reserves macro data; unrelated.",
+    "args": {}
+   },
+   "d53faa6ef4ab3b825336f411b275cc2d41781a72e6285d308017cfdf1dca421b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Singapore reserves macro data; unrelated.",
+    "args": {}
+   },
+   "63bb2f394f2bdb5b1414b9a72ab7700f2dfb2247936177261889f7907f9b499c": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Accepts xrpl address; returns RLUSD, reserve and fees, but native XRP balance not clearly stated.",
+    "args": {
+     "xrpl": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De"
+    }
+   },
+   "fc3022c8644b39ed749e580e072cb45623f369db289fbaecfa30b8f704c0b244": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Lists large recent payments; no account balance lookup or account input.",
+    "args": {}
+   },
+   "39923a004f64ce7c3eeb476b0e194b43c777e20a217d98b69b2bb34a2acfecdf": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Verifies a transaction by hash; cannot take an account or return balance.",
+    "args": {}
+   },
+   "a9197288dbc0492550f1d97e16b783f2b140cf85307e9d66c90a778e74328563": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Network-wide health data, nothing about a specific account's balance.",
+    "args": {}
+   },
+   "26b8d2ba00fa1adf62d6a3ec597c6c37874dc83577433c9d32f75ea773e1ce1e": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Takes the account but returns issuer token info, not XRP balance.",
+    "args": {
+     "account": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De"
+    }
+   },
+   "8689deadff564f7ccfcccb06fe4fce3d603e48d7f11464acf33d2237516fc73f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Pre-send check for a destination; does not return an account's XRP balance.",
+    "args": {}
+   },
+   "f590ddd5e3f2cbdbde463a24ae47aa1e27b0b7257fa1cd8261064d44e6878c51": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Generates payment receipt image from a transaction hash; no balance.",
+    "args": {}
+   },
+   "8a9222cc99b1fb89a111a6c4ca47118480125b781d4b5ac12c2c919f0bc2f95c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Proves a specific transaction; takes no account input and does not return current account balance.",
+    "args": {}
+   },
+   "6cb1a6d8e2b471c3e353e32c38487e2a5a84322312e363ca0c98ea06c3fe55a3": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Only ERC-20 balances on Ethereum/Base; cannot query XRPL accounts or XRP.",
+    "args": {}
+   },
+   "29488cdeded25a7bbf33ca4864fe23935fa55c2d2337a66eab055774cb811b30": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "EVM-only wallet balances; cannot query XRPL accounts or XRP balance.",
+    "args": {}
+   },
+   "df59271df62e3764518b9e7fdf9f6e156869c72efe88a5c5b8514c8e00dd2044": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "GigaDex LP rebalance analytics; unrelated to XRPL account balances.",
+    "args": {}
+   },
+   "7daf5262d57ef5c29984205bb03d73da266294a7a7c11bad407106605f9ec8cc": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Travel budget estimator; no relation to XRP balances.",
+    "args": {}
+   }
+  },
+  "cold": true
+ },
+ "latest bitcoin block height": {
+  "need_id": null,
+  "need": "Latest Bitcoin block height",
+  "labels": {
+   "9f03462a7275e95db04566d7bb24f3ebc129cd6d48c7f3954d715cca77a99b97": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Includes tip block height but only as part of large-transaction output.",
+    "args": {}
+   },
+   "b73be055428b5ba6397db9e9039323d03d66a2aee1edd76f755b6e921f8a28b7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Hashrate and difficulty data, no block height stated.",
+    "args": {}
+   },
+   "64f36b3b1a2865c86a2582f328e90d4e4898f785cd6b01a20b8456786ed5ba12": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "News headlines, not block height.",
+    "args": {}
+   },
+   "6e9f2a9a1144925bbde8869a34f6eb90e88f77fb89c401f3987792c553daf96d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Address lookup; not chain tip height.",
+    "args": {}
+   },
+   "b7c0ca75b7aecf59002d90dda810a11033508676f637023c1e1e735fe66b9592": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Optimism blocks, not Bitcoin.",
+    "args": {}
+   },
+   "b765f625c1ecb362007990eaf18763bb379b1f9e748231c36947526add6e113b": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Blocks until halving could imply height, but not directly given.",
+    "args": {}
+   },
+   "234fa8f410cea5800f6fe45b2292f189862a688f8db249673ffcef9f09e83c17": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Ethereum MEV blocks, not Bitcoin.",
+    "args": {}
+   },
+   "b1c0442b86d5f9ff71e5331375acfbbe61fe38dd8cd60ecd1dc74916e5947e82": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Linea blocks, not Bitcoin.",
+    "args": {}
+   },
+   "07c67d8d9cd5efe44603eaf8ef79f88f926d96bf96cd93c4acc7d8667c6ef71b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Mantle blocks, not Bitcoin.",
+    "args": {}
+   },
+   "41a244ef7c13d5209ee4d7c9a0782f79a1bee47c041173ebf4708401fe0b8b20": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Berachain data, not Bitcoin.",
+    "args": {}
+   },
+   "3f6f92ba3f8bbd738a061f3287aa833fdeab67f3ad7209ad10985e620eea8c10": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Base contract events, not Bitcoin.",
+    "args": {}
+   },
+   "eee6bbed9e7b964e0d780c5bda4e6b53e59f2d729c0c7b96ba5211a576193443": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Ethereum whale transfers, not Bitcoin.",
+    "args": {}
+   },
+   "7bc2769b3d56c42cdf6435a480fe176a46f266ba35114e6ef490f7152e7196f7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Order book data, not block height.",
+    "args": {}
+   },
+   "29488cdeded25a7bbf33ca4864fe23935fa55c2d2337a66eab055774cb811b30": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "EVM wallet balances, irrelevant.",
+    "args": {}
+   },
+   "a9bca3eb07b62d69550eba22c8b14e50ecbfb20664362f006f7949703f7d6c1b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Perp market data, not block height.",
+    "args": {}
+   },
+   "fc4ee38b1b8f1d837704fe0f8a737065d9785af3c5933e90267bd1bb574fc2cd": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Options volatility data, not block height.",
+    "args": {}
+   },
+   "2a4224b0e7925c955cd48f24732a5bacdfd326ae88229754c294674ef40eda90": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Spot price only, not block height.",
+    "args": {}
+   },
+   "b65ceec856eb66ab293026383e9d0e030dc7476dffef8dc9be7c99c886d0d00d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Covers Base, Polygon, Ethereum, Solana, XRPL only; Bitcoin not supported.",
+    "args": {}
+   },
+   "1d49b247d96e60241904d2bd819da9065cfd4430abaa7f517448efa5d9548f18": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Transaction status lookup; no Bitcoin support and no chain height.",
+    "args": {}
+   },
+   "375e06fc636bee43671ca85e8c244bcc475992f6e17da0c8d3afb441ce6fe537": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns BTC price data, not block height.",
+    "args": {
+     "symbol": "BTC"
+    }
+   },
+   "273f254f15c1a6cd19da50713b8f28982edd8c7f862cc7c82ebbc090d54a9680": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Scans Bitcoin blocks for large transfers; may reference block height but not guaranteed.",
+    "args": {}
+   },
+   "0b6994bb0c3de9153fc309e56de18080957ac4e7b025e5fe8a1db3ebd2192500": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "CFTC positioning data, not block height.",
+    "args": {}
+   },
+   "b4d875f845007a56025bae608a282290060df22988e787197bd3a6e155a0c78a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Liquidity outlook; no block height.",
+    "args": {}
+   },
+   "7a807ae68921942619c86e3434786ed05069343e8c945ab3178fdffa4ea39b0c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crash/squeeze risk assessment, not block height.",
+    "args": {}
+   },
+   "89a09ddbb162db2d55f651a906a7c28a14da4c372cd0532e9dd92638261fcaf3": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Realised volatility estimates, not block height.",
+    "args": {}
+   },
+   "12c75dc3004b1bf6023a3d700a52bc7505bc47543ba07bd80423fc985c803ea8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Scarcity framework; no block height.",
+    "args": {}
+   },
+   "ca1d1cdb0ddc1dec478893337d49c4b1012e92c1befbb1d1fc7a729a658fa050": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Macro outlook scenarios, not block height.",
+    "args": {}
+   },
+   "7e41f6f034018a1c2cc7d5ada8d02886d05f24a0c8e891ad5c73c73aba4de51d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Yen carry regime; unrelated to block height.",
+    "args": {}
+   },
+   "86f1aa221cb5f885d7bc0a5eff01dd660d59aca5713716a1bd5e0478ec6d589c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns support/resistance levels, not block height.",
+    "args": {}
+   },
+   "9c7da41f8fcfb116cc742dbc6e4981c9f5cb664075b0b005ce4051631913f832": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Market backdrop data; no block height mentioned.",
+    "args": {}
+   },
+   "757ac21d568dee4f47f4457ed1d5744c2d1a1857e2d13f951fb598944290c759": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Daily market brief; no block height.",
+    "args": {}
+   },
+   "b2c76c102093e6782ca2834502a7260baec55e9b7ba02b2fafbd62db6fd44fc5": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Events calendar, not blockchain tip data.",
+    "args": {}
+   },
+   "8e4b29a41307e65466c03f5ffa702e5957b7aaca202289f25b61d46ffa4a9b03": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Trading signal and price; no block height.",
+    "args": {
+     "coin": "BTC"
+    }
+   },
+   "2bd03e993c9d2b72f7de1d349b4f6247321a068ad85bdfcae3c878dbf2d95c86": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Indicator-based trading signal; no block height.",
+    "args": {
+     "coin": "BTC"
+    }
+   },
+   "b1287902d752d1fb8291be3a13c3b55b765adea66f635501f51a7e0e09e4e858": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns price and sentiment snapshot, no block height.",
+    "args": {}
+   },
+   "a75a3f3d19ecc1640cdbf14b2156a9dce9085419cfb3860ddc901f5901fd3efa": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Arbitrage spreads across exchanges, not blockchain block height.",
+    "args": {}
+   },
+   "08fef55237afbc4724c07cfd4ba036892610a0370a652b60b893bb23653d011c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "DEX pool exit-depth estimator on EVM chains, unrelated to Bitcoin blocks.",
+    "args": {}
+   },
+   "f299b2db6e2e3f7428eee8513b60741bc82a7d046551684f1419a4ddefce05cc": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Website AI-visibility scan, unrelated to Bitcoin.",
+    "args": {}
+   },
+   "e04f240eeab85bc4d7dab8ad67cf3dd4c5fb7f366dc1b974caba0a3f07c709a2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "USDC yield data on Base, not Bitcoin block height.",
+    "args": {}
+   },
+   "008870b369f12ec24cf55ca3f64ec37a0b723f84ee6fe0d585aa79ec938058f4": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Verifies payments on Base/Ethereum/XRP; does not return Bitcoin block height.",
+    "args": {}
+   }
+  },
+  "cold": true
+ }
+}

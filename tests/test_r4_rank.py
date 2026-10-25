@@ -38,7 +38,8 @@ def test_one_result_per_operator_when_enough_operators(ranker):
     for v in ranker.fit.values():
         out = ranker.shortlist(v["need"], k=3)
         ops = [x["operator"] for x in out["results"]]
-        eligible_ops = {ranker.rec.endpoints[e].payto for e, x in v["labels"].items() if x["p_fit"] >= float(CFG["rank"]["fit_min"])}
+        eligible_ops = {ranker.rec.endpoints[e].payto for e, x in v["labels"].items()
+                        if x["p_fit"] >= float(CFG["rank"]["fit_min"]) and e not in ranker.dead}
         if len(eligible_ops) >= 3 and len(ops) == 3:
             assert len(set(ops)) == 3
 
@@ -86,9 +87,10 @@ def test_anonymous_and_new_principal_rank_identically(ranker):
     assert a == b
 
 
-def test_exact_match_beats_a_cheaper_partial(ranker):
+@pytest.mark.parametrize("k", [3, 5])
+def test_exact_match_beats_a_cheaper_partial(ranker, k):
     for v in ranker.fit.values():
-        out = ranker.shortlist(v["need"], k=3)
+        out = ranker.shortlist(v["need"], k=k)
         tiers = [0 if x["match"] == "exact" else 1 for x in out["results"]]
         assert tiers == sorted(tiers), f"partial ranked above exact for {v['need']}"
 
@@ -120,3 +122,11 @@ def test_cold_path_judges_once_then_serves_from_cache(ranker, tmp_path):
     assert a["relevance"] == "judge_cold" and b["relevance"] == "judge_cached"
     assert n >= 1 and len(calls) == n          # no judge calls on the repeat
     assert (tmp_path / "cold.json").exists()
+
+
+def test_cached_call_args_carry_this_needs_entities(ranker):
+    t, v = next((t, v) for t, v in ranker.fit.items() if "<domain>" in t)
+    judged = relevance.entities(v["need"])[0][1]
+    need = v["need"].replace(judged, "example.org")
+    args = [x["call"]["args"] for x in ranker.shortlist(need)["results"]]
+    assert not any(judged in str(a) for a in args)

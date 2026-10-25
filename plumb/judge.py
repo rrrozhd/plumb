@@ -50,9 +50,18 @@ def parse(text: str, ids: set[str], p_fit: dict[str, float]) -> dict[str, dict]:
                 args = json.loads(row.get("args") or "{}")
             except ValueError:
                 args = {}
-            out[row["endpoint_id"]] = {"label": label, "p_fit": p_fit[label], "reason": row["reason"][:120],
-                                       "args": args if isinstance(args, dict) else {}}
+            out[row["endpoint_id"]] = {"label": label, "p_fit": p_fit[label], "reason": row["reason"][:120], "args": call_args(args)}
     return out
+
+
+def call_args(args) -> dict:
+    """The parameters themselves: the model sometimes copies the listing's {method, queryParams, body} wrapper."""
+    if not isinstance(args, dict):
+        return {}
+    if args and set(args) <= {"method", "queryParams", "body"}:
+        inner = args.get("queryParams") or args.get("body")
+        return inner if isinstance(inner, dict) else {}
+    return args
 
 
 def judge(client, cfg: dict, need: str, listings: list[dict]) -> dict[str, dict]:

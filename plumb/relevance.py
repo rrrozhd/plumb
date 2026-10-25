@@ -13,15 +13,15 @@ import numpy as np
 
 from plumb.models import Endpoint
 
-MASKS = [
-    (re.compile(r"https?://\S+"), " <url> "),
-    (re.compile(r"\b[0-9a-f]{64}\b"), " <hash> "),
-    (re.compile(r"\b0x[0-9a-f]{40}\b"), " <evm> "),
-    (re.compile(r"\br[1-9a-hj-np-z]{24,34}\b"), " <xrpl> "),
-    (re.compile(r"\b\d{4}-\d{2}-\d{2}\b"), " <date> "),
-    (re.compile(r"\b(?:[a-z0-9-]+\.)+(?:com|org|net|io|dev|ai|eu|xyz|app|co)\b"), " <domain> "),
-    (re.compile(r"\b\d+(?:[.,]\d+)?\b"), " <num> "),
-]
+MASKS = [(re.compile(rx, re.I), sub) for rx, sub in (
+    (r"https?://\S+", " <url> "),
+    (r"\b(?:0x)?[0-9a-f]{64}\b", " <hash> "),
+    (r"\b0x[0-9a-f]{40}\b", " <evm> "),
+    (r"\br[1-9a-z]{24,34}\b", " <xrpl> "),  # lowercased base58 covers every letter
+    (r"\b\d{4}-\d{2}-\d{2}\b", " <date> "),
+    (r"\b(?:[a-z0-9-]+\.)+(?:com|org|net|io|dev|ai|eu|xyz|app|co)\b", " <domain> "),
+    (r"\b\d+(?:[.,]\d+)?\b", " <num> "),
+)]
 STOP = set("a an and are as at be by for from in is it of on or the to with what was did does do its this that latest current today today's".split())
 WORD = re.compile(r"<[a-z]+>|[a-z0-9]+")
 
@@ -32,6 +32,42 @@ def template(need: str) -> str:
     for rx, sub in MASKS:
         t = rx.sub(sub, t)
     return " ".join(t.split())
+
+
+def entities(need: str) -> list[tuple[str, str]]:
+    """(mask, text) for every entity template() masks, in mask order, original case kept."""
+    out = []
+    for rx, sub in MASKS:
+        out += [(sub, m.group()) for m in rx.finditer(need)]
+        need = rx.sub(sub, need)
+    return out
+
+
+def rebind(args, judged_need: str, need: str):
+    """Cached call args were filled for the need that was judged; swap in this need's entities (same template).
+
+    shortcut: only literal copies of an entity are swapped (a year derived from a date is not), upgrade if args drift.
+    """
+    a, b = entities(judged_need), entities(need)
+    swap = {x.lower(): y for (kx, x), (ky, y) in zip(a, b) if kx == ky and x != y} if len(a) == len(b) else {}
+    if not swap:
+        return args
+    rx = re.compile("|".join(re.escape(x) for x in sorted(swap, key=len, reverse=True)), re.I)
+
+    def sub(v):
+        if isinstance(v, str):
+            return rx.sub(lambda m: swap[m.group().lower()], v)
+        if isinstance(v, dict):
+            return {k: sub(x) for k, x in v.items()}
+        if isinstance(v, list):
+            return [sub(x) for x in v]
+        if isinstance(v, (int, float)) and not isinstance(v, bool) and str(v) in swap:
+            try:
+                return type(v)(swap[str(v)])
+            except ValueError:
+                return swap[str(v)]
+        return v
+    return sub(args)
 
 
 def tokens(text: str) -> list[str]:

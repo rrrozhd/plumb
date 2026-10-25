@@ -122,8 +122,11 @@ class Ranker:
                 break
             if (cost, e) not in picked:
                 picked.append((cost, e))
+        picked.sort(key=lambda x: rows.index(x))  # diversity picks the set; exact-first still orders it
 
-        results = [self._result(i + 1, e, cost, cands[e], how, p, prices[e], labels.get(e)) for i, (cost, e) in enumerate(picked)]
+        judged_need = (self.fit.get(t) or {}).get("need", need)
+        results = [self._result(i + 1, e, cost, cands[e], how, p, prices[e], labels.get(e), need, judged_need)
+                   for i, (cost, e) in enumerate(picked)]
         done = time.perf_counter()
         out = {"shortlist_id": str(uuid.uuid4()), "need_template": t, "relevance": how, "principal": principal,
                "personalized": p is not None, "results": results, "excluded": excluded,
@@ -131,14 +134,14 @@ class Ranker:
         self.log.append(json.dumps({"need_template": t, "n": len(results), "ms": out["timing_ms"]["total"]}))
         return out
 
-    def _result(self, rank, e, cost, p_fit, how, p, price, judged=None) -> dict:
+    def _result(self, rank, e, cost, p_fit, how, p, price, judged=None, need="", judged_need="") -> dict:
         ep, tr = self.rec.endpoints[e], self.rec.trust[e]
         q_mean, q_lo, n_personal = self.rec.personal_q(p, e)
         return {
             "rank": rank, "endpoint_id": e, "url": ep.url, "method": ep.method, "operator": ep.payto,
             "price": {"asset": price[1], "amount_rlusd": str(price[0].quantize(Decimal("0.000001")))},
             "p_fit": round(p_fit, 3), "relevance": how, "match": (judged or {}).get("label", "lexical"),
-            "call": {"method": ep.method, "url": ep.url, "args": (judged or {}).get("args", {})},
+            "call": {"method": ep.method, "url": ep.url, "args": relevance.rebind((judged or {}).get("args", {}), judged_need, need)},
             "trust": {"scope": "principal" if n_personal else "global", "p_settle": round(tr.p_settle, 3),
                       "q_mean": round(q_mean, 3), "q_lo": round(q_lo, 3), "n_obs": tr.n_obs, "n_personal": n_personal},
             "cost_per_good_rlusd": str(cost.quantize(Decimal("0.000001"))),
@@ -166,7 +169,7 @@ def load(cfg: dict, root, embed=None, with_principals: bool = True, judge=None) 
     from plumb import config, principals as P, recommender
     fit_path = config.path(cfg, "fit")
     fit = json.loads(fit_path.read_text()) if fit_path.exists() else {}
-    cold_path = config.ROOT / "out" / "fit_cold.json"
+    cold_path = config.path(cfg, "fit_cold")
     if cold_path.exists():
         fit.update({k: v for k, v in json.loads(cold_path.read_text()).items() if k not in fit})
     ps = {}

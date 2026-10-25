@@ -82,3 +82,22 @@ def test_judge_uses_structured_output_with_configured_model():
     assert out["e1"]["p_fit"] == 0.5
     kw = c.calls[0]
     assert kw["model"] == cfg["judge"]["bedrock_model"] and kw["output_config"]["format"]["type"] == "json_schema"
+
+
+def test_masks_cover_lowercase_base58_and_0x_hashes():
+    assert relevance.template("XRP balance of rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn") == "xrp balance of <xrpl>"
+    assert relevance.template("status of tx 0x" + "ab" * 32) == "status of tx <hash>"
+
+
+def test_rebind_swaps_the_judged_needs_entities_for_this_needs():
+    judged, need = "WHOIS data for the domain ripple.com", "WHOIS data for the domain coinbase.com"
+    assert relevance.template(judged) == relevance.template(need)
+    assert relevance.rebind({"domain": "ripple.com", "q": "whois ripple.com"}, judged, need) == {"domain": "coinbase.com", "q": "whois coinbase.com"}
+    assert relevance.rebind({"amount": 250, "from": "EUR"}, "Convert 250 EUR to USD", "Convert 100 EUR to USD") == {"amount": 100, "from": "EUR"}
+    assert relevance.rebind({"x": "1"}, "same need", "same need") == {"x": "1"}
+
+
+def test_call_args_unwraps_a_copied_input_wrapper():
+    assert judge.call_args({"queryParams": {"symbol": "SOL"}}) == {"symbol": "SOL"}
+    assert judge.call_args({"method": "POST", "body": {"a": 1}}) == {"a": 1}
+    assert judge.call_args({"symbol": "SOL"}) == {"symbol": "SOL"} and judge.call_args("x") == {}

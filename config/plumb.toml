@@ -79,6 +79,8 @@ xrp_price_drift = "0.02"
 [paths]
 # Offline judge labels used for ranking. fit.json (v1) is frozen as the provenance of E20/E21.
 fit = "data/fit.json"
+# Cold-path labels (judge v2) for needs first seen at request time; committed as the provenance of E22.
+fit_cold = "data/fit_cold.json"
 db = "out/plumb.db"
 snapshot = "data/bazaar_snapshot.json"
 vet402_snapshot = "data/vet402_xrpl.csv"
