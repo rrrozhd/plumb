@@ -1,0 +1,2169 @@
+{
+ "at": "20261025T0323Z",
+ "mode": "live",
+ "prereg": "eval/e21_prereg.md",
+ "grader_commit": "8c4d153",
+ "spent_total_rlusd": "0.5212640772124973668170063972",
+ "summary": {
+  "bazaar/v2": {
+   "good": 7,
+   "of": 20,
+   "cost_rlusd": "0.09326407721249736681700639728",
+   "cost_per_good": "0.013323"
+  },
+  "bazaar/llm_only": {
+   "good": 6,
+   "of": 20,
+   "cost_rlusd": "0.09326407721249736681700639728",
+   "cost_per_good": "0.015544"
+  },
+  "plumb/v2": {
+   "good": 11,
+   "of": 20,
+   "cost_rlusd": "0.068",
+   "cost_per_good": "0.006182"
+  },
+  "plumb/llm_only": {
+   "good": 11,
+   "of": 20,
+   "cost_rlusd": "0.068",
+   "cost_per_good": "0.006182"
+  },
+  "fizzl/v2": {
+   "good": 13,
+   "of": 20,
+   "cost_rlusd": "0.40",
+   "cost_per_good": "0.030769"
+  },
+  "fizzl/llm_only": {
+   "good": 12,
+   "of": 20,
+   "cost_rlusd": "0.40",
+   "cost_per_good": "0.033333"
+  }
+ },
+ "rows": [
+  {
+   "id": "q01",
+   "need": "Current XRP price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "D65B287A84137ED8919EE2247B996393BBF24C01FFEAF7269CFCDB6A30C4A1BD",
+    "ms": 9242,
+    "body_file": "out/e21-bodies-20261025T0323Z/q01-bazaar.txt",
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": false,
+     "g4_entity_why": "missing entity XRP",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T03:23:13+00:00 vs limit 15m",
+     "oracle": false,
+     "oracle_why": "CoinGecko XRP 1.31",
+     "llm": null,
+     "method": {
+      "g4": "entity rule",
+      "g5": "timestamp"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Response is valid JSON with prices only for BTC, ETH, SOL in EUR; no XRP price in USD. Timestamp is 9 seconds old, so fresh."
+    },
+    "settled_seen": true
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "http": 200,
+    "spent": "0.001",
+    "tx": "9E3843508A3F6E2297341FE6F8CC356A40249F54F19DDB544D4366B51926701E",
+    "ms": 5387,
+    "body_file": "out/e21-bodies-20261025T0323Z/q01-plumb.txt",
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": false,
+     "g4_entity_why": "missing entity XRP",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T03:23:25+00:00 vs limit 15m",
+     "oracle": false,
+     "oracle_why": "CoinGecko XRP 1.31",
+     "llm": null,
+     "method": {
+      "g4": "entity rule",
+      "g5": "timestamp"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Response gives BTC/EUR rate, not XRP/USD price; required entity and currency missing. Timestamp is fresh (5 seconds old)."
+    },
+    "settled_seen": true
+   },
+   "fizzl": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "65ECAD8E9B94D1692884C9016F7FBD544EEDD17FC198B991970EE0448A429CF8",
+    "ms": 12750,
+    "body_file": "out/e21-bodies-20261025T0323Z/q01-fizzl.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T03:23:38+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko XRP 1.31",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid CoinGecko response with XRP price_usd 1.31 as a number; last_updated 03:23:15 is within 15m of now 03:23:45."
+    },
+    "settled_seen": true
+   }
+  },
+  {
+   "id": "q02",
+   "need": "Current BTC perpetual futures funding rate on major exchanges",
+   "bazaar": {
+    "url": "https://pay.edge-agents.ai/v1/services/perp-funding-rates",
+    "http": 402,
+    "spent": "0",
+    "tx": null,
+    "ms": 116,
+    "body_file": "out/e21-bodies-20261025T0323Z/q02-bazaar.txt",
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "why": "HTTP 402",
+    "detail": "{\"x402_error\": \"No matching payment requirements\"}"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/funding",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "8D93BEC9D7A3EA4EC75F325DC3BE0BBA2ED22E4578236FA6077F5972022616CD",
+    "ms": 8341,
+    "body_file": "out/e21-bodies-20261025T0323Z/q02-plumb.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T03:24:20+00:00 vs limit 8h",
+     "oracle": null,
+     "oracle_why": "no oracle",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid live-looking JSON with BTC funding rates for four named venues; checkedAt 03:24:20Z is within 8h of now. Values plausible and consistent in sign and scale."
+     },
+     "method": {
+      "g4": "llm",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid JSON with real-looking data; four venues each with numeric BTC funding rate; checkedAt 03:24:20Z is within 8h of now. Rates plausible and signs consistent."
+    },
+    "settled_seen": true
+   },
+   "fizzl": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "5CFAF0DC9D8D23FED7244A9910A2E73C3753C37F83E3BD60C1A723CE08E368C7",
+    "ms": 18625,
+    "body_file": "out/e21-bodies-20261025T0323Z/q02-fizzl.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T03:24:42+00:00 vs limit 8h",
+     "oracle": null,
+     "oracle_why": "no oracle",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Real data with BTC funding rates for OKX and Hyperliquid, each labeled by venue; as_of is seconds old. Binance and Bybit failed, but major venues are still covered."
+     },
+     "method": {
+      "g4": "llm",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid live data with BTC funding rates for OKX and Hyperliquid, each labeled by venue; as_of is seconds before now. Binance and Bybit errored, but two major venues suffice."
+    },
+    "settled_seen": true
+   }
+  },
+  {
+   "id": "q03",
+   "need": "Today's crypto Fear & Greed Index value",
+   "bazaar": {
+    "url": "https://api.vextorium.com/fear-greed-pago",
+    "http": 200,
+    "spent": "0.005",
+    "tx": "3F5037D4A4FBF2CA4677228D1F58D5331E4FDA9380D22D56D7029A4C05801C22",
+    "ms": 6333,
+    "body_file": "out/e21-bodies-20261025T0323Z/q03-bazaar.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no timestamp found",
+     "oracle": true,
+     "oracle_why": "alternative.me 54",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Value 54 with classification Neutral, source Alternative.me; timestamp 1792886400 equals 2026-10-25 00:00 UTC, within 1 day. Value consistent, though not independently verified."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid JSON with value 54 and classification Neutral; timestamp 1792886400 is 2026-10-25 00:00 UTC, within 1 day. Value not independently verifiable but plausible."
+    },
+    "settled_seen": true
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/fear-greed",
+    "http": 200,
+    "spent": "0.001",
+    "tx": "E3DA9A5239E3F4D53BE965CEAF6D36C40E93D0E8E5AA6D529CA26726A89E0AB7",
+    "ms": 8332,
+    "body_file": "out/e21-bodies-20261025T0323Z/q03-plumb.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T02:39:35+00:00 vs limit 1d",
+     "oracle": true,
+     "oracle_why": "alternative.me 54",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid JSON with today's value 54 (Neutral) dated 2026-10-25, checked about 45 minutes before now, from alternative.me; includes both required items. Cannot verify the exact published value, but it is plausible."
+    },
+    "settled_seen": true
+   },
+   "fizzl": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "A9DD0421796B6673FCD120A4CB1E318182EB6BFFEB2C305563DD64098ECB5838",
+    "ms": 13513,
+    "body_file": "out/e21-bodies-20261025T0323Z/q03-fizzl.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T03:25:30+00:00 vs limit 1d",
+     "oracle": true,
+     "oracle_why": "alternative.me 54",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid JSON with value 54 and label Neutral from alternative.me, dated 2026-10-25, within 1 day of now. Could not verify against the source, but the response is consistent."
+    },
+    "settled_seen": true
+   }
+  },
+  {
+   "id": "q04",
+   "need": "Convert 250 EUR to USD at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "http": 200,
+    "spent": "0.001022006434374780568083866439",
+    "tx": "494EDBAB507F43479CA272F41B1B5B3B7D1A57C7C7691DC59B05E02E39FD9B39",
+    "ms": 6733,
+    "body_file": "out/e21-bodies-20261025T0323Z/q04-bazaar.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T03:25:48+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB 1.1193",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid ECB-sourced EUR to USD rate 1.1193; 250 x 1.1193 = 279.825 matches. Rate dated 2026-10-23, about 2 days old, within 3d limit."
+    },
+    "settled_seen": true
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/ecb-institutional-fx-rates",
+    "http": 200,
+    "spent": "0.001",
+    "tx": "2C62CDE4B94E30067AA965CB344C2A677497E019EF222DE3E587B2579DDBF1B1",
+    "ms": 7483,
+    "body_file": "out/e21-bodies-20261025T0323Z/q04-plumb.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T03:25:52+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB 1.1193",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid ECB EUR/USD rate 1.1193; 250 x 1.1193 = 279.825 matches. Date 2026-10-23 is within 3 days of now (Oct 25). Real data, not placeholder."
+    },
+    "settled_seen": true
+   },
+   "fizzl": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "FD29824F07DE4CC732BBE9A0B6F318B745F61AB81A961ABC294D5074313F3155",
+    "ms": 12959,
+    "body_file": "out/e21-bodies-20261025T0323Z/q04-fizzl.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T03:26:09+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB 1.1193",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid response with EUR/USD rate 1.1193 and result 279.825 (250x1.1193 exact). Rate date 2026-10-23 is within 3 days of now (Oct 25). Cannot verify ECB value, but plausible."
+    },
+    "settled_seen": true
+   }
+  },
+  {
+   "id": "q05",
+   "need": "Latest Brent and WTI crude oil prices in USD per barrel",
+   "bazaar": {
+    "url": "https://api.tradeenergy-api.workers.dev/api/energy/crude-oil-brent-wti",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "CEA68A658EF722E6E73E58849043052BC516CDCAC285F5501007FEDFE73ABE41",
+    "ms": 4990,
+    "body_file": "out/e21-bodies-20261025T0323Z/q05-bazaar.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T02:40:09+00:00 vs limit 3d",
+     "oracle": null,
+     "oracle_why": "no oracle",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": false,
+      "reason": "Both Brent and WTI present with USD/barrel from EIA via FRED. Latest data dated 2026-10-20 is 4+ days old versus 3d limit, so stale."
+     },
+     "method": {
+      "g4": "llm",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": false,
+     "reason": "Contains both Brent and WTI USD/barrel values, well-formed. But latest data is dated 2026-10-20, about 4.6 days before now, exceeding the 3-day limit."
+    },
+    "settled_seen": true
+   },
+   "plumb": {
+    "url": "https://api.tradeenergy-api.workers.dev/api/energy/crude-oil-brent-wti",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "CEA68A658EF722E6E73E58849043052BC516CDCAC285F5501007FEDFE73ABE41",
+    "ms": 4990,
+    "body_file": "out/e21-bodies-20261025T0323Z/q05-bazaar.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T02:40:09+00:00 vs limit 3d",
+     "oracle": null,
+     "oracle_why": "no oracle",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": false,
+      "reason": "Both Brent and WTI present with USD/barrel from EIA via FRED. Latest data dated 2026-10-20 is 4+ days old versus 3d limit, so stale."
+     },
+     "method": {
+      "g4": "llm",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": false,
+     "reason": "Contains both Brent and WTI USD/barrel values, well-formed. But latest data is dated 2026-10-20, about 4.6 days before now, exceeding the 3-day limit."
+    },
+    "settled_seen": true,
+    "shared": true
+   },
+   "fizzl": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "0DDF6A8C0B137BAABBFA856AA91168720BBC615AE65894627477814C25F7FA2D",
+    "ms": 12259,
+    "body_file": "out/e21-bodies-20261025T0323Z/q05-fizzl.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T03:26:33+00:00 vs limit 3d",
+     "oracle": null,
+     "oracle_why": "no oracle",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": false,
+      "reason": "Contains Brent and WTI USD/barrel from FRED EIA spot series, but latest data is 2026-10-20, about 4.9 days before now, exceeding the 3d limit."
+     },
+     "method": {
+      "g4": "llm",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": false,
+     "reason": "Contains Brent and WTI USD/barrel from FRED, but latest data is 2026-10-20, about 4.8 days before now (2026-10-25), exceeding the 3d freshness limit."
+    },
+    "settled_seen": true
+   }
+  },
+  {
+   "id": "q06",
+   "need": "Latest US CPI inflation rate (year over year) and the current Federal Reserve funds target range",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/us/rates-macro",
+    "http": 200,
+    "spent": "0.002044012868749561136167732878",
+    "tx": "ED1E8032872A957C72E08FA51C03EF72EA91CCAF95AFC55BF4612CC0C8858351",
+    "ms": 7151,
+    "body_file": "out/e21-bodies-20261025T0323Z/q06-bazaar.txt",
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": null,
+     "oracle_why": "no oracle",
+     "llm": {
+      "g4_answers_need": false,
+      "g5_fresh_enough": true,
+      "reason": "CPI YoY 3.74% for 2026-09 is present, but no federal funds target range is included; only Treasury yields, which are not the FOMC range."
+     },
+     "method": {
+      "g4": "llm",
+      "g5": "llm"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "CPI YoY 3.74% for 2026-09 is present, but no federal funds target range appears; only Treasury yields are given, so a must_include item is missing."
+    },
+    "settled_seen": true
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/tipos-fed-pago",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "D8B2695E5B7E6D3BEBA6C964F0B5E8C1D33EE5E0455985ED459AE9F6A095BE1E",
+    "ms": 6385,
+    "body_file": "out/e21-bodies-20261025T0323Z/q06-plumb.txt",
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": null,
+     "oracle_why": "no oracle",
+     "llm": {
+      "g4_answers_need": false,
+      "g5_fresh_enough": true,
+      "reason": "Fed target range (3.75-4.00%) is present, but no US CPI 12-month change or reference month appears, so a must_include item is missing. Rate data is current to Oct 22."
+     },
+     "method": {
+      "g4": "llm",
+      "g5": "llm"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Fed target range 3.75-4% is present, but no US CPI 12-month change or reference month appears anywhere in the response."
+    },
+    "settled_seen": true
+   },
+   "fizzl": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "DFFC3EE0223CCBE6E57488874281E7AF32849FFED0562F06DA88F4B92621D532",
+    "ms": 11662,
+    "body_file": "out/e21-bodies-20261025T0323Z/q06-fizzl.txt",
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": null,
+     "oracle_why": "no oracle",
+     "llm": {
+      "g4_answers_need": false,
+      "g5_fresh_enough": true,
+      "reason": "CPI YoY 3.72% for 2026-09 is derivable, but no federal funds target range is given, only the effective rate 3.88%. Data is current."
+     },
+     "method": {
+      "g4": "llm",
+      "g5": "llm"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "CPI YoY (3.72%, Sep 2026) is derivable, but only the effective funds rate (3.88%) is given, not the FOMC target range; required item missing."
+    },
+    "settled_seen": true
+   }
+  },
+  {
+   "id": "q07",
+   "need": "Apple Inc. total revenue for its most recent fiscal year from SEC EDGAR filings",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/sec/company-facts",
+    "http": 200,
+    "spent": "0.003066019303124341704251599317",
+    "tx": "41BAF73FC41B9607E5F9C5D0FB9EA0EF01DF085EAB55689F2243C5BB06AD12EF",
+    "ms": 8001,
+    "body_file": "out/e21-bodies-20261025T0323Z/q07-bazaar.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "EDGAR FY2025-09-27 416161000000",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid live SEC data; FY2025 revenue $416.161B in USD with period 2024-09-29 to 2025-09-27 from 10-K filed 2025-10-31, the latest 10-K as of Oct 2026."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid JSON with real SEC data; FY2025 revenue $416.161B in USD, period ending 2025-09-27 from the 10-K filed 2025-10-31, the latest 10-K as of now; matches EDGAR."
+    },
+    "settled_seen": true
+   },
+   "plumb": {
+    "url": "https://api.stablecoingateways.com/v1/sec/company-facts",
+    "http": 200,
+    "spent": "0.003066019303124341704251599317",
+    "tx": "41BAF73FC41B9607E5F9C5D0FB9EA0EF01DF085EAB55689F2243C5BB06AD12EF",
+    "ms": 8001,
+    "body_file": "out/e21-bodies-20261025T0323Z/q07-bazaar.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "EDGAR FY2025-09-27 416161000000",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid live SEC data; FY2025 revenue $416.161B in USD with period 2024-09-29 to 2025-09-27 from 10-K filed 2025-10-31, the latest 10-K as of Oct 2026."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid JSON with real SEC data; FY2025 revenue $416.161B in USD, period ending 2025-09-27 from the 10-K filed 2025-10-31, the latest 10-K as of now; matches EDGAR."
+    },
+    "settled_seen": true,
+    "shared": true
+   },
+   "fizzl": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "1F59784C7BE158135D786543E3D34E67F631683FFB3D7047AFDCFACA84E6912B",
+    "ms": 14619,
+    "body_file": "out/e21-bodies-20261025T0323Z/q07-fizzl.txt",
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": false,
+     "oracle_why": "EDGAR FY2025-09-27 416161000000",
+     "llm": {
+      "g4_answers_need": false,
+      "g5_fresh_enough": false,
+      "reason": "Returns FY2018 revenue of $62.9B (period end 2018-09-29), not Apple's most recent fiscal year; it's far from the latest 10-K total revenue and is stale."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": false,
+     "g5_final": false,
+     "good": false
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": false,
+     "reason": "Returned revenue is $62.9B for FY2018, not Apple's latest fiscal year (~$400B in FY2025); it fails the 0.5% check and is stale versus the latest 10-K."
+    },
+    "settled_seen": true
+   }
+  },
+  {
+   "id": "q08",
+   "need": "Screen the company name Rosneft against OFAC and other sanctions lists",
+   "bazaar": {
+    "url": "https://compliancepulse.theaslangroupllc.com/api/screen/sanctions",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "AACA2318C317BF1F9E3E28EC3FB2312BBA06381EF099BFFA44A865B00334347F",
+    "ms": 9630,
+    "body_file": "out/e21-bodies-20261025T0323Z/q08-bazaar.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "frozen truth: Rosneft is on OFAC SDN",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid real response with match:true, hits on primary Rosneft entity, and lists screened (SDN and Consolidated). Freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid real response reporting match=true for Rosneft with hits and lists screened (OFAC SDN and Consolidated); consistent with the check. Freshness n/a."
+    },
+    "settled_seen": true
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/ofac-sanctions-preflight",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "7A81067BFD747CAAAEE8FCC231AA89DC55CEDE89E4F6E2AD374F9D00C71A63A2",
+    "ms": 7848,
+    "body_file": "out/e21-bodies-20261025T0323Z/q08-plumb.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "frozen truth: Rosneft is on OFAC SDN",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid real response reporting a match (MATCH_FOUND_REVIEW) with Rosneft SDN entry and lists screened (OFAC SDN, UN consolidated). Freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid real response reporting MATCH_FOUND_REVIEW with Rosneft OFAC SDN entry, and lists screened (OFAC SDN, UN consolidated). Freshness n/a."
+    },
+    "settled_seen": true
+   },
+   "fizzl": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "http": 502,
+    "spent": "0.02",
+    "tx": "1F59784C7BE158135D786543E3D34E67F631683FFB3D7047AFDCFACA84E6912B",
+    "ms": 15618,
+    "body_file": "out/e21-bodies-20261025T0323Z/q08-fizzl.txt",
+    "verdict": "bad",
+    "verdict_llm_only": "bad",
+    "why": "HTTP 502",
+    "detail": "{\"error\":\"None of the services tried delivered an answer. Nothing was charged.\",\"attempts\":[{\"url\":\"https://agent.pocket.network/v1/sanctions-watchlist-screen\",\"price_usd\":0.005,\"request\":{\"method\":\"P"
+   }
+  },
+  {
+   "id": "q09",
+   "need": "Is the Ethereum address 0x098B716B8Aaf21512996dC57EB0615e2383E2f96 on a sanctions list?",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/sanctions/address",
+    "http": 200,
+    "spent": "0.002044012868749561136167732878",
+    "tx": "0B8EE85ED05549213676DB59D143FAEDBE7096FB7D4A8EA9754B4D136A6CC989",
+    "ms": 6410,
+    "body_file": "out/e21-bodies-20261025T0323Z/q09-bazaar.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "frozen truth: OFAC SDN, LAZARUS GROUP",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid JSON lookup result; listed:true with SDN match to LAZARUS GROUP for the queried address, consistent with check. Freshness is n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid real response: listed=true, matched OFAC SDN entry LAZARUS GROUP for the queried address. Freshness is n/a, so it passes."
+    },
+    "settled_seen": true
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/wallet-sanctions-check",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "75FF74D873F6D4060D8ED62DCF3FAF28E01145A68D387F9305957304E449D385",
+    "ms": 7518,
+    "body_file": "out/e21-bodies-20261025T0323Z/q09-plumb.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "frozen truth: OFAC SDN, LAZARUS GROUP",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid JSON with real data; reports sanctioned true and matched OFAC SDN entity LAZARUS GROUP, consistent with check. Freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid JSON with real data; sanctioned true, matched OFAC SDN entity LAZARUS GROUP for the queried address; freshness n/a."
+    },
+    "settled_seen": true
+   },
+   "fizzl": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "501471E592F2010DA8BD70762404B59AB2E67CEE3C032262D53A5A9BAFE9864B",
+    "ms": 13059,
+    "body_file": "out/e21-bodies-20261025T0323Z/q09-fizzl.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "frozen truth: OFAC SDN, LAZARUS GROUP",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid real response reports sanctioned true, matched LAZARUS GROUP on the OFAC SDN list, consistent with the check; freshness is n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid real response reports sanctioned true, matched OFAC SDN list entity LAZARUS GROUP for the queried address, consistent with check; freshness n/a."
+    },
+    "settled_seen": true
+   }
+  },
+  {
+   "id": "q10",
+   "need": "Security risk check for the Ethereum token contract 0x6982508145454Ce325dDbE47a25d4ec3d2311933: honeypot, owner privileges, buy and sell tax",
+   "bazaar": {
+    "url": "https://onchainpulse.theaslangroupllc.com/api/facet/honeypot",
+    "http": 500,
+    "spent": "0.005",
+    "tx": "9CA812FFEAAAC9F44462A39139874019270DE7036BA4A05AD15B44579444740C",
+    "ms": 7971,
+    "body_file": "out/e21-bodies-20261025T0323Z/q10-bazaar.txt",
+    "verdict": "bad",
+    "verdict_llm_only": "bad",
+    "why": "HTTP 500",
+    "detail": "{\"error\":\"upstream_failed\",\"message\":\"This request failed unexpectedly after payment processing began. If you were charged and did not receive a result, this is a bug on our side \u2014 please retry or con"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/honeypot-detector",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "1EF9077FC350F7359657E4226FBC1832A636BE01999E8292079ADA3ACD5E7E99",
+    "ms": 6592,
+    "body_file": "out/e21-bodies-20261025T0323Z/q10-plumb.txt",
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": false,
+     "g4_entity_why": "missing entity 0x6982508145454Ce325",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T03:29:27+00:00 vs limit 1d",
+     "oracle": null,
+     "oracle_why": "no oracle",
+     "llm": null,
+     "method": {
+      "g4": "entity rule",
+      "g5": "timestamp"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Response covers USDT (0xdAC1...), not the requested token 0x6982...; also lacks owner privileges/ownership status. Data is fresh (checked seconds ago)."
+    },
+    "settled_seen": true
+   },
+   "fizzl": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "B59D1B85AAA3ECFC132010AB35AC2658F615D42BCBB3812283E5033D90C1E663",
+    "ms": 11849,
+    "body_file": "out/e21-bodies-20261025T0323Z/q10-fizzl.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T03:29:42+00:00 vs limit 1d",
+     "oracle": null,
+     "oracle_why": "no oracle",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Real GoPlus-sourced data for PEPE: isHoneypot false, buy/sell tax 0, ownership flags (hiddenOwner false, ownerChangeBalance false). Generated 7 seconds before now, within 1d."
+     },
+     "method": {
+      "g4": "llm",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Honeypot verdict and taxes present, but no explicit owner privileges or ownership status (no owner address or renounced flag); only ownerChangeBalance and hiddenOwner flags. Generated seconds ago."
+    },
+    "settled_seen": true
+   }
+  },
+  {
+   "id": "q11",
+   "need": "USDC balance of the Ethereum address 0x28C6c06298d514Db089934071355E5743bf21d60",
+   "bazaar": {
+    "url": "https://api.sitecheck-api.workers.dev/api/btc/address",
+    "http": 400,
+    "spent": "0",
+    "tx": null,
+    "ms": 559,
+    "body_file": "out/e21-bodies-20261025T0323Z/q11-bazaar.txt",
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "why": "HTTP 400",
+    "detail": "{\"error\":\"address must be a Bitcoin mainnet address (bc1\u2026 or 1\u2026 / 3\u2026)\"}"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/evm/balance",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "538A2BE5E590DCD695320659A6561C9D283DABEE62A3B0C3CF95A0CF55155822",
+    "ms": 5435,
+    "body_file": "out/e21-bodies-20261025T0323Z/q11-plumb.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T03:30:25+00:00 vs limit 1h",
+     "oracle": true,
+     "oracle_why": "on-chain USDC 52116.51",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid JSON with USDC balance 52116.51 for the correct address on Ethereum; raw 52116508220 with 6 decimals matches; checkedAt is 5 seconds before now, within 1h."
+    },
+    "settled_seen": true
+   },
+   "fizzl": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "834B66872D064376BF838268FD96D975A2381F563724FB7CD3647C1D7C80AB52",
+    "ms": 15938,
+    "body_file": "out/e21-bodies-20261025T0323Z/q11-fizzl.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T03:30:43+00:00 vs limit 1h",
+     "oracle": true,
+     "oracle_why": "on-chain USDC 52116.51",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Response gives USDC balance 52116.50822 for the correct address on Ethereum; signed at 03:30:43, within 1h of now. No placeholder signs."
+    },
+    "settled_seen": true
+   }
+  },
+  {
+   "id": "q12",
+   "need": "Current Ethereum gas price: base fee and priority fee in gwei",
+   "bazaar": {
+    "url": "https://horizonpulse.dev/api/gas",
+    "http": 402,
+    "spent": "0",
+    "tx": null,
+    "ms": 2577,
+    "body_file": "out/e21-bodies-20261025T0323Z/q12-bazaar.txt",
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "why": "HTTP 402",
+    "detail": "{\"x402_error\": null}"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/gas",
+    "http": 200,
+    "spent": "0.001",
+    "tx": "F99D37CB85C6E2F099F5419C4C720EDB26698350900E246BCDDD3D6512AC1ABE",
+    "ms": 5447,
+    "body_file": "out/e21-bodies-20261025T0323Z/q12-plumb.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T03:31:26+00:00 vs limit 10m",
+     "oracle": true,
+     "oracle_why": "base fee 0.0383 gwei",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid JSON with base fee and priority fee tiers in gwei; block time 03:31:23 and checkedAt 03:31:26 are within 10m. Base fee 0.04 gwei is plausible for current Ethereum."
+    },
+    "settled_seen": true
+   },
+   "fizzl": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "61D6849D16B2DEC0732875724B25C832BDCD3D6C76BB5EEC560C425A18C8C674",
+    "ms": 13358,
+    "body_file": "out/e21-bodies-20261025T0323Z/q12-fizzl.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T03:31:42+00:00 vs limit 10m",
+     "oracle": true,
+     "oracle_why": "base fee 0.0402 gwei",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid live-looking data with base fee 0.041 gwei and priority tiers; checked_at 03:31:42 is within 10m of now. Base fee plausibility vs Etherscan unverifiable but consistent."
+    },
+    "settled_seen": true
+   }
+  },
+  {
+   "id": "q13",
+   "need": "Verify XRPL transaction 65A456656B9479457C0995E2FC770319C7636C39550DF4A4E127D265ADB90795: was it validated and what amount did it deliver?",
+   "bazaar": {
+    "url": "https://horizonpulse.dev/api/tx-status",
+    "http": 400,
+    "spent": "0",
+    "tx": null,
+    "ms": 3022,
+    "body_file": "out/e21-bodies-20261025T0323Z/q13-bazaar.txt",
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "why": "HTTP 400",
+    "detail": "{\"ok\":false,\"error\":\"network must be one of base, polygon, solana, xrpl (or eip155:8453, eip155:137, xrpl:0, the Solana mainnet CAIP-2 id)\",\"code\":\"invalid_network\",\"charged\":false}"
+   },
+   "plumb": {
+    "url": "https://horizonpulse.dev/api/tx-status",
+    "http": 400,
+    "spent": "0",
+    "tx": null,
+    "ms": 3022,
+    "body_file": "out/e21-bodies-20261025T0323Z/q13-bazaar.txt",
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "why": "HTTP 400",
+    "detail": "{\"ok\":false,\"error\":\"network must be one of base, polygon, solana, xrpl (or eip155:8453, eip155:137, xrpl:0, the Solana mainnet CAIP-2 id)\",\"code\":\"invalid_network\",\"charged\":false}",
+    "shared": true
+   },
+   "fizzl": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "7C12D88A2E5449168373BBE3707898F7B50A91A3CEC96576FB03D6365B0B905C",
+    "ms": 14019,
+    "body_file": "out/e21-bodies-20261025T0323Z/q13-fizzl.txt",
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": false,
+     "oracle_why": "frozen truth: validated tesSUCCESS, 0.05 RLUSD",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid JSON for the right tx: status confirmed, final in validated ledger, transfer of 0.05 RLUSD to the expected address. Result code tesSUCCESS isn't shown, but validated status is. Freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Response shows status confirmed, final on validated ledger, and a transfer of 0.05 RLUSD to the expected address. It lacks an explicit tesSUCCESS code, but the validated status satisfies the requirement."
+    },
+    "settled_seen": true
+   }
+  },
+  {
+   "id": "q14",
+   "need": "WHOIS registration data for the domain ripple.com: registrar, creation date and expiry date",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/whois",
+    "http": 200,
+    "spent": "0.003066019303124341704251599317",
+    "tx": "9C94FDFEC6B3F4E8274CA4DE39BBC7D40289E23053D5BF1736C27D1ACB8A6D62",
+    "ms": 6268,
+    "body_file": "out/e21-bodies-20261025T0323Z/q14-bazaar.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "RDAP MarkMonitor Inc. 1998-03-13 2028-03-12",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid live response with RDAP registrar MarkMonitor, registered 1998-03-13, expires 2028-03-12 for ripple.com from Verisign RDAP; freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid live response for ripple.com with RDAP registrar MarkMonitor, registered 1998-03-13, expires 2028-03-12, sourced from Verisign RDAP; freshness n/a."
+    },
+    "settled_seen": true
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/domain",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "68FA3DC3E83CD45988B882467B039C3A078C3A46CA08AA0ADD5DA8C2D87FCB37",
+    "ms": 7244,
+    "body_file": "out/e21-bodies-20261025T0323Z/q14-plumb.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "RDAP MarkMonitor Inc. 1998-03-13 2028-03-12",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid JSON with real RDAP data for ripple.com including registrar (MarkMonitor), createdAt and expiresAt; freshness n/a. Daysuntil expiry inconsistency with 2026-10-25 is minor, so passes."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid JSON with real RDAP data for ripple.com including registrar (MarkMonitor), creation date (1998-03-13), expiry date (2028-03-12); freshness n/a. daysUntilExpiry is consistent with now_utc."
+    },
+    "settled_seen": true
+   },
+   "fizzl": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "580BF0D04B7743F5BF6FA9DCD553CA1FAC8118CCCC24F0919B9D54EFA1DC330F",
+    "ms": 13680,
+    "body_file": "out/e21-bodies-20261025T0323Z/q14-fizzl.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "RDAP MarkMonitor Inc. 1998-03-13 2028-03-12",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid real-looking WHOIS for ripple.com with registrar MarkMonitor, creation 1998-03-13, expiry 2028-03-12, consistent with Verisign raw data; freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid live-looking WHOIS for ripple.com with registrar MarkMonitor, creation 1998-03-13, expiry 2028-03-12; consistent with Verisign raw data; freshness n/a."
+    },
+    "settled_seen": true
+   }
+  },
+  {
+   "id": "q15",
+   "need": "Current weather and 3-day forecast for New York City",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "40FADBC787487B8F0EE956C57CA0873DC7BB88C6DAF0540E182EA74404CBD272",
+    "ms": 7722,
+    "body_file": "out/e21-bodies-20261025T0323Z/q15-bazaar.txt",
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": false,
+     "g5_why": "newest 2026-10-24T18:00:00+00:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KNYC 11.1 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": false,
+     "good": false
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Valid forecast data with 3-day coverage, but no explicit current temperature or current conditions observation; only forecast periods (Tonight low) are given. Start time 18:00 EDT is within 3h of now."
+    },
+    "settled_seen": true
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/tiempo-mundo-pago",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "970D562307DDEBBA7DE125181E1F1E2311D2C1D68A50B7DFDC790936A1BF1653",
+    "ms": 7237,
+    "body_file": "out/e21-bodies-20261025T0323Z/q15-plumb.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T01:16:47+00:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KNYC 11.1 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid weather JSON for NYC coordinates with current temp, sky conditions, and 3 daily forecasts. Updated 01:16Z, about 2.3h before now, within 3h. Temperature cannot be checked against KNYC but is plausible."
+    },
+    "settled_seen": true
+   },
+   "fizzl": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "56F6F717460E3F14BEF949D0FADE2D804ADD1E36E3D76A7454AE8716806558A0",
+    "ms": 12642,
+    "body_file": "out/e21-bodies-20261025T0323Z/q15-fizzl.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T03:33:52+00:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KNYC 11.1 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid real-looking data with current temp 8\u00b0C, condition, and 3 forecast days; signed 03:33 UTC, cache age 0. Forecast starts 10-24 but still covers three days; temperature plausible for the hour."
+    },
+    "settled_seen": true
+   }
+  },
+  {
+   "id": "q16",
+   "need": "Fetch https://en.wikipedia.org/wiki/XRP_Ledger and return the article text as clean Markdown",
+   "bazaar": {
+    "url": "https://horizonpulse.dev/api/fetch",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "AB4F438BFFB3D54EEF010259AD035F193D859A9E0AC1438B1A44BD0713D2D11E",
+    "ms": 12115,
+    "body_file": "out/e21-bodies-20261025T0323Z/q16-bazaar.txt",
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": null,
+     "oracle_why": "no oracle",
+     "llm": {
+      "g4_answers_need": false,
+      "g5_fresh_enough": true,
+      "reason": "Lead and ## headings present, but output includes leaked infobox wikitext/JSON, navbox menus and 'Jump to content' chrome, violating the clean-text check."
+     },
+     "method": {
+      "g4": "llm",
+      "g5": "llm"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Lead text and ## headings are present, but the output has a leaked raw template/wikitext JSON blob plus infobox, navbox and reference chrome, contradicting the clean-Markdown check."
+    },
+    "settled_seen": true
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/reader-markdown-extract",
+    "http": 200,
+    "spent": "0.001",
+    "tx": "6F67D5B8E5EBF7ABA56ABBA8390A41F647F0AA634B7CD75058F0A523F8ADE765",
+    "ms": 6069,
+    "body_file": "out/e21-bodies-20261025T0323Z/q16-plumb.txt",
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": null,
+     "oracle_why": "no oracle",
+     "llm": {
+      "g4_answers_need": false,
+      "g5_fresh_enough": true,
+      "reason": "Lead and headings are present, but the output includes language-link menus, a leaked infobox template blob, navbox and category lists, violating the check that navigation and menus be absent."
+     },
+     "method": {
+      "g4": "llm",
+      "g5": "llm"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Lead and ## headings are present, but the check fails: language-link navigation, categories, navbox and leaked infobox template JSON/wikitext remain, so not clean."
+    },
+    "settled_seen": true
+   },
+   "fizzl": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "FCDB0CC7E4A72CADBE2088FB1519EAC3548031C9305BCA20B3DCDDE0C65D94DF",
+    "ms": 15182,
+    "body_file": "out/e21-bodies-20261025T0323Z/q16-fizzl.txt",
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": null,
+     "oracle_why": "no oracle",
+     "llm": {
+      "g4_answers_need": false,
+      "g5_fresh_enough": true,
+      "reason": "Contains lead text and section names, but the output is raw text with navigation menus, template wikitext and no Markdown headings; it is truncated at 10000 characters, failing the clean-text check."
+     },
+     "method": {
+      "g4": "llm",
+      "g5": "llm"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Output is raw page text with navigation menus, language lists and template/wikitext junk, not clean Markdown; section headings are plain text, not Markdown headings; text is truncated at References."
+    },
+    "settled_seen": true
+   }
+  },
+  {
+   "id": "q17",
+   "need": "Is 2026-11-26 a US business day? List the US federal holidays in November 2026",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/business-days",
+    "http": 200,
+    "spent": "0.001022006434374780568083866439",
+    "tx": "6E441B3C76556FD717FA4A6DCCFE5FC29427C7BED48DC1FC5093E7637E8B4412",
+    "ms": 5407,
+    "body_file": "out/e21-bodies-20261025T0323Z/q17-bazaar.txt",
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": false,
+     "oracle_why": "computed: Thanksgiving; holidays 11-11 and 11-26",
+     "llm": {
+      "g4_answers_need": false,
+      "g5_fresh_enough": true,
+      "reason": "Response is valid JSON, but it only computes adding 3 business days to 2026-11-26; it never states whether that date is a business day nor lists November 2026 federal holidays."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Response is valid JSON but only adds 3 business days to 2026-11-26 with holidays_skipped empty; it never states if that date is a business day nor lists November 2026 holidays."
+    },
+    "settled_seen": true
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "http": 200,
+    "spent": "0.001",
+    "tx": "A33EE34FBCC096E2D55EBF1CEE3FC8DA0363E7FA0EB2B0EDCB135777EE551136",
+    "ms": 8444,
+    "body_file": "out/e21-bodies-20261025T0323Z/q17-plumb.txt",
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": false,
+     "oracle_why": "computed: Thanksgiving; holidays 11-11 and 11-26",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid holiday data for US 2026 lists Veterans Day 11-11 and Thanksgiving 11-26 as nationwide, so 11-26 is not a business day; freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid real holiday data for US 2026 lists Veterans Day (11-11) and Thanksgiving (11-26) nationwide, so 2026-11-26 is not a business day. Freshness n/a."
+    },
+    "settled_seen": true
+   },
+   "fizzl": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "B2C8F637E9E9909588B0AC183621F6E5B0D52143833062A6C1D913EC1683142A",
+    "ms": 14910,
+    "body_file": "out/e21-bodies-20261025T0323Z/q17-fizzl.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "computed: Thanksgiving; holidays 11-11 and 11-26",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Response gives 2026-11-26 as Thanksgiving, not a business day, and lists Veterans Day (11-11) and Thanksgiving as the November holidays, matching the check. Freshness is n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Response is real data; states 2026-11-26 is Thanksgiving and not a business day, and lists Veterans Day (11-11) and Thanksgiving as November holidays, matching the check. Freshness n/a."
+    },
+    "settled_seen": true
+   }
+  },
+  {
+   "id": "q18",
+   "need": "Latest news headlines about XRP or Ripple from the past 24 hours, with source and link",
+   "bazaar": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/news",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "24B94927EB9BB948C12F2BB8A72906C9B43A59EA93BC336612BFB7630C68327E",
+    "ms": 5571,
+    "body_file": "out/e21-bodies-20261025T0323Z/q18-bazaar.txt",
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T03:35:35+00:00 vs limit 1d",
+     "oracle": null,
+     "oracle_why": "no oracle",
+     "llm": {
+      "g4_answers_need": false,
+      "g5_fresh_enough": true,
+      "reason": "Valid real-looking JSON, but all five items are about Bitcoin/BTC; none concerns XRP or Ripple, so the required 3 headlines are missing. Items are recent."
+     },
+     "method": {
+      "g4": "llm",
+      "g5": "timestamp"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": false,
+     "reason": "Valid JSON, but all five items are tagged BTC and none concern XRP or Ripple. Fewer than 3 relevant headlines; the last item is also older than 24 hours."
+    },
+    "settled_seen": true
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/news",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "24B94927EB9BB948C12F2BB8A72906C9B43A59EA93BC336612BFB7630C68327E",
+    "ms": 5571,
+    "body_file": "out/e21-bodies-20261025T0323Z/q18-bazaar.txt",
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T03:35:35+00:00 vs limit 1d",
+     "oracle": null,
+     "oracle_why": "no oracle",
+     "llm": {
+      "g4_answers_need": false,
+      "g5_fresh_enough": true,
+      "reason": "Valid real-looking JSON, but all five items are about Bitcoin/BTC; none concerns XRP or Ripple, so the required 3 headlines are missing. Items are recent."
+     },
+     "method": {
+      "g4": "llm",
+      "g5": "timestamp"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": false,
+     "reason": "Valid JSON, but all five items are tagged BTC and none concern XRP or Ripple. Fewer than 3 relevant headlines; the last item is also older than 24 hours."
+    },
+    "settled_seen": true,
+    "shared": true
+   },
+   "fizzl": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "B022815338D8BA6849BC761C723994F91BB036A6156C3E4FDBCC2C1FFA2E2523",
+    "ms": 27974,
+    "body_file": "out/e21-bodies-20261025T0323Z/q18-fizzl.txt",
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T03:35:57+00:00 vs limit 1d",
+     "oracle": null,
+     "oracle_why": "no oracle",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Eight XRP/Ripple articles with publisher and URL each; dates 3-13 hours ago, within the 1d limit. Real data, not placeholder."
+     },
+     "method": {
+      "g4": "llm",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": true,
+     "g5_fresh_enough": true,
+     "reason": "Valid real response with 8 XRP/Ripple articles, each with publisher and URL; all dated 3-13 hours ago, within the 1-day limit."
+    },
+    "settled_seen": true
+   }
+  },
+  {
+   "id": "q19",
+   "need": "Recent arXiv papers on payments by AI agents or agentic commerce, with titles, authors and links",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/arxiv-search",
+    "http": 502,
+    "spent": "0",
+    "tx": null,
+    "ms": 639,
+    "body_file": "out/e21-bodies-20261025T0323Z/q19-bazaar.txt",
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "why": "HTTP 502",
+    "detail": "<!DOCTYPE html>\n<!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 7]>    <html class=\"no-js ie7 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 8]>    <html class=\"no-"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/arxiv",
+    "http": 200,
+    "spent": "0.001",
+    "tx": "689165132F7E73A843D3ADE95C96461E5802196FA8557A3011B6D76C48DB477C",
+    "ms": 6277,
+    "body_file": "out/e21-bodies-20261025T0323Z/q19-plumb.txt",
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": null,
+     "oracle_why": "no oracle",
+     "llm": {
+      "g4_answers_need": false,
+      "g5_fresh_enough": true,
+      "reason": "Valid arXiv response with 3 papers, but none concern payments, commerce or transactions by AI agents (robotics, test-time reasoning, dark matter). Need not answered."
+     },
+     "method": {
+      "g4": "llm",
+      "g5": "llm"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Valid JSON with 3 real-looking arXiv papers, but none concern AI agent payments or agentic commerce; they cover robotics, test-time reasoning, and dark matter."
+    },
+    "settled_seen": true
+   },
+   "fizzl": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "http": null,
+    "spent": "0.02",
+    "tx": "B022815338D8BA6849BC761C723994F91BB036A6156C3E4FDBCC2C1FFA2E2523",
+    "ms": 30007,
+    "body_file": "out/e21-bodies-20261025T0323Z/q19-fizzl.txt",
+    "verdict": "bad",
+    "verdict_llm_only": "bad",
+    "why": "HTTP None",
+    "detail": "ReadTimeout"
+   }
+  },
+  {
+   "id": "q20",
+   "need": "Recruiting clinical trials for type 2 diabetes in the United States, with NCT IDs",
+   "bazaar": {
+    "url": "https://clinicalintelpulse.theaslangroupllc.com/api/clinical/trial-check",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "97D22747ACF258FBEB0DF6BB991D505DFCEBC6A9C3F63B6927B97F003CD9045E",
+    "ms": 6237,
+    "body_file": "out/e21-bodies-20261025T0323Z/q20-bazaar.txt",
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": null,
+     "oracle_why": "no oracle",
+     "llm": {
+      "g4_answers_need": false,
+      "g5_fresh_enough": true,
+      "reason": "Response returns one completed lung cancer trial (NCT02142738), not at least 3 recruiting type 2 diabetes US trials. Freshness is n/a."
+     },
+     "method": {
+      "g4": "llm",
+      "g5": "llm"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Returns one completed lung cancer trial, not at least 3 recruiting type 2 diabetes trials with US sites. Freshness is n/a."
+    },
+    "settled_seen": true
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/clinical-trials",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "925E2EF8E952517F96703326D529FCC397CAEB1002EA286E1AB225018E46A1E1",
+    "ms": 8000,
+    "body_file": "out/e21-bodies-20261025T0323Z/q20-plumb.txt",
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": null,
+     "oracle_why": "no oracle",
+     "llm": {
+      "g4_answers_need": false,
+      "g5_fresh_enough": true,
+      "reason": "Only 2 studies returned (need at least 3); one is type 1 diabetes, the other is a Seoul site with no stated US location. Fails the check."
+     },
+     "method": {
+      "g4": "llm",
+      "g5": "llm"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Only 2 trials returned (need at least 3); one is type 1 diabetes, the other is a Seoul site likely not US. Fails the requirement."
+    },
+    "settled_seen": true
+   },
+   "fizzl": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "3C3D630A5437398CF108210D9FFCEA8D4DD77BF0D3A4FC1F08C69FC846BA6834",
+    "ms": 19317,
+    "body_file": "out/e21-bodies-20261025T0323Z/q20-fizzl.txt",
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": null,
+     "oracle_why": "no oracle",
+     "llm": {
+      "g4_answers_need": false,
+      "g5_fresh_enough": true,
+      "reason": "Response is real data with NCT IDs and status, but no US site info; several trials are T1D, non-diabetes, or non-US (Seoul, Verona, Nanjing), so the check isn't satisfied."
+     },
+     "method": {
+      "g4": "llm",
+      "g5": "llm"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad",
+    "grade_llm_only": {
+     "g3_well_formed": true,
+     "g4_answers_need": false,
+     "g5_fresh_enough": true,
+     "reason": "Valid real data, but many listed trials are not type 2 diabetes (T1D, obesity, psychosis), and no US site data is shown; only a few T2D trials, none verified as US-sited."
+    },
+    "settled_seen": true
+   }
+  }
+ ],
+ "ledger_correction": {
+  "fizzl_payments_on_ledger": 18,
+  "fizzl_spent_rlusd": "0.36",
+  "why": "fizzl uses static invoiceIds, so the harness's InvoiceID lookup matched an earlier payment for two rows; the ledger count is authoritative"
+ }
+}
