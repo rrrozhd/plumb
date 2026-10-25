@@ -71,6 +71,11 @@ region = "us-west-2"
 seed = 7
 simulated_purchases_per_persona = 120
 
+[eval]
+# Free U7: an XRP challenge within this relative drift of the listed drops counts as the listed price
+# (sellers peg to USD and re-convert live; seen 2,369 vs 2,370 drops).
+xrp_price_drift = "0.02"
+
 [paths]
 db = "out/plumb.db"
 snapshot = "data/bazaar_snapshot.json"

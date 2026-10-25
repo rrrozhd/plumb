@@ -134,6 +134,7 @@ def main(argv: list[str] | None = None) -> None:
     r.add_argument("--as", dest="principal")
     r.add_argument("-k", type=int, default=3)
     sub.add_parser("bench", help="p50/p95 shortlist latency over the known needs")
+    sub.add_parser("eval-free", help="U7 without money: probe Bazaar #1 vs Plumb #1 for each frozen need")
     args = ap.parse_args(argv)
     cfg = config.load()
     if args.cmd in ("recommend", "bench"):
@@ -148,6 +149,11 @@ def main(argv: list[str] | None = None) -> None:
             ms = sorted(rk.shortlist(n)["timing_ms"]["total"] for n in needs)
             print(json.dumps({"n": len(ms), "p50_ms": statistics.median(ms), "p95_ms": ms[int(0.95 * len(ms))],
                               "machine": platform.platform(), "cpu": platform.processor()}))
+        return
+    if args.cmd == "eval-free":
+        from plumb import eval_free
+        rep = eval_free.run(cfg)
+        print(json.dumps({"summary": rep["summary"], "report": rep["path"]}, indent=1))
         return
     if args.cmd == "snapshot":
         snapshot(cfg)
