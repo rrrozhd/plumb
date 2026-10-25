@@ -29,8 +29,10 @@ cluster_window_minutes = 10
 price_dishonest_factor = "0.5"
 # §3.5: weight of the global mean when it becomes a principal's prior.
 principal_strength_kappa = 8
-# settle_ok is false when an endpoint has at least this many unsettled attempts and none settled (until U3 preflight lands).
-unsettled_min_attempts = 3
+# A rail is excluded when its posterior P(settle) falls below this (RECOMMENDER §4).
+settle_min = "0.2"
+# A repeat purchase of the same endpoint by a real payer counts as this much implicit "good" (RECOMMENDER §4).
+implicit_repeat_weight = "0.5"
 
 [rank]
 k_default = 3
