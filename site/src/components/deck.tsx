@@ -27,7 +27,7 @@ export function Kicker({ children }: { children: React.ReactNode }) {
 }
 
 export function Cite({ id }: { id: string }) {
-  return <span className="ml-1.5 rounded border border-border px-1 py-px align-middle font-mono text-[10px] text-muted-foreground">{id}</span>
+  return <span className="ml-1.5 rounded border border-border px-1 py-px align-middle font-mono text-xs text-muted-foreground">{id}</span>
 }
 
 export function Stat({ value, label, cite, tone = "default" }: { value: string; label: string; cite?: string; tone?: "default" | "bad" | "good" }) {
@@ -98,7 +98,7 @@ function Meter({ label, value }: { label: string; value: number }) {
   return (
     <div className="rounded-md bg-muted/60 px-2 py-1.5">
       <div className="font-heading text-lg font-semibold tabular-nums">{pct(value)}</div>
-      <div className="text-[11px] text-muted-foreground">{label}</div>
+      <div className="text-xs text-muted-foreground">{label}</div>
     </div>
   )
 }

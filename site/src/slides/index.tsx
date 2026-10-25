@@ -35,7 +35,7 @@ export function Title() {
       </h1>
       <p className="mt-8 max-w-3xl text-2xl leading-snug text-muted-foreground">
         <b className="text-foreground">Plumb</b> is the trust and routing layer between AI agents and paid APIs on the XRP Ledger:
-        three merchants with evidence, inside the agent's mandate, in under a millisecond.
+        three merchants with evidence, inside the agent's mandate, in milliseconds.
       </p>
       <div className="mt-12 flex flex-wrap gap-2">
         {["XRPL x402 · mainnet", "Mastercard AP4M · testnet", "Quicknode", "AWS Bedrock"].map((t) => (
@@ -90,6 +90,8 @@ export function Problem({ active, auto }: SlideProps) {
 
 export function Router({ active, auto }: SlideProps) {
   const t = useTask(() => api.recommend({ need: DEMO.problemNeed }), active, auto)
+  const bz = useTask(() => api.bazaar(DEMO.problemNeed), active, auto)
+  const left = bz.data?.[0] && t.data && !t.data.results.some((p) => p.url === bz.data![0].url) ? bz.data[0] : undefined
   return (
     <div>
       <Head i={2} />
@@ -98,6 +100,13 @@ export function Router({ active, auto }: SlideProps) {
       {t.data && (
         <>
           <div className="grid grid-cols-3 gap-4">{t.data.results.map((p, i) => <PickCard key={p.url} pick={p} highlight={i === 0} />)}</div>
+          {left && (
+            <div className="mt-5 flex items-center gap-3 rounded-xl border border-bad/40 bg-bad/10 px-5 py-3 text-lg">
+              <span className="font-semibold text-bad">Left out:</span>
+              <span className="font-mono">{short(left.url)}</span>
+              <span className="text-muted-foreground">the Bazaar's #1 · {left.vet402 ? `${left.vet402.settled} of ${left.vet402.attempts} purchases settled` : "never settles"}</span>
+            </div>
+          )}
           <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
             <Badge className="h-7 gap-1 bg-brand px-3 text-sm text-brand-foreground"><Zap className="size-3.5" />{t.data.timing_ms.total.toFixed(2)} ms</Badge>
             <span>relevance: {t.data.relevance} · one merchant per operator</span>
@@ -129,6 +138,13 @@ export function Mandate({ active, auto }: SlideProps) {
     <div>
       <Head i={3} />
       <NeedLine need={DEMO.mandateNeed} />
+      {open.data?.results[0] && tight.data?.results[0] && (
+        <div className="mb-5 text-2xl">
+          Top pick <span className="font-mono text-muted-foreground">{Number(open.data.results[0].price.amount_rlusd).toFixed(4)}</span>
+          {" → "}<span className="font-mono font-semibold text-brand">{Number(tight.data.results[0].price.amount_rlusd).toFixed(4)}</span>
+          <span className="text-muted-foreground"> RLUSD: a different merchant, never one the mandate can't pay</span>
+        </div>
+      )}
       <div className="grid grid-cols-2 gap-8">
         {col("Open mandate", DEMO.openMandate, open)}
         {col("Tight mandate", DEMO.tightMandate, tight, true)}
@@ -330,7 +346,7 @@ export function Close() {
       <div className="mt-10 grid max-w-4xl grid-cols-3 gap-4">
         <Stat value="0 / 88" label="the Bazaar's #1, never chosen by Plumb" cite="E2" tone="bad" />
         <Stat value="19 vs 14" label="good answers over 30 paid needs" cite="E24" tone="good" />
-        <Stat value="0.13 ms" label="worst-5% per shortlist" cite="E25" />
+        <Stat value="0.13 ms" label="worst-5% ranking time, in-process bench" cite="E25" />
       </div>
       <div className="mt-10 text-muted-foreground">Evidence: <Ext href="https://github.com/rrrozhd/plumb/blob/mock-personalized/docs/EVIDENCE.md">docs/EVIDENCE.md</Ext></div>
     </div>
