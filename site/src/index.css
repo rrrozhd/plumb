@@ -138,6 +138,6 @@
     }
   html {
     @apply font-sans;
-    font-size: clamp(14px, 1.04vw, 22px); /* rem scales with the stage: 20px at 1920 wide */
+    font-size: clamp(14px, 1.12vw, 24px); /* rem scales with the stage: about 21.5px at 1920 wide */
     }
 }

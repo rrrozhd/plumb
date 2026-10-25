@@ -28,7 +28,7 @@ const NeedLine = ({ need }: { need: string }) => (
 
 export function Title() {
   return (
-    <div className="flex h-full flex-col justify-center">
+    <div className="flex flex-col justify-center">
       <Kicker>{SLIDES[0].kicker}</Kicker>
       <h1 className="mt-4 font-heading text-8xl font-semibold leading-[0.95] tracking-tight">
         Whom should<br />your agent <span className="text-brand">pay?</span>
@@ -121,7 +121,7 @@ export function Mandate({ active, auto }: SlideProps) {
         <Badge variant="outline" className="font-mono">per purchase ≤ {limit} RLUSD</Badge>
       </div>
       <Busy loading={t.loading} error={t.error} onRetry={t.run} label="Ranking within the mandate…" />
-      {t.data?.results.slice(0, 2).map((p, i) => <PickCard key={p.url} pick={{ ...p, within_mandate: `per-purchase ≤ ${limit}` }} highlight={i === 0 && accent} />)}
+      {t.data?.results.slice(0, 1).map((p) => <PickCard key={p.url} pick={{ ...p, within_mandate: `per-purchase ≤ ${limit}` }} highlight={accent} />)}
       {t.data && <div className="text-sm text-muted-foreground">{t.data.excluded.constraints ?? 0} merchants excluded by the mandate</div>}
     </div>
   )
@@ -143,6 +143,8 @@ export function Ap4m({ active }: SlideProps) {
   const [live, setLive] = useState(false)
   const [error, setError] = useState<string>()
   const source = useRef<EventSource | null>(null)
+  const box = useRef<HTMLDivElement>(null)
+  useEffect(() => { box.current?.scrollTo({ top: box.current.scrollHeight, behavior: "smooth" }) }, [events.length])
   useEffect(() => {
     if (active && !events.length && !live) api.trail("latest").then((t) => { setEvents(t.events); setRun(t.run) }).catch(() => {})
   }, [active, events.length, live])
@@ -172,7 +174,7 @@ export function Ap4m({ active }: SlideProps) {
           {error && <div className="text-sm text-bad">{error}</div>}
           <div className="text-sm text-muted-foreground">{run && <>trail <span className="font-mono">{run}</span> · </>}every row links to its receipt<Cite id={E.e18.id} /></div>
         </div>
-        <div className="max-h-[660px] overflow-y-auto pr-1">
+        <div ref={box} className="max-h-[54vh] overflow-y-auto pr-1">
           <Trail events={events} live={live} />
           {!events.length && !live && <div className="text-muted-foreground">No run yet: press Run.</div>}
         </div>
@@ -198,7 +200,7 @@ function AccountColumn({ address, active, auto }: SlideProps & { address: string
         )}
       </div>
       <Busy loading={list.loading} error={list.error} onRetry={list.run} label="Ranking for this account…" />
-      {list.data?.results.slice(0, 2).map((p, j) => <PickCard key={p.url} pick={p} highlight={j === 0} />)}
+      {list.data?.results.slice(0, 1).map((p) => <PickCard key={p.url} pick={p} highlight />)}
     </div>
   )
 }
@@ -261,7 +263,7 @@ export function Evidence() {
             <ResponsiveContainer>
               <BarChart data={bars} layout="vertical" margin={{ left: 10, right: 50 }}>
                 <XAxis type="number" hide domain={[0, 30]} />
-                <YAxis type="category" dataKey="arm" width={90} tick={{ fill: "var(--muted-foreground)", fontSize: 14 }} axisLine={false} tickLine={false} />
+                <YAxis type="category" dataKey="arm" width={130} tick={{ fill: "var(--muted-foreground)", fontSize: 20 }} axisLine={false} tickLine={false} />
                 <Bar dataKey="good" radius={6} barSize={44}>
                   {bars.map((b) => <Cell key={b.arm} fill={b.arm.startsWith("Plumb") ? "var(--brand)" : "var(--muted-foreground)"} />)}
                   <LabelList dataKey="good" position="right" fill="var(--foreground)" fontSize={26} fontWeight={600} />
@@ -320,7 +322,7 @@ export function Production() {
 
 export function Close() {
   return (
-    <div className="flex h-full flex-col justify-center">
+    <div className="flex flex-col justify-center">
       <Kicker>Plumb</Kicker>
       <h1 className="mt-4 max-w-5xl font-heading text-7xl font-semibold leading-[1.02] tracking-tight">
         AP4M decides <span className="text-muted-foreground">how</span> an agent may pay.<br />Plumb decides <span className="text-brand">whom</span>.

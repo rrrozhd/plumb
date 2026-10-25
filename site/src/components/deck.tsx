@@ -109,7 +109,7 @@ const EVM = "https://explorer.testnet.xrplevm.org/tx/"
 export function Trail({ events, live }: { events: TrailEvent[]; live?: boolean }) {
   const rows = events.filter((e) => ["signed_in", "channel_open", "paid", "shortlist", "refused_over_cap", "refused", "settled", "error"].includes(e.event))
   return (
-    <ol className="space-y-2">
+    <ol className="space-y-1.5">
       {rows.map((e, i) => <TrailRow key={`${e.at}-${i}`} e={e} />)}
       {live && <li className="flex items-center gap-2 pl-1 text-sm text-muted-foreground"><Loader2 className="size-4 animate-spin" />waiting for the next step…</li>}
     </ol>
@@ -141,7 +141,7 @@ function TrailRow({ e }: { e: TrailEvent }) {
   }
   if (e.event === "error") { title = "Run failed"; body = s("reason") }
   return (
-    <li className="flex gap-3 rounded-lg border bg-card/60 px-3 py-2.5">
+    <li className="flex gap-3 rounded-lg border bg-card/60 px-3 py-1.5">
       <div className="pt-0.5">{icon}</div>
       <div className="min-w-0 flex-1">
         <div className="flex items-baseline justify-between gap-3"><span className="font-medium">{title}</span><span className="font-mono text-xs text-muted-foreground">{time}</span></div>

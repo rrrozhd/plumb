@@ -64,7 +64,7 @@ export default function App() {
               <section key={SLIDES[n].id} aria-hidden={n !== i}
                 className={cn("absolute inset-0 overflow-y-auto px-16 py-12 transition-opacity duration-300",
                   n === i ? "opacity-100" : "pointer-events-none opacity-0")}>
-                <div className="mx-auto h-full max-w-[1400px]"><Slide active={n === i} auto={auto && SLIDES[n].auto} /></div>
+                <div className="mx-auto flex min-h-full max-w-[1480px] flex-col justify-center"><Slide active={n === i} auto={auto && SLIDES[n].auto} /></div>
               </section>
             ))}
           </main>
