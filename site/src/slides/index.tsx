@@ -328,10 +328,10 @@ export function Gaps() {
 export function Transfer() {
   const rows: [string, string, string, string, string, string][] = [
     ["XRPL x402", "payTo account", "validated payment + InvoiceID", "code-checked purchases", "built", "good"],
-    ["Mastercard AP4M", "attested merchant registry", "voucher and settlement events", "reviews bound to receipts", "high · no directory or ranking yet", "good"],
-    ["x402 on Base", "payTo address", "token transfer events", "same purchases", "high · 39k of 42k listings", "good"],
+    ["Mastercard AP4M", "attested merchant registry", "voucher and settlement events", "reviews bound to receipts", "high · no ranking yet", "good"],
+    ["x402 on other chains (Base first)", "payTo address", "token transfer events", "same purchases", "high · 39k listings", "good"],
     ["MCP tool registries", "publisher", "none: tools are mostly free", "needs signed agent identity", "medium", "mid"],
-    ["Card checkout (AP2, ACP)", "card merchant", "card network", "delivery and returns", "low · no quality data for goods", "bad"],
+    ["Card checkout", "card merchant", "card network", "delivery and returns", "low · no goods data", "bad"],
   ]
   return (
     <div>
