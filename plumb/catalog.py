@@ -54,6 +54,14 @@ def parse_listing(res: dict, cfg: dict) -> Endpoint | None:
     )
 
 
+def load_endpoints(cfg: dict, root) -> dict[str, Endpoint]:
+    """Endpoints from the committed snapshot (data/catalog.json.gz), keyed by id."""
+    import gzip
+    with gzip.open(root / "catalog.json.gz", "rt") as fh:
+        eps = (parse_listing(r, cfg) for r in json.load(fh))
+    return {e.id: e for e in eps if e}
+
+
 class Bazaar:
     def __init__(self, cfg: dict, client: httpx.Client | None = None):
         self.base = cfg["bazaar"]["base"]

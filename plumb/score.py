@@ -4,6 +4,7 @@ Probabilities are floats; money never passes through here.
 """
 from collections import defaultdict
 from dataclasses import dataclass
+from functools import lru_cache
 
 import mpmath
 
@@ -40,7 +41,12 @@ def classify_vet402(row: dict) -> str:
 
 
 def beta_quantile(a: float, b: float, p: float = 0.2) -> float:
-    """Exact Beta quantile by bisection on the regularised incomplete beta (offline only)."""
+    """Exact Beta quantile by bisection on the regularised incomplete beta; cached, since endpoints share priors."""
+    return _bq(round(a, 6), round(b, 6), p)
+
+
+@lru_cache(maxsize=65536)
+def _bq(a: float, b: float, p: float) -> float:
     lo, hi = 0.0, 1.0
     for _ in range(50):
         mid = (lo + hi) / 2

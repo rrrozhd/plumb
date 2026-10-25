@@ -33,21 +33,39 @@ principal_strength_kappa = 8
 settle_min = "0.2"
 # A repeat purchase of the same endpoint by a real payer counts as this much implicit "good" (RECOMMENDER §4).
 implicit_repeat_weight = "0.5"
+# Collaborative nudge: at most this many pseudo "good" observations from similar agents (RECOMMENDER §4b).
+cf_max_shift = "1.0"
 
 [rank]
 k_default = 3
 k_max = 5
 candidates_max = 40
-# A request reuses a known need's offline fit when their lexical similarity reaches this.
-need_match_threshold = "0.35"
+# Candidates under this relevance are never shown (an off-catalogue need returns []).
+fit_min = "0.3"
+# Embedding candidates kept before the BM25 rerank.
+embed_top = 40
+# Agent time value used when the principal declares none (RLUSD per second waited). An assumption, not evidence.
+default_time_value_rlusd_per_s = "0.0001"
 
 [judge]
-provider = "bedrock"          # bedrock | anthropic | lexical
-bedrock_model = "us.anthropic.claude-opus-5-5"
-anthropic_model = "claude-opus-5-5"
+provider = "bedrock"          # bedrock | lexical. Jev (TypeSafe) is a candidate fast provider if it reaches Bedrock.
+# Haiku 5.5 is denied on the workshop role and Haiku 4.5 rejects structured output there (LIMITS L24).
+bedrock_model = "us.anthropic.claude-sonnet-5-5"
+region = "us-west-2"
 effort = "low"
 max_listing_chars = 1200
-max_tokens = 16000
+max_tokens = 8000
+candidates_per_need = 40
+
+[judge.p_fit]
+exact = "0.9"
+partial = "0.5"
+wrong = "0.05"
+
+[embed]
+model = "amazon.titan-embed-text-v2:0"
+dims = 256
+region = "us-west-2"
 
 [demo]
 seed = 7

@@ -58,14 +58,83 @@ def snapshot(cfg: dict) -> None:
     _log(f"snapshot written: {meta}")
 
 
+def _load_env(name: str) -> None:
+    """Load one process's secrets file into the environment (AGENTS.md rule 5). Values are never printed."""
+    import os
+    for line in (config.ROOT / "env" / name).read_text().splitlines():
+        if "=" in line and not line.lstrip().startswith("#"):
+            k, v = line.split("=", 1)
+            os.environ.setdefault(k.strip(), v.strip().strip('"'))
+
+
+def build(cfg: dict, judge_needs: bool) -> None:
+    """Offline: embed every listing and need template (Titan), then judge known needs (Bedrock). Writes data/."""
+    import numpy as np
+    from anthropic.lib.bedrock import AnthropicBedrock
+    from plumb import judge, relevance
+
+    _load_env("judge.env")
+    root = config.ROOT / "data"
+    eps = catalog.load_endpoints(cfg, root)
+    ids = sorted(eps)
+    titan = relevance.Titan(cfg)
+    cap = cfg["judge"]["max_listing_chars"]
+
+    vec_path = root / "listing_vectors.npy"
+    if not vec_path.exists() or json.loads((root / "listing_ids.json").read_text()) != ids:
+        vecs = titan.embed_many([relevance.doc_text(eps[i], cap) for i in ids])
+        np.save(vec_path, np.array(vecs, dtype=np.float32))
+        (root / "listing_ids.json").write_text(json.dumps(ids))
+        _log(f"embedded {len(ids)} listings")
+
+    needs = yaml.safe_load(config.path(cfg, "queries").read_text())["queries"]
+    need_vecs_path = root / "need_vectors.json"
+    need_vecs = json.loads(need_vecs_path.read_text()) if need_vecs_path.exists() else {}
+    for q in needs:
+        t = relevance.template(q["need"])
+        if t not in need_vecs:
+            need_vecs[t] = titan.embed(t)
+    need_vecs_path.write_text(json.dumps(need_vecs))
+    if not judge_needs:
+        return
+
+    vectors = relevance.Vectors.load(root)
+    search = json.loads((root / "bazaar_search.json").read_text())
+    client = AnthropicBedrock(aws_region=cfg["judge"]["region"])
+    fit_path = root / "fit.json"
+    fit = json.loads(fit_path.read_text()) if fit_path.exists() else {}
+    for q in needs:
+        t = relevance.template(q["need"])
+        if t in fit:
+            continue
+        bazaar = [e.id for e in (catalog.parse_listing(r, cfg) for r in search[q["id"]]) if e and e.id in eps]
+        emb = [i for i, _ in vectors.top(np.array(need_vecs[t]), cfg["rank"]["embed_top"])]
+        cands = list(dict.fromkeys(bazaar + emb))[: cfg["judge"]["candidates_per_need"]]
+        groups: dict[str, list[dict]] = {}
+        for i in cands:
+            e = eps[i]
+            groups.setdefault(e.payto, []).append({"id": i, "service": e.service_name, "url": e.url, "tags": ", ".join(e.tags),
+                                                   "description": e.description})
+        labels = {}
+        for listings in groups.values():
+            labels.update(judge.judge(client, cfg, q["need"], listings))
+        fit[t] = {"need_id": q["id"], "need": q["need"], "labels": labels}
+        fit_path.write_text(json.dumps(fit, indent=1))
+        _log(f"judged {q['id']}: {len(labels)} of {len(cands)} candidates over {len(groups)} operators")
+
+
 def main(argv: list[str] | None = None) -> None:
     ap = argparse.ArgumentParser(prog="plumb")
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("snapshot", help="freeze Bazaar, vet402 and ledger data into data/ (read-only, network)")
+    b = sub.add_parser("build", help="offline: Titan embeddings and the Bedrock judge over known needs (writes data/)")
+    b.add_argument("--no-judge", action="store_true")
     args = ap.parse_args(argv)
     cfg = config.load()
     if args.cmd == "snapshot":
         snapshot(cfg)
+    elif args.cmd == "build":
+        build(cfg, judge_needs=not args.no_judge)
 
 
 if __name__ == "__main__":
