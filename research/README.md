@@ -4,6 +4,7 @@ These are one-off scripts, read-only against XRPL mainnet and public APIs. **The
 
 | Script | What it measures | Run |
 |---|---|---|
+| `vet402/all_outcomes.py` | E3: purchase outcomes across all chains, from vet402's public export | `uv run --no-project python -I research/vet402/all_outcomes.py` |
 | `vet402/xrpl_outcomes.py` | E2: XRPL purchase outcomes, prices and waste, from vet402's public export | `uv run --no-project --with xrpl-py python research/vet402/xrpl_outcomes.py` |
 | `s1/p1_identify.py` | x402 markers on XRPL (SourceTag, InvoiceID) from vet402's settled tx hashes | `... python research/s1/p1_identify.py <vet402.csv> out/p1.json` |
 | `s1/p2_collect.py` | 30-day x402 payments to known merchants, plus funding parents | `... python research/s1/p2_collect.py out/p1.json out/p2.json` |

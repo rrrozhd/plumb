@@ -51,12 +51,12 @@ export function Why() {
       <Head i={1} />
       <div className="grid grid-cols-3 gap-5">
         <Stat value="42,241" label={E.e29.text} cite={E.e29.id} />
-        <Stat value="45%" label={E.e3.text} cite={E.e3.id} tone="bad" />
-        <Stat value="2 in 3" label="real XRPL x402 purchases returned nothing usable" cite={E.e2.id} tone="bad" />
+        <Stat value="44%" label={E.e3.text} cite={E.e3.id} tone="bad" />
+        <Stat value="2 in 3" label="real XRPL x402 purchase attempts got no usable answer" cite={E.e2.id} tone="bad" />
       </div>
       <div className="mt-10 grid grid-cols-2 gap-6 text-2xl leading-snug">
         <div className="rounded-xl border bg-card/60 p-6"><div className="text-sm uppercase tracking-[0.18em] text-muted-foreground">solved</div>Payment rails decide <b>how</b> an agent may pay: limits, vouchers, receipts.</div>
-        <div className="rounded-xl border border-brand/50 bg-card/60 p-6"><div className="text-sm uppercase tracking-[0.18em] text-brand">missing</div>Nothing decides <b>whom</b> it should pay. The agent pays first and learns later, at machine speed.</div>
+        <div className="rounded-xl border border-brand/50 bg-card/60 p-6"><div className="text-sm uppercase tracking-[0.18em] text-brand">missing</div>Nothing decides <b>whom</b> it should pay. The agent finds out after trying, at machine speed.</div>
       </div>
     </div>
   )
