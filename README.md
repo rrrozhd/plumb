@@ -2,9 +2,9 @@
 
 **The router that tells AI agents which XRPL merchant to pay, for them.**
 
-An agent asks for what it needs. Plumb returns, in under a millisecond, the three XRPL x402 merchants most likely to deliver *for that agent*, ranked by what actually happened on the ledger, not by call counts. The agent pays Plumb per shortlist through **Mastercard AP4M**.
+An agent asks for what it needs. Plumb returns three XRPL x402 merchants ranked by expected cost per usable answer, using saved purchase and ledger evidence, and only merchants the agent's AP4M mandate can pay. Live deck: `site/` ([docs/DECK.md](docs/DECK.md)). Customer feedback persists across restarts and changes that customer's recommendations. The agent pays Plumb per shortlist through **Mastercard AP4M**.
 
-Built at the XRPL NYC AI & Fintech Hackathon (Agentic Finance track) on **XRPL**, **Quicknode**, **AWS Bedrock** and **Mastercard AP4M**.
+Built at the XRPL NYC AI & Fintech Hackathon (Agentic Finance track) on **XRPL**, **Quicknode**, **AWS Bedrock**, **AgentCore Memory** and **Mastercard AP4M**.
 
 ## Results (real money, mainnet, pre-registered)
 | 20 frozen needs, every answer bought and graded | Good answers | Cost per good answer (RLUSD) |
@@ -13,7 +13,7 @@ Built at the XRPL NYC AI & Fintech Hackathon (Agentic Finance track) on **XRPL**
 | **Plumb's #1** (fee included) | **11 / 20** | **0.0068** |
 | fizzl (buys on any chain) | 13 / 20 | 0.0277 |
 
-- **Speed:** a shortlist takes 0.13 ms at worst-5% (E25), with no LLM on the request path.
+- **Speed:** the earlier cached-shortlist benchmark reached 0.13 ms at worst-5% (E25). A new need is judged once; cached needs use lookup and arithmetic.
 - **AP4M:** live on testnet, with a capped channel, paid shortlists, an over-cap refusal and a settled receipt.
 
 Sources and caveats: [`docs/EVIDENCE.md`](docs/EVIDENCE.md) (E18–E23) and [`docs/LIMITS.md`](docs/LIMITS.md).
@@ -21,22 +21,47 @@ Sources and caveats: [`docs/EVIDENCE.md`](docs/EVIDENCE.md) (E18–E23) and [`do
 ## How it works
 1. **Catalogue:** Bazaar XRPL listings; a liveness check excludes dead endpoints.
 2. **Relevance:** Titan embeddings, then BM25, then an offline Claude judge (exact / partial / wrong). Exact matches always rank first. A never-seen need is judged once (~20 s), then cached.
-3. **Trust:** P(the payment settles) per merchant account and rail × P(the answer is good, given it settled) per endpoint. Built from real purchases (vet402, our audits) and ledger payments read through Quicknode.
+3. **Trust:** P(the payment settles) per merchant account and rail × P(the answer is good, given it settled) per endpoint. The current fitter uses saved vet402 purchase observations and ledger payments read through Quicknode.
 4. **Ranking:** expected cost per good answer, with one result per operator.
-5. **Personalisation:** hard limits from the account's ledger state, then a per-customer posterior over its own outcomes, then an "agents who paid A also paid B" nudge.
-6. **Feedback:** reports personalise; only reports proven on the ledger change global trust.
+5. **Personalisation:** account constraints and a per-customer posterior over its own outcomes, with a co-purchase signal from the snapshot. Saved customer feedback does not train other customers.
+6. **Feedback:** `good`/`bad` reports persist in SQLite and reload in CLI, MCP and HTTP recommendations. Identical retries count once; conflicting feedback for the same customer, shortlist and endpoint is rejected. Payment-proven reports are stored separately; the global trust fitter does not yet consume them.
 
 Full spec: [`docs/RECOMMENDER.md`](docs/RECOMMENDER.md) and [`SPEC.md`](SPEC.md).
 
 ## Run it
 ```bash
 uv sync
-uv run pytest -m p0                                  # offline gate (78 tests)
+uv run pytest -m p0                                  # offline gate; zero selected tests is a failure
 uv run plumb recommend "Current XRP price in USD"    # a shortlist from the committed snapshot
 uv run plumb recommend "<need>" --as <r-address>     # personalised
 uv run plumb bench                                   # p50 / p95 latency
 uv run python -m plumb.mcp_server                    # MCP tools: recommend, report_outcome
 ```
+
+**Customer-memory browser demo:**
+
+```bash
+uv run python -m plumb.memory_demo
+```
+
+Open [localhost:8405](http://127.0.0.1:8405). Teach the fast shopper, then reload
+the worker: a new process restores its ranking from `out/memory-demo.sqlite`,
+while the control shopper and global trust stay unchanged. Both generated
+personas start with identical payment profiles and empty personal histories.
+The response and purchase record are historical; latency dissatisfaction is
+explicitly simulated. Quicknode's optional verification button reads that
+existing payment and makes no new purchase. This demonstrates memory and
+isolation, not proven customer benefit or a network effect.
+
+The ordinary services use `[paths].db` in `config/plumb.toml`; CLI
+`recommend --db <path>` can inspect another customer store. MCP's
+`report_outcome` records feedback for a saved shortlist; HTTP remains a
+shortlist endpoint. Stage script and troubleshooting: [docs/DEMO.md](docs/DEMO.md).
+Optional cloud backup and restore: [docs/AWS_MEMORY.md](docs/AWS_MEMORY.md).
+The managed AWS rehearsal restored exact simulated feedback into a fresh
+database and reproduced that customer's learned ranking (EVIDENCE MEM2).
+Backup is an explicit operator action; ordinary ranking uses local SQLite.
+
 **Mastercard AP4M (XRPL EVM testnet).** It needs `env/ap4m.env` and an onboarded team:
 ```bash
 uv run python -m plumb.api &
@@ -48,7 +73,7 @@ PLUMB_NEW_CHANNEL=1 node agent.mjs
 **Evals** (dry-run by default; `--live` spends mainnet RLUSD within the caps in `config/plumb.toml`): `uv run plumb eval-free`, `uv run plumb e21`.
 
 ## Layout
-- `plumb/`: catalogue, ledger, scorer, relevance, judge, recommender, ranker, principals, outcomes, grader, evals, MCP server, API.
+- `plumb/`: catalogue, ledger, scorer, relevance, judge, recommender, ranker, customer memory, outcomes, browser demo, grader, evals, MCP server, API.
 - `ap4m/`: Mastercard AP4M merchant shim and buyer agent (Node).
 - `data/`: the committed market snapshot, judge labels and eval results.
 - `eval/`: the frozen needs, the rubric and the E21 pre-registration.
