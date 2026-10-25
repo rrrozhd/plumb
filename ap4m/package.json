@@ -1,0 +1,10 @@
+{
+  "name": "plumb-ap4m",
+  "private": true,
+  "type": "module",
+  "description": "Plumb on Mastercard AP4M (XRPL EVM testnet): merchant shim and buyer agent (SPEC §5b, U6b)",
+  "dependencies": {
+    "@ap4m/sdk": "https://hackathon.ap4m.build/sdk/ap4m-sdk.tgz",
+    "ethers": "^6.17.0"
+  }
+}
