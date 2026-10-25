@@ -5,7 +5,7 @@
 // POST /api/bazaar            {need}: the Coinbase Bazaar's live XRPL ranking, with vet402's purchase record per host
 // POST /api/recommend         {need, max_price?, assets?, principal?, k?}: Plumb's router directly (no payment)
 // POST /api/ledger/account    {address}: live XRPL state through Quicknode -> the assets the account can pay with
-// POST /api/agent/run         {per_purchase, cap, needs[]}: the AP4M buyer agent on testnet (one run at a time)
+// POST /api/agent/run         {per_purchase, cap, needs[], fresh?}: the AP4M buyer agent on testnet (one run at a time)
 // GET  /api/agent/stream      ?run=: the run's control trail as server-sent events
 // GET  /api/trail             ?run=|latest: a finished trail (the fallback replay)
 //
@@ -164,7 +164,9 @@ function agentRun(body) {
   const id = `run-${Date.now().toString(36)}`;
   const child = spawn('node', ['agent.mjs', ...needs], {
     cwd: `${ROOT}ap4m`, stdio: ['ignore', 'ignore', 'pipe'],
-    env: { ...process.env, PLUMB_NEW_CHANNEL: '1', PLUMB_CHANNEL_CAP: cap, PLUMB_MAX_PER_PURCHASE: perPurchase, PLUMB_RUN_ID: id },
+    // Reuse the open channel unless asked for a fresh one: AP4M limits how many channels a payout can bind.
+    env: { ...process.env, ...(body.fresh === true ? { PLUMB_NEW_CHANNEL: '1' } : {}), PLUMB_CHANNEL_CAP: cap,
+           PLUMB_MAX_PER_PURCHASE: perPurchase, PLUMB_RUN_ID: id },
   });
   let err = '';
   child.stderr.on('data', (d) => { err = (err + d).slice(-2000); });
@@ -186,7 +188,9 @@ function appendTrail(id, ev) {
 function trailPath(id) {
   if (id === 'latest') {
     const files = existsSync(TRAILS) ? readdirSync(TRAILS).filter((f) => f.startsWith('trail-')) : [];
-    const f = files.sort((a, b) => statSync(TRAILS + b).mtimeMs - statSync(TRAILS + a).mtimeMs)[0];
+    // the newest run that completed (settled), so a failed attempt never replaces the replay
+    const f = files.sort((a, b) => statSync(TRAILS + b).mtimeMs - statSync(TRAILS + a).mtimeMs)
+      .find((x) => readFileSync(TRAILS + x, 'utf8').includes('"event":"settled"'));
     return f ? TRAILS + f : null;
   }
   if (!RUN_ID.test(id)) throw new BadRequest('bad run id');

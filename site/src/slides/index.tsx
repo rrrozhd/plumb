@@ -172,7 +172,7 @@ export function Ap4m({ active }: SlideProps) {
             <Button size="lg" onClick={start} disabled={live}><Play />{live ? "running on testnet…" : "Run live on AP4M testnet"}</Button>
           </div>
           {error && <div className="text-sm text-bad">{error}</div>}
-          <div className="text-sm text-muted-foreground">{run && <>trail <span className="font-mono">{run}</span> · </>}every row links to its receipt<Cite id={E.e18.id} /></div>
+          <div className="text-sm text-muted-foreground">{run && <>{live ? "live run" : "last completed run"} <span className="font-mono">{run}</span> · </>}every row links to its receipt<Cite id={E.e18.id} /></div>
         </div>
         <div ref={box} className="max-h-[54vh] overflow-y-auto pr-1">
           <Trail events={events} live={live} />
