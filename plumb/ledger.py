@@ -107,6 +107,16 @@ class Ledger:
         b = Decimal(asks[0]["TakerGets"]["value"]) / (Decimal(asks[0]["TakerPays"]) / money.DROPS_PER_XRP)
         return (a + b) / 2
 
+    def tx(self, tx_hash: str) -> dict:
+        """One transaction in account_tx entry shape ({tx, meta, validated}) so parse_payment applies."""
+        r = self.rpc("tx", transaction=tx_hash, binary=False)
+        tx = r.get("tx_json") or {k: v for k, v in r.items() if k not in ("meta", "validated")}
+        tx.setdefault("hash", r.get("hash", tx_hash))
+        tx.setdefault("ledger_index", r.get("ledger_index"))
+        if "date" not in tx and "close_time_iso" in r:
+            tx["date"] = int(datetime.fromisoformat(r["close_time_iso"].replace("Z", "+00:00")).timestamp()) - RIPPLE_EPOCH
+        return {"tx": tx, "meta": r.get("meta", {}), "validated": r.get("validated", False)}
+
     def account_lines(self, addr: str) -> list[dict]:
         return self.rpc("account_lines", account=addr, ledger_index="validated").get("lines", [])
 

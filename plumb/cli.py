@@ -129,8 +129,26 @@ def main(argv: list[str] | None = None) -> None:
     sub.add_parser("snapshot", help="freeze Bazaar, vet402 and ledger data into data/ (read-only, network)")
     b = sub.add_parser("build", help="offline: Titan embeddings and the Bedrock judge over known needs (writes data/)")
     b.add_argument("--no-judge", action="store_true")
+    r = sub.add_parser("recommend", help="one shortlist, printed as JSON")
+    r.add_argument("need")
+    r.add_argument("--as", dest="principal")
+    r.add_argument("-k", type=int, default=3)
+    sub.add_parser("bench", help="p50/p95 shortlist latency over the known needs")
     args = ap.parse_args(argv)
     cfg = config.load()
+    if args.cmd in ("recommend", "bench"):
+        from plumb import rank
+        rk = rank.load(cfg, config.ROOT / "data")
+        if args.cmd == "recommend":
+            print(json.dumps(rk.shortlist(args.need, k=args.k, principal=args.principal), indent=1))
+        else:
+            import platform
+            import statistics
+            needs = [v["need"] for v in rk.fit.values()] * 50
+            ms = sorted(rk.shortlist(n)["timing_ms"]["total"] for n in needs)
+            print(json.dumps({"n": len(ms), "p50_ms": statistics.median(ms), "p95_ms": ms[int(0.95 * len(ms))],
+                              "machine": platform.platform(), "cpu": platform.processor()}))
+        return
     if args.cmd == "snapshot":
         snapshot(cfg)
     elif args.cmd == "build":
