@@ -1,0 +1,91 @@
+[
+ {
+  "addr": "r4Nh7yRHfcNFNMt8GFe7yrP1qq8cLGjkFR",
+  "assets": [
+   "RLUSD",
+   "XRP"
+  ],
+  "rlusd_balance": "1.014664600999999",
+  "xrp_drops": "1594799"
+ },
+ {
+  "addr": "r4w68TArDZjivtcFMNL7PvKf7uPg14Vev8",
+  "assets": [
+   "RLUSD",
+   "XRP"
+  ],
+  "rlusd_balance": "6.446167",
+  "xrp_drops": "22750705"
+ },
+ {
+  "addr": "rBZpuNToTKzUF2fkxWcWw5WLoP41eQQXLm",
+  "assets": [
+   "RLUSD",
+   "XRP"
+  ],
+  "rlusd_balance": "0.1050000000515092",
+  "xrp_drops": "3729302"
+ },
+ {
+  "addr": "rEgYWzNvhsz44YLoVLdoK82F3ZQFnDmtxF",
+  "assets": [
+   "RLUSD",
+   "XRP"
+  ],
+  "rlusd_balance": "1.98",
+  "xrp_drops": "1499974"
+ },
+ {
+  "addr": "rJz8r3Yv6BjJTyGhxVMnWJwG1KxkbdvRJE",
+  "assets": [
+   "RLUSD",
+   "XRP"
+  ],
+  "rlusd_balance": "0.003",
+  "xrp_drops": "1966566"
+ },
+ {
+  "addr": "rNp33A4gY4MK3kPDQhe3GY79ysUhfZoang",
+  "assets": [
+   "RLUSD",
+   "XRP"
+  ],
+  "rlusd_balance": "0.998",
+  "xrp_drops": "1964856"
+ },
+ {
+  "addr": "rNperfygoY9USDAfYeXh9itC2TnydbycMY",
+  "assets": [
+   "XRP"
+  ],
+  "rlusd_balance": "0",
+  "xrp_drops": "2999200"
+ },
+ {
+  "addr": "rn1E1zyZY5LuZfzds7DfJVL3ZVcNq1XrKt",
+  "assets": [
+   "RLUSD",
+   "XRP"
+  ],
+  "rlusd_balance": "1.4",
+  "xrp_drops": "3126276"
+ },
+ {
+  "addr": "rpvsTYDZmX1j1ndmEFG6YjjZZwp6VRtQRz",
+  "assets": [
+   "RLUSD",
+   "XRP"
+  ],
+  "rlusd_balance": "0.221",
+  "xrp_drops": "1933972"
+ },
+ {
+  "addr": "rwkuVKAZQyn9maVWYDT4iHFPNmX7Nb1BT",
+  "assets": [
+   "RLUSD",
+   "XRP"
+  ],
+  "rlusd_balance": "0.07",
+  "xrp_drops": "1982215"
+ }
+]

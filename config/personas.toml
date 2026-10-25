@@ -1,0 +1,16 @@
+# Simulated customer agents (SPEC §10b). Their outcomes are SIMULATED from real endpoint evidence plus these prefs,
+# and are labelled as such everywhere they appear. `prefs` drive only the simulator, never the ranker.
+
+[[persona]]
+principal = "sim:trading-bot"
+label = "Trading bot (simulated): RLUSD only, needs fast answers"
+assets = ["RLUSD"]
+max_price = "0.02"
+prefs = { max_latency_ms = 3000, slow_penalty = 0.2 }
+
+[[persona]]
+principal = "sim:research-agent"
+label = "Research agent (simulated): pays in XRP or RLUSD, wants rich, structured answers"
+assets = ["RLUSD", "XRP"]
+require_output_schema = true
+prefs = { min_output_fields = 4, thin_penalty = 0.3 }

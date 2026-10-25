@@ -128,10 +128,16 @@ def _merge(prof: Profile, c: dict) -> Profile:
     return replace(prof, **upd)
 
 
-def load(cfg: dict, root, principals=None, embed=None) -> Ranker:
-    from plumb import recommender
-    rec = recommender.fit(cfg, root, principals)
+def load(cfg: dict, root, embed=None, with_principals: bool = True) -> Ranker:
+    """Fit the recommender from data/: real ledger principals and simulated personas (outcomes labelled simulated)."""
+    from plumb import config, principals as P, recommender
     fit_path = root / "fit.json"
     fit = json.loads(fit_path.read_text()) if fit_path.exists() else {}
+    ps = {}
+    if with_principals:
+        personas = P.load_personas(config.path(cfg, "personas"))
+        ps = {**P.load_ledger_principals(root / "principals.json"), **personas}
+        P.simulate(recommender.fit(cfg, root, ps), fit, personas, cfg["demo"]["simulated_purchases_per_persona"], cfg["demo"]["seed"])
+    rec = recommender.fit(cfg, root, ps)  # second fit folds simulated outcomes into the co-occurrence signal
     docs = {i: relevance.doc_text(e, cfg["judge"]["max_listing_chars"]) for i, e in rec.endpoints.items()}
     return Ranker(rec, fit, relevance.Vectors.load(root), relevance.Lexical(docs), embed)
