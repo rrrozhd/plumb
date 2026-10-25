@@ -84,3 +84,10 @@ def test_anonymous_and_new_principal_rank_identically(ranker):
     a = [x["endpoint_id"] for x in ranker.shortlist(need)["results"]]
     b = [x["endpoint_id"] for x in ranker.shortlist(need, principal="sim:new")["results"]]
     assert a == b
+
+
+def test_exact_match_beats_a_cheaper_partial(ranker):
+    for v in ranker.fit.values():
+        out = ranker.shortlist(v["need"], k=3)
+        tiers = [0 if x["match"] == "exact" else 1 for x in out["results"]]
+        assert tiers == sorted(tiers), f"partial ranked above exact for {v['need']}"

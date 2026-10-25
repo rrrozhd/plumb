@@ -69,13 +69,16 @@ class Ranker:
 
         p_good = self.rec.score(p, keep)
         tv = Decimal(str((constraints or {}).get("time_value_rlusd_per_s", cfg["default_time_value_rlusd_per_s"])))
+        labels = (self.fit.get(t) or {}).get("labels", {})
+        tier = {"exact": 0, "partial": 1}  # exact first: a near-miss is never ranked above a real match
         rows = []
         for e, pg in p_good.items():
             tr, ep = self.rec.trust[e], self.rec.endpoints[e]
             secs = Decimal((tr.latency_ms or 5000) / 1000)  # shortcut: 5 s when no good-attempt latency is known
             cost = (Decimal(str(tr.p_settle)) * prices[e][0] + tv * secs) / Decimal(str(max(pg, 1e-9)))
-            rows.append((cost, e))
+            rows.append((tier.get((labels.get(e) or {}).get("label"), 0), cost, e))
         rows.sort()
+        rows = [(cost, e) for _, cost, e in rows]
 
         picked, ops = [], set()
         for cost, e in rows:  # one result per operator first, then fill if fewer operators qualify
@@ -90,7 +93,6 @@ class Ranker:
             if (cost, e) not in picked:
                 picked.append((cost, e))
 
-        labels = (self.fit.get(t) or {}).get("labels", {})
         results = [self._result(i + 1, e, cost, cands[e], how, p, prices[e], labels.get(e)) for i, (cost, e) in enumerate(picked)]
         done = time.perf_counter()
         out = {"shortlist_id": str(uuid.uuid4()), "need_template": t, "relevance": how, "principal": principal,
@@ -105,7 +107,7 @@ class Ranker:
         return {
             "rank": rank, "endpoint_id": e, "url": ep.url, "method": ep.method, "operator": ep.payto,
             "price": {"asset": price[1], "amount_rlusd": str(price[0].quantize(Decimal("0.000001")))},
-            "p_fit": round(p_fit, 3), "relevance": how,
+            "p_fit": round(p_fit, 3), "relevance": how, "match": (judged or {}).get("label", "lexical"),
             "trust": {"scope": "principal" if n_personal else "global", "p_settle": round(tr.p_settle, 3),
                       "q_mean": round(q_mean, 3), "q_lo": round(q_lo, 3), "n_obs": tr.n_obs, "n_personal": n_personal},
             "cost_per_good_rlusd": str(cost.quantize(Decimal("0.000001"))),
