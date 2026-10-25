@@ -25,13 +25,15 @@ class Ranker:
     embed: Callable[[str], list[float]] | None = None  # used only on a template cache miss
     dead: set = field(default_factory=set)   # endpoints that failed the offline liveness preflight
     calibration: relevance.Calibration | None = None  # new-need p_fit, learned from the judge's labels
+    judge: Callable[[str, list[dict]], dict] | None = None  # cold path: judge a never-seen need once, then cache it
+    cold_cache: object = None  # Path where cold-path labels persist (data/fit.json stays frozen)
     log: list = field(default_factory=list)
 
-    def candidates(self, t: str) -> tuple[dict[str, float], str]:
+    def candidates(self, t: str, need_text: str = "") -> tuple[dict[str, float], str]:
         cfg = self.rec.cfg["rank"]
         judged = self.fit.get(t)
         if judged:
-            return {e: x["p_fit"] for e, x in judged["labels"].items()}, "judge"
+            return {e: x["p_fit"] for e, x in judged["labels"].items()}, ("judge_cached" if judged.get("cold") else "judge")
         vec = self.vectors.needs.get(t)
         if vec is None:
             if self.embed is None:
@@ -40,9 +42,30 @@ class Ranker:
         q = relevance.tokens(t)
         top = self.vectors.top(np.array(vec), cfg["embed_top"])
         top.sort(key=lambda es: -self.lexical.bm25(q, es[0]))
+        if self.judge is not None:
+            return self._cold(t, need_text, [e for e, _ in top])
         if self.calibration is None:
             return {e: self.lexical.coverage(q, e) for e, _ in top}, "lexical"
         return {e: self.calibration.p(sim, self.lexical.coverage(q, e)) for e, sim in top}, "lexical"
+
+    def _cold(self, t: str, need: str, cands: list[str]) -> tuple[dict[str, float], str]:
+        """Judge a never-seen need once (one call per operator, in parallel), cache it; repeats take the judged path."""
+        from concurrent.futures import ThreadPoolExecutor
+        groups: dict[str, list[dict]] = {}
+        for e in cands:
+            ep = self.rec.endpoints[e]
+            groups.setdefault(ep.payto, []).append({"id": e, "service": ep.service_name, "url": ep.url,
+                                                    "tags": ", ".join(ep.tags), "description": ep.description})
+        labels: dict = {}
+        assert self.judge is not None
+        with ThreadPoolExecutor(8) as pool:
+            for part in pool.map(lambda g: self.judge(need, g), groups.values()):  # type: ignore[misc]
+                labels.update(part)
+        self.fit[t] = {"need_id": None, "need": need, "labels": labels, "cold": True}
+        if self.cold_cache is not None:
+            cached = {k: v for k, v in self.fit.items() if v.get("cold")}
+            self.cold_cache.write_text(json.dumps(cached, indent=1))  # type: ignore[attr-defined]
+        return {e: x["p_fit"] for e, x in labels.items()}, "judge_cold"
 
 
     def shortlist(self, need: str, k: int | None = None, principal: str | None = None, constraints: dict | None = None) -> dict:
@@ -52,7 +75,7 @@ class Ranker:
         p: Principal | None = self.rec.principals.get(principal) if principal else None
         prof = _merge(p.profile if p else Profile(), constraints or {})
         t = relevance.template(need)
-        cands, how = self.candidates(t)
+        cands, how = self.candidates(t, need)
         t_cand = time.perf_counter()
 
         fit_min = float(cfg["fit_min"])
@@ -137,11 +160,14 @@ def _merge(prof: Profile, c: dict) -> Profile:
     return replace(prof, **upd)
 
 
-def load(cfg: dict, root, embed=None, with_principals: bool = True) -> Ranker:
+def load(cfg: dict, root, embed=None, with_principals: bool = True, judge=None) -> Ranker:
     """Fit the recommender from data/: real ledger principals and simulated personas (outcomes labelled simulated)."""
     from plumb import config, principals as P, recommender
     fit_path = root / "fit.json"
     fit = json.loads(fit_path.read_text()) if fit_path.exists() else {}
+    cold_path = config.ROOT / "out" / "fit_cold.json"
+    if cold_path.exists():
+        fit.update({k: v for k, v in json.loads(cold_path.read_text()).items() if k not in fit})
     ps = {}
     if with_principals:
         personas = P.load_personas(config.path(cfg, "personas"))
@@ -154,4 +180,4 @@ def load(cfg: dict, root, embed=None, with_principals: bool = True) -> Ranker:
     vectors, lexical = relevance.Vectors.load(root), relevance.Lexical(docs)
     X, y, _ = relevance.Calibration.features(fit, vectors, lexical)
     cal = relevance.Calibration.fit(X, y) if len(set(y.tolist())) == 2 else None
-    return Ranker(rec, fit, vectors, lexical, embed, dead, cal)
+    return Ranker(rec, fit, vectors, lexical, embed, dead, cal, judge, cold_path)

@@ -67,6 +67,14 @@ def _load_env(name: str) -> None:
             os.environ.setdefault(k.strip(), v.strip().strip('"'))
 
 
+def _cold_judge(cfg: dict):
+    """The offline judge, callable on the cold path for a need nobody judged yet (labels cached after one use)."""
+    from anthropic.lib.bedrock import AnthropicBedrock
+    from plumb import judge
+    client = AnthropicBedrock(aws_region=cfg["judge"]["region"])
+    return lambda need, listings: judge.judge(client, cfg, need, listings)
+
+
 def build(cfg: dict, judge_needs: bool) -> None:
     """Offline: embed every listing and need template (Titan), then judge known needs (Bedrock). Writes data/."""
     import numpy as np
@@ -162,12 +170,13 @@ def main(argv: list[str] | None = None) -> None:
     cfg = config.load()
     if args.cmd in ("recommend", "bench"):
         from plumb import rank
-        embed = None
+        embed = judge_fn = None
         if args.cmd == "recommend" and (config.ROOT / "env" / "judge.env").exists():
             from plumb import relevance
             _load_env("judge.env")
             embed = relevance.Titan(cfg).embed  # one cached Titan call for a need template never seen before
-        rk = rank.load(cfg, config.ROOT / "data", embed=embed)
+            judge_fn = _cold_judge(cfg)
+        rk = rank.load(cfg, config.ROOT / "data", embed=embed, judge=judge_fn if args.cmd == "recommend" else None)
         if args.cmd == "recommend":
             print(json.dumps(rk.shortlist(args.need, k=args.k, principal=args.principal), indent=1))
         else:

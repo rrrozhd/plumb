@@ -102,3 +102,21 @@ def test_dead_endpoints_are_excluded(ranker):
         assert top not in [x["endpoint_id"] for x in out["results"]] and out["excluded"]["dead"] >= 1
     finally:
         ranker.dead.discard(top)
+
+
+def test_cold_path_judges_once_then_serves_from_cache(ranker, tmp_path):
+    any_vec = next(iter(ranker.vectors.needs.values()))
+    calls = []
+
+    def stub_judge(need, listings):
+        calls.append(len(listings))
+        return {x["id"]: {"label": "exact", "p_fit": 0.9, "reason": "stub"} for x in listings[:1]}
+
+    r = rank.Ranker(ranker.rec, dict(ranker.fit), ranker.vectors, ranker.lexical, embed=lambda t: any_vec,
+                    judge=stub_judge, cold_cache=tmp_path / "cold.json")
+    a = r.shortlist("a need nobody has judged before about xrp prices")
+    n = len(calls)
+    b = r.shortlist("a need nobody has judged before about xrp prices")
+    assert a["relevance"] == "judge_cold" and b["relevance"] == "judge_cached"
+    assert n >= 1 and len(calls) == n          # no judge calls on the repeat
+    assert (tmp_path / "cold.json").exists()
