@@ -28,6 +28,17 @@ const store = new DatabaseSync(`${state}merchant.sqlite`, { readOnly: true });
 const used = new DatabaseSync(`${state}../ap4m-gateway.sqlite`);
 used.exec('CREATE TABLE IF NOT EXISTS consumed (tx TEXT PRIMARY KEY, at TEXT NOT NULL) STRICT');
 
+const AMOUNT = /^\d{1,6}(\.\d{1,18})?$/;
+
+// {per_purchase_rlusd, budget_left_rlusd} -> the tighter of the two, as a decimal string (no floats near money).
+function mandate(raw) {
+  if (!raw) return {};
+  const perPurchase = String(raw.per_purchase_rlusd ?? ''), budgetLeft = String(raw.budget_left_rlusd ?? '');
+  if (!AMOUNT.test(perPurchase) || !AMOUNT.test(budgetLeft)) return { error: 'invalid_mandate' };
+  const [a, b] = [ethers.parseUnits(perPurchase, 18), ethers.parseUnits(budgetLeft, 18)];
+  return { perPurchase, budgetLeft, limit: ethers.formatUnits(a < b ? a : b, 18) };
+}
+
 function send(res, code, body) {
   const s = JSON.stringify(body);
   res.writeHead(code, { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(s) });
@@ -46,10 +57,22 @@ createServer(async (req, res) => {
     .some((r) => JSON.parse(String(r.value)).transactionHash === tx);
   if (!paid) return send(res, 402, { error: 'unknown_or_unconfirmed_payment' });
   const first = used.prepare('INSERT OR IGNORE INTO consumed VALUES (?, ?)').run(tx, new Date().toISOString()).changes === 1;
+  // The agent's mandate (from its AP4M channel) becomes a hard price limit on the merchants Plumb may recommend.
+  const m = mandate(q.mandate);
+  if (m.error) return send(res, 400, { error: m.error });
+  const constraints = { ...(q.constraints || {}), ...(m.limit !== undefined ? { max_price: m.limit } : {}) };
   // A replayed credit is forwarded too: Plumb's API returns the stored shortlist for a known paid_tx, never a new one.
   const r = await fetch(AP4M.plumbApi, { method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ need: q.need, k: q.k, principal: q.principal, constraints: q.constraints, paid_tx: tx }) });
-  send(res, r.status, { ...(await r.json()), credit_first_use: first });
+    body: JSON.stringify({ need: q.need, k: q.k, principal: q.principal, constraints, paid_tx: tx }) });
+  const out = await r.json();
+  if (m.limit !== undefined && Array.isArray(out.results)) { // defence in depth: never pass on a pick the mandate can't pay
+    const ok = (x) => ethers.parseUnits(x.price.amount_rlusd, 18) <= ethers.parseUnits(m.limit, 18);
+    const kept = out.results.filter(ok);
+    out.mandate = { per_purchase_rlusd: m.perPurchase, budget_left_rlusd: m.budgetLeft, limit_rlusd: m.limit,
+                    within: true, dropped: out.results.length - kept.length };
+    out.results = kept.map((x) => ({ ...x, within_mandate: `per-purchase ≤ ${m.perPurchase}, budget left ${m.budgetLeft}` }));
+  }
+  send(res, r.status, { ...out, credit_first_use: first });
 }).listen(AP4M.gatewayPort, '127.0.0.1');
 
 console.log(JSON.stringify({ merchant: resourceUrl, gateway: `http://localhost:${AP4M.gatewayPort}/shortlist`, fee_rlusd: AP4M.feeRlusd }));

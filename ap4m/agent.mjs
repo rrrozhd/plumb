@@ -2,6 +2,9 @@
 // per need over x402, redeem it for Plumb's top-3, then show an over-cap purchase being refused and settle.
 //
 // Usage: node agent.mjs "<need>" ["<need>" ...]   (default: three frozen needs; the channel cap allows two)
+// Mandate: the channel is the agent's spending mandate. Each shortlist carries the per-purchase limit
+// (PLUMB_MAX_PER_PURCHASE) and the budget left in the channel, and Plumb only recommends merchants inside both.
+// Control trail: every step and its receipt is appended to out/ap4m-agent/trail-<run>.jsonl (PLUMB_TRAIL overrides).
 import sdk from './ap4m-hackathon-sdk.cjs';
 import { ethers } from 'ethers';
 import { buyResource, loadX402Context } from './ap4m-x402.mjs';
@@ -13,7 +16,17 @@ const needs = process.argv.slice(2).length ? process.argv.slice(2) : [
   'Current BTC perpetual futures funding rate on major exchanges',
   'Current weather and 3-day forecast for New York City',
 ];
-const log = (event, data = {}) => console.log(JSON.stringify({ at: new Date().toISOString(), event, ...data }));
+const PER_PURCHASE = process.env.PLUMB_MAX_PER_PURCHASE ?? '0.05';  // the agent's limit for any one merchant purchase
+const runId = process.env.PLUMB_RUN_ID ?? Date.now().toString(36);
+const { appendFileSync, mkdirSync } = await import('node:fs');
+const trail = process.env.PLUMB_TRAIL ?? new URL(`../out/ap4m-agent/trail-${runId}.jsonl`, import.meta.url).pathname;
+mkdirSync(new URL('../out/ap4m-agent/', import.meta.url).pathname, { recursive: true });
+const log = (event, data = {}) => {
+  const line = JSON.stringify({ at: new Date().toISOString(), run: runId, event, ...data });
+  console.log(line);
+  appendFileSync(trail, line + '\n');
+};
+const evm = (tx) => tx && `${AP4M.explorer}/tx/${tx}`;
 
 const provider = new ethers.JsonRpcProvider(AP4M.rpc);
 const wallet = new ethers.Wallet(env.AGENT_SIGNING_KEY || env.FUNDING_PRIVATE_KEY, provider); // portal registered the funding wallet as Agent
@@ -29,7 +42,8 @@ if (channel && process.env.PLUMB_NEW_CHANNEL) { // demo: close the used channel 
 if (!channel) {
   channel = await sdk.requestChannel(AP4M.api, session.token, wallet, { capRlusd: CAP_RLUSD });
 }
-log('channel_open', { channel_id: channel.channel_id, cap_rlusd: ethers.formatUnits(channel.cap_wei, 18), merchant: channel.merchant_id });
+log('channel_open', { channel_id: channel.channel_id, cap_rlusd: ethers.formatUnits(channel.cap_wei, 18), merchant: channel.merchant_id,
+  per_purchase_rlusd: PER_PURCHASE });
 
 const context = await loadX402Context(AP4M.api);
 const stateDirectory = new URL(`../out/ap4m-agent/`, import.meta.url).pathname;
@@ -51,11 +65,10 @@ try {
   if (!pending.complete && pending.intent.channelId === channel.channel_id) {
     const { resourceUrl, channelId, maximumAmount, operation } = pending.intent;
     const done = await buy({ resourceUrl, channelId, maximumAmount, operation });
-    log('resumed', { operation, voucher_redeemed_tx: done.transactionHash });
+    log('resumed', { operation, voucher_redeemed_tx: done.transactionHash, explorer: evm(done.transactionHash) });
   }
 } catch (error) { if (error.code !== 'ENOENT') log('resume_skipped', { reason: error.message.slice(0, 80) }); }
 const resourceUrl = `http://localhost:${AP4M.merchantPort}/resource`;
-const runId = Date.now().toString(36);
 const fee = ethers.parseUnits(AP4M.feeRlusd, 18);
 // Start from what the channel has already redeemed on-chain, so a reused channel is judged correctly.
 let spent = (await sdk.getChannelState(provider, context.participantRequest.ledger, channel.channel_id)).redeemed;
@@ -71,11 +84,16 @@ for (const [i, need] of needs.entries()) {
       operation: `shortlist-${runId}-${i}`,
     });
     spent += fee;
-    log('paid', { need, voucher_redeemed_tx: bought.transactionHash, claim_id: bought.claimId });
+    log('paid', { need, voucher_redeemed_tx: bought.transactionHash, claim_id: bought.claimId, explorer: evm(bought.transactionHash) });
+    const budgetLeft = ethers.formatUnits(BigInt(channel.cap_wei) - spent, 18);
     const r = await fetch(`http://localhost:${AP4M.gatewayPort}/shortlist`, { method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ need, paid_tx: bought.transactionHash, principal: process.env.PLUMB_PRINCIPAL }) });
+      body: JSON.stringify({ need, paid_tx: bought.transactionHash, principal: process.env.PLUMB_PRINCIPAL,
+                             mandate: { per_purchase_rlusd: PER_PURCHASE, budget_left_rlusd: budgetLeft } }) });
     const out = await r.json();
-    log('shortlist', { need, status: r.status, top: (out.results ?? []).map((x) => `${x.rank}. ${x.url} (${x.price.asset} ${x.price.amount_rlusd})`) });
+    log('shortlist', { need, status: r.status, shortlist_id: out.shortlist_id, mandate: out.mandate, timing_ms: out.timing_ms?.total,
+      results: (out.results ?? []).map((x) => ({ rank: x.rank, url: x.url, operator: x.operator, price: x.price, match: x.match,
+        trust: x.trust, why: x.why, within_mandate: x.within_mandate, call: x.call,
+        evidence: (x.evidence ?? []).map((e) => ({ ...e, ...(e.tx ? { explorer: `${AP4M.xrplExplorer}/${e.tx}` } : {}) })) })) });
   } catch (error) {
     log('refused', { need, reason: error.message }); // the over-cap purchase lands here: the signed voucher would exceed the channel cap
   }
@@ -88,4 +106,8 @@ for (let attempt = 0; ; attempt++) { // the service can lag the chain by a few b
     await sleep(10000);
   }
 }
-log('settled', { receipt_url: settled.receipt_url, claim_paid_tx: settled.claim_paid_tx, settlement_recorded_tx: settled.settlement_recorded_tx });
+log('settled', { amount_rlusd: settled.amount_rlusd, claims_settled: settled.claims_settled, recipient: settled.recipient,
+  payout_tx: settled.payout_tx, settlement_tx: settled.settlement_tx,
+  receipt_url: settled.receipt_url && new URL(settled.receipt_url, AP4M.api).href,
+  explorer: { payout: evm(settled.payout_tx), settlement: evm(settled.settlement_tx) } });
+log('done', { trail });

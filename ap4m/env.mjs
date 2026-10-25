@@ -15,4 +15,6 @@ export const AP4M = {
   merchantPort: 8403,       // x402 merchant: GET /resource sells one shortlist credit
   gatewayPort: 8404,        // POST /shortlist: answers once per credit the merchant itself redeemed
   plumbApi: 'http://127.0.0.1:8402/v1/shortlist',
+  explorer: 'https://explorer.testnet.xrplevm.org',   // AP4M receipts (XRPL EVM testnet)
+  xrplExplorer: 'https://livenet.xrpl.org/transactions', // merchants' ledger evidence (XRPL mainnet)
 };

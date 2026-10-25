@@ -112,6 +112,8 @@ fit(need_key, endpoint FK, p_fit REAL, reason, provider, at, PK(need_key, endpoi
   | Control | PSP-attested identities | agent and merchant onboarded in the AP4M portal |
   | Control | funded channel cap | `requestChannel` with a cap |
   | Control | over-cap attempt rejected | the agent asks for one more shortlist than the cap allows and is refused |
+  | Control | the mandate governs the choice | each shortlist carries the agent's mandate: per-purchase limit and the budget left in its channel. The gateway turns the tighter of the two into Plumb's `max_price`, drops anything above it (defence in depth), and answers with `mandate` plus `within_mandate` on every result |
+  | Control | an audit trail | every step and its receipt goes to `out/ap4m-agent/trail-<run>.jsonl`: channel, voucher-redeemed tx, the shortlist with each merchant's ledger evidence, the refusal, the settlement and payout txs, with explorer links |
   | Payment | HTTP 402 requirements | Plumb's 402 |
   | Payment | agent-signed voucher | the buyer agent decides it's worth paying (expected cost per good answer) and signs |
   | Payment | immediate resource release | the shortlist is returned |
