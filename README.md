@@ -1,4 +1,6 @@
-# Plumb
+<h1>
+  <img src="assets/plumb-logo.png" alt="Plumb" width="420">
+</h1>
 
 **The router that tells AI agents which XRPL merchant to pay, for them.**
 
