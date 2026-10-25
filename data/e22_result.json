@@ -1,0 +1,687 @@
+{
+ "at": "20261025T0427Z",
+ "mode": "live",
+ "prereg": "eval/e22_prereg.md",
+ "spent_total_rlusd": "0.03513203860624868340850319864",
+ "summary": {
+  "bazaar/v2": {
+   "good": 7,
+   "of": 10,
+   "cost_rlusd": "0.01813203860624868340850319864",
+   "cost_per_good": "0.002590"
+  },
+  "bazaar/llm_only": {
+   "good": 6,
+   "of": 10,
+   "cost_rlusd": "0.01813203860624868340850319864",
+   "cost_per_good": "0.003022"
+  },
+  "plumb/v2": {
+   "good": 8,
+   "of": 10,
+   "cost_rlusd": "0.038",
+   "cost_per_good": "0.004750"
+  },
+  "plumb/llm_only": {
+   "good": 9,
+   "of": 10,
+   "cost_rlusd": "0.038",
+   "cost_per_good": "0.004222"
+  }
+ },
+ "rows": [
+  {
+   "id": "e01",
+   "need": "Current ETH price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "9415844EFD753F1E3D4FBD14AADEAEE0CC43C6C226FFF3912BB6AADE9F1D3327",
+    "body_file": "out/e22-bodies-20261025T0427Z/e01-bazaar.txt",
+    "args": {
+     "coins": "ETH",
+     "currency": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T04:27:18+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko ETH 2362.75",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "http": 200,
+    "spent": "0.001",
+    "tx": "6480AAACFBC646E8977CD07C80A8AA145C578D590FCF597AB208462FAD9BD8B3",
+    "body_file": "out/e22-bodies-20261025T0427Z/e01-plumb.txt",
+    "args": {
+     "amount": "1",
+     "from": "ETH",
+     "to": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T04:27:26+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko ETH 2362.75",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "e02",
+   "need": "Current SOL price in USD",
+   "bazaar": {
+    "url": "https://horizonpulse.dev/api/pulse",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "047B7406A8932C9EAE2744B5F214C8221DC6A3EE1227AF5147633ABB4668C459",
+    "body_file": "out/e22-bodies-20261025T0427Z/e02-bazaar.txt",
+    "args": {
+     "symbol": "SOL"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T04:27:41+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko SOL 102.44",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "7378DE214F32A08E402D8B449851E32E51CBC9FF65C0D2109B59247550161FDC",
+    "body_file": "out/e22-bodies-20261025T0427Z/e02-plumb.txt",
+    "args": {
+     "coins": "SOL",
+     "currency": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T04:27:52+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko SOL 102.42",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "e03",
+   "need": "Convert 100 GBP to USD at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "http": 200,
+    "spent": "0.001022006434374780568083866439",
+    "tx": "E6191F901B62F31D2D79E984D901621A9371C5FC76E2E89AAA8859B8C3C7E0A9",
+    "body_file": "out/e22-bodies-20261025T0427Z/e03-bazaar.txt",
+    "args": {
+     "amount": "100",
+     "from": "GBP",
+     "to": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T04:28:11+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB GBP/USD 1.3368",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/fx",
+    "http": 200,
+    "spent": "0.001",
+    "tx": "6D2AB0733A0776140EBD6AC8AF956C32943230E764F8D4C40EDEAB49FEBA6480",
+    "body_file": "out/e22-bodies-20261025T0427Z/e03-plumb.txt",
+    "args": {
+     "amount": "100",
+     "from": "GBP",
+     "to": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-23T00:00:00+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB GBP/USD 1.3368",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "e04",
+   "need": "Convert 1000 JPY to EUR at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "http": 200,
+    "spent": "0.001022006434374780568083866439",
+    "tx": "E2DD50F3B4987D8168FC771EE53964A261425D773A1D76111B3146B9ABD6E5DF",
+    "body_file": "out/e22-bodies-20261025T0427Z/e04-bazaar.txt",
+    "args": {
+     "base": "JPY",
+     "symbols": "EUR",
+     "amount": 1000
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T04:28:31+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB JPY/EUR 0.0057",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/ecb-institutional-fx-rates",
+    "http": 200,
+    "spent": "0.001",
+    "tx": "0B49E3BEFCE6597B137E3801EB171D8F43A49B49F0A2B146B7EFC08599B2A78B",
+    "body_file": "out/e22-bodies-20261025T0427Z/e04-plumb.txt",
+    "args": {
+     "amount": "1000",
+     "from": "JPY",
+     "to": "EUR"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T04:28:38+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB JPY/EUR 0.0057",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "e05",
+   "need": "Current Ethereum mainnet block number",
+   "bazaar": {
+    "url": "https://api.sitecheck-api.workers.dev/api/evm/block",
+    "http": 200,
+    "spent": "0.001",
+    "tx": "8942B8340B66030C6787E635C68158E5A2144EA8F28B4E3D36C96EA3459CB729",
+    "body_file": "out/e22-bodies-20261025T0427Z/e05-bazaar.txt",
+    "args": {
+     "chain": "ethereum",
+     "number": "latest"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T04:28:46+00:00 vs limit 10m",
+     "oracle": true,
+     "oracle_why": "block 26267299",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/evm/block",
+    "http": 200,
+    "spent": "0.001",
+    "tx": "8942B8340B66030C6787E635C68158E5A2144EA8F28B4E3D36C96EA3459CB729",
+    "body_file": "out/e22-bodies-20261025T0427Z/e05-bazaar.txt",
+    "args": {
+     "chain": "ethereum",
+     "number": "latest"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T04:28:46+00:00 vs limit 10m",
+     "oracle": true,
+     "oracle_why": "block 26267299",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "shared": true
+   }
+  },
+  {
+   "id": "e06",
+   "need": "Current weather in Chicago",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "190D4405817D6E837CCED27BDBEF6CED88BC5B5BDB478F210885547244AB464C",
+    "body_file": "out/e22-bodies-20261025T0427Z/e06-bazaar.txt",
+    "args": {
+     "lat": 41.8781,
+     "lon": -87.6298
+    },
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": false,
+     "g5_why": "newest 2026-10-24T21:00:00+00:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KMDW 15.6 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": false,
+     "good": false
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/tiempo-eeuu-pago",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "E6D561E6EC948FD0AF5E8C5E3B98E34BA5EF150920F8B135C6DDDC85E221545E",
+    "body_file": "out/e22-bodies-20261025T0427Z/e06-plumb.txt",
+    "args": {
+     "lat": 41.8781,
+     "lon": -87.6298
+    },
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": false,
+     "g5_why": "newest 2026-10-24T21:00:00+00:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KMDW 15.6 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": false,
+     "good": false
+    },
+    "verdict_llm_only": "bad"
+   }
+  },
+  {
+   "id": "e07",
+   "need": "Is 2026-12-25 a US business day? List the US federal holidays in December 2026",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/business-days",
+    "http": 200,
+    "spent": "0.001022006434374780568083866439",
+    "tx": "082723C488D6D28F984F5F931FFFA41AEBE03570421651C1E45B1F0A2E979C5D",
+    "body_file": "out/e22-bodies-20261025T0427Z/e07-bazaar.txt",
+    "args": {
+     "calendar": "US",
+     "date": "2026-12-25",
+     "op": "check"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "computed: Christmas Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid real response; 2026-12-25 Christmas Day, is_business_day false. Only Christmas is identified as the December holiday, matching the check. Freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "http": 200,
+    "spent": "0.001",
+    "tx": "82F94DDF3EBD0896D0B1957CEA7292DE3C15B9D53A3CA840F2A58C0E5D7CCA6A",
+    "body_file": "out/e22-bodies-20261025T0427Z/e07-plumb.txt",
+    "args": {
+     "country": "US",
+     "year": "2026"
+    },
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": false,
+     "oracle_why": "computed: Christmas Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid holiday list for US 2026; December contains only Christmas Day 2026-12-25 nationwide, implying not a business day. Freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "e08",
+   "need": "WHOIS registration data for the domain coinbase.com: registrar, creation date and expiry date",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/whois",
+    "http": 200,
+    "spent": "0.003066019303124341704251599317",
+    "tx": "6175789D6344974528AD20C33547E71479EEAA3270C0DED0C93897BFE13F1466",
+    "body_file": "out/e22-bodies-20261025T0427Z/e08-bazaar.txt",
+    "args": {
+     "domain": "coinbase.com"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "RDAP MarkMonitor Inc. 2011-07-02 2028-07-02",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid live JSON with RDAP data for coinbase.com: registrar MarkMonitor Inc., registered 2011-07-02, expires 2028-07-02, sourced from Verisign RDAP. Freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/domain",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "65320FE0FC6B3CA3E0F2725902D48E521DE845BCE007EF97BBCB784554C643AE",
+    "body_file": "out/e22-bodies-20261025T0427Z/e08-plumb.txt",
+    "args": {
+     "domain": "coinbase.com"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "RDAP MarkMonitor Inc. 2011-07-02 2028-07-02",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid RDAP-style JSON for coinbase.com with registrar (MarkMonitor), createdAt and expiresAt present; freshness n/a. Daysuntil expiry is consistent with now."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "e09",
+   "need": "XRP balance of the XRPL account rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+   "bazaar": {
+    "url": "https://api.agentweather.io/v1/paycheck",
+    "http": 400,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e22-bodies-20261025T0427Z/e09-bazaar.txt",
+    "args": {},
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"error\":\"missing_url\",\"hint\":\"GET /v1/paycheck?url=https://example.com/paid-route (optional &max_usd=0.10); nothing was charged\"}"
+   },
+   "plumb": {
+    "url": "https://horizonpulse.dev/api/balance",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "67C9F1BB51474AE836CA45726B3E7FDBDD65AC17F9B03F415F199F7032892DD2",
+    "body_file": "out/e22-bodies-20261025T0427Z/e09-plumb.txt",
+    "args": {
+     "xrpl": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T04:30:34+00:00 vs limit 1h",
+     "oracle": true,
+     "oracle_why": "ledger 99.764185 XRP",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "e10",
+   "need": "Latest Bitcoin block height",
+   "bazaar": {
+    "url": "https://horizonpulse.dev/api/chain/head",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "97DBA5BBCE9B45D687815246BA9CAA3B0664AC4E8C7352D5E094B44F6507CBF1",
+    "body_file": "out/e22-bodies-20261025T0427Z/e10-bazaar.txt",
+    "args": {},
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T04:30:47+00:00 vs limit 1h",
+     "oracle": false,
+     "oracle_why": "mempool tip 973016",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/bitcoin-mempool-stats",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "E1D3A6BF16BE086F132804C8B05D38506002065E36115E1079B4965A5F6F6469",
+    "body_file": "out/e22-bodies-20261025T0427Z/e10-plumb.txt",
+    "args": {},
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T04:31:00+00:00 vs limit 1h",
+     "oracle": true,
+     "oracle_why": "mempool tip 973016",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  }
+ ]
+}

@@ -69,3 +69,15 @@ def test_e15_evidence_coverage():
     cands = {e for v in fit.values() for e in v["labels"]}
     with_ev = sum(1 for e in cands if rec.evidence.get(e))
     assert (len(cands), with_ev) == (602, 53)
+
+
+def test_e23_heldout_numbers():
+    rows = json.loads((DATA / "e22_result.json").read_text())["rows"]
+    gb, cb = cost_per_good(rows, "bazaar")
+    gp, cp = cost_per_good(rows, "plumb", FEE)
+    _, cp_nofee = cost_per_good(rows, "plumb")
+    assert (gb, gp) == (7, 8) and round(cb, 4) == D("0.0026") and round(cp, 4) == D("0.0048") and cp_nofee == D("0.00225")
+    new = [r for r in rows if r["id"] != "e08"]
+    assert (sum(r["bazaar"]["verdict"] == "good" for r in new), sum(r["plumb"]["verdict"] == "good" for r in new)) == (6, 7)
+    txs = [r[a]["tx"] for r in rows for a in ("bazaar", "plumb") if r[a].get("tx") and not r[a].get("shared")]
+    assert len(txs) == len(set(txs)) == 18
