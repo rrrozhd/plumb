@@ -93,3 +93,17 @@ def test_e24_pooled():
     p = min(1.0, 2 * sum(comb(n, k) for k in range(max(won, lost), n + 1)) / 2 ** n)
     assert (len(rows), gp, gb, won, lost, round(p, 3)) == (30, 19, 14, 6, 1, 0.125)
     assert round(cp, 4) == D("0.0060") and round(cb, 4) == D("0.0080") and round(cb / cp, 2) == D("1.34")
+
+
+def test_e26_powered():
+    import yaml
+    from plumb import stats
+    rows = json.loads((DATA / "e26_result.json").read_text())["rows"]
+    fam = {q["id"]: q["family"] for q in yaml.safe_load((config.ROOT / "eval" / "queries_e26.yaml").read_text())["queries"]}
+    r = stats.report(rows, fam)
+    assert r["good"] == {"plumb": 77, "bazaar": 72}
+    assert (r["primary"]["won"], r["primary"]["lost"], round(r["primary"]["p"], 2)) == (14, 9, 0.40)
+    assert (r["cluster"]["won"], r["cluster"]["lost"], round(r["cluster"]["p"], 2)) == (9, 7, 0.80)
+    assert round(D(r["cost_per_good"]["bazaar"]), 4) == D("0.0032") and round(D(r["cost_per_good"]["plumb_fee"]), 4) == D("0.0065")
+    txs = [x[a]["tx"] for x in rows for a in ("bazaar", "plumb") if x[a].get("tx") and not x[a].get("shared")]
+    assert len(txs) == len(set(txs)) == 158

@@ -1,0 +1,6062 @@
+{
+ "at": "20261025T1214Z",
+ "prereg": "eval/e26_prereg.md",
+ "rows": [
+  {
+   "id": "f001",
+   "need": "Current BTC price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "2593D42DDB9682CC299E69AFD660F859DB0FF728724A621462CF0D70FC3D7F7C",
+    "body_file": "out/e26-bodies-20261025T1214Z/f001-bazaar.txt",
+    "args": {
+     "coins": "BTC",
+     "currency": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:14:31+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko bitcoin/usd 80430",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "13CF80D315F05552B5346600CD229DCF6695FE1F66CA54525EEDB62969A3F654",
+    "body_file": "out/e26-bodies-20261025T1214Z/f001-plumb.txt",
+    "args": {
+     "amount": "1",
+     "from": "BTC",
+     "to": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:14:41+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko bitcoin/usd 80430",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f002",
+   "need": "Current BNB price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "00D142AAAC72F7573DEBE0A31378D715FA7236C4A18F5E935FEFF89FB07958BE",
+    "body_file": "out/e26-bodies-20261025T1214Z/f002-bazaar.txt",
+    "args": {
+     "coins": "BNB",
+     "currency": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:14:49+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko binancecoin/usd 740.86",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "69940939D10BB0F816643581C8514C20011987BD007A7C928C864EAC393C452F",
+    "body_file": "out/e26-bodies-20261025T1214Z/f002-plumb.txt",
+    "args": {
+     "amount": "1",
+     "from": "BNB",
+     "to": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:15:00+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko binancecoin/usd 740.86",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f003",
+   "need": "Current ADA price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "E597BF0C2172A4A48FF7E3B1F4A6D0EC510D9EFB69A13672F26F3DDC22123E51",
+    "body_file": "out/e26-bodies-20261025T1214Z/f003-bazaar.txt",
+    "args": {
+     "coins": "ADA",
+     "currency": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:15:11+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko cardano/usd 0.204291",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/finance/dia-crypto-oracle",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "35A5164747B52945BFB9088A0C19D30D7637711D40B03DE50EC7D863EFDBDA7B",
+    "body_file": "out/e26-bodies-20261025T1214Z/f003-plumb.txt",
+    "args": {
+     "symbol": "ADA"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:15:20+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko cardano/usd 0.204291",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f004",
+   "need": "Current DOGE price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "E8F0917C5267724E3FF3E18353776586628CAE62CD78F235E2B87015C05DCA52",
+    "body_file": "out/e26-bodies-20261025T1214Z/f004-bazaar.txt",
+    "args": {
+     "coins": "DOGE",
+     "currency": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:15:31+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko dogecoin/usd 0.076536",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "647FA47CE7640DA5CBD27BF956025DF54235A653CEB26551A04CCD4181DEBB2B",
+    "body_file": "out/e26-bodies-20261025T1214Z/f004-plumb.txt",
+    "args": {
+     "amount": "1",
+     "from": "DOGE",
+     "to": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:15:42+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko dogecoin/usd 0.076536",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f005",
+   "need": "Current AVAX price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "C0A6B93CFD6D65272631D33DADEFFA0A14A9E36AB07B4C1E1A678ADBB0EBFB2D",
+    "body_file": "out/e26-bodies-20261025T1214Z/f005-bazaar.txt",
+    "args": {
+     "coins": "AVAX",
+     "currency": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:15:58+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko avalanche-2/usd 8.82",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/finance/alpha-vantage-public",
+    "http": 404,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e26-bodies-20261025T1214Z/f005-plumb.txt",
+    "args": {
+     "symbol": "AVAX"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"error\":\"symbol AVAX not found at Alpha Vantage, you were not charged.\"}"
+   }
+  },
+  {
+   "id": "f006",
+   "need": "Current DOT price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "3620574D284CA12E1FE665CDB24C83D892F491CF5B660E4CD4E5017F593203E4",
+    "body_file": "out/e26-bodies-20261025T1214Z/f006-bazaar.txt",
+    "args": {
+     "coins": "DOT",
+     "currency": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:16:42+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko polkadot/usd 1.025",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/candles",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "FD03DEC45A52638014E1814B29D4842BA4735D6428C39DE3C079F27FDE738A3E",
+    "body_file": "out/e26-bodies-20261025T1214Z/f006-plumb.txt",
+    "args": {
+     "pair": "DOT-USD",
+     "granularity": "1h",
+     "limit": "1"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:16:51+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko polkadot/usd 1.025",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f007",
+   "need": "Current LINK price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "5C08EC8B0A2696E35F4E68AA039F688D4973F15729C278CC081A08D783E2F70C",
+    "body_file": "out/e26-bodies-20261025T1214Z/f007-bazaar.txt",
+    "args": {
+     "coins": "LINK",
+     "currency": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:16:59+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko chainlink/usd 11.37",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.webintel-api.workers.dev/api/search/bingx-markets",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "C2E5B6E6A0E923235A6F386A431B7A4152DF97ED2A3E2F5035681D71A07190C1",
+    "body_file": "out/e26-bodies-20261025T1214Z/f007-plumb.txt",
+    "args": {
+     "symbol": "LINK-USDT"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:17:07+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko chainlink/usd 11.37",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f008",
+   "need": "Current LTC price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "29E54D29C7E541104E0D79CA0503CB2B219BA076AA2C3E0DE705F94EADE1DD49",
+    "body_file": "out/e26-bodies-20261025T1214Z/f008-bazaar.txt",
+    "args": {
+     "coins": "LTC",
+     "currency": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:17:15+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko litecoin/usd 56.33",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "42D69C8762F131D2C3A523638247E8C05E70FAE27EA431AFD3D743DE22C170BE",
+    "body_file": "out/e26-bodies-20261025T1214Z/f008-plumb.txt",
+    "args": {
+     "amount": "1",
+     "from": "LTC",
+     "to": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:17:26+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko litecoin/usd 56.33",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f009",
+   "need": "Current TRX price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "251840A7932BDC242543BE9DC6C557CA58AEFD8FEDF68DF62864061F76EDE287",
+    "body_file": "out/e26-bodies-20261025T1214Z/f009-bazaar.txt",
+    "args": {
+     "coins": "TRX",
+     "currency": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:17:34+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko tron/usd 0.328965",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "7244FE525E76E1EA2271BC987966C9AD81D9C8C55B666CB9627506ECED753247",
+    "body_file": "out/e26-bodies-20261025T1214Z/f009-plumb.txt",
+    "args": {
+     "amount": "1",
+     "from": "TRX",
+     "to": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:17:42+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko tron/usd 0.328965",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f010",
+   "need": "Current XLM price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "7FB84F7FB2DB8C7403ECCF57DD60A33C11F9B2F8E3A26A5D235556713F84F3CB",
+    "body_file": "out/e26-bodies-20261025T1214Z/f010-bazaar.txt",
+    "args": {
+     "coins": "XLM",
+     "currency": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:17:50+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko stellar/usd 0.169089",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/dydx-chain-markets",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "2842F5C6C662E5B69C4DAAC1C866AE90CF2EC7F9486CF41723A8A98E323B2CAA",
+    "body_file": "out/e26-bodies-20261025T1214Z/f010-plumb.txt",
+    "args": {
+     "ticker": "XLM-USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:17:57+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko stellar/usd 0.169089",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f011",
+   "need": "Current ATOM price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "5F050F629B57BCD04F23A6021EDD85739F15C3F88EBFDB70206F69A5D17338D4",
+    "body_file": "out/e26-bodies-20261025T1214Z/f011-bazaar.txt",
+    "args": {
+     "coins": "ATOM",
+     "currency": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:18:09+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko cosmos/usd 1.62",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "5F050F629B57BCD04F23A6021EDD85739F15C3F88EBFDB70206F69A5D17338D4",
+    "body_file": "out/e26-bodies-20261025T1214Z/f011-bazaar.txt",
+    "args": {
+     "coins": "ATOM",
+     "currency": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:18:09+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko cosmos/usd 1.62",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "shared": true
+   }
+  },
+  {
+   "id": "f012",
+   "need": "Current NEAR price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "C3C1A5354ECB9C82DD5C930BBD6C5CAEDC8F231EAF3E0259E3E7BBDBBF1D319E",
+    "body_file": "out/e26-bodies-20261025T1214Z/f012-bazaar.txt",
+    "args": {
+     "coins": "NEAR",
+     "currency": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:18:21+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko near/usd 4.46",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "C3C1A5354ECB9C82DD5C930BBD6C5CAEDC8F231EAF3E0259E3E7BBDBBF1D319E",
+    "body_file": "out/e26-bodies-20261025T1214Z/f012-bazaar.txt",
+    "args": {
+     "coins": "NEAR",
+     "currency": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:18:21+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko near/usd 4.46",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "shared": true
+   }
+  },
+  {
+   "id": "f013",
+   "need": "Current UNI price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "http": 404,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e26-bodies-20261025T1214Z/f013-bazaar.txt",
+    "args": {
+     "coin": "uniswap",
+     "currency": "USD"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"detail\":\"No price for uniswap: solo est\u00e1n las 188 criptomonedas principales de Alternative.me (BTC, ETH, SOL, XRP, USDT, DOGE\u2026), por su s\u00edmbolo.\"}"
+   },
+   "plumb": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   }
+  },
+  {
+   "id": "f014",
+   "need": "Current BCH price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "9507B99734DD07DFDD970E01991EBD3A9FEF270992AAE38B06C1043331B5F237",
+    "body_file": "out/e26-bodies-20261025T1214Z/f014-bazaar.txt",
+    "args": {
+     "coins": "BCH",
+     "currency": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:19:05+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko bitcoin-cash/usd 272.75",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "6423FBA39246DCD45D9CFF409F213000217AF8750D82AAF76DCD8A448F2FADEB",
+    "body_file": "out/e26-bodies-20261025T1214Z/f014-plumb.txt",
+    "args": {
+     "amount": "1",
+     "from": "BCH",
+     "to": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:19:15+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko bitcoin-cash/usd 272.75",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f015",
+   "need": "Current ETC price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "A5EB141C7428D37A79F9A7C0B8657A535680819245F5D22E2B406B5D5F6F6C26",
+    "body_file": "out/e26-bodies-20261025T1214Z/f015-bazaar.txt",
+    "args": {
+     "coins": "ETC",
+     "currency": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:19:25+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko ethereum-classic/usd 7.51",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "D2C3E0DC4BAEE6B01B941E457CC3125FF4C6B4DF7C7908746C9891BE4CBBD6A7",
+    "body_file": "out/e26-bodies-20261025T1214Z/f015-plumb.txt",
+    "args": {
+     "amount": "1",
+     "from": "ETC",
+     "to": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:19:33+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko ethereum-classic/usd 7.51",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f016",
+   "need": "Current FIL price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/precio-simple-pago",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "1BDE6A4C34618C51D6AFCB6BA14D2E4609D2A06408114F98F8253A48DEB8376B",
+    "body_file": "out/e26-bodies-20261025T1214Z/f016-bazaar.txt",
+    "args": {
+     "monedas": "FIL"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:19:42+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko filecoin/usd 0.914817",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/precio-simple-pago",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "1BDE6A4C34618C51D6AFCB6BA14D2E4609D2A06408114F98F8253A48DEB8376B",
+    "body_file": "out/e26-bodies-20261025T1214Z/f016-bazaar.txt",
+    "args": {
+     "monedas": "FIL"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:19:42+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko filecoin/usd 0.914817",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "shared": true
+   }
+  },
+  {
+   "id": "f017",
+   "need": "Current APT price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 404,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e26-bodies-20261025T1214Z/f017-bazaar.txt",
+    "args": {
+     "coins": "APT",
+     "currency": "USD"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"detail\":\"No price for esos s\u00edmbolos: solo est\u00e1n las criptomonedas principales de Alternative.me.\"}"
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/leverage-liquidation-levels",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "668B4EC31FFC6DCC2F673BBA81D87720A94327D7E2AF2DAC1B196E3E322CDFA3",
+    "body_file": "out/e26-bodies-20261025T1214Z/f017-plumb.txt",
+    "args": {
+     "coin": "APT"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:20:22+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko aptos/usd 0.694846",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f018",
+   "need": "Current ARB price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 404,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e26-bodies-20261025T1214Z/f018-bazaar.txt",
+    "args": {
+     "coins": "ARB",
+     "currency": "USD"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"detail\":\"No price for esos s\u00edmbolos: solo est\u00e1n las criptomonedas principales de Alternative.me.\"}"
+   },
+   "plumb": {
+    "url": "https://api.shopsocial-api.workers.dev/api/ecommerce/gmx-arbitrum-prices",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "C69F943F9889761E2B4C798CAFC8F08F9AFBD1DA77E489FAA9303BD981F6BF86",
+    "body_file": "out/e26-bodies-20261025T1214Z/f018-plumb.txt",
+    "args": {},
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": false,
+     "g4_entity_why": "missing entity ARB",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:21:02+00:00 vs limit 15m",
+     "oracle": false,
+     "oracle_why": "CoinGecko arbitrum/usd 0.165349",
+     "llm": null,
+     "method": {
+      "g4": "entity rule",
+      "g5": "timestamp"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad"
+   }
+  },
+  {
+   "id": "f019",
+   "need": "Current OP price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 404,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e26-bodies-20261025T1214Z/f019-bazaar.txt",
+    "args": {
+     "coins": "OP",
+     "currency": "USD"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"detail\":\"No price for esos s\u00edmbolos: solo est\u00e1n las criptomonedas principales de Alternative.me.\"}"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/pyth-network-oracles",
+    "http": 400,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e26-bodies-20261025T1214Z/f019-plumb.txt",
+    "args": {
+     "symbols": "OPUSD"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"error\":\"unknown symbol(s): OPUSD (list=true shows the 65 available)\"}"
+   }
+  },
+  {
+   "id": "f020",
+   "need": "Current SUI price in USD",
+   "bazaar": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/sui-move-objects",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "96392683F97B7945D68151C8CED92FF998FA35DCC2DB5F3BB4B1E881D9491B10",
+    "body_file": "out/e26-bodies-20261025T1214Z/f020-bazaar.txt",
+    "args": {},
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:22:16+00:00 vs limit 15m",
+     "oracle": false,
+     "oracle_why": "CoinGecko sui/usd 0.917069",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/finance/coincap-rates",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "E66156440AD7B8412A6A820107C0C0EA88E1D54685ADD14B0F321A1305E356CC",
+    "body_file": "out/e26-bodies-20261025T1214Z/f020-plumb.txt",
+    "args": {
+     "id": "SUI"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:22:26+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko sui/usd 0.917069",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f021",
+   "need": "Current TON price in USD",
+   "bazaar": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/ton-blockchain-jettons",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "22609C61B8F6793C2FBE5B4C41A9842918FF6AA0154F33794326F8DE8C410389",
+    "body_file": "out/e26-bodies-20261025T1214Z/f021-bazaar.txt",
+    "args": {},
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:22:35+00:00 vs limit 15m",
+     "oracle": false,
+     "oracle_why": "CoinGecko the-open-network/usd 1.25",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   }
+  },
+  {
+   "id": "f022",
+   "need": "Current SHIB price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "6F20FCC740C4F07642BAE19538CCBD796D7CBDF13DE3D48D9C4507D0433BA8A3",
+    "body_file": "out/e26-bodies-20261025T1214Z/f022-bazaar.txt",
+    "args": {
+     "coins": "SHIB",
+     "currency": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:22:46+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko shiba-inu/usd 4.86e-06",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/finance/coincap-rates",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "CF5966E83E55A77EC9E597F3BF7C11F7BACD3F0978E4CD8F374235E162C99B3C",
+    "body_file": "out/e26-bodies-20261025T1214Z/f022-plumb.txt",
+    "args": {
+     "id": "SHIB"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:22:56+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko shiba-inu/usd 4.86e-06",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f023",
+   "need": "Current HBAR price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 404,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e26-bodies-20261025T1214Z/f023-bazaar.txt",
+    "args": {
+     "coins": "HBAR",
+     "currency": "USD"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"detail\":\"No price for esos s\u00edmbolos: solo est\u00e1n las criptomonedas principales de Alternative.me.\"}"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/finance/huobi-tickers",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "29F641D9D76BBF033F72ED914BE572585D0628F0DC95A2C98A44B4134C705DB5",
+    "body_file": "out/e26-bodies-20261025T1214Z/f023-plumb.txt",
+    "args": {
+     "symbol": "hbarusdt"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:23:36+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko hedera-hashgraph/usd 0.076751",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f024",
+   "need": "Current ICP price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 404,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e26-bodies-20261025T1214Z/f024-bazaar.txt",
+    "args": {
+     "coins": "ICP",
+     "currency": "USD"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"detail\":\"No price for esos s\u00edmbolos: solo est\u00e1n las criptomonedas principales de Alternative.me.\"}"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/finance/coincap-rates",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "6951FF0D3B0D852ACF85BEE996D1268371917EDF52CBE898E9C1E84FF6F3D1E2",
+    "body_file": "out/e26-bodies-20261025T1214Z/f024-plumb.txt",
+    "args": {
+     "id": "ICP"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:24:17+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko internet-computer/usd 2.61",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f025",
+   "need": "Current AAVE price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "E0468E48538FCFEF6CEFDD1684FE3109DAD56A1036062795DCBB7C3FA6F726CE",
+    "body_file": "out/e26-bodies-20261025T1214Z/f025-bazaar.txt",
+    "args": {
+     "coins": "AAVE",
+     "currency": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:24:25+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko aave/usd 136.3",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/aave-lending-markets",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "30973D97D02B1A11F9ED57D0DC520B09BA24239B52D6576D3F0981527B244712",
+    "body_file": "out/e26-bodies-20261025T1214Z/f025-plumb.txt",
+    "args": {
+     "symbol": "AAVE"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:24:37+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko aave/usd 136.3",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f026",
+   "need": "Current BTC price in EUR",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "http": 404,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e26-bodies-20261025T1214Z/f026-bazaar.txt",
+    "args": {
+     "coin": "bitcoin",
+     "currency": "EUR"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"detail\":\"No price for bitcoin: solo est\u00e1n las 188 criptomonedas principales de Alternative.me (BTC, ETH, SOL, XRP, USDT, DOGE\u2026), por su s\u00edmbolo.\"}"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "94AA94B3D2CF111A123AED9BE94EF9FA4170B0F857C7222B915BCD6DA1CA4D18",
+    "body_file": "out/e26-bodies-20261025T1214Z/f026-plumb.txt",
+    "args": {
+     "amount": "1",
+     "from": "BTC",
+     "to": "EUR"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:25:21+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko bitcoin/eur 71742",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f027",
+   "need": "Current ETH price in EUR",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "http": 404,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e26-bodies-20261025T1214Z/f027-bazaar.txt",
+    "args": {
+     "coin": "ethereum",
+     "currency": "EUR"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"detail\":\"No price for ethereum: solo est\u00e1n las 188 criptomonedas principales de Alternative.me (BTC, ETH, SOL, XRP, USDT, DOGE\u2026), por su s\u00edmbolo.\"}"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "2223632FF67DECB2CD6F27BA3637D8087E0E16B79235B0390BFD96E064FDF2AB",
+    "body_file": "out/e26-bodies-20261025T1214Z/f027-plumb.txt",
+    "args": {
+     "amount": "1",
+     "from": "ETH",
+     "to": "EUR"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:26:02+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko ethereum/eur 2081.41",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f028",
+   "need": "Current XRP price in EUR",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "http": 404,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e26-bodies-20261025T1214Z/f028-bazaar.txt",
+    "args": {
+     "coin": "ripple",
+     "currency": "EUR"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"detail\":\"No price for ripple: solo est\u00e1n las 188 criptomonedas principales de Alternative.me (BTC, ETH, SOL, XRP, USDT, DOGE\u2026), por su s\u00edmbolo.\"}"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "http": 404,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e26-bodies-20261025T1214Z/f028-bazaar.txt",
+    "args": {
+     "coin": "ripple",
+     "currency": "EUR"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"detail\":\"No price for ripple: solo est\u00e1n las 188 criptomonedas principales de Alternative.me (BTC, ETH, SOL, XRP, USDT, DOGE\u2026), por su s\u00edmbolo.\"}",
+    "shared": true
+   }
+  },
+  {
+   "id": "f029",
+   "need": "Current SOL price in EUR",
+   "bazaar": {
+    "url": "https://horizonpulse.dev/api/pulse",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "AA4CF4805D2E53F1D97B25E44AADC571596F73FBC8B925B0A08134A5CDF68FBC",
+    "body_file": "out/e26-bodies-20261025T1214Z/f029-bazaar.txt",
+    "args": {
+     "symbol": "SOL"
+    },
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:26:47+00:00 vs limit 15m",
+     "oracle": false,
+     "oracle_why": "CoinGecko solana/eur 90.02",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "A6C95703B0296FEF8B2631FA3689E8ACD37E8CCB14A7833CFED45EFEA49EA0AB",
+    "body_file": "out/e26-bodies-20261025T1214Z/f029-plumb.txt",
+    "args": {
+     "coins": "SOL",
+     "currency": "EUR"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:27:00+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko solana/eur 90.02",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f030",
+   "need": "Current ADA price in EUR",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "http": 404,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e26-bodies-20261025T1214Z/f030-bazaar.txt",
+    "args": {
+     "coin": "cardano",
+     "currency": "EUR"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"detail\":\"No price for cardano: solo est\u00e1n las 188 criptomonedas principales de Alternative.me (BTC, ETH, SOL, XRP, USDT, DOGE\u2026), por su s\u00edmbolo.\"}"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/finance/dia-crypto-oracle",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "34F1CF558DDF8EC5A088298EE167D35B17F9D03353922DF300B0CCA854409389",
+    "body_file": "out/e26-bodies-20261025T1214Z/f030-plumb.txt",
+    "args": {
+     "symbol": "ADA"
+    },
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:27:44+00:00 vs limit 15m",
+     "oracle": false,
+     "oracle_why": "CoinGecko cardano/eur 0.182072",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad"
+   }
+  },
+  {
+   "id": "f031",
+   "need": "Current DOGE price in EUR",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "http": 404,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e26-bodies-20261025T1214Z/f031-bazaar.txt",
+    "args": {
+     "coin": "dogecoin",
+     "currency": "EUR"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"detail\":\"No price for dogecoin: solo est\u00e1n las 188 criptomonedas principales de Alternative.me (BTC, ETH, SOL, XRP, USDT, DOGE\u2026), por su s\u00edmbolo.\"}"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "0AB8F474C83BD38CA569D51A47CA052B44B5D4AA15EAEE03DEC2E63C8EC8E0E1",
+    "body_file": "out/e26-bodies-20261025T1214Z/f031-plumb.txt",
+    "args": {
+     "amount": "1",
+     "from": "DOGE",
+     "to": "EUR"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:28:27+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko dogecoin/eur 0.068267",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f032",
+   "need": "Current LTC price in EUR",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "http": 404,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e26-bodies-20261025T1214Z/f032-bazaar.txt",
+    "args": {
+     "coin": "litecoin",
+     "currency": "EUR"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"detail\":\"No price for litecoin: solo est\u00e1n las 188 criptomonedas principales de Alternative.me (BTC, ETH, SOL, XRP, USDT, DOGE\u2026), por su s\u00edmbolo.\"}"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "5C04C496EBB959CCE4CE3876344ABE4F7131C10F49307BEC39DBE96AE43EF5A6",
+    "body_file": "out/e26-bodies-20261025T1214Z/f032-plumb.txt",
+    "args": {
+     "amount": "1",
+     "from": "LTC",
+     "to": "EUR"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:29:10+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko litecoin/eur 50.21",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f033",
+   "need": "Current DOT price in EUR",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "http": 404,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e26-bodies-20261025T1214Z/f033-bazaar.txt",
+    "args": {
+     "coin": "polkadot",
+     "currency": "EUR"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"detail\":\"No price for polkadot: solo est\u00e1n las 188 criptomonedas principales de Alternative.me (BTC, ETH, SOL, XRP, USDT, DOGE\u2026), por su s\u00edmbolo.\"}"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "60678C8DDFABE571BAD199918CEA655E7C0C846F3AA455BDB23405E9310BC4D1",
+    "body_file": "out/e26-bodies-20261025T1214Z/f033-plumb.txt",
+    "args": {
+     "amount": "1",
+     "from": "DOT",
+     "to": "EUR"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:29:55+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko polkadot/eur 0.913277",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f034",
+   "need": "Current LINK price in EUR",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "http": 404,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e26-bodies-20261025T1214Z/f034-bazaar.txt",
+    "args": {
+     "coin": "chainlink",
+     "currency": "EUR"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"detail\":\"No price for chainlink: solo est\u00e1n las 188 criptomonedas principales de Alternative.me (BTC, ETH, SOL, XRP, USDT, DOGE\u2026), por su s\u00edmbolo.\"}"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/precio-simple-pago",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "3E2A245CBF78321F397D060479B378B3ABDD43F6E83033D8F62D42FEBFFF75B3",
+    "body_file": "out/e26-bodies-20261025T1214Z/f034-plumb.txt",
+    "args": {
+     "monedas": "LINK"
+    },
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:30:38+00:00 vs limit 15m",
+     "oracle": false,
+     "oracle_why": "CoinGecko chainlink/eur 10.12",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad"
+   }
+  },
+  {
+   "id": "f035",
+   "need": "Current BNB price in EUR",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price-fiat",
+    "http": 404,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e26-bodies-20261025T1214Z/f035-bazaar.txt",
+    "args": {
+     "coin": "binancecoin",
+     "currency": "EUR"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"detail\":\"No price for binancecoin: solo est\u00e1n las 188 criptomonedas principales de Alternative.me (BTC, ETH, SOL, XRP, USDT, DOGE\u2026), por su s\u00edmbolo.\"}"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/finance/binance-prices",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "2D2627AD284B10044863B2D48B9C5D00EF4507A98E049797B4EDD46520B108EC",
+    "body_file": "out/e26-bodies-20261025T1214Z/f035-plumb.txt",
+    "args": {
+     "symbol": "BNBEUR"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:31:31+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko binancecoin/eur 659.68",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f036",
+   "need": "Convert 100 USD to JPY at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "E73767502519C297C2AC344C4007CEDEF61250D819AFB269736F3CF191B1FD1C",
+    "body_file": "out/e26-bodies-20261025T1214Z/f036-bazaar.txt",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "JPY"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:31:50+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/JPY 156.8",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/fx",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "8AEFF348C54AD179F27203664E2FBB99712190AD2DADE55E395FF05FD517B4F9",
+    "body_file": "out/e26-bodies-20261025T1214Z/f036-plumb.txt",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "JPY"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-23T00:00:00+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/JPY 156.8",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f037",
+   "need": "Convert 100 EUR to GBP at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "837B797CB5BFB9C96C987ACC5BC9566322D2D561B72615EDE27FA82926D9B806",
+    "body_file": "out/e26-bodies-20261025T1214Z/f037-bazaar.txt",
+    "args": {
+     "amount": "100",
+     "from": "EUR",
+     "to": "GBP"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:32:08+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB EUR/GBP 0.83728",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/ecb-institutional-fx-rates",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "4F58D23220DDCAF5BBEFD4155972B66A04F20663C0E25F9BD64B0B7950418B0A",
+    "body_file": "out/e26-bodies-20261025T1214Z/f037-plumb.txt",
+    "args": {
+     "amount": "100",
+     "from": "EUR",
+     "to": "GBP"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:32:13+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB EUR/GBP 0.83728",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f038",
+   "need": "Convert 100 USD to CHF at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "A44EE17E13C33D7D1515207161A132034BDE9CAC1D29E910FF6C09F6EF7856CE",
+    "body_file": "out/e26-bodies-20261025T1214Z/f038-bazaar.txt",
+    "args": {
+     "base": "USD",
+     "symbols": "CHF",
+     "amount": 100
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:32:28+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/CHF 0.82435",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "F6429A2F2AF64AC1185AE9EED1DE0091336910547831BAED829E450F70D3CB9C",
+    "body_file": "out/e26-bodies-20261025T1214Z/f038-plumb.txt",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "CHF"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:32:36+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/CHF 0.82435",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f039",
+   "need": "Convert 100 CAD to USD at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "B8D8271DCB73AED4BF681F239E375F0F845FAE88EE801AD346513D7A198D8158",
+    "body_file": "out/e26-bodies-20261025T1214Z/f039-bazaar.txt",
+    "args": {
+     "base": "CAD",
+     "symbols": "USD",
+     "amount": 100
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:32:43+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB CAD/USD 0.71452",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "A509EAAFF2FEE8ED3C60BE25137F0A0A53FFFCC5E3A197A6FF7EAF0669378CFF",
+    "body_file": "out/e26-bodies-20261025T1214Z/f039-plumb.txt",
+    "args": {
+     "amount": "100",
+     "from": "CAD",
+     "to": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:32:51+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB CAD/USD 0.71452",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f040",
+   "need": "Convert 100 AUD to USD at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "D15F7B3D5254FFB01E6333463C972611192EF4F3EC73D90BB83B150397D9180D",
+    "body_file": "out/e26-bodies-20261025T1214Z/f040-bazaar.txt",
+    "args": {
+     "base": "AUD",
+     "symbols": "USD",
+     "amount": "100"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:33:01+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB AUD/USD 0.70224",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://macropulse.theaslangroupllc.com/api/fx/convert",
+    "http": 200,
+    "spent": "0.005",
+    "tx": "39BBF8DCA80247B5C3EE1F2405FAA52E4AB382AB7704A5370B29A82805F58CC4",
+    "body_file": "out/e26-bodies-20261025T1214Z/f040-plumb.txt",
+    "args": {
+     "from": "AUD",
+     "to": "USD",
+     "amount": 100
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:33:09+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB AUD/USD 0.70224",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f041",
+   "need": "Convert 100 USD to CNY at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "70778F8282C3AECB04EEBA7EFAE699AF8AB94CE4C5A29C477F2C414357A9BA99",
+    "body_file": "out/e26-bodies-20261025T1214Z/f041-bazaar.txt",
+    "args": {
+     "base": "USD",
+     "symbols": "CNY",
+     "amount": 100
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:33:17+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/CNY 6.6702",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "72B5DCB12944E47E94ED1D59BAF465C0E978D16A221937A9B645879D171CABF3",
+    "body_file": "out/e26-bodies-20261025T1214Z/f041-plumb.txt",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "CNY"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:33:25+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/CNY 6.6702",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f042",
+   "need": "Convert 100 USD to INR at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/fx-rates",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "E49523BBA5CDD819AFF075D7B0086220F125F329EACB685080D76DE8584545AB",
+    "body_file": "out/e26-bodies-20261025T1214Z/f042-bazaar.txt",
+    "args": {
+     "currencies": "INR"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-23T00:00:00+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/INR 94.94",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.healthtravel-api.workers.dev/api/travel/rag-web-browser",
+    "http": 400,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e26-bodies-20261025T1214Z/f042-plumb.txt",
+    "args": {},
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"error\":\"url must be 8 to 500 characters\"}"
+   }
+  },
+  {
+   "id": "f043",
+   "need": "Convert 100 EUR to CHF at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "3BA41503A05D1B53569844BEB97E1F9F3C26283F585AEC99229CB3825956A090",
+    "body_file": "out/e26-bodies-20261025T1214Z/f043-bazaar.txt",
+    "args": {
+     "base": "EUR",
+     "symbols": "CHF",
+     "amount": 100
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:34:13+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB EUR/CHF 0.9227",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/ecb-institutional-fx-rates",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "2FDED538AE7410F74EC97034E3C13558217FEFCFA3CA1D96748BFC97E2EB72F9",
+    "body_file": "out/e26-bodies-20261025T1214Z/f043-plumb.txt",
+    "args": {
+     "amount": "100",
+     "from": "EUR",
+     "to": "CHF"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:34:17+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB EUR/CHF 0.9227",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f044",
+   "need": "Convert 100 GBP to EUR at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "9114399CD4B8AF399A6092365B0BBB2C7D31F93A7723BAC154F8491699C0E829",
+    "body_file": "out/e26-bodies-20261025T1214Z/f044-bazaar.txt",
+    "args": {
+     "amount": "100",
+     "from": "GBP",
+     "to": "EUR"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:34:33+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB GBP/EUR 1.1943",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/ecb-institutional-fx-rates",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "99A8236DD6263414BC039C328215EC4110B3C776C654F076FC86674740E012C8",
+    "body_file": "out/e26-bodies-20261025T1214Z/f044-plumb.txt",
+    "args": {
+     "amount": "100",
+     "from": "GBP",
+     "to": "EUR"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:34:36+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB GBP/EUR 1.1943",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f045",
+   "need": "Convert 100 USD to MXN at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/fx-rates",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "7ADEA86AA3CA13FBDBF44AB07460AC6ED32F3DF81E73ED1AB4A0CF7C4246B57F",
+    "body_file": "out/e26-bodies-20261025T1214Z/f045-bazaar.txt",
+    "args": {
+     "currencies": "MXN"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-23T00:00:00+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/MXN 18.7823",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/fx",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "0AC0BA5C8DE35BF5216BACAEF5EAF722152C4E4A1A6C7F0C3E72995A9DB818DA",
+    "body_file": "out/e26-bodies-20261025T1214Z/f045-plumb.txt",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "MXN"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-23T00:00:00+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/MXN 18.7823",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f046",
+   "need": "Convert 100 USD to BRL at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "0BAF29AEDAF86899D8B083DD2FC4700C10A55E1F22660CA4D8F025A953C37E66",
+    "body_file": "out/e26-bodies-20261025T1214Z/f046-bazaar.txt",
+    "args": {
+     "base": "USD",
+     "symbols": "BRL",
+     "amount": 100
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:35:19+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/BRL 5.0465",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/crypto-convert",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "594D429942A86B31D076AA19228853328339CBF667EF8FFD62194697D4AAE285",
+    "body_file": "out/e26-bodies-20261025T1214Z/f046-plumb.txt",
+    "args": {
+     "amount": 100,
+     "from": "USD",
+     "to": "BRL"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:35:22+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/BRL 5.0465",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f047",
+   "need": "Convert 100 NZD to USD at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "3A3B191454656ED96B749B5F9723EF48D75923D6A06CDBDED6EDFAD621D740F5",
+    "body_file": "out/e26-bodies-20261025T1214Z/f047-bazaar.txt",
+    "args": {
+     "base": "NZD",
+     "symbols": "USD",
+     "amount": 100
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:35:38+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB NZD/USD 0.56869",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/crypto-convert",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "4810FE5491D432DAFDE4215F928F50DD5B556FB5762990AD83A27864FA94C05B",
+    "body_file": "out/e26-bodies-20261025T1214Z/f047-plumb.txt",
+    "args": {
+     "amount": 100,
+     "from": "NZD",
+     "to": "USD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:35:41+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB NZD/USD 0.56869",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f048",
+   "need": "Convert 100 USD to SEK at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "9038B058FA1EA03111B6ED00B115EAFB6B2F7446743CE3B9F6451B5D87A7FA46",
+    "body_file": "out/e26-bodies-20261025T1214Z/f048-bazaar.txt",
+    "args": {
+     "base": "USD",
+     "symbols": "SEK",
+     "amount": 100
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:35:57+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/SEK 9.9446",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/ecb-institutional-fx-rates",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "15C4F970EB34AE792E7A6FD5723FDFCE511FAC15508BEB6CECA36A98806D31D2",
+    "body_file": "out/e26-bodies-20261025T1214Z/f048-plumb.txt",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "SEK"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:36:01+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/SEK 9.9446",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f049",
+   "need": "Convert 100 USD to NOK at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "B5C729AFF159C200751A30FAEE77409E7DA97D01C0B81285F37CFAA61D4155A9",
+    "body_file": "out/e26-bodies-20261025T1214Z/f049-bazaar.txt",
+    "args": {
+     "base": "USD",
+     "symbols": "NOK",
+     "amount": 100
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:36:17+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/NOK 9.3509",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/finance/norges-bank-norway",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "0D2C4DF795E25B6E850BB6AFCB78DA34E286BCAF363B47138711A30BF609E9DB",
+    "body_file": "out/e26-bodies-20261025T1214Z/f049-plumb.txt",
+    "args": {
+     "currency": "USD",
+     "last": "1"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:36:20+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/NOK 9.3509",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f050",
+   "need": "Convert 100 USD to KRW at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "24721FE61E38C1C8E544FDE2C66D698C09DAAC782785C86326309964C47CE270",
+    "body_file": "out/e26-bodies-20261025T1214Z/f050-bazaar.txt",
+    "args": {
+     "base": "USD",
+     "symbols": "KRW",
+     "amount": 100
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:36:39+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/KRW 1324.45",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/cripto-convertir-pago",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "5979BD490F3638688CE582A0F1269226F631A607D404639C63E17B3F622B6E87",
+    "body_file": "out/e26-bodies-20261025T1214Z/f050-plumb.txt",
+    "args": {
+     "cantidad": 100,
+     "de": "USD",
+     "a": "KRW"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:36:43+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/KRW 1324.45",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f051",
+   "need": "Convert 100 EUR to JPY at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "1A5FF85B3338440B79A9642ECF11632A0A875B32025A50A323A1050E205AC0FA",
+    "body_file": "out/e26-bodies-20261025T1214Z/f051-bazaar.txt",
+    "args": {
+     "amount": "100",
+     "from": "EUR",
+     "to": "JPY"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:37:00+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB EUR/JPY 175.51",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/ecb-institutional-fx-rates",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "B13BB0A1267D2169D43641E20F0B7DEB52C96CEA9F761D8F6DA35A570A429C8B",
+    "body_file": "out/e26-bodies-20261025T1214Z/f051-plumb.txt",
+    "args": {
+     "amount": "100",
+     "from": "EUR",
+     "to": "JPY"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:37:03+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB EUR/JPY 175.51",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f052",
+   "need": "Convert 100 USD to SGD at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "FD739346BD577CDF1D9F3A35F98F34E9AC3EEA9874C9A92CE19F6D7BDD92AFF6",
+    "body_file": "out/e26-bodies-20261025T1214Z/f052-bazaar.txt",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "SGD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:37:18+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/SGD 1.2785",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/fx",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "DA5255AC3670444D98A5BF7AE2DEED85C0355DBC4E359F14417F0FE4D1AAD474",
+    "body_file": "out/e26-bodies-20261025T1214Z/f052-plumb.txt",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "SGD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-23T00:00:00+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/SGD 1.2785",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f053",
+   "need": "Convert 100 USD to HKD at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "1ADC563B184E5F92DC5AAEF94AE714E3B5CA4D29663B36999ACF99B60D0A279C",
+    "body_file": "out/e26-bodies-20261025T1214Z/f053-bazaar.txt",
+    "args": {
+     "base": "USD",
+     "symbols": "HKD",
+     "amount": 100
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:37:37+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/HKD 7.8436",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   }
+  },
+  {
+   "id": "f054",
+   "need": "Convert 100 EUR to PLN at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "2128F92C1AEE2AD0F7832EE4236F83B2F2C35EBB54807F26292E7CF8B0D9F4A5",
+    "body_file": "out/e26-bodies-20261025T1214Z/f054-bazaar.txt",
+    "args": {
+     "base": "EUR",
+     "symbols": "PLN",
+     "amount": 100
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:37:45+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB EUR/PLN 4.3945",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "C0287BDC7A9A8FDC6AB4ECD679DE2942D3C5225AB4C9EFCBB7D9D366F647BE01",
+    "body_file": "out/e26-bodies-20261025T1214Z/f054-plumb.txt",
+    "args": {
+     "amount": "100",
+     "from": "EUR",
+     "to": "PLN"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:37:52+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB EUR/PLN 4.3945",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f055",
+   "need": "Convert 100 USD to ZAR at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "3057E62F321D9948DC01C7BE80D6840738BEB524DAEECED7234F1AC55B8D5490",
+    "body_file": "out/e26-bodies-20261025T1214Z/f055-bazaar.txt",
+    "args": {
+     "base": "USD",
+     "symbols": "ZAR",
+     "amount": 100
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:38:01+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/ZAR 16.5976",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "D648F0313FF6B8608CADCF534B92A0C5A42F2587BF5013079D85D21036129F7B",
+    "body_file": "out/e26-bodies-20261025T1214Z/f055-plumb.txt",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "ZAR"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:38:12+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/ZAR 16.5976",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f056",
+   "need": "Convert 100 USD to TRY at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "3E9368C108FB1283D5111982390A0AFAC5F562BD254ABE6BF99E71274588222A",
+    "body_file": "out/e26-bodies-20261025T1214Z/f056-bazaar.txt",
+    "args": {
+     "base": "USD",
+     "symbols": "TRY",
+     "amount": 100
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:38:20+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/TRY 49.738",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "DA4895C2B55A9B94845753BBF93D484DF0646174A34E34DC6618CE660D980924",
+    "body_file": "out/e26-bodies-20261025T1214Z/f056-plumb.txt",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "TRY"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:38:28+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/TRY 49.738",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f057",
+   "need": "Convert 100 EUR to CZK at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "036FBA10EE0F3733AB7EFD411F442F034502B021F21058D35E8C7BDF3AB26F18",
+    "body_file": "out/e26-bodies-20261025T1214Z/f057-bazaar.txt",
+    "args": {
+     "base": "EUR",
+     "symbols": "CZK",
+     "amount": 100
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:38:35+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB EUR/CZK 24.327",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/ecb-institutional-fx-rates",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "53CB4EF587A045C8BDBB1221963BE4F6F39FBE75426921B710DF7C5B20626DAD",
+    "body_file": "out/e26-bodies-20261025T1214Z/f057-plumb.txt",
+    "args": {
+     "amount": "100",
+     "from": "EUR",
+     "to": "CZK"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:38:39+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB EUR/CZK 24.327",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f058",
+   "need": "Convert 100 USD to DKK at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "5A84D1E6B1820E85329354A2F1A1EA83BFC12DCABC7543A0F91904C2027B6CA0",
+    "body_file": "out/e26-bodies-20261025T1214Z/f058-bazaar.txt",
+    "args": {
+     "base": "USD",
+     "symbols": "DKK",
+     "amount": 100
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:38:55+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/DKK 6.6781",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://buy.fizzl.eu/v1/buy",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "518B7C06BE1E6A7C1552908CF42BD9A9B9DF06A822B46CCEB3430F0707F7C486",
+    "body_file": "out/e26-bodies-20261025T1214Z/f058-plumb.txt",
+    "args": {
+     "need": "Convert 100 USD to DKK at the latest exchange rate"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:39:07+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/DKK 6.6781",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f059",
+   "need": "Convert 100 GBP to JPY at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "D92B5D8E8A3178632D0FB20423A16090F9B74BFB3B9B22DD315992E5019E4158",
+    "body_file": "out/e26-bodies-20261025T1214Z/f059-bazaar.txt",
+    "args": {
+     "amount": "100",
+     "from": "GBP",
+     "to": "JPY"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:39:21+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB GBP/JPY 209.62",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/fx",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "44AA0207DD6CED9FD0A83D58037FF197BD71FD82E3B0696D86B4216B02AF13F2",
+    "body_file": "out/e26-bodies-20261025T1214Z/f059-plumb.txt",
+    "args": {
+     "amount": "100",
+     "from": "GBP",
+     "to": "JPY"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-23T00:00:00+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB GBP/JPY 209.62",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f060",
+   "need": "Convert 100 CHF to EUR at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "D1DB5C52462B573CCEE7A58559C7440B95A37EA27524D668D23EDB35B0786642",
+    "body_file": "out/e26-bodies-20261025T1214Z/f060-bazaar.txt",
+    "args": {
+     "base": "CHF",
+     "symbols": "EUR",
+     "amount": 100
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:39:45+00:00 vs limit 3d",
+     "oracle": null,
+     "oracle_why": "oracle unavailable: ReadTimeout",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid JSON with CHF to EUR rate 1.08377588 and 100 CHF converted to 108.377588 EUR. Rate dated 2026-10-23, about 2 days old, within the 3d limit."
+     },
+     "method": {
+      "g4": "llm",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/ecb-institutional-fx-rates",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "E1EDA81CEBFB5B764D5D5CF5806D8189176C7E2562769AD001B40EF25914D3A7",
+    "body_file": "out/e26-bodies-20261025T1214Z/f060-plumb.txt",
+    "args": {
+     "amount": "100",
+     "from": "CHF",
+     "to": "EUR"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:40:11+00:00 vs limit 3d",
+     "oracle": null,
+     "oracle_why": "oracle unavailable: ReadTimeout",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid CHF to EUR rate 1.083776 with 100 converted to 108.38; data dated 2026-10-23 is within 3 days of now (2026-10-25), and the weekend gap is expected."
+     },
+     "method": {
+      "g4": "llm",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f061",
+   "need": "Current weather in Los Angeles",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "E8D2E506388092AC515CB810DD4F087CBA30111D591026B62C72D4C9699EC04A",
+    "body_file": "out/e26-bodies-20261025T1214Z/f061-bazaar.txt",
+    "args": {
+     "lat": 34.0522,
+     "lon": -118.2437
+    },
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": false,
+     "g5_why": "newest 2026-10-25T02:00:00-07:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KLAX 17.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": false,
+     "good": false
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   }
+  },
+  {
+   "id": "f062",
+   "need": "Current weather in Seattle",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/weather",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "36AB8B0F1D533E010E1298968B916057F0C3B47CC154A797419182C8A29AFBC0",
+    "body_file": "out/e26-bodies-20261025T1214Z/f062-bazaar.txt",
+    "args": {
+     "lat": 47.6062,
+     "lon": -122.3321,
+     "days": 1
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T11:18:10+00:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KSEA 9.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/tiempo-eeuu-pago",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "60E8BB0C85EC4F06502A75BA53C69BCF116D1678CF77203C5E45C2A8D3DDD6F7",
+    "body_file": "out/e26-bodies-20261025T1214Z/f062-plumb.txt",
+    "args": {
+     "lat": 47.6062,
+     "lon": -122.3321
+    },
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": false,
+     "g5_why": "newest 2026-10-24T23:00:00-07:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KSEA 9.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": false,
+     "good": false
+    },
+    "verdict_llm_only": "bad"
+   }
+  },
+  {
+   "id": "f063",
+   "need": "Current weather in Denver",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "68A6F5470C705CC1297E252E1292145D1C4E06BEF019E849E9DB477C49A6054B",
+    "body_file": "out/e26-bodies-20261025T1214Z/f063-bazaar.txt",
+    "args": {
+     "lat": 39.7392,
+     "lon": -104.9903
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T06:00:00-06:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KDEN 5.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   }
+  },
+  {
+   "id": "f064",
+   "need": "Current weather in Miami",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "9E263B0347EAEA9F016790FE824DD1A306E112C3851B9BBCD63ABA7AC19A1D42",
+    "body_file": "out/e26-bodies-20261025T1214Z/f064-bazaar.txt",
+    "args": {
+     "lat": 25.7617,
+     "lon": -80.1918
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T07:00:00-04:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KMIA 22.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/tiempo-eeuu-pago",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "17D5112DBBC25413471E02F0856ED04DC30276C95AC4B2DABFB92482B6EB85D4",
+    "body_file": "out/e26-bodies-20261025T1214Z/f064-plumb.txt",
+    "args": {
+     "lat": 25.7617,
+     "lon": -80.1918
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T07:00:00-04:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KMIA 22.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f065",
+   "need": "Current weather in Boston",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "15CDE35CDF7474FE90BD03D25727E35D116767DD10BA60651E19B130789FFE36",
+    "body_file": "out/e26-bodies-20261025T1214Z/f065-bazaar.txt",
+    "args": {
+     "lat": 42.3601,
+     "lon": -71.0589
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T07:00:00-04:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KBOS 7.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   }
+  },
+  {
+   "id": "f066",
+   "need": "Current weather in Atlanta",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "901BF3E3181E9CE51F726E299C9A9732AC2D109F3631B2CFA8DEBF73C94F09DA",
+    "body_file": "out/e26-bodies-20261025T1214Z/f066-bazaar.txt",
+    "args": {
+     "lat": 33.749,
+     "lon": -84.388
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T06:00:00-04:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KATL 12.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   }
+  },
+  {
+   "id": "f067",
+   "need": "Current weather in Phoenix",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "F884E920B48BDD711E114DB570923A43853599F9D672A0B842C55C0485B09707",
+    "body_file": "out/e26-bodies-20261025T1214Z/f067-bazaar.txt",
+    "args": {
+     "lat": 33.4484,
+     "lon": -112.074
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T04:00:00-07:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KPHX 16.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/tiempo-eeuu-pago",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "D00753F1DE57B2AD0A5091F668603C2AB53A82C3DD0CDF3D949823528F9AD67A",
+    "body_file": "out/e26-bodies-20261025T1214Z/f067-plumb.txt",
+    "args": {
+     "lat": 33.4484,
+     "lon": -112.074
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T04:00:00-07:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KPHX 16.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "bad"
+   }
+  },
+  {
+   "id": "f068",
+   "need": "Current weather in Dallas",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "C0AD4A98C42447B25A3AD06532A4BC25CFC85EAF7EC803D548D7D3CABA191C0C",
+    "body_file": "out/e26-bodies-20261025T1214Z/f068-bazaar.txt",
+    "args": {
+     "lat": 32.7767,
+     "lon": -96.797
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T06:00:00-05:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KDFW 16.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "C0AD4A98C42447B25A3AD06532A4BC25CFC85EAF7EC803D548D7D3CABA191C0C",
+    "body_file": "out/e26-bodies-20261025T1214Z/f068-bazaar.txt",
+    "args": {
+     "lat": 32.7767,
+     "lon": -96.797
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T06:00:00-05:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KDFW 16.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "bad",
+    "shared": true
+   }
+  },
+  {
+   "id": "f069",
+   "need": "Current weather in Houston",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "E1A8BC874249FDAD0FCEF4E4A8901207AD7B65FAC5B3B1FD9583E9DB555E880B",
+    "body_file": "out/e26-bodies-20261025T1214Z/f069-bazaar.txt",
+    "args": {
+     "lat": 29.7604,
+     "lon": -95.3698
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T06:00:00-05:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KIAH 15.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "E1A8BC874249FDAD0FCEF4E4A8901207AD7B65FAC5B3B1FD9583E9DB555E880B",
+    "body_file": "out/e26-bodies-20261025T1214Z/f069-bazaar.txt",
+    "args": {
+     "lat": 29.7604,
+     "lon": -95.3698
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T06:00:00-05:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KIAH 15.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "bad",
+    "shared": true
+   }
+  },
+  {
+   "id": "f070",
+   "need": "Current weather in San Francisco",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "C21C5571660E0BC884B48ABC76FCD0907FF0C8A6A77D6A547AD068560EDB887F",
+    "body_file": "out/e26-bodies-20261025T1214Z/f070-bazaar.txt",
+    "args": {
+     "lat": 37.7749,
+     "lon": -122.4194
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T05:00:00-07:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KSFO 12.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/weather",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "14ACBE10114D8EA9FB150463B78105CACC283DF02C9FB2569A92675A3C9210F1",
+    "body_file": "out/e26-bodies-20261025T1214Z/f070-plumb.txt",
+    "args": {
+     "days": 1,
+     "lat": 37.7749,
+     "lon": -122.4194
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T11:18:05+00:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KSFO 12.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f071",
+   "need": "Current weather in Minneapolis",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/weather",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "92A8BE00D6EA199B5E0928C705C4A0F7196AFEBFEA445421CBC16AC8B154D42F",
+    "body_file": "out/e26-bodies-20261025T1214Z/f071-bazaar.txt",
+    "args": {
+     "lat": 44.9778,
+     "lon": -93.265,
+     "days": 1
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T11:18:33+00:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KMSP 9.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.healthtravel-api.workers.dev/api/travel/aviationweather-metar-taf",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "25B00CCB416727F4078E60C240F42BDF22F95A768F47C1ED8BB4514BECB01720",
+    "body_file": "out/e26-bodies-20261025T1214Z/f071-plumb.txt",
+    "args": {
+     "icao": "KMSP"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:43:20+00:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KMSP 9.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f072",
+   "need": "Current weather in Detroit",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "1EB7C842F1F2A334BCDD92433BAA288013EBA1A618DFC89535D61D86BC74C610",
+    "body_file": "out/e26-bodies-20261025T1214Z/f072-bazaar.txt",
+    "args": {
+     "lat": 42.3314,
+     "lon": -83.0458
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T06:00:00-04:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KDTW 6.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "1EB7C842F1F2A334BCDD92433BAA288013EBA1A618DFC89535D61D86BC74C610",
+    "body_file": "out/e26-bodies-20261025T1214Z/f072-bazaar.txt",
+    "args": {
+     "lat": 42.3314,
+     "lon": -83.0458
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T06:00:00-04:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KDTW 6.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "bad",
+    "shared": true
+   }
+  },
+  {
+   "id": "f073",
+   "need": "Current weather in Philadelphia",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "F3947ADC8B210C300EEF29046BA717620D4991BD7DE08879685FE3075D4A18E0",
+    "body_file": "out/e26-bodies-20261025T1214Z/f073-bazaar.txt",
+    "args": {
+     "lat": 39.9526,
+     "lon": -75.1652
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T06:00:00-04:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KPHL 7.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "url": "https://climatepulse.theaslangroupllc.com/api/climate/now",
+    "http": null,
+    "spent": "0.05",
+    "tx": "C1A814B7A30573537D50E1BF84125B271D3B4B64AEF64278057E78152C56A185",
+    "body_file": "out/e26-bodies-20261025T1214Z/f073-plumb.txt",
+    "args": {
+     "location": "Philadelphia, PA",
+     "units": "imperial",
+     "lang": "en"
+    },
+    "verdict": "bad",
+    "verdict_llm_only": "bad",
+    "detail": "ReadTimeout"
+   }
+  },
+  {
+   "id": "f074",
+   "need": "Current weather in Las Vegas",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "889BDA9D069AA14B8DFAC59C9EBBDF4803E87DE02DE6875CCB7621EF7D67680F",
+    "body_file": "out/e26-bodies-20261025T1214Z/f074-bazaar.txt",
+    "args": {
+     "lat": 36.1699,
+     "lon": -115.1398
+    },
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": false,
+     "g5_why": "newest 2026-10-25T00:00:00-07:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KLAS 13.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": false,
+     "good": false
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/sun",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "54EBDB22F494909A9105065003057ABD77FC775CA9A5774760742A934FC9395D",
+    "body_file": "out/e26-bodies-20261025T1214Z/f074-plumb.txt",
+    "args": {
+     "lat": "36.1699",
+     "lon": "-115.1398"
+    },
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:44:36+00:00 vs limit 3h",
+     "oracle": false,
+     "oracle_why": "NWS KLAS 13.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad"
+   }
+  },
+  {
+   "id": "f075",
+   "need": "Current weather in Washington, DC",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "919F251896F42F9A3060E4D4E6049B54D5C7B21D84667D65A4BADF747C8C0130",
+    "body_file": "out/e26-bodies-20261025T1214Z/f075-bazaar.txt",
+    "args": {
+     "lat": 38.9072,
+     "lon": -77.0369
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T08:00:00-04:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KDCA 8.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "url": "https://climatepulse.theaslangroupllc.com/api/climate/now",
+    "http": 200,
+    "spent": "0.05",
+    "tx": "7CFC3F09A82E767E4F268424326808996C08C9830C2474DF3740941F7EDC9D13",
+    "body_file": "out/e26-bodies-20261025T1214Z/f075-plumb.txt",
+    "args": {
+     "location": "Washington, DC",
+     "units": "imperial",
+     "lang": "en"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:45:18+00:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KDCA 8.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f076",
+   "need": "Latest block number on Polygon",
+   "bazaar": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/polygon-pos-checkpoints",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "258DFC68AECB2BA814FE410E00EF9F3C80F79BF105ABCFD4F28F6F90E62C7111",
+    "body_file": "out/e26-bodies-20261025T1214Z/f076-bazaar.txt",
+    "args": {
+     "count": "1"
+    },
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:45:21+00:00 vs limit 10m",
+     "oracle": false,
+     "oracle_why": "head 96151306 (tol 60)",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "url": "https://horizonpulse.dev/api/chain/head",
+    "verdict": "refused",
+    "why": "no x402 challenge (HTTP 402)",
+    "spent": "0"
+   }
+  },
+  {
+   "id": "f077",
+   "need": "Latest block number on BNB Smart Chain",
+   "bazaar": {
+    "url": "https://horizonpulse.dev/api/chain/head",
+    "verdict": "refused",
+    "why": "no x402 challenge (HTTP 402)",
+    "spent": "0"
+   },
+   "plumb": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   }
+  },
+  {
+   "id": "f078",
+   "need": "Latest block number on Arbitrum One",
+   "bazaar": {
+    "url": "https://api.fadeandco.workers.dev/api/dev/gmx-arbitrum-stats",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "E17E5135F1B5FA5CB8A6605487E106A44D81F817424993D0D70E4F3161F2575B",
+    "body_file": "out/e26-bodies-20261025T1214Z/f078-bazaar.txt",
+    "args": {},
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:45:34+00:00 vs limit 10m",
+     "oracle": false,
+     "oracle_why": "head 518144014 (tol 500)",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/evm/block",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "F8CD46D4A34DC625C19CBA4689BFB1D837C5BA927D91DE54FB47D0BA2C773EB0",
+    "body_file": "out/e26-bodies-20261025T1214Z/f078-plumb.txt",
+    "args": {
+     "chain": "arbitrum",
+     "number": "latest"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:45:44+00:00 vs limit 10m",
+     "oracle": true,
+     "oracle_why": "head 518144042 (tol 500)",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f079",
+   "need": "Latest block number on Base",
+   "bazaar": {
+    "url": "https://api.sitecheck-api.workers.dev/api/evm/block",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "C853D153E4D428DA71BE6E566A751263E17EF2CFC32B9A262B513B55FA1BE223",
+    "body_file": "out/e26-bodies-20261025T1214Z/f079-bazaar.txt",
+    "args": {
+     "chain": "base",
+     "number": "latest"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:45:52+00:00 vs limit 10m",
+     "oracle": true,
+     "oracle_why": "head 53071505 (tol 60)",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/evm/block",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "C853D153E4D428DA71BE6E566A751263E17EF2CFC32B9A262B513B55FA1BE223",
+    "body_file": "out/e26-bodies-20261025T1214Z/f079-bazaar.txt",
+    "args": {
+     "chain": "base",
+     "number": "latest"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:45:52+00:00 vs limit 10m",
+     "oracle": true,
+     "oracle_why": "head 53071505 (tol 60)",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "shared": true
+   }
+  },
+  {
+   "id": "f080",
+   "need": "Latest block number on Optimism",
+   "bazaar": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/optimism-superchain-tx",
+    "http": 400,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e26-bodies-20261025T1214Z/f080-bazaar.txt",
+    "args": {
+     "blocks": "1"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"error\":\"blocks must be a whole number from 2 to 10\"}"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/optimism-superchain-tx",
+    "http": 400,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e26-bodies-20261025T1214Z/f080-bazaar.txt",
+    "args": {
+     "blocks": "1"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"error\":\"blocks must be a whole number from 2 to 10\"}",
+    "shared": true
+   }
+  },
+  {
+   "id": "f081",
+   "need": "Latest block number on Avalanche C-Chain",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/chain-info",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "622DBB1FA99175567532C8580759B1E41E6339D12A8B2B3ADC9D5CD2F448C8B8",
+    "body_file": "out/e26-bodies-20261025T1214Z/f081-bazaar.txt",
+    "args": {
+     "chain_id": 43114
+    },
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no timestamp found",
+     "oracle": false,
+     "oracle_why": "head 98515573 (tol 70)",
+     "llm": {
+      "g4_answers_need": false,
+      "g5_fresh_enough": false,
+      "reason": "Response is static network reference data (chain ID, explorers); it contains no latest block number and no timestamp showing freshness within 10 minutes."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": false,
+     "g5_final": false,
+     "good": false
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   }
+  },
+  {
+   "id": "f082",
+   "need": "Latest block number on Gnosis Chain",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/chain-info",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "AFFF7D0082A9F5F38C0089AC975FE7192AD848573256C4B31A5A8E32E4C2DE75",
+    "body_file": "out/e26-bodies-20261025T1214Z/f082-bazaar.txt",
+    "args": {
+     "chain_id": 100
+    },
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no timestamp found",
+     "oracle": false,
+     "oracle_why": "head 48935569 (tol 25)",
+     "llm": {
+      "g4_answers_need": false,
+      "g5_fresh_enough": false,
+      "reason": "Response is static chain reference metadata with no latest block number; no timestamp shows data is within 10 minutes."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": false,
+     "g5_final": false,
+     "good": false
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "url": "https://horizonpulse.dev/api/chain/head",
+    "verdict": "refused",
+    "why": "no x402 challenge (HTTP 402)",
+    "spent": "0"
+   }
+  },
+  {
+   "id": "f083",
+   "need": "Latest block number on Linea",
+   "bazaar": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/linea-consensys-rollup",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "0868091D81A6CB9CC796CFA3059236F8FB8C2CE3C5C292B302530AEBBC54588F",
+    "body_file": "out/e26-bodies-20261025T1214Z/f083-bazaar.txt",
+    "args": {},
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:46:53+00:00 vs limit 10m",
+     "oracle": true,
+     "oracle_why": "head 32421630 (tol 60)",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/linea-consensys-rollup",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "0868091D81A6CB9CC796CFA3059236F8FB8C2CE3C5C292B302530AEBBC54588F",
+    "body_file": "out/e26-bodies-20261025T1214Z/f083-bazaar.txt",
+    "args": {},
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:46:53+00:00 vs limit 10m",
+     "oracle": true,
+     "oracle_why": "head 32421630 (tol 60)",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "shared": true
+   }
+  },
+  {
+   "id": "f084",
+   "need": "Latest block number on Scroll",
+   "bazaar": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/scroll-l2-zk-proofs",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "EE893C4A61D05C7C97450B89C1F6385ACB8361FA7CF6B4D97E0DE06A7D59E173",
+    "body_file": "out/e26-bodies-20261025T1214Z/f084-bazaar.txt",
+    "args": {
+     "blocks": "1"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:47:05+00:00 vs limit 10m",
+     "oracle": true,
+     "oracle_why": "head 35492711 (tol 40)",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/scroll-l2-zk-proofs",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "EE893C4A61D05C7C97450B89C1F6385ACB8361FA7CF6B4D97E0DE06A7D59E173",
+    "body_file": "out/e26-bodies-20261025T1214Z/f084-bazaar.txt",
+    "args": {
+     "blocks": "1"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:47:05+00:00 vs limit 10m",
+     "oracle": true,
+     "oracle_why": "head 35492711 (tol 40)",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good",
+    "shared": true
+   }
+  },
+  {
+   "id": "f085",
+   "need": "Latest block number on XRP Ledger",
+   "bazaar": {
+    "url": "https://bruk-agent-api.fly.dev/v1/ledger-moment",
+    "http": 200,
+    "spent": "0.02",
+    "tx": "6BACDE21780B66BE6FA776E058AC3954573B10526132E67C679327D63EC57016",
+    "body_file": "out/e26-bodies-20261025T1214Z/f085-bazaar.txt",
+    "args": {
+     "network": "mainnet"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T12:47:17+00:00 vs limit 10m",
+     "oracle": true,
+     "oracle_why": "head 107893551 (tol 35)",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://bruk-agent-api.fly.dev/v1/pulse",
+    "http": null,
+    "spent": "0.001",
+    "tx": "AA44A709E4B5350B9708D1703192656D0C1D9D8507D2911037B13BC8C9B43368",
+    "body_file": "out/e26-bodies-20261025T1214Z/f085-plumb.txt",
+    "args": {},
+    "verdict": "bad",
+    "verdict_llm_only": "bad",
+    "detail": "ReadTimeout"
+   }
+  },
+  {
+   "id": "f086",
+   "need": "Is 2026-12-25 a public holiday in Germany? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "8B93FBFFF9446FE4B98730796A06FA6F5224337634B2B6BD274011CA6C2A5AFF",
+    "body_file": "out/e26-bodies-20261025T1214Z/f086-bazaar.txt",
+    "args": {
+     "country": "DE",
+     "year": 2026
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-12-25 is Christmas Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid real holiday data for DE 2026 lists 2026-12-25 as Christmas Day, answering both must_include items. Freshness is n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "F5CFBD4F7588E822A63A2CE68B9216CC6310FAF77B05E9262BF8C72CC4F82427",
+    "body_file": "out/e26-bodies-20261025T1214Z/f086-plumb.txt",
+    "args": {
+     "country": "DE",
+     "year": "2026"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-12-25 is Christmas Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid holiday data for DE 2026 lists 2026-12-25 as nationwide Christmas Day (Erster Weihnachtstag). Freshness is n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f087",
+   "need": "Is 2026-12-25 a public holiday in United Kingdom? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "2FBB63ADF7E9A0C7DD55C313551828384B5DCAF0F7D84EA91BBEEA576ED04530",
+    "body_file": "out/e26-bodies-20261025T1214Z/f087-bazaar.txt",
+    "args": {
+     "country": "GB",
+     "year": 2026
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-12-25 is Christmas Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid JSON listing 2026-12-25 as Christmas Day for GB, answering both holiday status and name. Freshness is n/a, so it passes."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "44EF615B4B25CD8C392E8C0430753B1D5F9BCC719F807E7EE78DAA430D1F56A5",
+    "body_file": "out/e26-bodies-20261025T1214Z/f087-plumb.txt",
+    "args": {
+     "country": "GB",
+     "year": "2026"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-12-25 is Christmas Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid JSON listing 2026 GB holidays; 2026-12-25 is Christmas Day, nationwide. Freshness is n/a, so it passes."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f088",
+   "need": "Is 2026-11-01 a public holiday in France? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "743DF1FA24C3339D5628D01251DA8085A5BA1F3B12F959EAB7B4799DE03E342F",
+    "body_file": "out/e26-bodies-20261025T1214Z/f088-bazaar.txt",
+    "args": {
+     "country": "FR",
+     "year": 2026
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-11-01 is All Saints' Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid JSON listing French 2026 holidays; includes 2026-11-01 as All Saints' Day, answering both items. Freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "86828AFBB792B2061065A108CE8A35A11E51F2219D6A3DDC1D68E81249C1F6CA",
+    "body_file": "out/e26-bodies-20261025T1214Z/f088-plumb.txt",
+    "args": {
+     "country": "FR",
+     "year": "2026"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-11-01 is All Saints' Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid JSON for France 2026 lists 2026-11-01 as Toussaint (All Saints' Day), nationwide holiday. Freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f089",
+   "need": "Is 2026-11-03 a public holiday in Japan? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "42E19EBE3CAC7A96334334324E09AF49E624D0AAEBFC4197314014E0CBE82F59",
+    "body_file": "out/e26-bodies-20261025T1214Z/f089-bazaar.txt",
+    "args": {
+     "country": "JP",
+     "year": 2026
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-11-03 is Culture Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid JSON listing Japan 2026 holidays; includes 2026-11-03 as Culture Day, answering both items. Freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "90278C217C7F53194D1CD327953A494F204916ED362C60ADCE9FD429A7481D2A",
+    "body_file": "out/e26-bodies-20261025T1214Z/f089-plumb.txt",
+    "args": {
+     "country": "JP",
+     "year": "2026"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-11-03 is Culture Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid JSON holiday list for Japan 2026 includes 2026-11-03 as Culture Day (\u6587\u5316\u306e\u65e5), nationwide. Freshness is n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f090",
+   "need": "Is 2026-12-25 a public holiday in Canada? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "045CD3543FCFFD7F4939A874B5A6C281F75AD1E682F53BA516D7856F01B36012",
+    "body_file": "out/e26-bodies-20261025T1214Z/f090-bazaar.txt",
+    "args": {
+     "country": "CA",
+     "year": 2026
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-12-25 is Christmas Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Response lists 2026-12-25 as Christmas Day in Canada's 2026 holidays, answering both items. Valid real-looking data; freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "B45D8AAA087273C4CDD4E8274274189F8C62F617B84C74A68BC9BCE9EEC7BDB8",
+    "body_file": "out/e26-bodies-20261025T1214Z/f090-plumb.txt",
+    "args": {
+     "country": "CA",
+     "year": "2026"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-12-25 is Christmas Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid real API data lists 2026-12-25 as Christmas Day, nationwide true in Canada. Freshness is n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f091",
+   "need": "Is 2026-12-25 a public holiday in Australia? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "D50F5673FE22C73ED336664F3D4CAE2C1D02B779B0DD0B1B4AA4E82508543E6B",
+    "body_file": "out/e26-bodies-20261025T1214Z/f091-bazaar.txt",
+    "args": {
+     "country": "AU",
+     "year": 2026
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-12-25 is Christmas Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid non-placeholder JSON for AU 2026 lists 2026-12-25 as Christmas Day, answering both items. Freshness is n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "70D3A9C2A27307CD7429D38D4BDCEFE05B98792D009AFD0489A342E94D54A28B",
+    "body_file": "out/e26-bodies-20261025T1214Z/f091-plumb.txt",
+    "args": {
+     "country": "AU",
+     "year": "2026"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-12-25 is Christmas Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid AU 2026 holiday data lists 2026-12-25 as nationwide Christmas Day. Freshness is n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f092",
+   "need": "Is 2026-11-02 a public holiday in Brazil? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "EC316F29C941BAB9D5F70CD3F73F5D4A2646BC79D308442C4A43714F899F3B64",
+    "body_file": "out/e26-bodies-20261025T1214Z/f092-bazaar.txt",
+    "args": {
+     "country": "BR",
+     "year": 2026
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-11-02 is All Souls' Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid JSON listing BR 2026 holidays; includes 2026-11-02 as All Souls' Day, answering both items. Freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "A39B30C70FBCB17AE7E9AD91152D46CA7778C14C06591FE545B8C27FA2D2E768",
+    "body_file": "out/e26-bodies-20261025T1214Z/f092-plumb.txt",
+    "args": {
+     "country": "BR",
+     "year": "2026"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-11-02 is All Souls' Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Response lists 2026-11-02 as nationwide holiday Dia de Finados (All Souls' Day) in Brazil; valid real data; freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f093",
+   "need": "Is 2026-11-01 a public holiday in Italy? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "9403EAE40399B8982FA73DBF1E3F52FC7B81A661F04992F0F875CBF524758E28",
+    "body_file": "out/e26-bodies-20261025T1214Z/f093-bazaar.txt",
+    "args": {
+     "country": "IT",
+     "year": 2026
+    },
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": false,
+     "oracle_why": "nager.date: 2026-11-01 is All Saints Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid Italy 2026 holiday data lists 2026-11-01 as a holiday named All Saints' Day (National Unity Day). Freshness is n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "779C1F1AC44A88E09B63B1FE035C9BF84BDF0E95AC46E6B4AFC9C1F5E4EB79E3",
+    "body_file": "out/e26-bodies-20261025T1214Z/f093-plumb.txt",
+    "args": {
+     "country": "IT",
+     "year": "2026"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-11-01 is All Saints Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid holiday list for Italy 2026 includes 2026-11-01 as nationwide public holiday 'Tutti i Santi' (All Saints Day). Freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f094",
+   "need": "Is 2026-11-01 a public holiday in Spain? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "6078E9D6AD5A18CC6C27AC2E8E7B1F02E063D4B5A2ACFB1A569C698FE47B96A6",
+    "body_file": "out/e26-bodies-20261025T1214Z/f094-bazaar.txt",
+    "args": {
+     "country": "ES",
+     "year": 2026
+    },
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": false,
+     "oracle_why": "nager.date: 2026-11-01 is All Saints Day",
+     "llm": {
+      "g4_answers_need": false,
+      "g5_fresh_enough": true,
+      "reason": "Response is valid national holiday list for Spain 2026 but omits 2026-11-01 (All Saints' Day, a Sunday) and gives no explicit answer; absence is ambiguous, so the need is not clearly answered."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "bad"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "AD7D6297E66912456C66AC5593BDFF7CDA063C6F9CB2D3061BEADF5D00B049F5",
+    "body_file": "out/e26-bodies-20261025T1214Z/f094-plumb.txt",
+    "args": {
+     "country": "ES",
+     "year": "2026"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-11-01 is All Saints Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid real data lists 2026-11-01 as nationwide holiday 'D\u00eda de todos los Santos' (All Saints Day) in Spain; freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f095",
+   "need": "Is 2026-12-25 a public holiday in Netherlands? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "C710E07150383D2FB3279397F806E71137A80FE6749BE683E21E4EF236C59C1B",
+    "body_file": "out/e26-bodies-20261025T1214Z/f095-bazaar.txt",
+    "args": {
+     "country": "NL",
+     "year": 2026
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-12-25 is Christmas Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid NL 2026 holiday list includes 2026-12-25 as Christmas Day, answering both items. Freshness is n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "39A9365CE0B9253EEC4E6ADBCCD8F26610EB5686BDAB5FEFEBB8A8F00DB13CBF",
+    "body_file": "out/e26-bodies-20261025T1214Z/f095-plumb.txt",
+    "args": {
+     "country": "NL",
+     "year": "2026"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-12-25 is Christmas Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid JSON listing NL 2026 holidays; 2026-12-25 is Eerste Kerstdag (Christmas Day), nationwide. Freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f096",
+   "need": "Is 2026-11-16 a public holiday in Mexico? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "1A729A3A64A2EC4937E9F3CE91060213BAB85470B8F9323FCE2F4572490DBFB9",
+    "body_file": "out/e26-bodies-20261025T1214Z/f096-bazaar.txt",
+    "args": {
+     "country": "MX",
+     "year": 2026
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-11-16 is D\u00eda de la Revoluci\u00f3n",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Response lists 2026-11-16 as Revolution Day in Mexico's holiday list, answering both items; valid real data; freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "8FC5CEE89676B87D097FCF648BE5A9F65846FF77A181D8353E7DB0848ADD99D8",
+    "body_file": "out/e26-bodies-20261025T1214Z/f096-plumb.txt",
+    "args": {
+     "country": "MX",
+     "year": "2026"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-11-16 is D\u00eda de la Revoluci\u00f3n",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid JSON for MX 2026 lists 2026-11-16 as nationwide holiday 'D\u00eda de la Revoluci\u00f3n' (Revolution Day). Freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f097",
+   "need": "Is 2026-12-25 a public holiday in South Korea? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "D8812C25B69D0B259706AD6BFEBB2C701432BD38F079381B03C3A767365AC739",
+    "body_file": "out/e26-bodies-20261025T1214Z/f097-bazaar.txt",
+    "args": {
+     "country": "KR",
+     "year": 2026
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-12-25 is Christmas Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid holiday list for KR 2026 includes 2026-12-25 as Christmas Day, answering both holiday status and name. Freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "28CAF24D3F5B3EF43B09E88C1B5D3EB067ACC09BD1F7382206048CB372D64458",
+    "body_file": "out/e26-bodies-20261025T1214Z/f097-plumb.txt",
+    "args": {
+     "country": "KR",
+     "year": "2026"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-12-25 is Christmas Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid holiday data for KR 2026 lists 2026-12-25 as nationwide public holiday 'Christmas Day'. Freshness is n/a, so it passes."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f098",
+   "need": "Is 2026-10-26 a public holiday in New Zealand? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "495BF7BD46FD96E7E3261D09D61BF5DF53D1B784A31E13F4CAE728F1D8EABFAC",
+    "body_file": "out/e26-bodies-20261025T1214Z/f098-bazaar.txt",
+    "args": {
+     "country": "NZ",
+     "year": 2026
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-10-26 is Labour Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Response lists 2026-10-26 as Labour Day in NZ (Monday), answering both holiday status and name. Freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "535C2EDF187F0D0A7BD7A82642C62587C6BB1C72F8337C862754B94DBFAF9B21",
+    "body_file": "out/e26-bodies-20261025T1214Z/f098-plumb.txt",
+    "args": {
+     "country": "NZ",
+     "year": "2026"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-10-26 is Labour Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid NZ 2026 holiday list includes 2026-10-26 as nationwide Labour Day; freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f099",
+   "need": "Is 2026-10-31 a public holiday in Sweden? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "A153B55D0CEC0943AC6975A574A6FC2115E57234BF95E533B380075B3A56D082",
+    "body_file": "out/e26-bodies-20261025T1214Z/f099-bazaar.txt",
+    "args": {
+     "country": "SE",
+     "year": 2026
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-10-31 is All Saints' Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid holiday data for SE 2026 lists 2026-10-31 as All Saints' Day (Saturday), answering both whether it is a holiday and its name. Freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "3F2AEEA7C3C5C2ADF624046B729762C9BEBCA34CFC6EB9628366CB8DC45CE5DA",
+    "body_file": "out/e26-bodies-20261025T1214Z/f099-plumb.txt",
+    "args": {
+     "country": "SE",
+     "year": "2026"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-10-31 is All Saints' Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid holiday list for SE 2026 includes 2026-10-31 as Alla helgons dag (All Saints' Day), nationwide. Freshness is n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f100",
+   "need": "Is 2026-12-25 a public holiday in Switzerland? If so, name it",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/public-holidays",
+    "http": 200,
+    "spent": "0.003",
+    "tx": "BFE12510ED7DFAF1D3939CD1A2B8D001DFADAB027306FB78967B5022377C9A1F",
+    "body_file": "out/e26-bodies-20261025T1214Z/f100-bazaar.txt",
+    "args": {
+     "country": "CH",
+     "year": 2026
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-12-25 is Christmas Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid non-placeholder JSON for CH 2026 lists 2026-12-25 as Christmas Day, a public holiday; freshness n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "9542BC2FC26BB866B2DF84F5D7740006694E3B3410E987AD035DC661B279CAFF",
+    "body_file": "out/e26-bodies-20261025T1214Z/f100-plumb.txt",
+    "args": {
+     "country": "CH",
+     "year": "2026"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": null,
+     "g5_why": "no numeric freshness limit",
+     "oracle": true,
+     "oracle_why": "nager.date: 2026-12-25 is Christmas Day",
+     "llm": {
+      "g4_answers_need": true,
+      "g5_fresh_enough": true,
+      "reason": "Valid Swiss 2026 holiday data lists 2026-12-25 as Weihnachten (Christmas Day), nationwide true. Freshness is n/a."
+     },
+     "method": {
+      "g4": "oracle",
+      "g5": "llm"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  }
+ ]
+}
