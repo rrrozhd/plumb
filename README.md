@@ -1,6 +1,10 @@
-<h1>
+<h1 align="center">
   <img src="assets/plumb-logo.png" alt="Plumb" width="420">
 </h1>
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=TDTZNnMuPt4">Watch the demo on YouTube</a>
+</p>
 
 **The router that tells AI agents which XRPL merchant to pay, for them.**
 
