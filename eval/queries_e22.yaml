@@ -1,0 +1,68 @@
+# E22 held-out needs. FROZEN 2026-10-25, written before any judge-v2 label or E22 purchase existed.
+# None of these was used to build, tune or judge Plumb v1/v2. Labels follow eval/rubric.md (unchanged).
+version: 1
+status: frozen
+frozen_on: "2026-10-25"
+defaults:
+  max_price_rlusd: "0.05"
+queries:
+  - id: e01
+    need: "Current ETH price in USD"
+    inputs: {asset: ETH, quote: USD}
+    must_include: ["ETH price in USD, as a number"]
+    check: "Within 2% of the CoinGecko ETH/USD price at purchase time."
+    freshness: 15m
+  - id: e02
+    need: "Current SOL price in USD"
+    inputs: {asset: SOL, quote: USD}
+    must_include: ["SOL price in USD, as a number"]
+    check: "Within 2% of the CoinGecko SOL/USD price at purchase time."
+    freshness: 15m
+  - id: e03
+    need: "Convert 100 GBP to USD at the latest exchange rate"
+    inputs: {amount: "100", from: GBP, to: USD}
+    must_include: ["GBP to USD exchange rate"]
+    check: "Rate within 1% of the latest ECB-derived GBP/USD rate (frankfurter). If a converted amount is given, it equals 100 x rate within 0.01 USD."
+    freshness: 3d
+  - id: e04
+    need: "Convert 1000 JPY to EUR at the latest exchange rate"
+    inputs: {amount: "1000", from: JPY, to: EUR}
+    must_include: ["JPY to EUR exchange rate"]
+    check: "Rate within 1% of the latest ECB JPY/EUR rate (frankfurter). If a converted amount is given, it equals 1000 x rate within 0.01 EUR."
+    freshness: 3d
+  - id: e05
+    need: "Current Ethereum mainnet block number"
+    inputs: {chain: ethereum}
+    must_include: ["latest block number"]
+    check: "Within 50 blocks of the latest block from a public Ethereum node at purchase time."
+    freshness: 10m
+  - id: e06
+    need: "Current weather in Chicago"
+    inputs: {location: Chicago, lat: "41.8781", lon: "-87.6298"}
+    must_include: ["current temperature", "current conditions"]
+    check: "Current temperature within 4 °C of the NWS Chicago Midway (KMDW) observation at purchase time."
+    freshness: 3h
+  - id: e07
+    need: "Is 2026-12-25 a US business day? List the US federal holidays in December 2026"
+    inputs: {date: "2026-12-25", country: US}
+    must_include: ["whether 2026-12-25 is a US business day", "the US federal holidays in December 2026"]
+    check: "2026-12-25 is Christmas Day, so not a business day. December 2026 federal holidays: Christmas Day (2026-12-25)."
+    freshness: n/a
+  - id: e08
+    need: "WHOIS registration data for the domain coinbase.com: registrar, creation date and expiry date"
+    inputs: {domain: coinbase.com}
+    must_include: ["registrar", "creation date", "expiry date"]
+    check: "Matches RDAP for coinbase.com (rdap.verisign.com) at purchase time."
+    freshness: n/a
+  - id: e09
+    need: "XRP balance of the XRPL account rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De"
+    inputs: {address: rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De, network: xrpl-mainnet}
+    must_include: ["XRP balance of that account, as a number"]
+    check: "Within 1% of account_info Balance on a full-history XRPL node at purchase time."
+    freshness: 1h
+  - id: e10
+    need: "Latest Bitcoin block height"
+    inputs: {chain: bitcoin}
+    must_include: ["latest block height"]
+    check: "Within 3 blocks of mempool.space's tip height at purchase time."
+    freshness: 1h

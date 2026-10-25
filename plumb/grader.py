@@ -235,3 +235,73 @@ def grade(q: dict, body: str, declared_json: bool, schema: dict | None, llm=None
     out["g4"], out["g5_final"] = g4, fresh
     out["good"] = bool(ok3 and g4 and fresh)
     return out
+
+
+# ---------- E22 held-out needs (eval/queries_e22.yaml): oracles from the sources each `check` names ---------------
+def _cg(coin):
+    return _get("https://api.coingecko.com/api/v3/simple/price", params={"ids": coin, "vs_currencies": "usd"})[coin]["usd"]
+
+
+def o_e01(data, text):
+    ref = _cg("ethereum")
+    return _near(numbers(data), ref, 0.02), f"CoinGecko ETH {ref}"
+
+
+def o_e02(data, text):
+    ref = _cg("solana")
+    return _near(numbers(data), ref, 0.02), f"CoinGecko SOL {ref}"
+
+
+def o_e03(data, text):
+    rate = _get("https://api.frankfurter.app/latest", params={"from": "GBP", "to": "USD"})["rates"]["USD"]
+    return _near(numbers(data), rate, 0.01) or _near(numbers(data), 100 * rate, 0.0001), f"ECB GBP/USD {rate}"
+
+
+def o_e04(data, text):
+    rate = _get("https://api.frankfurter.app/latest", params={"from": "JPY", "to": "EUR"})["rates"]["EUR"]
+    return _near(numbers(data), rate, 0.01) or _near(numbers(data), 1000 * rate, 0.0001), f"ECB JPY/EUR {rate}"
+
+
+def o_e05(data, text):
+    ref = int(_eth("eth_blockNumber", []), 16)
+    return any(abs(v - ref) <= 50 for v in numbers(data)), f"block {ref}"
+
+
+def o_e06(data, text):
+    obs = _get("https://api.weather.gov/stations/KMDW/observations/latest")["properties"]["temperature"]["value"]
+    if obs is None:
+        return None, "NWS KMDW has no current temperature"
+    vals = numbers(data)
+    return any(abs(v - obs) <= 4 for v in vals) or any(abs((v - 32) * 5 / 9 - obs) <= 4 for v in vals), f"NWS KMDW {obs:.1f} C"
+
+
+def o_e07(data, text):
+    t = text.lower()
+    not_bd = bool(re.search(r'"(is_?business_?day|business_?day|isbusinessday)"\s*:\s*false', t)) or "not a business day" in t
+    return not_bd and "2026-12-25" in t, "computed: Christmas Day"
+
+
+def o_e08(data, text):
+    rd = _get("https://rdap.verisign.com/com/v1/domain/coinbase.com")
+    ev = {e["eventAction"]: e["eventDate"][:10] for e in rd.get("events", [])}
+    reg = next((v for e in rd.get("entities", []) if "registrar" in e.get("roles", [])
+                for v in [x[3] for x in (e.get("vcardArray") or [None, []])[1] if x[0] == "fn"]), "")
+    ok = ev.get("registration", "?") in text and ev.get("expiration", "?") in text and reg.split(",")[0].lower()[:8] in text.lower()
+    return ok, f"RDAP {reg} {ev.get('registration')} {ev.get('expiration')}"
+
+
+def o_e09(data, text):
+    from plumb import config, ledger
+    bal = int(ledger.Ledger(config.load()).account_info("rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De")["Balance"])
+    xrp = bal / 1e6
+    vals = numbers(data)
+    return _near(vals, xrp, 0.01) or _near(vals, bal, 0.01), f"ledger {xrp:.6f} XRP"
+
+
+def o_e10(data, text):
+    tip = int(httpx.get("https://mempool.space/api/blocks/tip/height", timeout=20, headers=UA).text)
+    return any(abs(v - tip) <= 3 for v in numbers(data)), f"mempool tip {tip}"
+
+
+ORACLES.update({"e01": o_e01, "e02": o_e02, "e03": o_e03, "e04": o_e04, "e05": o_e05, "e06": o_e06,
+                "e07": o_e07, "e08": o_e08, "e09": o_e09, "e10": o_e10})
