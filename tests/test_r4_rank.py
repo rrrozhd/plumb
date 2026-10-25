@@ -130,3 +130,13 @@ def test_cached_call_args_carry_this_needs_entities(ranker):
     need = v["need"].replace(judged, "example.org")
     args = [x["call"]["args"] for x in ranker.shortlist(need)["results"]]
     assert not any(judged in str(a) for a in args)
+
+
+def test_new_need_candidates_union_bm25_with_embeddings(ranker, no_network):
+    """E26 root cause: a BM25 rerank of the embedding top alone missed listings BM25 ranks first (RECOMMENDER §3)."""
+    weather = next(e for e, ep in ranker.rec.endpoints.items() if ep.url == "https://api.vextorium.com/v1/us-weather")
+    unrelated = ranker.vectors.m[ranker.vectors.ids.index(next(e for e, ep in ranker.rec.endpoints.items() if "impermanent" in ep.url))]
+    r = rank.Ranker(ranker.rec, {}, ranker.vectors, ranker.lexical, embed=lambda t: unrelated.tolist())
+    cands, how = r.candidates(relevance.template("Current weather in Boston"))
+    assert how == "lexical" and weather in cands
+    assert len(cands) <= CFG["rank"]["embed_top"] + CFG["rank"]["lexical_top"]

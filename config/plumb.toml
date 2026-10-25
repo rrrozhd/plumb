@@ -44,6 +44,7 @@ candidates_max = 40
 fit_min = "0.3"
 # Embedding candidates kept before the BM25 rerank.
 embed_top = 40
+lexical_top = 40   # BM25 candidates unioned with the embedding top for a new need (RECOMMENDER §3)
 # Agent time value used when the principal declares none (RLUSD per second waited). An assumption, not evidence.
 default_time_value_rlusd_per_s = "0.0001"
 

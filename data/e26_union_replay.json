@@ -1,0 +1,156 @@
+[
+ {
+  "id": "f053",
+  "family": "fx",
+  "old": null,
+  "new": "https://api.stablecoingateways.com/v1/fx/convert",
+  "new_match": "exact",
+  "bazaar": "https://api.stablecoingateways.com/v1/fx/rates",
+  "bazaar_verdict": "good",
+  "old_verdict": "refused",
+  "new_is_bazaar_good": false
+ },
+ {
+  "id": "f063",
+  "family": "weather",
+  "old": null,
+  "new": "https://api.vextorium.com/tiempo-mundo-pago",
+  "new_match": "exact",
+  "bazaar": "https://api.vextorium.com/v1/us-weather",
+  "bazaar_verdict": "good",
+  "old_verdict": "refused",
+  "new_is_bazaar_good": false
+ },
+ {
+  "id": "f065",
+  "family": "weather",
+  "old": null,
+  "new": "https://api.healthtravel-api.workers.dev/api/travel/aviationweather-metar-taf",
+  "new_match": "exact",
+  "bazaar": "https://api.vextorium.com/v1/us-weather",
+  "bazaar_verdict": "good",
+  "old_verdict": "refused",
+  "new_is_bazaar_good": false
+ },
+ {
+  "id": "f066",
+  "family": "weather",
+  "old": null,
+  "new": "https://api.healthtravel-api.workers.dev/api/travel/aviationweather-metar-taf",
+  "new_match": "exact",
+  "bazaar": "https://api.vextorium.com/v1/us-weather",
+  "bazaar_verdict": "good",
+  "old_verdict": "refused",
+  "new_is_bazaar_good": false
+ },
+ {
+  "id": "f005",
+  "family": "crypto_usd",
+  "old": "https://api.chainmarket-api.workers.dev/api/finance/alpha-vantage-public",
+  "new": "https://api.sitecheck-api.workers.dev/api/crypto/candles",
+  "new_match": "exact",
+  "bazaar": "https://api.vextorium.com/v1/crypto-price",
+  "bazaar_verdict": "good",
+  "old_verdict": "unsettled",
+  "new_is_bazaar_good": false
+ },
+ {
+  "id": "f042",
+  "family": "fx",
+  "old": "https://api.healthtravel-api.workers.dev/api/travel/rag-web-browser",
+  "new": "https://api.stablecoingateways.com/v1/fx/convert",
+  "new_match": "exact",
+  "bazaar": "https://api.vextorium.com/v1/fx-rates",
+  "bazaar_verdict": "good",
+  "old_verdict": "unsettled",
+  "new_is_bazaar_good": false
+ },
+ {
+  "id": "f062",
+  "family": "weather",
+  "old": "https://api.vextorium.com/tiempo-eeuu-pago",
+  "new": "https://api.healthtravel-api.workers.dev/api/travel/aviationweather-metar-taf",
+  "new_match": "exact",
+  "bazaar": "https://api.vextorium.com/v1/weather",
+  "bazaar_verdict": "good",
+  "old_verdict": "bad",
+  "new_is_bazaar_good": false
+ },
+ {
+  "id": "f073",
+  "family": "weather",
+  "old": "https://climatepulse.theaslangroupllc.com/api/climate/now",
+  "new": "https://api.healthtravel-api.workers.dev/api/travel/aviationweather-metar-taf",
+  "new_match": "exact",
+  "bazaar": "https://api.vextorium.com/v1/us-weather",
+  "bazaar_verdict": "good",
+  "old_verdict": "bad",
+  "new_is_bazaar_good": false
+ },
+ {
+  "id": "f085",
+  "family": "block",
+  "old": "https://bruk-agent-api.fly.dev/v1/pulse",
+  "new": "https://bruk-agent-api.fly.dev/v1/pulse",
+  "new_match": "exact",
+  "bazaar": "https://bruk-agent-api.fly.dev/v1/ledger-moment",
+  "bazaar_verdict": "good",
+  "old_verdict": "bad",
+  "new_is_bazaar_good": false
+ },
+ {
+  "id": "f013",
+  "family": "crypto_usd",
+  "old": null,
+  "new": "https://api.sitecheck-api.workers.dev/api/crypto/candles",
+  "new_match": "exact",
+  "bazaar": "https://api.vextorium.com/v1/crypto-price-fiat",
+  "bazaar_verdict": "unsettled",
+  "old_verdict": "refused",
+  "new_is_bazaar_good": false
+ },
+ {
+  "id": "f021",
+  "family": "crypto_usd",
+  "old": null,
+  "new": "https://api.chainmarket-api.workers.dev/api/finance/dia-crypto-oracle",
+  "new_match": "exact",
+  "bazaar": "https://api.chainmarket-api.workers.dev/api/crypto/ton-blockchain-jettons",
+  "bazaar_verdict": "bad",
+  "old_verdict": "refused",
+  "new_is_bazaar_good": false
+ },
+ {
+  "id": "f061",
+  "family": "weather",
+  "old": null,
+  "new": "https://api.healthtravel-api.workers.dev/api/travel/aviationweather-metar-taf",
+  "new_match": "exact",
+  "bazaar": "https://api.vextorium.com/v1/us-weather",
+  "bazaar_verdict": "bad",
+  "old_verdict": "refused",
+  "new_is_bazaar_good": false
+ },
+ {
+  "id": "f077",
+  "family": "block",
+  "old": null,
+  "new": "https://api.sitecheck-api.workers.dev/api/evm/block",
+  "new_match": "partial",
+  "bazaar": "https://horizonpulse.dev/api/chain/head",
+  "bazaar_verdict": "refused",
+  "old_verdict": "refused",
+  "new_is_bazaar_good": false
+ },
+ {
+  "id": "f081",
+  "family": "block",
+  "old": null,
+  "new": "https://api.sitecheck-api.workers.dev/api/rpc/evm",
+  "new_match": "exact",
+  "bazaar": "https://api.vextorium.com/v1/chain-info",
+  "bazaar_verdict": "bad",
+  "old_verdict": "refused",
+  "new_is_bazaar_good": false
+ }
+]

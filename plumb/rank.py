@@ -63,7 +63,11 @@ class Ranker:
                 return {}, "lexical"
             vec = self.vectors.needs[t] = self.embed(t)
         q = relevance.tokens(t)
-        top = self.vectors.top(np.array(vec), cfg["embed_top"])
+        sims = dict(self.vectors.top(np.array(vec), len(self.vectors.ids)))
+        emb = list(sims)[: cfg["embed_top"]]
+        lex = sorted(self.rec.endpoints, key=lambda e: -self.lexical.bm25(q, e))[: cfg["lexical_top"]]
+        # union, not a rerank: a listing BM25 ranks first must be able to enter even when the embedding misses it
+        top = [(e, sims.get(e, 0.0)) for e in dict.fromkeys(emb + lex)]
         top.sort(key=lambda es: -self.lexical.bm25(q, es[0]))
         if self.judge is not None:
             return self._cold(t, need_text, [e for e, _ in top])
