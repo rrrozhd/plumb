@@ -1,0 +1,214 @@
+{
+ "frozen_at": "20261025T1340Z",
+ "picks": [
+  {
+   "id": "f005",
+   "need": "Current AVAX price in USD",
+   "bazaar": null,
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/candles",
+    "method": "GET",
+    "args": {
+     "pair": "AVAX-USD",
+     "granularity": "1m",
+     "limit": "1"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f013",
+   "need": "Current UNI price in USD",
+   "bazaar": null,
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/candles",
+    "method": "GET",
+    "args": {
+     "pair": "UNI-USD",
+     "granularity": "1m",
+     "limit": "1"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f021",
+   "need": "Current TON price in USD",
+   "bazaar": null,
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/finance/dia-crypto-oracle",
+    "method": "GET",
+    "args": {
+     "symbol": "TON"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f042",
+   "need": "Convert 100 USD to INR at the latest exchange rate",
+   "bazaar": null,
+   "plumb": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "INR"
+    },
+    "match": "exact",
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   }
+  },
+  {
+   "id": "f053",
+   "need": "Convert 100 USD to HKD at the latest exchange rate",
+   "bazaar": null,
+   "plumb": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "HKD"
+    },
+    "match": "exact",
+    "operator": "r3BsahzSMtF4HiJuL8HMf1se6T1JtMB6hg"
+   }
+  },
+  {
+   "id": "f061",
+   "need": "Current weather in Los Angeles",
+   "bazaar": null,
+   "plumb": {
+    "url": "https://api.healthtravel-api.workers.dev/api/travel/aviationweather-metar-taf",
+    "method": "GET",
+    "args": {
+     "icao": "KLAX"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f062",
+   "need": "Current weather in Seattle",
+   "bazaar": null,
+   "plumb": {
+    "url": "https://api.vextorium.com/tiempo-mundo-pago",
+    "method": "POST",
+    "args": {
+     "dias": 1,
+     "lat": 47.6062,
+     "lon": -122.3321
+    },
+    "match": "exact",
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   }
+  },
+  {
+   "id": "f063",
+   "need": "Current weather in Denver",
+   "bazaar": null,
+   "plumb": {
+    "url": "https://api.vextorium.com/tiempo-mundo-pago",
+    "method": "POST",
+    "args": {
+     "lat": 39.7392,
+     "lon": -104.9903,
+     "dias": 1
+    },
+    "match": "exact",
+    "operator": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp"
+   }
+  },
+  {
+   "id": "f065",
+   "need": "Current weather in Boston",
+   "bazaar": null,
+   "plumb": {
+    "url": "https://api.healthtravel-api.workers.dev/api/travel/aviationweather-metar-taf",
+    "method": "GET",
+    "args": {
+     "icao": "KBOS"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f066",
+   "need": "Current weather in Atlanta",
+   "bazaar": null,
+   "plumb": {
+    "url": "https://api.healthtravel-api.workers.dev/api/travel/aviationweather-metar-taf",
+    "method": "GET",
+    "args": {
+     "icao": "KATL"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f073",
+   "need": "Current weather in Philadelphia",
+   "bazaar": null,
+   "plumb": {
+    "url": "https://api.healthtravel-api.workers.dev/api/travel/aviationweather-metar-taf",
+    "method": "GET",
+    "args": {
+     "icao": "KPHL"
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f077",
+   "need": "Latest block number on BNB Smart Chain",
+   "bazaar": null,
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/evm/block",
+    "method": "GET",
+    "args": {
+     "chain": "bnb",
+     "number": "latest"
+    },
+    "match": "partial",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f081",
+   "need": "Latest block number on Avalanche C-Chain",
+   "bazaar": null,
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/rpc/evm",
+    "method": "POST",
+    "args": {
+     "chain": "avalanche",
+     "method": "eth_blockNumber",
+     "params": []
+    },
+    "match": "exact",
+    "operator": "rDxNZCDfLxUzeMWGGwsY3sjQT8eoZCf8UJ"
+   }
+  },
+  {
+   "id": "f085",
+   "need": "Latest block number on XRP Ledger",
+   "bazaar": null,
+   "plumb": {
+    "url": "https://bruk-agent-api.fly.dev/v1/pulse",
+    "method": "GET",
+    "args": {},
+    "match": "exact",
+    "operator": "r36sbDCAsaCj44ZUXWY2jjGE1jBpsCoRQ4"
+   }
+  }
+ ]
+}

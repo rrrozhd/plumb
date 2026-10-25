@@ -1,0 +1,207 @@
+# E28: E26's 9 lost + 5 no-pick needs, unchanged, re-asked of Plumb with union recall (eval/e28_prereg.md).
+version: 1
+status: frozen
+frozen_on: '2026-10-25'
+defaults:
+  max_price_rlusd: '0.05'
+queries:
+- id: f005
+  family: crypto_usd
+  need: Current AVAX price in USD
+  inputs:
+    asset: AVAX
+    quote: USD
+  must_include:
+  - AVAX price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: avalanche-2
+    vs: usd
+    tol: 0.02
+- id: f013
+  family: crypto_usd
+  need: Current UNI price in USD
+  inputs:
+    asset: UNI
+    quote: USD
+  must_include:
+  - UNI price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: uniswap
+    vs: usd
+    tol: 0.02
+- id: f021
+  family: crypto_usd
+  need: Current TON price in USD
+  inputs:
+    asset: TON
+    quote: USD
+  must_include:
+  - TON price in USD, as a number
+  freshness: 15m
+  oracle:
+    kind: price
+    coin: the-open-network
+    vs: usd
+    tol: 0.02
+- id: f042
+  family: fx
+  need: Convert 100 USD to INR at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: USD
+    to: INR
+  must_include:
+  - USD to INR exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: USD
+    to: INR
+    amount: 100
+    tol: 0.01
+- id: f053
+  family: fx
+  need: Convert 100 USD to HKD at the latest exchange rate
+  inputs:
+    amount: '100'
+    from: USD
+    to: HKD
+  must_include:
+  - USD to HKD exchange rate
+  freshness: 3d
+  oracle:
+    kind: fx
+    from: USD
+    to: HKD
+    amount: 100
+    tol: 0.01
+- id: f061
+  family: weather
+  need: Current weather in Los Angeles
+  inputs:
+    location: Los Angeles
+    lat: '34.0522'
+    lon: '-118.2437'
+  must_include:
+  - current temperature
+  - current conditions
+  freshness: 3h
+  oracle:
+    kind: weather
+    station: KLAX
+    tol_c: 4
+- id: f062
+  family: weather
+  need: Current weather in Seattle
+  inputs:
+    location: Seattle
+    lat: '47.6062'
+    lon: '-122.3321'
+  must_include:
+  - current temperature
+  - current conditions
+  freshness: 3h
+  oracle:
+    kind: weather
+    station: KSEA
+    tol_c: 4
+- id: f063
+  family: weather
+  need: Current weather in Denver
+  inputs:
+    location: Denver
+    lat: '39.7392'
+    lon: '-104.9903'
+  must_include:
+  - current temperature
+  - current conditions
+  freshness: 3h
+  oracle:
+    kind: weather
+    station: KDEN
+    tol_c: 4
+- id: f065
+  family: weather
+  need: Current weather in Boston
+  inputs:
+    location: Boston
+    lat: '42.3601'
+    lon: '-71.0589'
+  must_include:
+  - current temperature
+  - current conditions
+  freshness: 3h
+  oracle:
+    kind: weather
+    station: KBOS
+    tol_c: 4
+- id: f066
+  family: weather
+  need: Current weather in Atlanta
+  inputs:
+    location: Atlanta
+    lat: '33.749'
+    lon: '-84.388'
+  must_include:
+  - current temperature
+  - current conditions
+  freshness: 3h
+  oracle:
+    kind: weather
+    station: KATL
+    tol_c: 4
+- id: f073
+  family: weather
+  need: Current weather in Philadelphia
+  inputs:
+    location: Philadelphia
+    lat: '39.9526'
+    lon: '-75.1652'
+  must_include:
+  - current temperature
+  - current conditions
+  freshness: 3h
+  oracle:
+    kind: weather
+    station: KPHL
+    tol_c: 4
+- id: f077
+  family: block
+  need: Latest block number on BNB Smart Chain
+  inputs:
+    chain: BNB Smart Chain
+  must_include:
+  - latest block number
+  freshness: 10m
+  oracle:
+    kind: block
+    rpc: https://bsc-dataseed.bnbchain.org
+    tol: 300
+- id: f081
+  family: block
+  need: Latest block number on Avalanche C-Chain
+  inputs:
+    chain: Avalanche C-Chain
+  must_include:
+  - latest block number
+  freshness: 10m
+  oracle:
+    kind: block
+    rpc: https://avalanche-c-chain-rpc.publicnode.com
+    tol: 70
+- id: f085
+  family: block
+  need: Latest block number on XRP Ledger
+  inputs:
+    chain: XRP Ledger
+  must_include:
+  - latest block number
+  freshness: 10m
+  oracle:
+    kind: block
+    rpc: xrpl
+    tol: 35
