@@ -1,0 +1,514 @@
+{
+ "at": "20261025T1404Z",
+ "prereg": "eval/e28_prereg.md",
+ "rows": [
+  {
+   "id": "f005",
+   "need": "Current AVAX price in USD",
+   "bazaar": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/candles",
+    "http": 503,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e28-bodies-20261025T1404Z/f005-plumb.txt",
+    "args": {
+     "pair": "AVAX-USD",
+     "granularity": "1m",
+     "limit": "1"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"error\":\"Coinbase Advanced Trade candles answered HTTP 429, you were not charged. Please retry later.\"}"
+   }
+  },
+  {
+   "id": "f013",
+   "need": "Current UNI price in USD",
+   "bazaar": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/candles",
+    "http": 503,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e28-bodies-20261025T1404Z/f013-plumb.txt",
+    "args": {
+     "pair": "UNI-USD",
+     "granularity": "1m",
+     "limit": "1"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"error\":\"Coinbase Advanced Trade candles answered HTTP 429, you were not charged. Please retry later.\"}"
+   }
+  },
+  {
+   "id": "f021",
+   "need": "Current TON price in USD",
+   "bazaar": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/finance/dia-crypto-oracle",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "2CEDF2A4FBEB1F4BDF202A8FE13319B37354511F11F4D1F43FC0BA9AF0320628",
+    "body_file": "out/e28-bodies-20261025T1404Z/f021-plumb.txt",
+    "args": {
+     "symbol": "TON"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T14:05:48+00:00 vs limit 15m",
+     "oracle": true,
+     "oracle_why": "CoinGecko the-open-network/usd 1.25",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f042",
+   "need": "Convert 100 USD to INR at the latest exchange rate",
+   "bazaar": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   },
+   "plumb": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "A43B52454EE94AE2771D563003C0DA31A9C7DAAFE78718685B5BB316EB5F4794",
+    "body_file": "out/e28-bodies-20261025T1404Z/f042-plumb.txt",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "INR"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T14:06:05+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/INR 94.94",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f053",
+   "need": "Convert 100 USD to HKD at the latest exchange rate",
+   "bazaar": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   },
+   "plumb": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "http": 200,
+    "spent": "0.001032395318078717346412546149",
+    "tx": "1717BE09051F5B9BE557F9D8AAE061B1A8069CA00299AF301D144667251A5D8A",
+    "body_file": "out/e28-bodies-20261025T1404Z/f053-plumb.txt",
+    "args": {
+     "amount": "100",
+     "from": "USD",
+     "to": "HKD"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T14:06:16+00:00 vs limit 3d",
+     "oracle": true,
+     "oracle_why": "ECB USD/HKD 7.8436",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f061",
+   "need": "Current weather in Los Angeles",
+   "bazaar": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   },
+   "plumb": {
+    "url": "https://api.healthtravel-api.workers.dev/api/travel/aviationweather-metar-taf",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "E34BB4430F3DF2BCF1307628FABC8C2DFC60208371EAAB22CADA0B87377DFA9B",
+    "body_file": "out/e28-bodies-20261025T1404Z/f061-plumb.txt",
+    "args": {
+     "icao": "KLAX"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T14:06:21+00:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KLAX 17.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f062",
+   "need": "Current weather in Seattle",
+   "bazaar": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/tiempo-mundo-pago",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "634BDCA03E658E09626E64C6B4B7A91D31BAAAC63D81BA989E6479255C882F12",
+    "body_file": "out/e28-bodies-20261025T1404Z/f062-plumb.txt",
+    "args": {
+     "dias": 1,
+     "lat": 47.6062,
+     "lon": -122.3321
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T13:17:22+00:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KSEA 8.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f063",
+   "need": "Current weather in Denver",
+   "bazaar": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/tiempo-mundo-pago",
+    "http": 200,
+    "spent": "0.004",
+    "tx": "6EB03EE5700A84E523C8DC4E45FF65F22467B667AC61398DFFDDEEED7FF81F0D",
+    "body_file": "out/e28-bodies-20261025T1404Z/f063-plumb.txt",
+    "args": {
+     "lat": 39.7392,
+     "lon": -104.9903,
+     "dias": 1
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T13:17:18+00:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KDEN 4.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f065",
+   "need": "Current weather in Boston",
+   "bazaar": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   },
+   "plumb": {
+    "url": "https://api.healthtravel-api.workers.dev/api/travel/aviationweather-metar-taf",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "8657B44888FD4E36C54C3D1023574C367092176422155AB948FFBC8C974C0594",
+    "body_file": "out/e28-bodies-20261025T1404Z/f065-plumb.txt",
+    "args": {
+     "icao": "KBOS"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T14:07:00+00:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KBOS 9.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f066",
+   "need": "Current weather in Atlanta",
+   "bazaar": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   },
+   "plumb": {
+    "url": "https://api.healthtravel-api.workers.dev/api/travel/aviationweather-metar-taf",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "BD833E5A01FDF70F835F39BFE80E5C8C4887DA9B57CCB5E4386D034615EC7DAB",
+    "body_file": "out/e28-bodies-20261025T1404Z/f066-plumb.txt",
+    "args": {
+     "icao": "KATL"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T14:07:11+00:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KATL 14.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f073",
+   "need": "Current weather in Philadelphia",
+   "bazaar": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   },
+   "plumb": {
+    "url": "https://api.healthtravel-api.workers.dev/api/travel/aviationweather-metar-taf",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "1FD4EC6ECC45FE131CC7749E4223AA24CE793F3AB7367BF229F9694F8322A448",
+    "body_file": "out/e28-bodies-20261025T1404Z/f073-plumb.txt",
+    "args": {
+     "icao": "KPHL"
+    },
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T14:07:20+00:00 vs limit 3h",
+     "oracle": true,
+     "oracle_why": "NWS KPHL 11.0 C",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f077",
+   "need": "Latest block number on BNB Smart Chain",
+   "bazaar": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/evm/block",
+    "http": 400,
+    "spent": "0",
+    "tx": null,
+    "body_file": "out/e28-bodies-20261025T1404Z/f077-plumb.txt",
+    "args": {
+     "chain": "bnb",
+     "number": "latest"
+    },
+    "verdict": "unsettled",
+    "verdict_llm_only": "unsettled",
+    "detail": "{\"error\":\"chain must be one of base, ethereum, arbitrum, optimism, polygon\"}"
+   }
+  },
+  {
+   "id": "f081",
+   "need": "Latest block number on Avalanche C-Chain",
+   "bazaar": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/rpc/evm",
+    "http": 200,
+    "spent": "0.002",
+    "tx": "EEB5BD915FFDF38126E943D3B4C90FF2F33F3D7C7638AAE9FE734A7948AD14AA",
+    "body_file": "out/e28-bodies-20261025T1404Z/f081-plumb.txt",
+    "args": {
+     "chain": "avalanche",
+     "method": "eth_blockNumber",
+     "params": []
+    },
+    "verdict": "bad",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T14:08:10+00:00 vs limit 10m",
+     "oracle": false,
+     "oracle_why": "head 98520991 (tol 70)",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": false,
+     "g5_final": true,
+     "good": false
+    },
+    "verdict_llm_only": "good"
+   }
+  },
+  {
+   "id": "f085",
+   "need": "Latest block number on XRP Ledger",
+   "bazaar": {
+    "verdict": "refused",
+    "why": "no pick",
+    "spent": "0"
+   },
+   "plumb": {
+    "url": "https://bruk-agent-api.fly.dev/v1/pulse",
+    "http": 200,
+    "spent": "0.001",
+    "tx": "E82EBC32815F5B1CD7C384A8891B2659955E173E1F8235FB9CB58BF87D59C551",
+    "body_file": "out/e28-bodies-20261025T1404Z/f085-plumb.txt",
+    "args": {},
+    "verdict": "good",
+    "grade_v2": {
+     "g3": true,
+     "g3_why": "ok",
+     "g4_entity": true,
+     "g4_entity_why": "ok",
+     "g5": true,
+     "g5_why": "newest 2026-10-25T14:08:28+00:00 vs limit 10m",
+     "oracle": true,
+     "oracle_why": "head 107894795 (tol 35)",
+     "llm": null,
+     "method": {
+      "g4": "oracle",
+      "g5": "timestamp"
+     },
+     "g4": true,
+     "g5_final": true,
+     "good": true
+    },
+    "verdict_llm_only": "good"
+   }
+  }
+ ]
+}

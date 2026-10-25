@@ -107,3 +107,10 @@ def test_e26_powered():
     assert round(D(r["cost_per_good"]["bazaar"]), 4) == D("0.0032") and round(D(r["cost_per_good"]["plumb_fee"]), 4) == D("0.0065")
     txs = [x[a]["tx"] for x in rows for a in ("bazaar", "plumb") if x[a].get("tx") and not x[a].get("shared")]
     assert len(txs) == len(set(txs)) == 158
+
+
+def test_e28_recovery():
+    rows = json.loads((DATA / "e28_result.json").read_text())["rows"]
+    assert (len(rows), sum(r["plumb"]["verdict"] == "good" for r in rows)) == (14, 10)
+    txs = [r["plumb"]["tx"] for r in rows if r["plumb"].get("tx")]
+    assert len(txs) == len(set(txs)) == 11
