@@ -2,7 +2,7 @@
 
 **The router that tells AI agents which XRPL merchant to pay, for them.**
 
-An agent asks for what it needs. Plumb returns three XRPL x402 merchants ranked by expected cost per usable answer, using saved purchase and ledger evidence, and only merchants the agent's AP4M mandate can pay. Live deck: `site/` ([docs/DECK.md](docs/DECK.md)). Customer feedback persists across restarts and changes that customer's recommendations. The agent pays Plumb per shortlist through **Mastercard AP4M**.
+An agent asks for what it needs. Plumb returns three XRPL x402 merchants ranked by expected cost per usable answer, using saved purchase and ledger evidence, and only merchants the agent's AP4M mandate can pay. Live deck: `site/`. Customer feedback persists across restarts and changes that customer's recommendations. The agent pays Plumb per shortlist through **Mastercard AP4M**.
 
 Built at the XRPL NYC AI & Fintech Hackathon (Agentic Finance track) on **XRPL**, **Quicknode**, **AWS Bedrock**, **AgentCore Memory** and **Mastercard AP4M**.
 
@@ -17,7 +17,7 @@ Built at the XRPL NYC AI & Fintech Hackathon (Agentic Finance track) on **XRPL**
 - **Speed:** 0.13 ms worst-5% per cached shortlist, no LLM on the request path (E25).
 - **Mastercard AP4M (testnet):** identities and a funded 0.005 channel cap, HTTP 402 → agent-signed voucher → resource released, an over-cap attempt refused, settlement and an AP4M receipt linking channel, claim and payout (E18; slide 6 of the deck, built by `ap4m/proof.py`).
 
-Every number, with its source and caveats: [`docs/EVIDENCE.md`](docs/EVIDENCE.md). Limits: [`docs/LIMITS.md`](docs/LIMITS.md).
+The data behind each result is committed in `data/` (`e26_result.json`, `e26_union_replay.json`, `e28_result.json`, `e21_result.json`), with pre-registrations in `eval/`.
 
 ## What's mocked or not live
 - **AP4M** runs on XRPL EVM **testnet** and pays only our own merchant (AP4M's rule). New channels are blocked by AP4M's per-merchant channel limit (L27), so the deck replays the last completed run (2026-10-25 05:25 UTC); every hash links to the explorer.
@@ -33,7 +33,7 @@ Every number, with its source and caveats: [`docs/EVIDENCE.md`](docs/EVIDENCE.md
 5. **Personalisation:** account constraints and a per-customer posterior over its own outcomes, with a co-purchase signal from the snapshot. Saved customer feedback does not train other customers.
 6. **Feedback:** `good`/`bad` reports persist in SQLite and reload in CLI, MCP and HTTP recommendations. Identical retries count once; conflicting feedback for the same customer, shortlist and endpoint is rejected. Payment-proven reports are stored separately; the global trust fitter does not yet consume them.
 
-Full spec: [`docs/RECOMMENDER.md`](docs/RECOMMENDER.md) and [`SPEC.md`](SPEC.md).
+Full spec: [`SPEC.md`](SPEC.md).
 
 ## Run it
 
@@ -42,7 +42,7 @@ for cached recommendations and the offline tests. Raw purchase response bodies,
 customer databases, cloud receipts, AP4M replay trails and backup videos are local
 artifacts and are not included. The memory demo can show historical payment
 metadata without the saved response body. Live integrations need your own
-credentials and resources; see [reproducibility notes](docs/REPRODUCIBILITY.md).
+credentials and resources.
 ```bash
 uv sync
 uv run pytest -m p0                                  # offline gate; zero selected tests is a failure
@@ -70,8 +70,7 @@ isolation, not proven customer benefit or a network effect.
 The ordinary services use `[paths].db` in `config/plumb.toml`; CLI
 `recommend --db <path>` can inspect another customer store. MCP's
 `report_outcome` records feedback for a saved shortlist; HTTP remains a
-shortlist endpoint. Stage script and troubleshooting: [docs/DEMO.md](docs/DEMO.md).
-Optional cloud backup and restore: [docs/AWS_MEMORY.md](docs/AWS_MEMORY.md).
+shortlist endpoint. 
 The managed AWS rehearsal restored exact simulated feedback into a fresh
 database and reproduced that customer's learned ranking (EVIDENCE MEM2).
 Backup is an explicit operator action; ordinary ranking uses local SQLite.
@@ -122,10 +121,9 @@ The surrounding repository keeps its existing roles:
 - `ap4m/`: Mastercard AP4M merchant shim and buyer agent (Node).
 - `data/`: the committed market snapshot, judge labels and eval results.
 - `eval/`: the frozen needs, the rubric and the E21 pre-registration.
-- `docs/`: pitch, demo script, evidence, limits, markets and reproducibility.
 
 ## Demo, team and licence
-- **Demo video:** _add the unlisted link here_. Presenter deck: `cd site && npm run dev`, then http://127.0.0.1:5173 ([docs/DECK.md](docs/DECK.md), cards in [docs/CARDS.md](docs/CARDS.md)).
+- **Demo video:** _add the unlisted link here_. Presenter deck: `cd site && npm run dev`, then http://127.0.0.1:5173.
 - **Team:** rrrozhd.
 - **Licence:** _not yet chosen_.
 

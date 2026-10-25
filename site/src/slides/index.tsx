@@ -426,7 +426,6 @@ export function Close() {
         <Stat value="10 / 14" label="failures recovered after fixing our own bug, bought again" cite="E28" tone="good" />
         <Stat value="0.13 ms" label="worst-5% ranking time, in-process bench" cite="E25" />
       </div>
-      <div className="mt-10 text-muted-foreground">Evidence: <Ext href="https://github.com/rrrozhd/plumb/blob/main/docs/EVIDENCE.md">docs/EVIDENCE.md</Ext></div>
     </div>
   )
 }

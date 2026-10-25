@@ -1,8 +1,6 @@
 # Plumb: build spec (v0.1, 2026-10-24)
 
 Plumb sits between an AI agent and the XRPL x402 marketplace. Given a need, it returns the **three endpoints most likely to deliver a usable answer at the lowest cost**, each with its trust score and on-ledger evidence. Plumb is itself an x402 seller on XRPL (~0.002 RLUSD per answer).
-- Why it matters: `docs/PITCH.md`.
-- The evidence behind every number: `docs/EVIDENCE.md`.
 
 Track: Agentic Finance. Scope: **XRPL merchants only**. Stack: XRPL · Quicknode · AWS (Bedrock, AgentCore Gateway).
 
@@ -66,7 +64,7 @@ fit(need_key, endpoint FK, p_fit REAL, reason, provider, at, PK(need_key, endpoi
    - **`price_honest`:** the price in the 402 challenge must equal the listing. If not, multiply by 0.5 and flag it.
 4. **Outputs.** The `mean`, the 80% lower bound (`lower80`), and the counts.
 
-5. **Per-principal posterior (personalisation; full detail in `docs/RECOMMENDER.md` §4).** The global posterior is the *average* customer.
+5. **Per-principal posterior (personalisation).** The global posterior is the *average* customer.
    - With no personal outcomes on an endpoint, the principal's score **is** the global posterior.
    - With outcomes, the global posterior becomes the prior, capped at strength `s = min(κ, α_g+β_g)` (κ in config, default 8): `α_p = s·mean_g + Σ wᵢ·goodᵢ`, `β_p = s·(1−mean_g) + Σ wᵢ·badᵢ`, over that principal's own outcomes only.
    - Each of a principal's outcomes moves its ranking away from the average. (Re-priming at κ for every endpoint flipped near-ties at zero outcomes, so it was dropped.)
@@ -76,7 +74,7 @@ fit(need_key, endpoint FK, p_fit REAL, reason, provider, at, PK(need_key, endpoi
 **Payer clusters** come from account creation: accounts created within a 10-minute window from the same funder (exchange hot wallets included, E6) form one cluster.
 
 ## 4. Ranking
-**The recommendation layer is specified in `docs/RECOMMENDER.md`, which wins where it differs from this section.** It covers need templates, the settlement × quality decomposition, the cost key with a time term, operator-diverse slots and ledger-seeded principals.
+**The recommendation layer** covers need templates, the settlement × quality decomposition, the cost key with a time term, operator-diverse slots and ledger-seeded principals.
 
 **No LLM call on the request path.** Time to a usable answer is a product benefit, so the judge runs offline and the request path is lookup plus arithmetic (target p95 < 100 ms).
 1. **Candidates.** Up to 40 endpoints: the top 20 from the Bazaar's XRPL search, plus our own lexical (BM25) search over the listings (description, URL path). Embeddings are a later swap behind the same function.

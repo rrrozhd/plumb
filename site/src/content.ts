@@ -1,4 +1,4 @@
-// Every number here is in docs/EVIDENCE.md under the id shown next to it (and locked by tests/test_evidence_numbers.py).
+// Every number here comes from the evaluation data in data/ under the id shown next to it (locked by tests/test_evidence_numbers.py).
 // `notes` is the speaker script: shown in the notes drawer and used as the backup video's narration.
 
 export const DEMO = {
@@ -39,7 +39,7 @@ export const POOLED = {
 
 export type SlideMeta = { id: string; kicker: string; title: string; notes: string; auto: boolean; cues: string[] }
 
-// cues: what the presenter reads out, one short line each (presenter window, `n` drawer, docs/SCRIPT.md)
+// cues: what the presenter reads out, one short line each (presenter window, `n` drawer)
 export const SLIDES: SlideMeta[] = [
   { id: "title", kicker: "Agentic Finance · XRPL", title: "Whom should your agent pay?", auto: false,
     cues: [
