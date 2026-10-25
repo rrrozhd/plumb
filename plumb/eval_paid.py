@@ -259,3 +259,111 @@ def run(cfg: dict, live: bool, resume: str | None = None, grader_version: int = 
     out.write_text(json.dumps(report, indent=1, default=str))
     report["path"] = str(out)
     return report
+
+
+FIZZL = "https://buy.fizzl.eu/v1/buy"
+PLUMB_FEE = Decimal("0.002")
+
+
+def run_e21(cfg: dict, live: bool) -> dict:
+    """E21 per eval/e21_prereg.md: Bazaar vs Plumb (+ its fee) vs fizzl, grader v2 primary and LLM-only secondary."""
+    import gzip
+    from plumb import grader as G
+    root = config.ROOT / "data"
+    picks = json.loads((root / "u7_paid_picks.json").read_text())["picks"]
+    queries = {q["id"]: q for q in yaml.safe_load(config.path(cfg, "queries").read_text())["queries"]}
+    with gzip.open(root / "catalog.json.gz", "rt") as fh:
+        raw = {r["resource"]: r for r in json.load(fh)}
+    for rs in json.loads((root / "bazaar_search.json").read_text()).values():
+        for r in rs:
+            raw.setdefault(r["resource"], r)
+    mid = Decimal(json.loads((root / "meta.json").read_text())["xrp_in_rlusd"])
+    cap_each, cap_total = Decimal("0.05"), money.rlusd(cfg["caps"]["eval_max_total"])
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%MZ")
+    bodies = config.ROOT / "out" / f"e21-bodies-{stamp}"
+    bodies.mkdir(parents=True, exist_ok=True)
+
+    wallet = client = lg = llm = None
+    if live:
+        from anthropic.lib.bedrock import AnthropicBedrock
+        from xrpl.clients import JsonRpcClient
+        from xrpl.wallet import Wallet
+        from plumb.cli import _load_env
+        _load_env("judge.env")
+        seed = next(line.split("=", 1)[1].strip().strip('"') for line in (config.ROOT / "env" / "auditor.env").read_text().splitlines()
+                    if line.startswith("AUDITOR_SEED="))
+        wallet, lg = Wallet.from_seed(seed), ledger.Ledger(cfg)
+        client, llm = JsonRpcClient(lg.url), AnthropicBedrock(aws_region=cfg["judge"]["region"])
+
+    spent, done, rows = Decimal(0), {}, []
+    with httpx.Client(timeout=15) as http:
+        for p in picks:
+            q = queries[p["id"]]
+            row = {"id": p["id"], "need": p["need"]}
+            arms = {"bazaar": p["bazaar"], "plumb": p["plumb"], "fizzl": FIZZL}
+            for arm, url in arms.items():
+                key = url if arm != "fizzl" else f"fizzl:{p['id']}"
+                if not url:
+                    row[arm] = {"verdict": "refused", "why": "no pick", "spent": "0"}
+                    continue
+                if key in done:
+                    row[arm] = {**done[key], "shared": True}
+                    continue
+                if arm == "fizzl":
+                    req, declared_json = ("POST", FIZZL, None, {"need": q["need"]}), True
+                else:
+                    req = build_request(raw[url], q.get("inputs") or {})
+                    out_t = ((((raw[url].get("extensions") or {}).get("bazaar") or {}).get("info") or {}).get("output") or {}).get("type")
+                    declared_json = out_t == "json"
+                status, accepts = challenge(http, req)
+                opt = choose_option(accepts, cfg)
+                if status != 402 or not opt:
+                    res = {"url": url, "verdict": "refused", "why": f"no x402 challenge (HTTP {status})", "spent": "0"}
+                else:
+                    cost = cost_rlusd(opt, cfg, mid)
+                    if cost > cap_each or spent + cost > cap_total:
+                        res = {"url": url, "verdict": "refused", "why": f"cap: {cost}", "spent": "0"}
+                    elif not live:
+                        res = {"url": url, "verdict": "planned", "cost_rlusd": str(cost), "spent": "0"}
+                        spent += cost
+                    else:
+                        assert wallet is not None and lg is not None
+                        out = pay_and_fetch(http, req, opt, wallet, client, cfg)
+                        paid = settled_on_ledger(lg, cfg, wallet.classic_address, opt["payTo"], out["invoice_hash"], out["settled_tx"])
+                        amt = Decimal(paid["amount"]) if paid else Decimal(0)
+                        real = money.drops_to_rlusd(int(amt), mid) if paid and paid["asset"] == "XRP" else amt
+                        spent += real
+                        body_file = bodies / f"{p['id']}-{arm}.txt"
+                        body_file.write_text(out["body"])
+                        base = {"url": url, "http": out["http"], "spent": str(real), "tx": paid["tx_hash"] if paid else None,
+                                "ms": out["ms"], "body_file": str(body_file)}
+                        if not out["http"] or not 200 <= out["http"] < 300:
+                            v = "unsettled" if not paid else "bad"
+                            res = {**base, "verdict": v, "verdict_llm_only": v, "why": f"HTTP {out['http']}", "detail": out["body"][:200]}
+                        else:  # a 2xx body is graded even if our ledger lookup missed the payment; spend stays what the ledger shows
+                            g2 = G.grade(q, out["body"], declared_json, None, llm=llm_residual(llm, cfg))
+                            g1 = grade(llm, cfg, q, out["body"], cap=200_000)
+                            res = {**base, "verdict": "good" if g2["good"] else "bad", "grade_v2": g2,
+                                   "verdict_llm_only": "good" if (g1["g3_well_formed"] and g1["g4_answers_need"] and g1["g5_fresh_enough"]) else "bad",
+                                   "grade_llm_only": g1, "settled_seen": bool(paid)}
+                done[key] = res
+                row[arm] = res
+            rows.append(row)
+
+    summary = {}
+    for arm in ("bazaar", "plumb", "fizzl"):
+        rs = [r[arm] for r in rows]
+        merchant = sum((Decimal(r.get("spent", "0")) for r in rs if not r.get("shared")), Decimal(0))
+        fee = PLUMB_FEE * sum(1 for r in rs if r.get("verdict") != "refused") if arm == "plumb" else Decimal(0)
+        for grader_name, field in (("v2", "verdict"), ("llm_only", "verdict_llm_only")):
+            good = sum(r.get(field) == "good" for r in rs)
+            summary[f"{arm}/{grader_name}"] = {"good": good, "of": len(rs), "cost_rlusd": str(merchant + fee),
+                                              "cost_per_good": str(((merchant + fee) / good).quantize(Decimal("0.000001"))) if good else None}
+        if not live:
+            summary[f"{arm}/planned_rlusd"] = str(sum((Decimal(r.get("cost_rlusd", "0")) for r in rs if not r.get("shared")), Decimal(0)) + fee)
+    report = {"at": stamp, "mode": "live" if live else "dry-run", "prereg": "eval/e21_prereg.md", "grader_commit": "8c4d153",
+              "spent_total_rlusd": str(spent), "summary": summary, "rows": rows}
+    out = config.ROOT / "out" / f"e21-{'live' if live else 'dry'}-{stamp}.json"
+    out.write_text(json.dumps(report, indent=1, default=str))
+    report["path"] = str(out)
+    return report

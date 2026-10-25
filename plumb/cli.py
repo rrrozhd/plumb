@@ -155,6 +155,8 @@ def main(argv: list[str] | None = None) -> None:
     ep.add_argument("--live", action="store_true")
     ep.add_argument("--grader", type=int, default=1, choices=[1, 2])
     ep.add_argument("--resume", help="earlier live report: keep its completed purchases, retry the unsettled ones")
+    e21 = sub.add_parser("e21", help="E21 three-arm head-to-head per eval/e21_prereg.md; dry-run unless --live")
+    e21.add_argument("--live", action="store_true")
     sub.add_parser("eval-free", help="U7 without money: probe Bazaar #1 vs Plumb #1 for each frozen need")
     args = ap.parse_args(argv)
     cfg = config.load()
@@ -173,6 +175,11 @@ def main(argv: list[str] | None = None) -> None:
         return
     if args.cmd == "liveness":
         liveness(cfg)
+        return
+    if args.cmd == "e21":
+        from plumb import eval_paid
+        rep = eval_paid.run_e21(cfg, live=args.live)
+        print(json.dumps({"mode": rep["mode"], "summary": rep["summary"], "spent_total_rlusd": rep["spent_total_rlusd"], "report": rep["path"]}, indent=1))
         return
     if args.cmd == "eval-paid":
         from plumb import eval_paid
