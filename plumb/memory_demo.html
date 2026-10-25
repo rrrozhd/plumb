@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Plumb · A shopper with a memory</title>
+<style>
+:root{--paper:#f4f1e8;--ink:#182d27;--muted:#596760;--line:#cbd0c5;--green:#194d3b;--tint:#e5ebdc;--accent:#e2ad45;--white:#fffef8;--rust:#9a431f}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Avenir Next",Avenir,"Trebuchet MS",sans-serif;line-height:1.45}
+button{font:inherit;cursor:pointer}
+button:disabled{cursor:wait;opacity:.55}
+button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--rust);outline-offset:4px}
+main{max-width:1500px;margin:auto;padding:28px 44px 38px}
+.top{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink);padding-bottom:17px}
+.wordmark{font-size:28px;font-weight:700;letter-spacing:-1.5px}
+.wordmark i{display:inline-block;width:16px;height:25px;border:5px solid var(--green);border-top:0;margin-right:8px;border-radius:0 0 9px 9px;transform:translateY(4px)}
+.eyebrow{font-size:11px;letter-spacing:1.8px;text-transform:uppercase;font-weight:700}
+.top .eyebrow{color:var(--muted)}
+.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:50px;padding:31px 0 27px}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(38px,4.2vw,66px);font-weight:400;letter-spacing:-2.5px;line-height:1.06;margin:8px 0 13px}
+h1 em{font-weight:400;color:var(--green)}
+.intro{max-width:630px;margin:0;color:var(--muted);font-size:15px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;align-content:center;justify-content:flex-end}
+.primary,.secondary,.text-button{padding:12px 16px;border:1px solid var(--green);background:var(--green);color:white;border-radius:3px;font-size:13px;font-weight:600;min-height:44px}
+.secondary{background:transparent;color:var(--green)}
+.text-button{border-color:transparent;color:var(--muted);background:none;padding:8px}
+.primary:hover{background:#123e2e}
+.secondary:hover{background:var(--tint)}
+.action-note{width:100%;text-align:right;font-size:12px;color:var(--muted)}
+.query{background:var(--ink);color:var(--white);display:flex;gap:24px;align-items:center;padding:20px 24px}
+.query .eyebrow{color:#b6c9b7;white-space:nowrap}
+.query p{margin:0;font-size:18px;font-weight:500}
+.status{min-height:42px;padding:11px 0;font-size:13px;color:var(--green)}
+.status.error{color:var(--rust)}
+.people{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.person{border:1px solid var(--line);background:var(--white)}
+.person-head{display:flex;gap:20px;align-items:flex-start;padding:22px 23px 18px;border-bottom:1px solid var(--line)}
+.avatar{display:grid;place-items:center;flex:none;font-size:19px;width:43px;height:43px;border-radius:50%;background:var(--green);color:white}
+.control .avatar{background:#dfe5d7;color:var(--ink)}
+h2{margin:0;font-size:20px;font-weight:600;letter-spacing:-.5px}
+.tag{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--rust);margin-top:4px}
+.person-head p{margin:5px 0 0;color:var(--muted);font-size:12px}
+.count{margin-left:auto;text-align:right;white-space:nowrap}
+.count strong{display:block;font-family:Georgia,serif;font-size:29px;font-weight:400;line-height:1}
+.count span{font-size:10px;color:var(--muted)}
+.columns{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:17px 22px 5px}
+.column-title{font-size:10px;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);padding-bottom:10px}
+.ranking{list-style:none;margin:0;padding:0}
+.ranking li{display:grid;grid-template-columns:17px 1fr;gap:6px;border-top:1px solid var(--line);padding:12px 0;min-height:94px}
+.ordinal{font:16px Georgia,serif;color:var(--muted);padding-top:2px}
+.endpoint{font-size:12px;font-weight:600;overflow-wrap:anywhere;line-height:1.35}
+.endpoint small{display:block;color:var(--muted);font-size:10px;font-weight:400;margin-top:3px}
+.metric{font-size:10px;color:var(--muted);margin-top:6px}
+.current li:first-child .endpoint{color:var(--green)}
+.changed .current li:first-child{border-top:3px solid var(--green);padding-top:10px}
+.person-foot{border-top:1px solid var(--line);background:#f0f3e9;padding:11px 22px;font-size:12px;color:var(--green);min-height:41px}
+.proof{display:grid;grid-template-columns:1.35fr 1fr;gap:30px;margin-top:30px;border-top:1px solid var(--ink);padding-top:22px}
+.proof h2{font-family:Georgia,serif;font-size:26px;font-weight:400}
+.proof .eyebrow{color:var(--muted);margin-bottom:7px}
+.receipt{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+.receipt div{border-left:2px solid var(--line);padding-left:12px}
+.receipt strong{display:block;font-size:21px;font-weight:500}
+.receipt span{font-size:11px;color:var(--muted)}
+.explain{font-size:12px;color:var(--muted);max-width:590px;margin:14px 0}
+.verify{border-left:1px solid var(--line);padding-left:28px}
+.verify p{font-size:12px;color:var(--muted);margin:9px 0 14px}
+.verify .secondary{padding:8px 12px;font-size:12px}
+.verification{margin-top:12px;font-size:12px;color:var(--green);overflow-wrap:anywhere}
+.tx{font-family:ui-monospace,Menlo,monospace;font-size:10px;word-break:break-all;color:var(--muted);margin-top:12px}
+details{margin-top:13px;font-size:12px}
+summary{cursor:pointer;width:fit-content;text-decoration:underline;text-underline-offset:3px}
+pre{background:#e8e9df;border:1px solid var(--line);padding:16px;max-height:280px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;font-size:11px}
+.source{font-size:10px;color:var(--muted);overflow-wrap:anywhere}
+.footer{display:flex;justify-content:space-between;gap:28px;border-top:1px solid var(--line);margin-top:26px;padding-top:15px;font-size:11px;color:var(--muted)}
+.footer p{margin:0}
+.runtime{font-family:ui-monospace,Menlo,monospace;white-space:pre-line}
+.loading{opacity:.6}
+button.busy{opacity:.5}
+@media(max-width:950px){main{padding:20px 24px}
+.hero{grid-template-columns:1fr;gap:20px}
+.actions{justify-content:flex-start}
+.action-note{text-align:left}
+.people{gap:14px}
+.columns{padding:14px;gap:12px}
+.person-head{padding:18px 14px;gap:12px}
+.person-head h2{font-size:17px}
+.count{display:none}
+.query p{font-size:16px}
+}
+@media(max-width:650px){main{padding:18px 16px}
+.top .eyebrow{font-size:9px;letter-spacing:1px}
+h1{font-size:43px}
+.people,.proof{grid-template-columns:1fr}
+.query{display:block;padding:17px}
+.query p{margin-top:7px}
+.person-head h2{font-size:20px}
+.count{display:block}
+.verify{border-left:0;border-top:1px solid var(--line);padding:20px 0 0}
+.footer{display:block}
+.runtime{margin-top:10px!important}
+.ranking li{min-height:90px}
+.proof{gap:20px}
+}
+@media(prefers-reduced-motion:no-preference){.person{animation:arrive .45s ease-out both}
+.person.control{animation-delay:.08s}
+@keyframes arrive{from{transform:translateY(7px);opacity:.2}
+to{transform:none;opacity:1}
+}
+}
+
+</style>
+</head>
+<body>
+<main>
+<header class="top"><div class="wordmark"><i aria-hidden="true"></i>plumb</div><span class="eyebrow">XRPL marketplace · customer memory demo</span></header>
+<section class="hero" aria-labelledby="title"><div><div class="eyebrow">The next recommendation remembers</div><h1>A shopper with<br><em>a memory.</em></h1><p class="intro">The same task. The same market. A customer tells Plumb what did not work for them, and their next shortlist changes.</p></div><div class="actions"><button id="teach" class="primary" disabled>1 · Teach the fast shopper</button><button id="reload" class="secondary" disabled>2 · Reload worker</button><button id="fresh" class="text-button" disabled>Start a fresh session ↗</button><div class="action-note">Local demonstration · no new purchase</div></div></section>
+<section class="query" aria-label="Shared task"><span class="eyebrow">Both shoppers ask</span><p id="need">Loading the saved marketplace…</p></section>
+<div id="status" class="status" role="status" aria-live="polite">Starting the recommendation worker.</div>
+<section class="people" aria-label="Recommendation comparison">
+<article id="shopper" class="person"><div class="person-head"><div class="avatar" aria-hidden="true">F</div><div><h2>Fast shopper</h2><div class="tag">Generated persona</div><p id="preference">Prefers answers within 3 seconds.</p></div><div class="count"><strong id="shopper-count">0</strong><span>saved outcomes</span></div></div><div class="columns"><div><div class="column-title">Before feedback</div><ol id="shopper-before" class="ranking"></ol></div><div class="current"><div class="column-title">Current recommendation</div><ol id="shopper-current" class="ranking"></ol></div></div><div id="shopper-note" class="person-foot">No personal history yet.</div></article>
+<article class="person control"><div class="person-head"><div class="avatar" aria-hidden="true">R</div><div><h2>Research shopper</h2><div class="tag">Generated control</div><p>Same payment constraints. No feedback added.</p></div><div class="count"><strong id="control-count">0</strong><span>saved outcomes</span></div></div><div class="columns"><div><div class="column-title">Before feedback</div><ol id="control-before" class="ranking"></ol></div><div class="current"><div class="column-title">Current recommendation</div><ol id="control-current" class="ranking"></ol></div></div><div id="control-note" class="person-foot">A separate customer, with a separate memory.</div></article>
+</section>
+<section class="proof" aria-label="Evidence provenance"><div><div class="eyebrow">Historical purchase · real response</div><h2>Paid successfully. Useful answer. Too slow for this persona.</h2><div class="receipt"><div><strong id="spent">—</strong><span>RLUSD delivered (historical record)</span></div><div><strong id="latency">—</strong><span>recorded purchase time</span></div><div><strong id="quality">—</strong><span>historical answer grade</span></div></div><p id="feedback-explain" class="explain">“Too slow for me” is simulated satisfaction. It changes only the fast shopper’s memory; it is not a new audit or a claim that this merchant is bad.</p><details><summary>Inspect the historical response and source</summary><pre id="body">No response loaded.</pre><div id="source" class="source"></div></details></div><div class="verify"><div class="eyebrow">Payment evidence · separate from satisfaction</div><h2>Check the ledger.</h2><p>Ask Quicknode to read the existing transaction. Validation and delivered amount prove payment; they do not prove the customer liked the answer.</p><button id="verify" class="secondary" disabled>Verify existing payment with Quicknode ↗</button><div id="verification" class="verification" role="status" aria-live="polite">Not queried this session. Historical record shown at left.</div><div id="tx" class="tx"></div></div></section>
+<footer class="footer"><p>Real catalog + historical purchase. Generated preferences + simulated feedback.<br>This demonstrates persistent memory and isolation. Customer benefit remains unproven.</p><p id="runtime" class="runtime">Worker starting…</p></footer>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+let state = null;
+let busy = false;
+
+function setText(id, text) {
+  $(id).textContent = text;
+}
+
+function rankings(id, rows) {
+  const list = $(id);
+  list.replaceChildren();
+  for (const [index, row] of rows.entries()) {
+    const li = document.createElement('li');
+    const number = document.createElement('span');
+    const wrap = document.createElement('div');
+    const name = document.createElement('div');
+    const path = document.createElement('small');
+    const metric = document.createElement('div');
+    const obs = document.createElement('div');
+    number.className = 'ordinal';
+    number.textContent = index + 1;
+    name.className = 'endpoint';
+    const url = new URL(row.url);
+    name.textContent = url.hostname.replace(/^api\./, '');
+    path.textContent = url.pathname;
+    name.append(path);
+    metric.className = 'metric';
+    metric.textContent = `${row.cost_per_good_rlusd} RLUSD / good answer · pays ${row.price.asset}`;
+    obs.className = 'metric';
+    obs.textContent = `${row.trust.n_personal} personal observations · ${row.match} fit`;
+    wrap.append(name, metric, obs);
+    li.append(number, wrap);
+    list.append(li);
+  }
+}
+
+function buttons() {
+  for (const id of ['teach', 'reload', 'fresh', 'verify']) $(id).disabled = busy || !state;
+  if (!state) return;
+  $('teach').disabled = busy || state.counts.shopper > 0 || !state.historical.available;
+  $('verify').disabled = busy || !state.historical.available;
+  $('teach').textContent = state.counts.shopper ? '✓ Feedback saved' : '1 · Teach the fast shopper';
+}
+
+function render(data) {
+  state = data;
+  setText('need', data.need);
+  setText('preference', `Prefers answers within ${data.max_latency_ms / 1000} seconds.`);
+  for (const role of ['shopper', 'control']) {
+    rankings(`${role}-before`, data.baseline[role]);
+    rankings(`${role}-current`, data.current[role]);
+    setText(`${role}-count`, data.counts[role]);
+  }
+  const changed = data.baseline.shopper[0]?.endpoint_id !== data.current.shopper[0]?.endpoint_id;
+  $('shopper').classList.toggle('changed', changed);
+  let explanation = 'No personal history yet. Both shoppers start from the same evidence.';
+  if (data.counts.shopper) {
+    explanation = changed
+      ? `New first choice. Prior endpoint’s personal estimate: ${Math.round(data.learned.before_q_mean * 100)}% → ${Math.round(data.learned.q_mean * 100)}%.`
+      : 'Feedback saved; first choice is unchanged in this snapshot.';
+  }
+  setText('shopper-note', explanation);
+  const controlSame = JSON.stringify(data.baseline.control) === JSON.stringify(data.current.control);
+  setText('control-note', controlSame
+    ? 'Unchanged. Feedback affects only the shopper who reported it.'
+    : 'This control changed; inspect the evidence before presenting.');
+  const h = data.historical;
+  setText('spent', h.spent || 'Unavailable');
+  setText('latency', h.ms ? `${(h.ms / 1000).toFixed(2)} s` : '—');
+  setText('quality', h.verdict === 'good' ? 'Useful' : h.verdict || '—');
+  let body = h.body || 'The historical response body is not available locally.';
+  try { body = JSON.stringify(JSON.parse(body), null, 2); } catch {}
+  setText('body', body); // Seller content is always text, never executable HTML.
+  setText('source', h.source ? `${h.source} · ${h.at} · ${h.body_source}` : h.error);
+  setText('tx', h.tx ? `Historical transaction: ${h.tx}` : 'No matching historical transaction.');
+  setText('runtime', `worker PID ${data.worker_pid} · session ${data.session.slice(0, 8)}\nSQLite memory · global trust ${data.global_unchanged ? 'unchanged' : 'changed'}`);
+  buttons();
+}
+
+async function action(name) {
+  if (busy) return;
+  busy = true;
+  buttons();
+  const oldPid = state?.worker_pid;
+  setText('status', {
+    teach: 'Saving one simulated outcome for the fast shopper…',
+    reload: 'Stopping the worker and reopening the same database in a new process…',
+    fresh: 'Creating a clean pair of personas. Existing sessions are retained…',
+    verify: 'Reading the existing payment through Quicknode. No transaction will be submitted…',
+    state: 'Loading the saved marketplace…'
+  }[name]);
+  $('status').classList.remove('error');
+  try {
+    const response = await fetch(name === 'state' ? '/state' : `/${name}`,
+      name === 'state' ? {} : {method: 'POST', headers: {'X-Plumb-Demo': '1'}});
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || 'The action failed.');
+    if (name === 'verify') {
+      if (data.verified) {
+        setText('verification', `Verified by Quicknode · validated ${data.validated} · ${data.result}\nDelivered ${data.payment.amount} ${data.payment.asset} to ${data.payment.payto}\nChecked ${new Date(data.checked_at).toLocaleString()}`);
+        setText('status', 'Existing payment verified. Customer satisfaction remains a separate, simulated signal.');
+      } else {
+        setText('verification', data.error);
+        setText('status', 'Payment verification unavailable. No new payment was made.');
+      }
+    } else {
+      render(data);
+      if (name === 'fresh') setText('verification', 'Not queried this session. Historical record shown at left.');
+      setText('status', name === 'reload'
+        ? `Worker ${oldPid} exited. New worker ${data.worker_pid} loaded ${data.counts.shopper} saved outcome${data.counts.shopper === 1 ? '' : 's'}; the ranking survived.`
+        : name === 'teach'
+          ? 'One simulated “too slow for me” outcome saved. Reload the worker to check persistence.'
+          : name === 'fresh'
+            ? 'Fresh session ready. Both shoppers have empty memories.'
+            : 'Ready. Teach one shopper, then restart the worker to test what it remembers.');
+    }
+  } catch (error) {
+    setText('status', error.message);
+    $('status').classList.add('error');
+  } finally {
+    busy = false;
+    buttons();
+  }
+}
+
+for (const id of ['teach', 'reload', 'fresh', 'verify']) {
+  $(id).addEventListener('click', () => action(id));
+}
+action('state');
+</script>
+</body>
+</html>

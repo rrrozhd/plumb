@@ -1,0 +1,9 @@
+# A mechanism demonstration, not a customer-benefit experiment.
+port = 8405
+db = "out/memory-demo.sqlite"
+need = "Current BTC perpetual futures funding rate on major exchanges"
+max_latency_ms = 3000
+history = "data/e21_result.json"
+max_response_chars = 16000
+worker_timeout_s = 20
+
