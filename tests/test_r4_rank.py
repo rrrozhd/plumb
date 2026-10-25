@@ -91,3 +91,14 @@ def test_exact_match_beats_a_cheaper_partial(ranker):
         out = ranker.shortlist(v["need"], k=3)
         tiers = [0 if x["match"] == "exact" else 1 for x in out["results"]]
         assert tiers == sorted(tiers), f"partial ranked above exact for {v['need']}"
+
+
+def test_dead_endpoints_are_excluded(ranker):
+    need = known_need(ranker)
+    top = ranker.shortlist(need)["results"][0]["endpoint_id"]
+    ranker.dead.add(top)
+    try:
+        out = ranker.shortlist(need)
+        assert top not in [x["endpoint_id"] for x in out["results"]] and out["excluded"]["dead"] >= 1
+    finally:
+        ranker.dead.discard(top)

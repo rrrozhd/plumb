@@ -23,6 +23,7 @@ class Ranker:
     vectors: relevance.Vectors
     lexical: relevance.Lexical
     embed: Callable[[str], list[float]] | None = None  # used only on a template cache miss
+    dead: set = field(default_factory=set)   # endpoints that failed the offline liveness preflight
     log: list = field(default_factory=list)
 
     def candidates(self, t: str) -> tuple[dict[str, float], str]:
@@ -51,7 +52,7 @@ class Ranker:
         t_cand = time.perf_counter()
 
         fit_min = float(cfg["fit_min"])
-        excluded = {"constraints": 0, "settle": 0, "fit": 0}
+        excluded = {"constraints": 0, "settle": 0, "fit": 0, "dead": 0}
         keep: dict[str, float] = {}
         prices: dict[str, tuple[Decimal, str]] = {}
         for e, f in cands.items():
@@ -59,6 +60,8 @@ class Ranker:
             price = self.rec.price_rlusd(ep, prof)
             if f < fit_min:
                 excluded["fit"] += 1
+            elif e in self.dead:
+                excluded["dead"] += 1
             elif price is None or (prof.max_price_rlusd is not None and price[0] > prof.max_price_rlusd) \
                     or (prof.require_output_schema and not ep.has_output_schema):
                 excluded["constraints"] += 1
@@ -142,4 +145,6 @@ def load(cfg: dict, root, embed=None, with_principals: bool = True) -> Ranker:
         P.simulate(recommender.fit(cfg, root, ps), fit, personas, cfg["demo"]["simulated_purchases_per_persona"], cfg["demo"]["seed"])
     rec = recommender.fit(cfg, root, ps)  # second fit folds simulated outcomes into the co-occurrence signal
     docs = {i: relevance.doc_text(e, cfg["judge"]["max_listing_chars"]) for i, e in rec.endpoints.items()}
-    return Ranker(rec, fit, relevance.Vectors.load(root), relevance.Lexical(docs), embed)
+    live_path = root / "liveness.json"
+    dead = {e for e, v in json.loads(live_path.read_text())["endpoints"].items() if not v["alive"]} if live_path.exists() else set()
+    return Ranker(rec, fit, relevance.Vectors.load(root), relevance.Lexical(docs), embed, dead)

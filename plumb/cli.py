@@ -123,6 +123,22 @@ def build(cfg: dict, judge_needs: bool) -> None:
         _log(f"judged {q['id']}: {len(labels)} of {len(cands)} candidates over {len(groups)} operators")
 
 
+def liveness(cfg: dict) -> None:
+    """Offline preflight (added after E19): an endpoint is dead unless it answers unpaid with an x402 challenge."""
+    from concurrent.futures import ThreadPoolExecutor
+    from plumb.eval_free import _challenge
+    root = config.ROOT / "data"
+    with gzip.open(root / "catalog.json.gz", "rt") as fh:
+        raw = {r["resource"]: r for r in json.load(fh)}
+    eps = catalog.load_endpoints(cfg, root)
+    ids = sorted({e for v in json.loads((root / "fit.json").read_text()).values() for e in v["labels"]})
+    with httpx.Client(timeout=10) as http, ThreadPoolExecutor(8) as pool:
+        res = list(pool.map(lambda i: _challenge(raw[eps[i].url], http), ids))
+    out = {i: {"alive": r["status"] == 402 and bool(r.get("accepts")), "http": r["status"]} for i, r in zip(ids, res)}
+    (root / "liveness.json").write_text(json.dumps({"at": datetime.now(timezone.utc).isoformat(timespec="seconds"), "endpoints": out}, indent=1))
+    _log(f"liveness: {sum(v['alive'] for v in out.values())} of {len(out)} judged candidates answer with an x402 challenge")
+
+
 def main(argv: list[str] | None = None) -> None:
     ap = argparse.ArgumentParser(prog="plumb")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -134,6 +150,7 @@ def main(argv: list[str] | None = None) -> None:
     r.add_argument("--as", dest="principal")
     r.add_argument("-k", type=int, default=3)
     sub.add_parser("bench", help="p50/p95 shortlist latency over the known needs")
+    sub.add_parser("liveness", help="offline: probe every judged candidate unpaid; dead endpoints are excluded from ranking")
     sub.add_parser("eval-free", help="U7 without money: probe Bazaar #1 vs Plumb #1 for each frozen need")
     args = ap.parse_args(argv)
     cfg = config.load()
@@ -149,6 +166,9 @@ def main(argv: list[str] | None = None) -> None:
             ms = sorted(rk.shortlist(n)["timing_ms"]["total"] for n in needs)
             print(json.dumps({"n": len(ms), "p50_ms": statistics.median(ms), "p95_ms": ms[int(0.95 * len(ms))],
                               "machine": platform.platform(), "cpu": platform.processor()}))
+        return
+    if args.cmd == "liveness":
+        liveness(cfg)
         return
     if args.cmd == "eval-free":
         from plumb import eval_free
