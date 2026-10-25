@@ -96,7 +96,7 @@ def pay_and_fetch(http, req, opt, wallet, client, cfg) -> dict:
     try:
         r = http.request(method, url, params=params or None, json=body if method != "GET" else None,
                          headers={"PAYMENT-SIGNATURE": header, "X-PAYMENT": header}, timeout=30)
-        status, text = r.status_code, r.text[:20_000]
+        status, text = r.status_code, r.text[:1_000_000]  # full body (1 MB cap) for deterministic grading
         if status == 402:
             text = json.dumps({"x402_error": (r.json() or {}).get("error")}) if r.headers.get("content-type", "").startswith("application/json") else text
         resp_hdr = r.headers.get("payment-response")
@@ -124,20 +124,28 @@ def settled_on_ledger(lg, cfg, payer: str, payto: str, invoice_hash: str, tx_has
     return None
 
 
-def grade(client, cfg, q: dict, body: str) -> dict:
+def llm_residual(client, cfg):
+    """Tier 3 of plumb.grader: the LLM sees the whole response and answers only G4 coverage and G5 freshness."""
+    def call(q: dict, body: str) -> dict:
+        g = grade(client, cfg, q, body, cap=200_000)
+        return {"g4_answers_need": g["g4_answers_need"], "g5_fresh_enough": g["g5_fresh_enough"], "reason": g["reason"]}
+    return call
+
+
+def grade(client, cfg, q: dict, body: str, cap: int = 6000) -> dict:
     msg = client.messages.create(
         model=cfg["judge"]["bedrock_model"], max_tokens=4000, system=GRADER,
         output_config={"format": {"type": "json_schema", "schema": GRADE_SCHEMA}, "effort": "low"},
         messages=[{"role": "user", "content": json.dumps({"need": q["need"], "must_include": q.get("must_include"),
                                                           "check": q.get("check"), "freshness": q.get("freshness"),
                                                           "now_utc": datetime.now(timezone.utc).isoformat()})
-                   + f"\n<response>\n{body[:6000]}\n</response>"}])
+                   + f"\n<response>\n{body[:cap]}\n</response>"}])
     if msg.stop_reason == "refusal":
         return {"g3_well_formed": False, "g4_answers_need": False, "g5_fresh_enough": False, "reason": "grader refused"}
     return json.loads(next(b.text for b in msg.content if b.type == "text"))
 
 
-def run(cfg: dict, live: bool, resume: str | None = None) -> dict:
+def run(cfg: dict, live: bool, resume: str | None = None, grader_version: int = 1) -> dict:
     root = config.ROOT / "data"
     picks_path = root / "u7_paid_picks.json"
     if picks_path.exists():
@@ -173,6 +181,8 @@ def run(cfg: dict, live: bool, resume: str | None = None) -> dict:
         grader = AnthropicBedrock(aws_region=cfg["judge"]["region"])
 
     spent, bought, rows = Decimal(0), {}, []
+    bodies = config.ROOT / "out" / f"u7-bodies-v{grader_version}-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%MZ')}"
+    bodies.mkdir(parents=True, exist_ok=True)
     if resume:  # rubric §1.5: retry only purchases where no payment was submitted; keep every completed result
         for prev in json.loads(open(resume).read())["rows"]:
             for side in ("bazaar", "plumb"):
@@ -217,10 +227,20 @@ def run(cfg: dict, live: bool, resume: str | None = None) -> dict:
                         elif not out["http"] or not 200 <= out["http"] < 300:
                             res = {"url": url, "verdict": "bad", "why": f"G2: HTTP {out['http']}", "tx": paid["tx_hash"], "spent": str(real)}
                         else:
-                            g = grade(grader, cfg, q, out["body"])
-                            ok = g["g3_well_formed"] and g["g4_answers_need"] and g["g5_fresh_enough"]
+                            body_file = bodies / f"{p['id']}-{side}.txt"
+                            body_file.write_text(out["body"])
+                            if grader_version == 2:
+                                from plumb import grader as G
+                                info = ((raw[url].get("extensions") or {}).get("bazaar") or {})
+                                declared_json = ((info.get("info") or {}).get("output") or {}).get("type") == "json"
+                                g = G.grade(q, out["body"], declared_json, None, llm=llm_residual(grader, cfg))
+                                ok = g["good"]
+                            else:
+                                g = grade(grader, cfg, q, out["body"])
+                                ok = g["g3_well_formed"] and g["g4_answers_need"] and g["g5_fresh_enough"]
                             res = {"url": url, "verdict": "good" if ok else "bad", "grade": g, "tx": paid["tx_hash"],
-                                   "ms": out["ms"], "spent": str(real), "body_head": out["body"][:400]}
+                                   "ms": out["ms"], "spent": str(real), "body_file": str(body_file),
+                                   "body_sha256": hashlib.sha256(out["body"].encode()).hexdigest()}
                 bought[url] = res
                 row[side] = res
             rows.append(row)
@@ -234,8 +254,8 @@ def run(cfg: dict, live: bool, resume: str | None = None) -> dict:
                          "cost_per_good_rlusd": str((cost / good).quantize(Decimal("0.000001"))) if good else None,
                          "planned_rlusd": str(sum(Decimal(r.get("cost_rlusd", "0")) for r in rs if not r.get("shared")))}
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%MZ")
-    report = {"at": stamp, "mode": "live" if live else "dry-run", "spent_total_rlusd": str(spent), "summary": summary, "rows": rows}
-    out = config.ROOT / "out" / f"eval-paid-{'live' if live else 'dry'}-{stamp}.json"
+    report = {"at": stamp, "mode": "live" if live else "dry-run", "grader": f"v{grader_version}", "bodies": str(bodies), "spent_total_rlusd": str(spent), "summary": summary, "rows": rows}
+    out = config.ROOT / "out" / f"eval-paid-{'live' if live else 'dry'}-v{grader_version}-{stamp}.json"
     out.write_text(json.dumps(report, indent=1, default=str))
     report["path"] = str(out)
     return report
