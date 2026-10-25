@@ -1,0 +1,12 @@
+# Optional, explicit AWS operations only. The standard ranker never reads this file.
+region = "us-west-2"
+resource_name = "plumb_demo_customer_memory"
+memory_id = ""  # Fill only with an actual managed resource ID, or pass --memory-id.
+event_retention_days = 7
+session_id = "customer-memory-v1"
+max_events_per_run = 500
+max_payload_bytes = 16384
+page_size = 100
+max_read_pages = 10
+connect_timeout_seconds = 5
+read_timeout_seconds = 20
