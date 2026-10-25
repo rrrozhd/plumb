@@ -3,6 +3,8 @@
 No LLM. The only possible network call is one cached Titan embedding for a need template never seen before.
 """
 import json
+import copy
+import sqlite3
 import time
 import uuid
 from collections.abc import Callable
@@ -11,7 +13,7 @@ from decimal import Decimal
 
 import numpy as np
 
-from plumb import relevance
+from plumb import db, relevance
 from plumb.models import Profile
 from plumb.recommender import HybridRecommender, Principal
 
@@ -28,6 +30,27 @@ class Ranker:
     judge: Callable[[str, list[dict]], dict] | None = None  # cold path: judge a never-seen need once, then cache it
     cold_cache: object = None  # Path where cold-path labels persist (data/fit.json stays frozen)
     log: list = field(default_factory=list)
+    memory_conn: sqlite3.Connection | None = None
+    _memory_base: dict[str, Principal] = field(default_factory=dict)
+
+    @db.serialized
+    def bind_memory(self, conn: sqlite3.Connection) -> None:
+        """Keep snapshot/simulated history separate so reloading durable reports cannot add them twice."""
+        if self.memory_conn is None:
+            self._memory_base = copy.deepcopy(self.rec.principals)
+        self.memory_conn = conn
+        for row in conn.execute("SELECT addr FROM principal"):
+            self.refresh_principal(row["addr"])
+
+    @db.serialized
+    def refresh_principal(self, addr: str) -> None:
+        from plumb import memory
+        if self.memory_conn is not None:
+            p = memory.load_principal(self.memory_conn, addr, self._memory_base.get(addr))
+            if p is not None:
+                # Retired endpoints remain in durable history, not today's scoring view.
+                p.outcomes = {e: counts for e, counts in p.outcomes.items() if e in self.rec.endpoints}
+                self.rec.principals[addr] = p
 
     def candidates(self, t: str, need_text: str = "") -> tuple[dict[str, float], str]:
         cfg = self.rec.cfg["rank"]
@@ -68,10 +91,13 @@ class Ranker:
         return {e: x["p_fit"] for e, x in labels.items()}, "judge_cold"
 
 
+    @db.serialized
     def shortlist(self, need: str, k: int | None = None, principal: str | None = None, constraints: dict | None = None) -> dict:
         t0 = time.perf_counter()
         cfg = self.rec.cfg["rank"]
         k = max(1, min(k or cfg["k_default"], cfg["k_max"]))
+        if principal:
+            self.refresh_principal(principal)
         p: Principal | None = self.rec.principals.get(principal) if principal else None
         prof = _merge(p.profile if p else Profile(), constraints or {})
         t = relevance.template(need)
@@ -164,7 +190,7 @@ def _merge(prof: Profile, c: dict) -> Profile:
     return replace(prof, **upd)
 
 
-def load(cfg: dict, root, embed=None, with_principals: bool = True, judge=None) -> Ranker:
+def load(cfg: dict, root, embed=None, with_principals: bool = True, judge=None, conn: sqlite3.Connection | None = None) -> Ranker:
     """Fit the recommender from data/: real ledger principals and simulated personas (outcomes labelled simulated)."""
     from plumb import config, principals as P, recommender
     fit_path = config.path(cfg, "fit")
@@ -184,4 +210,7 @@ def load(cfg: dict, root, embed=None, with_principals: bool = True, judge=None) 
     vectors, lexical = relevance.Vectors.load(root), relevance.Lexical(docs)
     X, y, _ = relevance.Calibration.features(fit, vectors, lexical)
     cal = relevance.Calibration.fit(X, y) if len(set(y.tolist())) == 2 else None
-    return Ranker(rec, fit, vectors, lexical, embed, dead, cal, judge, cold_path)
+    rk = Ranker(rec, fit, vectors, lexical, embed, dead, cal, judge, cold_path)
+    if conn is not None:
+        rk.bind_memory(conn)
+    return rk

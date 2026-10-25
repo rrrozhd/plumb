@@ -1,16 +1,17 @@
-"""Outcome reports (RECOMMENDER §5): every report personalises; only a proven one moves global trust.
+"""Outcome reports: good/bad feedback persists for its customer; payment proofs are stored separately.
 
-A report counts globally only if its payment is a validated tesSUCCESS Payment from the principal to the endpoint's
-payTo, delivering at least the listed price, after the shortlist and within 24 h, never used before, from an account
+A report's payment evidence is stored only if its payment is a validated tesSUCCESS Payment from the principal to the endpoint's
+payTo, meeting the RLUSD price check when applicable, after the shortlist and within 24 h, never used before, from an account
 older than the shortlist, and (when given) whose invoiceId hashes to the on-ledger InvoiceID.
+Stored global report evidence is not yet consumed by the trust fitter.
 """
 import hashlib
 import json
 import sqlite3
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 
-from plumb import ledger as L
+from plumb import db, ledger as L, memory
 from plumb.models import Profile
 from plumb.recommender import Principal
 from plumb.rank import Ranker
@@ -38,6 +39,7 @@ def check_payment(entry: dict | None, created: dict | None, *, cfg: dict, princi
     return [{"check": c, "ok": ok} for c, ok in checks]
 
 
+@db.serialized
 def save_shortlist(conn: sqlite3.Connection, out: dict, need: str, at: datetime) -> None:
     conn.execute("INSERT INTO shortlist(id, need_hash, need_text, principal, at, results, mode) VALUES (?,?,?,?,?,?,?)",
                  (out["shortlist_id"], hashlib.sha256(out["need_template"].encode()).hexdigest(), need[:1000],
@@ -45,6 +47,7 @@ def save_shortlist(conn: sqlite3.Connection, out: dict, need: str, at: datetime)
     conn.commit()
 
 
+@db.serialized
 def report(conn: sqlite3.Connection, ranker: Ranker, lg, cfg: dict, *, shortlist_id: str, endpoint_id: str, verdict: str,
            principal: str | None = None, payment_tx: str | None = None, invoice_id: str | None = None) -> dict:
     if verdict not in VERDICTS:
@@ -56,11 +59,9 @@ def report(conn: sqlite3.Connection, ranker: Ranker, lg, cfg: dict, *, shortlist
     if endpoint_id not in results:
         return {"accepted": False, "error": "endpoint not in that shortlist"}
     who = principal or row["principal"]
+    if principal and row["principal"] and principal != row["principal"]:
+        return {"accepted": False, "error": "principal does not match this shortlist"}
     rec = ranker.rec
-    if who and verdict != "wrong_answer":
-        p = rec.principals.setdefault(who, Principal(who, who, Profile(), "ledger"))
-        g, b = p.outcomes.get(endpoint_id, [0.0, 0.0])
-        p.outcomes[endpoint_id] = [g + (verdict == "good"), b + (verdict == "bad")]
 
     checks: list[dict] = []
     if payment_tx and who:
@@ -80,8 +81,20 @@ def report(conn: sqlite3.Connection, ranker: Ranker, lg, cfg: dict, *, shortlist
         if t and endpoint_id in ranker.fit[t]["labels"]:
             ranker.fit[t]["labels"][endpoint_id]["p_fit"] = float(cfg["judge"]["p_fit"]["wrong"])
         return {"accepted": True, "scope": "fit", "checks": checks}  # outcome_report holds merchant verdicts only
-    if proven:
-        conn.execute("INSERT INTO outcome_report VALUES (?,?,?,?,?,?,?)",
-                     (payment_tx, shortlist_id, endpoint_id, who, verdict, datetime.now().isoformat(), 1.0))
-        conn.commit()
-    return {"accepted": True, "scope": "principal+global" if proven else "principal", "checks": checks}
+    if not who:
+        return {"accepted": False, "error": "a principal is required for customer feedback", "checks": checks}
+    ranker.bind_memory(conn)
+    p = rec.principals.get(who) or Principal(who, who, Profile(), "simulated" if who.startswith("sim:") else "ledger")
+    try:
+        with conn:
+            added = memory.record_outcome(conn, rec, p, endpoint_id=endpoint_id, verdict=verdict,
+                                          shortlist_id=shortlist_id, at=datetime.now(timezone.utc).isoformat(),
+                                          source="simulated" if p.source == "simulated" else "report")
+            if proven:
+                conn.execute("INSERT INTO outcome_report VALUES (?,?,?,?,?,?,?)",
+                             (payment_tx, shortlist_id, endpoint_id, who, verdict, datetime.now(timezone.utc).isoformat(), 1.0))
+    except ValueError as exc:
+        return {"accepted": False, "error": str(exc), "checks": checks}
+    ranker.refresh_principal(who)
+    return {"accepted": True, "scope": "principal", "persisted": True, "duplicate": not added,
+            "global_evidence_stored": proven, "checks": checks}

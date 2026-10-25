@@ -11,8 +11,9 @@ pytestmark = pytest.mark.p0
 
 @pytest.fixture(scope="module")
 def base(tmp_path_factory):
-    from plumb import api, db
+    from plumb import api, config, db, rank
     api.CONN = db.connect(tmp_path_factory.mktemp("db") / "t.db")
+    api.RANKER = rank.load(api.CFG, config.ROOT / "data", with_principals=False, conn=api.CONN)
     srv = ThreadingHTTPServer(("127.0.0.1", 0), api.Handler)
     threading.Thread(target=srv.serve_forever, daemon=True).start()
     yield f"http://127.0.0.1:{srv.server_address[1]}/v1/shortlist"
@@ -38,3 +39,19 @@ def test_paid_shortlist_replays_instead_of_answering_twice(base):
 
 def test_missing_need_is_400(base):
     assert post(base, {"k": 3})[0] == 400
+
+
+def test_http_recommendations_restore_customer_feedback(base):
+    from plumb import api, config, outcomes, rank
+    need = "Current BTC perpetual futures funding rate on major exchanges"
+    req = {"need": need, "principal": "sim:http"}
+    _, before = post(base, req)
+    first = before["results"][0]["endpoint_id"]
+    result = outcomes.report(api.CONN, api.RANKER, None, api.CFG, shortlist_id=before["shortlist_id"],
+                             endpoint_id=first, verdict="bad")
+    assert result["persisted"]
+    api.RANKER = rank.load(api.CFG, config.ROOT / "data", with_principals=False, conn=api.CONN)
+    _, after = post(base, req)
+    _, control = post(base, {"need": need, "principal": "sim:unaffected"})
+    assert after["results"][0]["endpoint_id"] != first
+    assert control["results"][0]["endpoint_id"] == first

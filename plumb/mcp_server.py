@@ -9,8 +9,8 @@ from mcp.server.mcpserver import MCPServer
 from plumb import config, db, ledger, outcomes, rank
 
 CFG = config.load()
-RANKER = rank.load(CFG, config.ROOT / "data")
 CONN = db.connect(config.path(CFG, "db"))
+RANKER = rank.load(CFG, config.ROOT / "data", conn=CONN)
 LEDGER = ledger.Ledger(CFG)
 mcp = MCPServer("plumb")
 
@@ -33,8 +33,8 @@ def report_outcome(shortlist_id: str, endpoint_id: str, verdict: str, principal:
                    payment_tx: str | None = None, invoice_id: str | None = None) -> dict:
     """Report how a recommended endpoint did: verdict good | bad | wrong_answer.
 
-    Every report updates the principal's own ranking. With payment_tx (and invoice_id for nonce sellers) it is checked
-    on the XRP Ledger and, if every check passes, also updates global trust."""
+    Good/bad feedback persists for this customer. Repeating the same report does not count twice.
+    payment_tx is checked on XRPL and stored as additional evidence; it does not currently rebuild global trust."""
     return outcomes.report(CONN, RANKER, LEDGER, CFG, shortlist_id=shortlist_id, endpoint_id=endpoint_id,
                            verdict=verdict, principal=principal, payment_tx=payment_tx, invoice_id=invoice_id)
 

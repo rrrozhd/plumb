@@ -163,6 +163,7 @@ def main(argv: list[str] | None = None) -> None:
     r.add_argument("need")
     r.add_argument("--as", dest="principal")
     r.add_argument("-k", type=int, default=3)
+    r.add_argument("--db", help="customer memory database (defaults to configured store)")
     sub.add_parser("bench", help="p50/p95 shortlist latency over the known needs")
     sub.add_parser("liveness", help="offline: probe every judged candidate unpaid; dead endpoints are excluded from ranking")
     ep = sub.add_parser("eval-paid", help="U7 paid head-to-head; dry-run unless --live")
@@ -179,16 +180,21 @@ def main(argv: list[str] | None = None) -> None:
     args = ap.parse_args(argv)
     cfg = config.load()
     if args.cmd in ("recommend", "bench"):
-        from plumb import rank
+        from plumb import db, outcomes, rank
         embed = judge_fn = None
         if args.cmd == "recommend" and (config.ROOT / "env" / "judge.env").exists():
             from plumb import relevance
             _load_env("judge.env")
             embed = relevance.Titan(cfg).embed  # one cached Titan call for a need template never seen before
             judge_fn = _cold_judge(cfg)
-        rk = rank.load(cfg, config.ROOT / "data", embed=embed, judge=judge_fn if args.cmd == "recommend" else None)
+        conn = db.connect(args.db or config.path(cfg, "db")) if args.cmd == "recommend" else None
+        rk = rank.load(cfg, config.ROOT / "data", embed=embed, judge=judge_fn if args.cmd == "recommend" else None, conn=conn)
         if args.cmd == "recommend":
-            print(json.dumps(rk.shortlist(args.need, k=args.k, principal=args.principal), indent=1))
+            out = rk.shortlist(args.need, k=args.k, principal=args.principal)
+            assert conn is not None
+            outcomes.save_shortlist(conn, out, args.need, datetime.now(timezone.utc))
+            print(json.dumps(out, indent=1))
+            conn.close()
         else:
             import platform
             import statistics

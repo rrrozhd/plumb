@@ -1,6 +1,20 @@
 """SQLite store (SPEC §2). Invariants that a schema can hold are enforced here, not in application code."""
 import sqlite3
+import threading
+from functools import wraps
 from pathlib import Path
+
+# SQLite serializes separate connections, but a shared connection lets another
+# thread commit your transaction. Cover reads and whole request transactions too.
+LOCK = threading.RLock()
+
+
+def serialized(fn):
+    @wraps(fn)
+    def call(*args, **kwargs):
+        with LOCK:
+            return fn(*args, **kwargs)
+    return call
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS operator(
@@ -57,7 +71,8 @@ CREATE TABLE IF NOT EXISTS principal(
 CREATE TABLE IF NOT EXISTS principal_outcome(
   id INTEGER PRIMARY KEY, principal TEXT NOT NULL REFERENCES principal(addr),
   endpoint TEXT NOT NULL REFERENCES endpoint(id), verdict TEXT NOT NULL CHECK (verdict IN ('good', 'bad')),
-  latency_ms INTEGER, at TEXT NOT NULL, source TEXT NOT NULL CHECK (source IN ('report', 'simulated')));
+  latency_ms INTEGER, at TEXT NOT NULL, source TEXT NOT NULL CHECK (source IN ('report', 'simulated')),
+  shortlist_id TEXT);
 
 CREATE TABLE IF NOT EXISTS need(
   key TEXT PRIMARY KEY, text TEXT NOT NULL, bazaar_order TEXT NOT NULL DEFAULT '[]');
@@ -74,10 +89,15 @@ CREATE TABLE IF NOT EXISTS meta(key TEXT PRIMARY KEY, value TEXT NOT NULL);
 def connect(path: str | Path) -> sqlite3.Connection:
     if str(path) != ":memory:":
         Path(path).parent.mkdir(parents=True, exist_ok=True)
-    conn = sqlite3.connect(path, check_same_thread=False)  # MCP runs sync tools in worker threads; writes are serialised by SQLite
+    conn = sqlite3.connect(path, check_same_thread=False)  # shared request operations use serialized above
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
     if str(path) != ":memory:":
         conn.execute("PRAGMA journal_mode = WAL")
     conn.executescript(SCHEMA)
+    # Additive upgrade: existing outcomes remain intact; legacy rows have no replay key.
+    if "shortlist_id" not in {r["name"] for r in conn.execute("PRAGMA table_info(principal_outcome)")}:
+        conn.execute("ALTER TABLE principal_outcome ADD COLUMN shortlist_id TEXT")
+    conn.execute("CREATE UNIQUE INDEX IF NOT EXISTS principal_outcome_request ON principal_outcome(principal, shortlist_id, endpoint)")
+    conn.commit()
     return conn

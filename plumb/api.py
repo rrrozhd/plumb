@@ -10,8 +10,25 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from plumb import config, db, outcomes, rank
 
 CFG = config.load()
-RANKER = rank.load(CFG, config.ROOT / "data")
 CONN = db.connect(config.path(CFG, "db"))
+RANKER = rank.load(CFG, config.ROOT / "data", conn=CONN)
+
+
+@db.serialized
+def shortlist(req: dict, need: str) -> dict:
+    """Keep payment replay and shared state atomic; socket IO stays outside the lock."""
+    paid = req.get("paid_tx")
+    if paid:
+        row = CONN.execute("SELECT results, id FROM shortlist WHERE paid_tx = ?", (paid,)).fetchone()
+        if row:
+            return {"shortlist_id": row["id"], "results": json.loads(row["results"]), "replayed": True}
+    out = RANKER.shortlist(need, k=req.get("k"), principal=req.get("principal"), constraints=req.get("constraints") or {})
+    outcomes.save_shortlist(CONN, out, need, datetime.now(timezone.utc))
+    if paid:
+        CONN.execute("UPDATE shortlist SET paid_tx = ? WHERE id = ?", (paid, out["shortlist_id"]))
+        CONN.commit()
+    out["paid_tx"] = paid
+    return out
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -31,18 +48,7 @@ class Handler(BaseHTTPRequestHandler):
             need = str(req["need"])[:1000]
         except (ValueError, KeyError):
             return self._send(400, {"error": {"code": "bad_request", "message": "need is required"}})
-        paid = req.get("paid_tx")
-        if paid:
-            row = CONN.execute("SELECT results, id FROM shortlist WHERE paid_tx = ?", (paid,)).fetchone()
-            if row:
-                return self._send(200, {"shortlist_id": row["id"], "results": json.loads(row["results"]), "replayed": True})
-        out = RANKER.shortlist(need, k=req.get("k"), principal=req.get("principal"), constraints=req.get("constraints") or {})
-        outcomes.save_shortlist(CONN, out, need, datetime.now(timezone.utc))
-        if paid:
-            CONN.execute("UPDATE shortlist SET paid_tx = ? WHERE id = ?", (paid, out["shortlist_id"]))
-            CONN.commit()
-        out["paid_tx"] = paid
-        self._send(200, out)
+        self._send(200, shortlist(req, need))
 
     def log_message(self, format, *args):  # noqa: A002 (base-class signature); one JSON line per request, no bodies
         print(json.dumps({"at": datetime.now(timezone.utc).isoformat(timespec="seconds"), "req": format % args}))
