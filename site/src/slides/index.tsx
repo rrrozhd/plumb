@@ -316,8 +316,8 @@ export function Evidence() {
 
 export function Production() {
   const cols: [string, string[]][] = [
-    ["Live today", ["Router + trust on real XRPL x402 data", "AP4M: mandate, capped channel, receipts", "Mainnet evals with frozen rubric", "MCP tool for any agent"]],
-    ["Next", ["Adapters: AP4M merchants, x402 on Base", "Success fee: paid only for good answers, proven on-ledger", "Real audits folding into trust", "Customer memory per agent"]],
+    ["Live today", ["Router + trust on real XRPL x402 data", "AP4M: mandate, capped channel, receipts", "Customer memory, backed up to AWS AgentCore (MEM2)", "Mainnet evals with frozen rubric · MCP tool"]],
+    ["Next", ["Adapters: AP4M merchants, x402 on Base", "Success fee, priced on independently checked answers", "Real audits folding into trust", "Feedback that moves global trust, proof-gated"]],
     ["Blockers we name", ["AP4M is testnet and pays only our own merchant (L19)", "XRPL AI Hub has no public API yet", "Few real buyers today (L2): the trust prior carries most weight", "Accuracy edge not yet significant (E24)"]],
   ]
   return (

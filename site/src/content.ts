@@ -55,7 +55,7 @@ export const SLIDES: SlideMeta[] = [
   { id: "evidence", kicker: "Evidence", title: "Bought with real money, graded by code", auto: false,
     notes: "We tested it with real money on mainnet, with needs and grading frozen in advance. Across thirty needs, Plumb got nineteen good answers, the Bazaar fourteen. Where they differed, Plumb won six and lost one. That is suggestive, not proof, and cost is about even once our fee is included. fizzl, a competitor that buys on any chain, costs two and a half to six times more per good answer." },
   { id: "production", kicker: "Path to production", title: "From hackathon to rail", auto: false,
-    notes: "What's next. First, more rails: AP4M merchants, and x402 on Base, where most of fizzl's merchants live. Second, a success fee: Plumb gets paid only when the answer was good, which we can check because outcomes are proven on the ledger. The blockers are honest ones: AP4M is testnet only and pays only our own merchant, and the XRPL AI Hub has no public API yet." },
+    notes: "What's next. First, more rails: AP4M merchants, and x402 on Base, where most of fizzl's merchants live. Second, a success fee, paid only for answers that pass independent checks. A ledger payment proves a purchase settled, not that the answer was good. The blockers are honest ones: AP4M is testnet only and pays only our own merchant, and the XRPL AI Hub has no public API yet." },
   { id: "close", kicker: "Plumb", title: "AP4M decides how an agent may pay. Plumb decides whom.", auto: false,
     notes: "AP4M decides how an agent may pay. Plumb decides whom it should pay, within its mandate, with evidence from the ledger. Thank you." },
 ]
