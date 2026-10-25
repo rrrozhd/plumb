@@ -1,0 +1,4122 @@
+{
+ "current xrp price in usd": {
+  "need_id": "q01",
+  "need": "Current XRP price in USD",
+  "labels": {
+   "608581c7276ba3f18a320ed103af867caba25139402c2f53db525399f4b863d8": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns current USD price by ticker and explicitly lists XRP."
+   },
+   "d37c16da098de5c9507d8da93c81bacfc140886f0330cc86d8058c24456696dc": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Crypto price in ECB currencies; USD and XRP coverage not stated."
+   },
+   "6bd3d63f864cac0e0d61d9c8d6a33fcdc1752791bc2a717c8ef09c3113beb0bb": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Current crypto price in USD by ticker, but XRP not explicitly listed."
+   },
+   "cafdfb42259e710b6cf4cf06ba04ada402397818dde5b976f5396c99aca7ceef": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Only fiat FX rates, no cryptocurrency prices."
+   },
+   "0a2f523664ba1251dd862717ea6bc3cda745faf8a93a339a31d6e10bd15170db": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Float and supply structure evidence, not a USD spot price."
+   },
+   "6938a86ccb4e42d8d0848418124ad737db000ea164ba96062f24da86904e3e5a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "CFTC leveraged-fund positioning, no price returned."
+   },
+   "258de76b00b737142395a3db5ff9d65b627d0f29232ba7e9ab9570c80b2f0751": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "XRP/RLUSD order-book and AMM price data, but not a direct USD price."
+   },
+   "eeb05b0007ce1c5e7f5596b5022c4740ee1e3e939c9a0eaa35e7847cd6f48b5f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Escrow release history; no price information."
+   },
+   "0bb8819be7c970d1077b2c09048726c0570d93140a4033696316f1ad16ceaee7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Adoption metrics deliberately separated from price."
+   },
+   "30b11ad2aa172ecd78b7229849236af1d6002cb3ea2166662f4176c09e14f8fe": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Derivatives positioning and whale activity, not price."
+   },
+   "f2df32f89ef8ddb3bb009315919a136a92e4eef69531f8eb1b817dc28438ea07": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Large transfer monitoring; no price returned."
+   },
+   "51560ae3ffba266b1f2da644b0f62fc48320358161c99046f4243277b0a3db38": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Macro scenario outlook, not current spot price."
+   },
+   "103c145fb291ac17426b578296da1acad3419acefeea04b38ac1339724b9415e": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "XRP perpetual funding rates; related market data but not the spot price."
+   },
+   "758430cecf1c0da450183b9a41eaa15e820629cf217db316b9b6e9bf5d70e914": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Converts crypto to USD at current spot; XRP to USD gives the price."
+   },
+   "0a3276aa53ee75e8c13dd341f6dfe57da5434b3422226035b4da8d6c43c414fa": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Hyperliquid perp mark/mid price for a coin, possibly XRP, but a perp not spot."
+   },
+   "c5aadf36ab59eb4370dae247888262b3e6f881fd45af0b158e109a1e928828a2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitcoin fee data, not XRP price."
+   },
+   "a170531ea764477337fcf596207a87477207b40080097af330e2c7be8a67ddf2": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Top tickers with USD price; XRP likely in top 100 but needs filtering."
+   },
+   "a9bca3eb07b62d69550eba22c8b14e50ecbfb20664362f006f7949703f7d6c1b": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Perp market snapshot with mark price for one coin; not spot price."
+   },
+   "2bd6778260a760134fdfd9f4189e56a73587289d4e7e97012d7037c77d92e975": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitcoin network fees; explicitly no prices."
+   },
+   "79d2c748a2de5619329d4cff8d89a121fdbf7995311a895ca80139e5a027e555": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns USD value of one unit for a crypto symbol, including XRP."
+   },
+   "a9197288dbc0492550f1d97e16b783f2b140cf85307e9d66c90a778e74328563": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Network health metrics, no XRP USD price."
+   },
+   "fc3022c8644b39ed749e580e072cb45623f369db289fbaecfa30b8f704c0b244": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Lists large payments; does not return XRP price in USD."
+   },
+   "8689deadff564f7ccfcccb06fe4fce3d603e48d7f11464acf33d2237516fc73f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Pre-send payment validation, no price data."
+   },
+   "26b8d2ba00fa1adf62d6a3ec597c6c37874dc83577433c9d32f75ea773e1ce1e": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token issuer verification, no price data."
+   },
+   "d50d9aca3543211eaada8dc69db862e8c40e34c3ac76b6de2b1d719ae42a1b4b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Payment arrival webhook, not a price."
+   },
+   "39923a004f64ce7c3eeb476b0e194b43c777e20a217d98b69b2bb34a2acfecdf": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Verifies payment settlement, no price."
+   },
+   "f590ddd5e3f2cbdbde463a24ae47aa1e27b0b7257fa1cd8261064d44e6878c51": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Payment receipt image, no price data."
+   },
+   "57b4f3d90b034b97f6d2d5e9f2b9e1523b9df14279dcc656187799f443e294c6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns x402 payment activity volume on XRPL, not the XRP USD price."
+   },
+   "629015511aa3c3c28dfddf3a3343744a6e793cdbb93d03bdd7fc39d9a05e22a6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Price index of x402 resource costs, not XRP market price."
+   },
+   "6a29c3b18954fd3634a2f7fb2c4ff81977ba9840fcf9d09b8af17507c57b5159": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Endpoint health and liveness report, no XRP price data."
+   },
+   "a9031d5aafe4088840fbf61dc1778c823673477075558d820ec0ac4e541216c6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Merchant readings by XRPL address, not the XRP USD price."
+   },
+   "8a9222cc99b1fb89a111a6c4ca47118480125b781d4b5ac12c2c919f0bc2f95c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Proves XRPL transactions; does not return XRP price in USD."
+   },
+   "b1287902d752d1fb8291be3a13c3b55b765adea66f635501f51a7e0e09e4e858": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Snapshot covers only BTC/ETH prices, not XRP."
+   },
+   "f5bdbd3c73a4e41493cb9e1cee771e202d70f609787b3c6be1f3bc4097610e3d": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Gives perp mark price for a coin, possibly XRP, but focused on funding."
+   },
+   "4974e71d946c213dfe27eaeb387f52a678f9586ef0c103e34ab31496a1e087cc": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Lending rates on Hyperliquid, no XRP price."
+   },
+   "9437e857e9f5b80207cdaa99a7fb5b855ad93ce508cbe04c7b14a22692d5f13c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token launch feed, unrelated to XRP price."
+   },
+   "08412d602cb6431e9d50e02332ad325a6e20973855288fe5ab6dfb465f3924d7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Impermanent-loss analytics, not XRP spot price."
+   },
+   "a529cd9b246c69f1603f462f2368986683a784c97a55c51197858fbb81d5c545": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "LP range modeling, not XRP price."
+   },
+   "9c7da41f8fcfb116cc742dbc6e4981c9f5cb664075b0b005ce4051631913f832": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Provides BTC-focused market backdrop and aggregates; no XRP USD price is offered."
+   },
+   "63bb2f394f2bdb5b1414b9a72ab7700f2dfb2247936177261889f7907f9b499c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns wallet balances and payability, not XRP market price in USD."
+   }
+  }
+ },
+ "current btc perpetual futures funding rate on major exchanges": {
+  "need_id": "q02",
+  "need": "Current BTC perpetual futures funding rate on major exchanges",
+  "labels": {
+   "103c145fb291ac17426b578296da1acad3419acefeea04b38ac1339724b9415e": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Live multi-venue perpetual funding rates including BTC, fresh within 5 minutes."
+   },
+   "a63eeac6634b70975ea139cc5a62ea1bf2ecd4ab25a1200fe5331fdafa213472": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Built on BTC funding rates but returns annualised spread rankings, not raw current rates."
+   },
+   "f349d2fa32c60b0104e0c8f9e9cbfd7849088c3b1e28948f80086cfdaf27eb1c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "CFTC CME positioning data, not perpetual funding rates."
+   },
+   "7416dd1e2bd9080e7121734e1605a223300fc3813826439242ee001eff2a6914": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "CFTC asset-manager positioning, not perpetual funding rates."
+   },
+   "89dd29f49d310f3808e277f993044c507a501e7c5d6eab7ecd50c7a21f1234f5": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Fuses CFTC positioning with on-chain whale activity; no funding rate."
+   },
+   "196c778e74be179f9f9a01392bc1612c26a9285c93197c0050efb3d5bdc93724": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Stablecoin supply and momentum context, not funding rates."
+   },
+   "4e5d230d4d656d96e6b361c1e7f4904e377551282d673623a31760c4e1b9e78d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Asset research scoring; does not return funding rates."
+   },
+   "7e41f6f034018a1c2cc7d5ada8d02886d05f24a0c8e891ad5c73c73aba4de51d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Yen carry regime classification; funding rates not the output."
+   },
+   "0b6994bb0c3de9153fc309e56de18080957ac4e7b025e5fe8a1db3ebd2192500": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Weekly CFTC leveraged-fund position changes, not funding rates."
+   },
+   "b4d875f845007a56025bae608a282290060df22988e787197bd3a6e155a0c78a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Broad cycle liquidity outlook; no direct funding rate output."
+   },
+   "e30f2528ba855da22bc10d2fe7133fe89fce1ee141cff06d30ac8d72f04eefd3": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Returns current BTC perp funding rate, but only from OKX, not multiple major exchanges."
+   },
+   "4d5b06c151e38c272bbc41d896a81d5e00e6fc35c8fec6c94d86474f25810408": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Includes BTC OKX funding rate, but only one exchange and mixed with indicators."
+   },
+   "375e06fc636bee43671ca85e8c244bcc475992f6e17da0c8d3afb441ce6fe537": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Spot prices and momentum only; no funding rate data."
+   },
+   "6513fb13509f7794263a23c6d933f9ad83665b64a5f93f3a1820aa47910d1403": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Current BTC perp funding across Hyperliquid, OKX, Deribit, dYdX in one call."
+   },
+   "0a3276aa53ee75e8c13dd341f6dfe57da5434b3422226035b4da8d6c43c414fa": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "BTC funding rate but only Hyperliquid, a single exchange."
+   },
+   "4413d90fffa96fef5736a37c9b3e26956f864650f84a42bf5d481e8540ba02fd": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Current perp funding for a coin on Binance, OKX and Bybit, major exchanges."
+   },
+   "4dee64669b4d2839ea1d56a15f2e714b9e4e2a84ff7787a979ab2e1cbce39883": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "US SOFR short-term funding rates, unrelated to crypto perpetuals."
+   },
+   "dd8843b35b816ccad7c1251bb8984048e068b1cd0e3eed8d96ed9969b7c8a907": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Includes BTCUSDT funding rate but only on Phemex."
+   },
+   "758430cecf1c0da450183b9a41eaa15e820629cf217db316b9b6e9bf5d70e914": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Spot conversion only, no funding rates."
+   },
+   "2a4224b0e7925c955cd48f24732a5bacdfd326ae88229754c294674ef40eda90": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Binance spot price only, no funding rate."
+   },
+   "c8bd6436a8f7edb719a6faf27e2fa26bff03ff4d2be551466e6197efc99aa14b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitstamp spot ticker, no funding data."
+   },
+   "cb0fb0d6e625288e4f8243dea91d92317c3a3cf652d9f165b8ae2fe20a05461f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitget spot ticker, no funding rate."
+   },
+   "2bd6778260a760134fdfd9f4189e56a73587289d4e7e97012d7037c77d92e975": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitcoin network fees, not futures funding."
+   },
+   "79d2c748a2de5619329d4cff8d89a121fdbf7995311a895ca80139e5a027e555": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Spot exchange rates, no funding data."
+   },
+   "176a7f2726f73b59ac346b1623fea93c60df47e3da46f26216f92b21bba582f4": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Hourly BTC funding possible but only dYdX v4, one venue."
+   },
+   "c5aadf36ab59eb4370dae247888262b3e6f881fd45af0b158e109a1e928828a2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitcoin transaction fees, not perpetual funding."
+   },
+   "b4b68aa6241791f14ce754a0ddb43b3a5925907dc4a9fc75dea58f030ac69ef5": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Returns current BTC perpetual funding rate, but only from OKX, not multiple major exchanges."
+   },
+   "9c7da41f8fcfb116cc742dbc6e4981c9f5cb664075b0b005ce4051631913f832": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Includes BTC perpetual funding among broad market data; exchange unspecified, not multi-exchange."
+   },
+   "acaa24d97628e201fc44a3ab3762b6a4a8022d487664547f7d7d336a3f9bf93f": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Includes BTC perpetual funding with sentiment context; exchange unspecified and not multi-exchange."
+   },
+   "8e4b29a41307e65466c03f5ffa702e5957b7aaca202289f25b61d46ffa4a9b03": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Trading signal and price only; no funding rate."
+   },
+   "2bd03e993c9d2b72f7de1d349b4f6247321a068ad85bdfcae3c878dbf2d95c86": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Technical indicator signals; no funding rate data."
+   },
+   "3d0e14f9a0ac170f8cef05ffe3de4e76e858104bcbfef48318f9c363767092c9": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Yen carry-trade macro risk; not funding rates."
+   },
+   "757ac21d568dee4f47f4457ed1d5744c2d1a1857e2d13f951fb598944290c759": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Daily brief mentions funding among many items; not a dedicated, current multi-exchange rate."
+   },
+   "86f1aa221cb5f885d7bc0a5eff01dd660d59aca5713716a1bd5e0478ec6d589c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Support/resistance levels and projections; no funding rate."
+   },
+   "f5bdbd3c73a4e41493cb9e1cee771e202d70f609787b3c6be1f3bc4097610e3d": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns current funding rate for a coin (BTC) plus predicted rates across venues."
+   },
+   "b1287902d752d1fb8291be3a13c3b55b765adea66f635501f51a7e0e09e4e858": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Spot price and sentiment snapshot; funding only mentioned in a pricier upsell endpoint."
+   },
+   "dc71bf64d871e44e337eb25ff16e65941e17163a5f26a26ed7ea935c209df980": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Covers funding across major exchanges, but arbitrage-focused; BTC rate output unclear."
+   },
+   "7751b6c63eceab57ce0afa916c7d240471bc2290790da0c554d9d3e926317d23": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Cross-venue funding spreads ranked; includes BTC rates but oriented to arbitrage, not direct lookup."
+   },
+   "f03780794e1e92aad71c090a0db1afd2070cc03cfe13e5a661ee03ff4b420040": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Converts currency amounts; no perpetual futures funding rate data."
+   },
+   "608581c7276ba3f18a320ed103af867caba25139402c2f53db525399f4b863d8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns spot prices only, not BTC perpetual funding rates."
+   }
+  }
+ },
+ "today's crypto fear & greed index value": {
+  "need_id": "q03",
+  "need": "Today's crypto Fear & Greed Index value",
+  "labels": {
+   "b1a826983b3a5d260030458f30f72792b235a32ac98d1b064a17cd2ccca35d1a": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns current crypto Fear & Greed Index value with classification."
+   },
+   "e5817f07c2e84fd053b2f44cf33bd2c49a9d3c1cdcfe001c16fb65d06bfc946c": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns current crypto Fear & Greed Index value with classification."
+   },
+   "95960dd97237daf8dd02cec5208787fb7b80532a311fb7176c7dd2b2579edd88": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Historical series likely includes today's value but needs extraction from the series."
+   },
+   "2c28ef2aa44a0986cbb4dc7f628860d726ba9341c00e749a001770bb77e3b217": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Historical series likely includes today's value but needs extraction from the series."
+   },
+   "2a1f31a8ebaf8e8f91bcd69b34f000af86ac8cc71c95eb76bf8b2935db250747": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns today's Crypto Fear & Greed value and label directly."
+   },
+   "37953d357c830b8117a26abccfe77da596c6f02c0128bae3756da9e537fec2a6": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns today's Fear & Greed Index with classification, plus history."
+   },
+   "9f71608f4073a08578cb0f6f4e8852ce66be176cdfd319dd2ce41f0ef0326b9b": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns today's Crypto Fear & Greed value despite jobs-themed URL."
+   },
+   "0754691f9a0464bec4fb4984e73c8439370788ba07b3c1d3dea92e016b939dbb": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Coin price tickers, no sentiment index."
+   },
+   "a9758deba908e579da8e373d383797dd6229c52cf6f8dcf411a70e8af9f2f826": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Coin price list, no Fear & Greed index."
+   },
+   "6cd880370a5ff916aeae96e7b19843c25c2194c17f6c24057bc0c0c64d02377e": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Coin price listing, no sentiment index."
+   },
+   "60ecb88db7bc86ebe6f423aa9df99737afa61710768c43719b7685c8e975177a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Market depth data, not sentiment index."
+   },
+   "a170531ea764477337fcf596207a87477207b40080097af330e2c7be8a67ddf2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Coin tickers, no Fear & Greed value."
+   },
+   "cb0fb0d6e625288e4f8243dea91d92317c3a3cf652d9f165b8ae2fe20a05461f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Exchange ticker for a pair, not sentiment."
+   },
+   "62504b5952a679754c7b70c8fea7de366a586dfbfc5017a56677962e62e348db": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Spot prices only, no Fear & Greed."
+   },
+   "5c3e12443b887d2131caf29e5e4577238f78ede9b7e468cfd49402bdaa9bd3f0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Sui epoch data, unrelated."
+   },
+   "4f54472645e3ae58be273709ce6cee28b098a7d6542fe1ccdfaf3f5d48d9be27": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Chainlink price feed, not sentiment."
+   },
+   "366065c192d8d66a664807080f774d1206859f363b4dece2466fd3fba0cd1966": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Project rankings and prices, no sentiment index."
+   },
+   "64f36b3b1a2865c86a2582f328e90d4e4898f785cd6b01a20b8456786ed5ba12": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "News headlines, not the index value."
+   },
+   "cabb4658badb8a699dc356b9ed390a22a1a472f8e2d6c1840f08413e6a455dce": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "DeFi yields, unrelated to sentiment index."
+   },
+   "b73be055428b5ba6397db9e9039323d03d66a2aee1edd76f755b6e921f8a28b7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitcoin hashrate data, not sentiment."
+   },
+   "f905bef308775ca0c39e444a12e126a158ab10361b8ffacf30c3f3381bdfb32f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Order book snapshot, not sentiment."
+   },
+   "6513fb13509f7794263a23c6d933f9ad83665b64a5f93f3a1820aa47910d1403": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Funding rates, not the Fear & Greed Index."
+   },
+   "3f33417b11b0984f97980294fffeb3284c3c2fe26e7cb9a417d2b820881f7533": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Curve gauge data, unrelated."
+   },
+   "f4d5ac32cdb0e9baf195bf89cea4ce4b29856bca34e86f118f8f6795c385c8df": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Gemini ticker, not sentiment."
+   },
+   "a1f65cadf4db03265302f62858b17342441260282eb8c1b4ab1c86de8b3b724a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Compound lending stats, unrelated."
+   },
+   "ea1e1ae55a39a9785714dad4240899162dcb255f21a55f36f274fb97aa970385": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Dedicated Fear & Greed endpoint returning current index value plus history."
+   },
+   "acaa24d97628e201fc44a3ab3762b6a4a8022d487664547f7d7d336a3f9bf93f": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns Fear & Greed value and band directly, with extra sentiment data."
+   },
+   "757ac21d568dee4f47f4457ed1d5744c2d1a1857e2d13f951fb598944290c759": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Brief includes Fear & Greed but buried in broad, costlier report."
+   },
+   "9c7da41f8fcfb116cc742dbc6e4981c9f5cb664075b0b005ce4051631913f832": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Market backdrop includes Fear & Greed among many other fields, pricier."
+   },
+   "2bd03e993c9d2b72f7de1d349b4f6247321a068ad85bdfcae3c878dbf2d95c86": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Buy/sell technical signal for a coin; no Fear & Greed index."
+   },
+   "327a8ec1a95b0ba5dc8841448a5eb11b639c6d22941658bd468ab71967b3b600": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Mentions Fear and Greed read but bundled with macro data; value not clearly guaranteed."
+   },
+   "b1287902d752d1fb8291be3a13c3b55b765adea66f635501f51a7e0e09e4e858": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Snapshot explicitly includes Fear & Greed sentiment alongside market data, current."
+   },
+   "566c46f18624d6f03318c11ef0d03e0f987f8ae6f4b6d28e810715ed25495fa9": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Cross-exchange arbitrage spreads, no sentiment index."
+   },
+   "3ace6bebb8a5976f45c9e226e372d598f49224a100ef216b96e9fc74166dfb5a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Volatility metrics for perps, not Fear & Greed Index."
+   },
+   "375e06fc636bee43671ca85e8c244bcc475992f6e17da0c8d3afb441ce6fe537": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Gives a rule-based sentiment from 24h price change, not the actual Fear & Greed Index value."
+   },
+   "4d5b06c151e38c272bbc41d896a81d5e00e6fc35c8fec6c94d86474f25810408": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns technical indicators and funding rates; no Fear & Greed Index or sentiment value."
+   },
+   "24597fed3587fbaa20588274b501671723ef53a0c01989014a3dc19b96a96752": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns technical trade setups per coin, not the Fear & Greed Index."
+   },
+   "c97f114ed1df7575939d4001c4c8db7328d8a4b6a222fbc41c5b3e17ddb6cc7f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Provides support/resistance levels per pair, not market sentiment index value."
+   },
+   "7e41f6f034018a1c2cc7d5ada8d02886d05f24a0c8e891ad5c73c73aba4de51d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Yen carry regime and crypto leverage; no Fear & Greed Index value returned."
+   },
+   "efa9c7fd78c0d016e9642142c012560a9d7f246fde83639c7cd65292931b8d42": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "DeFi stablecoin yield and TVL ranking; unrelated to Fear & Greed Index."
+   }
+  }
+ },
+ "convert <num> eur to usd at the latest exchange rate": {
+  "need_id": "q04",
+  "need": "Convert 250 EUR to USD at the latest exchange rate",
+  "labels": {
+   "8fb361ab2d278ffecf6ef2706a2a3b5abbce1ae03f5ade366ace8b40dd542530": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Converts an amount between currencies at latest ECB rate, returning converted amount; fits EUR to USD."
+   },
+   "d13f8981822d5108d5bb2b6f18d9a3bb8927403dece207e5b54cf72ba4322731": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns latest ECB rates with optional amount conversion, so 250 EUR to USD works directly."
+   },
+   "71a844d5a282ca68482c0e3daa2303f5402dcce74c9e39dd05c14133cd47164e": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Gives latest EUR rate with history, but no conversion; needs multiplication."
+   },
+   "911aae8cb5da5169b9e6b40b2aafffa4d64f0871bfc64d88d820dd49c19b8c3e": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "ECB latest rates plus conversion between any two currencies, including EUR to USD."
+   },
+   "cafdfb42259e710b6cf4cf06ba04ada402397818dde5b976f5396c99aca7ceef": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Provides latest EUR/USD rate, but no conversion; amount must be multiplied."
+   },
+   "a66ba1290a082943976d7ef52bcd5d8dc48d03d39f6ffafcefe4d5483786974f": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Gives latest EUR rate with history, but no conversion; needs multiplication."
+   },
+   "6f617b8601b44f59c02eade4d5aa3c82ac44580765debc4cde790b1a99b299db": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Daily BIS rates against USD; gives rate but no conversion step."
+   },
+   "f33217c7cbe3a2ead65fb7c8ae8c19ab8e315bed3134c9330ede97c0343a04e9": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "ECB latest rates plus conversion between any two currencies, including EUR to USD."
+   },
+   "fcda20b3e905269ac3a3639d134baa2bf0554a97358694f1a40441a1c1815b4a": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Historical-date focused conversion; may give latest date but not clearly."
+   },
+   "6e162b5badae3b4fbf745785543ecd8590c8229ce32e8c58e6e97bc7aa9dc001": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Historical-date focused conversion; may give latest date but not clearly."
+   },
+   "f03780794e1e92aad71c090a0db1afd2070cc03cfe13e5a661ee03ff4b420040": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Converts between crypto and ECB currencies; fiat-to-fiat EUR/USD support unclear."
+   },
+   "2c6eca03236ef742521ac2c9af2abb2a2a2797f4bbe5cb4e417718a08c2ccbee": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Quarterly Treasury rates, not the latest exchange rate; no conversion."
+   },
+   "61025f17739eddc3836a1130d123978f6d7ce9f414b7c009a17e74ade8a901f8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Quarterly Treasury rates, not the latest exchange rate; no conversion."
+   },
+   "d37c16da098de5c9507d8da93c81bacfc140886f0330cc86d8058c24456696dc": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crypto prices in fiat, not fiat currency conversion."
+   },
+   "106f299bd7d50301384626c3a72ca5300fa58d53d4a8674421885506000d3b08": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "VAT rates, unrelated to currency conversion."
+   },
+   "813c362d016554e593c42218824192b61a508bba47d99ce6948a8ea57af23cf8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Interest rates, not exchange rates."
+   },
+   "efc6969f12ec4a58f2ceaaf0b5cdfb35ae91f4725ef849125c26303176f5e729": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Deposit interest rates, not currency conversion."
+   },
+   "b2f746ff1fa59d8be88544bdaa496f24335a5f21eaed37f2d528038b30f7f1bf": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Interest rates, not exchange rates."
+   },
+   "664ae5600b4e093d3c0c60d95e4e28fa435abb2aabe37954870f58fbe592346f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Deposit interest rates, not currency conversion."
+   },
+   "8da14d4e443bfc8fadc614ad4b7964d990328d96d6539ce60d1966a1b0c307f7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Mortgage rates, unrelated to currency conversion."
+   },
+   "334329a94f8607461e706a2d9a66b4dd3b2c138b47b36591e5c408457d57a3e1": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Mortgage rates, unrelated to currency conversion."
+   },
+   "7ebb542fd39e12c5f900b6f6cc28f47f57224f109ad2e76183530304ca10daf0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "VAT rates, unrelated to currency conversion."
+   },
+   "db9391a1a1bc772b8dfe5f75571c7237651966ed100fc7ee78672dd0ce319416": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Inflation data, unrelated to currency conversion."
+   },
+   "e839fc0cd4db9028c184d176bceb3724dadf4ebaaf82ecaff380990f326ca850": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "APR/APY conversion, not currency conversion."
+   },
+   "a180f884b0a1d573d6e648b8f972b8bd323d98f0118506463bc70ae749236a4d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Real effective exchange rates are macro indices, not spot conversion."
+   },
+   "758430cecf1c0da450183b9a41eaa15e820629cf217db316b9b6e9bf5d70e914": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crypto converter; explicitly refuses fiat-to-fiat conversion."
+   },
+   "15176899928c8661673b08e76a09924376add052a07fcbe7ba855d5b6a2b4f50": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "ECB latest rates with amount conversion; supports EUR to USD directly."
+   },
+   "8a12e1b0f0a2f42a9f7da6cb06267381a6da7f6fa9d2f4dc1b7514b1405aca73": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Broad effective index, not a bilateral EUR/USD rate."
+   },
+   "88f275d72fd1376664c57828b3322159df32d793f4fe36cf4a04db9008f3f51a": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "ECB daily reference rate with amount conversion between listed currencies including EUR and USD."
+   },
+   "8d3fa6ed650f44b1ebd44f7608613065c668ae242531fbcda311232e19bc8291": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitvavo crypto market ticker, not EUR/USD fiat rate."
+   },
+   "03ce0d792a5b191b3caefa0d6e62198a3addfa96fadae4f44c135da66d45f0ae": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "ERC-20 token balance lookup, unrelated to currency conversion."
+   },
+   "3420218389af0d6a0c39e6b0c26ffc43b759fd85f34eebd37a154dbe7567ef43": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "DEX trading volume data, unrelated to fiat conversion."
+   },
+   "f014eb2ce3bd3b26dc4cf70032d73a579babcea6dff587b36adfbea0ca1cc4b5": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Converts amounts between currencies at ECB reference rate, including EUR to USD; latest rate supported."
+   },
+   "3c6fc37669655d50d630a615eb17d48fcd908a8038b4d5b422c77cb6f7953895": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crypto wallet monitoring alerts; unrelated to currency conversion."
+   },
+   "e874aeb3efd79e91f46a474efbd67f6ed844c86a32b92060879e6425c626463f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns the euro short-term interest rate (\u20acSTR), not an EUR/USD exchange rate."
+   },
+   "8d47534530fe70307a824f47f2acbb880ce22573c999e1ebe591a7cb44e1ee47": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "UAE real interest rate data; unrelated to EUR to USD currency conversion."
+   },
+   "c328fd6e51bd288eac9b8488e012d311159cf7f2af29ad9202690687c580895c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Italy real interest rate series; provides no EUR/USD exchange rate."
+   },
+   "9f8cc1a8456f7783c2500cfeb6c154714bea9a12e303ce0d0feb85386fc381d0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns crypto wallet holdings on Base, not fiat currency exchange rates."
+   },
+   "6d62663d07257ae40630c8cf53e9b4792d2917a9f1ba0ed08fcbab3b7bf00e3a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Echo endpoint returns input JSON; no exchange rate or conversion."
+   },
+   "34da80753bb76b961d887c11bb2c9cb3f48fec3e78db14b5ace32d0126fec3a8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Redacts PII from text; unrelated to currency conversion."
+   }
+  }
+ },
+ "latest brent and wti crude oil prices in usd per barrel": {
+  "need_id": "q05",
+  "need": "Latest Brent and WTI crude oil prices in USD per barrel",
+  "labels": {
+   "586c149a0a00b5d40aadf3d780846c38a8ae69a7e48abd3aa1405fa1244cf11d": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns latest daily Brent and WTI spot prices in USD per barrel."
+   },
+   "c2c7b9172e640abdbac7150bac534731d8b7e39906ff7bcc7d01f23a5c5c1df4": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "VLSFO bunker fuel per metric ton, not Brent or WTI crude."
+   },
+   "f5aa6e5547e34fba4811cedad882a1ff5d22c19ed9d2e0b9bb2311db6a88ef99": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Petroleum inventory and supply data, no crude prices."
+   },
+   "5a965b5d323ac606e25aa50cbb27a55e14358a0f1b6af199d526e22c7f09969e": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Container freight rates, unrelated to crude oil prices."
+   },
+   "3159bfa6d2e374b5a28a76af71c4092d38e46ec9db1a957dc382235c5cdbd496": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Jet fuel price per gallon, not Brent or WTI crude."
+   },
+   "2a4224b0e7925c955cd48f24732a5bacdfd326ae88229754c294674ef40eda90": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Binance crypto pair prices, not crude oil."
+   },
+   "827335a37ed9c22a54a0e6a5e2daa7ed7c594f435091d28aa13ec2dc14e660ae": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Flight fares, unrelated."
+   },
+   "4c1adca84adf73462839a465e4198aa866ce915381c593d59cdb3c330badab31": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Agricultural commodity prices, not crude oil."
+   },
+   "5fa90f56bed80b59382d9ccecb006879ee0aa0b6bb635e1cec197806904bc2bd": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Grain barge rates, unrelated."
+   },
+   "045f2f5fb81cc527ea74f4a01eba0c728a48e615f0fe7ad743ed911315c0543e": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Job listings, unrelated."
+   },
+   "8367ee742f9a52b86d8216a601fb5899937a3bc5cec9fccb58d7152c23a25e76": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Biofuel RIN credit data, not crude oil prices."
+   },
+   "802d7daca0a4ccc60c7b6ff0fc1b6cd6eb9d2b1fa416b5edf84822d8bd3f7164": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Phone number validation, unrelated."
+   },
+   "8a12e1b0f0a2f42a9f7da6cb06267381a6da7f6fa9d2f4dc1b7514b1405aca73": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Exchange rate index, not oil prices."
+   },
+   "1cc83feeda177cf26cf761557f87844ecef07f32481e965d6c46edef1857c4ff": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Natural gas price, not crude oil."
+   },
+   "53161a0c06aaa23d3e5511dba02643a5da4f6b7a50a642bf81300f457c7a9f81": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "ISS location, unrelated."
+   },
+   "111a647abfcaf8f704d1dce853270110840129245e660b9a830be472b668ef14": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Brazilian car prices, unrelated."
+   },
+   "7eccd8c144da59d840669ff3ec0e5a1fc89a0732fc4a7452dcc6f2d2ba6c5c06": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "US government contracts, unrelated."
+   },
+   "79d2c748a2de5619329d4cff8d89a121fdbf7995311a895ca80139e5a027e555": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Currency exchange rates, not oil prices."
+   },
+   "c5aadf36ab59eb4370dae247888262b3e6f881fd45af0b158e109a1e928828a2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitcoin fees, unrelated."
+   },
+   "8d3fa6ed650f44b1ebd44f7608613065c668ae242531fbcda311232e19bc8291": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitvavo crypto ticker, unrelated."
+   },
+   "8d4c652f25b9a316b3c08d397a070c3c18d2db96fb08968f7a3d94f9e58bad0d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "DNS port scan check, unrelated."
+   },
+   "3b31a541baf0e03af2bfe0ae1a2e904379c395321d6646081a3a3a7d232baae0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Gold and silver spot prices, not crude oil."
+   },
+   "06077af25ac01ef8be2300fe1e905e5c0094c945db33e19cf821acb97b103827": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Government tender notices, unrelated."
+   },
+   "758430cecf1c0da450183b9a41eaa15e820629cf217db316b9b6e9bf5d70e914": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crypto conversion, not crude oil prices."
+   },
+   "044262e91648f59fd4993be2f0eca3e8fd75362e8a803933044ad00a1c2c36fc": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Commodities brief explicitly covers WTI and Brent crude prices."
+   },
+   "90a8d27756d81c94fbb69bdf994a34b3f0f7b3ecb4174e63c1c5703afba89ee2": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "EIA inventory data with oil-price implications, not direct Brent/WTI price quotes."
+   },
+   "a75a3f3d19ecc1640cdbf14b2156a9dce9085419cfb3860ddc901f5901fd3efa": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crypto exchange arbitrage, unrelated to crude oil prices."
+   },
+   "566c46f18624d6f03318c11ef0d03e0f987f8ae6f4b6d28e810715ed25495fa9": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crypto spread tick, no crude oil data."
+   },
+   "692fe7d77f27a539955c2dd6c7deb5cf630f4b7801bee4174ccab176b8e20f3e": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Natural gas Henry Hub data, not Brent or WTI crude."
+   },
+   "e8a01b8fc4f6878708b455205a830527cf1154e2e97f9308d77d6cee5fcfcedb": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Retail EU fuel prices in EUR per litre, not Brent/WTI crude per barrel."
+   },
+   "4b02d805b22a4abc7d38823ffce51e0399be85b3efb6c9a7a1af8b8f3983f705": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Retail EU fuel prices in EUR per litre, not Brent/WTI crude per barrel."
+   },
+   "6bd3d63f864cac0e0d61d9c8d6a33fcdc1752791bc2a717c8ef09c3113beb0bb": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Cryptocurrency prices only; no crude oil benchmarks."
+   },
+   "608581c7276ba3f18a320ed103af867caba25139402c2f53db525399f4b863d8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Cryptocurrency prices only; no crude oil benchmarks."
+   },
+   "9448ed9b197ba04d9ffd505554a3fa4553e9ac987d72a2dfdfd0ca1086906011": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns CFTC WTI positioning changes, not Brent or WTI spot/futures prices in USD."
+   },
+   "89b0ac10fe57302e86792cb7041eab9e974ec8bf115d7a82e5537d673f56a6bd": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns WTI open interest data, not price per barrel, and no Brent."
+   },
+   "c47eda90f3fd12667fe64243fc562456012de4ba5eae933445ca99b18712dd12": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Norway real interest rate; unrelated to crude oil prices."
+   },
+   "8e4b29a41307e65466c03f5ffa702e5957b7aaca202289f25b61d46ffa4a9b03": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crypto coin trading signals only; no Brent or WTI crude oil prices."
+   },
+   "757ac21d568dee4f47f4457ed1d5744c2d1a1857e2d13f951fb598944290c759": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crypto market brief; no crude oil prices, only macro events mentioned."
+   },
+   "3d0e14f9a0ac170f8cef05ffe3de4e76e858104bcbfef48318f9c363767092c9": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Covers USD/JPY and Nikkei for yen carry trade, not crude oil prices."
+   },
+   "375e06fc636bee43671ca85e8c244bcc475992f6e17da0c8d3afb441ce6fe537": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Provides crypto prices (BTC, ETH, SOL), not Brent or WTI crude oil prices."
+   }
+  }
+ },
+ "latest us cpi inflation rate (year over year) and the current federal reserve funds target range": {
+  "need_id": "q06",
+  "need": "Latest US CPI inflation rate (year over year) and the current Federal Reserve funds target range",
+  "labels": {
+   "ad39956ace205b7c1c34da562147612725343f9466612746f98dd3bec027ae45": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Provides CPI with year-over-year change, but only Treasury yields, not the Fed funds target range."
+   },
+   "d5dd61544ab22493bf8b95b0920e09292af165b428eacb0e71ffc3fdf6085ded": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Gives US CPI YoY but not the Fed funds target range."
+   },
+   "f0a62300052f3693da2448b6eb8a370bafc902a561cd33843f8ac46ed4330994": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Gives Fed funds target range but not CPI inflation."
+   },
+   "ee991af4e1cbe77919bd08427254a4a658eb62ba39cec9917fe1cf732fefb76d": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Gives US CPI YoY but not the Fed funds target range."
+   },
+   "5a6e3247cc161375076a948cb9aefd8c070df1428df011e211087b1abb3bd386": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Gives Fed target range via NY Fed, but no CPI."
+   },
+   "5f68f99efcd7df1d85409ba57498cad11d371157b39cff2099b8429cedaae59b": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "US annual World Bank CPI only, not latest monthly; no Fed range."
+   },
+   "49f48431c980e038185ed0ef232bf70c0159ba903dd7d31a0550d9ef8d60ea7c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Average interest on Treasury debt, neither CPI nor Fed target range."
+   },
+   "66ea00cc01be15d96bbba087a51dd1150dd0c87cdd7046acca3ad2525f627b43": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Includes US YoY CPI from BIS, but no Fed target range."
+   },
+   "5350d2695e39a9dae3dc54c424b51a687f6500dd7ac37038a6ccbadb51700a7c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Average interest on Treasury debt, neither CPI nor Fed target range."
+   },
+   "8e9cd79a043e99f31f3a6b8eb27ffc844dae1d71833eea40bc37be863054caeb": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Upcoming event schedule only, not actual CPI or current rate values."
+   },
+   "6be6c0851fecebb4f4a74b4800d7d04b269afcf33c8ee03a5b83ea0638b8a873": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Upcoming event schedule only, not actual CPI or current rate values."
+   },
+   "816935aa7ae66d3a37978eecbef7ebf12058ff54fbf1fe0152c41da52cacdb2b": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "US core CPI only, excludes headline; no Fed funds range."
+   },
+   "f56363b6b3b1f2241f50cff2e3c9b5a1694958d83a25e3abfa5b5e45e68d076a": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Gives US headline CPI YoY but not the Fed funds target range."
+   },
+   "5706ffd3be01e268f2e21c8d4f0abf98b8eb268ac76ae4c72e3b79e44f053e7c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Canadian CPI, not US."
+   },
+   "3b52dc7390535ae71cfe840e13b28dadd4d3e7069b2d40279e0e9a764c2fd597": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "US headline and core CPI windows including 12-month; no Fed funds range."
+   },
+   "424114d674cd1031fbd9e3fcccba4d33a7841d4a95f0cbc7244fcb1e51300e61": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "China inflation, not US."
+   },
+   "0c2ae5e86cc2c7b244d79e961e9700fa0f22eac72ba8eb30d7ec0a33bb663cae": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Australian CPI, not US."
+   },
+   "fef3e1d74edd3444e17265a8014d5f0f4516eac80e15b2a47febf4e154d41c6d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Dollar index futures positioning; unrelated to CPI or policy rate."
+   },
+   "9a16c9bd41141be79da630d14b240acf5a0e7a904fcf028f4827a219a2d1444f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Japan inflation, not US."
+   },
+   "5094bf31efc2a403c0251d7e100c35ab332dacfd126b1e28d6f456f200b09143": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Dollar index positioning data; irrelevant."
+   },
+   "3cab8723bff7952362beb228ea3cb11094604105070e9cc41114f7962ef90697": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "T\u00fcrkiye inflation, not US."
+   },
+   "d3d8354960e317d3442ec957ed4b6e3aee5e588b8e7527c478ec90efaa6ade5d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Italy inflation, not US."
+   },
+   "62a080b45edb14b3b40386cebdefd8f29f172c842b89874a5763e69e78f89170": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "VIX positioning; irrelevant."
+   },
+   "8e5d7bc413dc3b9497c15b4d859fee8527ba527c4f157beb5789b15ff97aae42": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Switzerland inflation, not US."
+   },
+   "d6fdedc8a31360c16ea8a3935988182e88de06d19031693aa9191db782e5c32a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "VIX positioning; irrelevant."
+   },
+   "ee4d612e30b8173eb0e2f7bd7da3447e59a369ae2a845ed8a355545f87c0e296": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Treasury curve regime; neither CPI nor Fed funds target range."
+   },
+   "4e4a408744bcd7cedc7e7d8f9472fc673dcb5db71634ed70a8ec7acf23793f66": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "CFTC fed funds futures positioning, not the target range."
+   },
+   "eb3708ed8cbbe1ede85cff5634932446360c580622d726981a5a3ac286b2c56f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Yen positioning; irrelevant."
+   },
+   "eea950645bcf3cf9939a43074f951878d92f11e14b2df63a898a3c2dbf593af4": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Dollar index asset-manager positioning; irrelevant."
+   },
+   "d773a9d347ed81d8d18de2776cd1bf94949311d54384ee0c324f5bdadefc2c35": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "10Y Treasury positioning; irrelevant."
+   },
+   "733c6d190d842bee85accdc026923430c1929026b7667bc94ad804dc04b8c796": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Gives PCE inflation and SOFR, not CPI or the Fed target range."
+   },
+   "2c56421ec5f96cefa4c722d4c2d53673460ea9a1762221d475c52e05a5c8050f": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Returns US CPI latest and YoY, but no Fed funds target range."
+   },
+   "cde19c2228ca66dc8205e3ddb6723069d95b3d9a42532639cb2a16b6d817c229": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Country inflation signals may include US CPI, but no Fed target range; less precise."
+   },
+   "014c67b3da986a84680da6daae37f59c2e62b0d25a05a09a9a49d5b9f905d1be": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Marketing ROI forecasts, unrelated to inflation or Fed rates."
+   },
+   "903f44f4155b1851b74faa1fc58ce2067181e56586b5e942da938da2e6323ea5": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Home renovation resale ROI, unrelated."
+   },
+   "a66bd8d018c9de3f7b206b1db22dfec9bfe2a080029001bd930d5b5e8db13bae": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Contractor finding service, unrelated."
+   },
+   "e5596eee5697069afb510a62db715c10dc7e9e377f101e5ee0e0f11d93f6f06b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Rental market data, unrelated."
+   },
+   "94a5fab0283e4c428c4a68b8aebcba6ab02237323d0a43c716e485a2fdd1de0a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Regulatory enforcement news, not CPI or Fed rates."
+   },
+   "91d59691edc487cb2f6d7ab266b9e81fabad2696feb795a1333315bde7903552": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Indian real estate listings; unrelated to US CPI or Fed funds rate."
+   },
+   "4413d90fffa96fef5736a37c9b3e26956f864650f84a42bf5d481e8540ba02fd": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crypto perpetual funding rates; not US CPI or Federal Reserve target range."
+   }
+  }
+ },
+ "apple inc. total revenue for its most recent fiscal year from sec edgar filings": {
+  "need_id": "q07",
+  "need": "Apple Inc. total revenue for its most recent fiscal year from SEC EDGAR filings",
+  "labels": {
+   "45643124deea149c310092bd389b372df5b6d1d5b297cafdb514939326a1cd82": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns revenue from latest 10-K XBRL data by ticker/CIK, covering Apple's fiscal-year revenue."
+   },
+   "1c8654d6b9abbef8837e07f4538cfbb58c7355de94411d39943e02e47f348633": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Quarterly XBRL revenue for Apple; annual total needs summing four quarters."
+   },
+   "4e3b084e6899882c667689d85d571d3afc0d350f66943e77052be0c8361a49e0": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Searches filings with extracts; could find 10-K revenue but not direct figure."
+   },
+   "0e84f80324f2c18b88fe96bf569f5c29597092d8d7adad634465b57d7e866277": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Eight quarters of XBRL revenue; annual total requires summation."
+   },
+   "489b6ac8836b82ae5f09f3cdb6f5a2c46c7d6bfb45d744fa561ef0724893e3c9": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Phrase search over filing text; not structured revenue data."
+   },
+   "7925abbc464568d3074487d71b18b4410cfa1d3e628e07574729691285b3e6ba": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "10-K summary includes XBRL financial highlights, likely annual revenue, but not guaranteed."
+   },
+   "0cb45dd05846cd3145ca66d8fe311c3fef8fdec2f446ab789ed718fa1465b5bd": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "8-K event alerts, not annual revenue figures."
+   },
+   "488fea1c7c352b4d7e4dbffe7af27a41fefd856ad8b1981843c9c13dc1ccd2b1": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Compares two companies' financials; not a direct Apple annual revenue lookup."
+   },
+   "6573cd2f24df016fa6bb495075d3e81865eed051920fdbca909227d7e4ef9165": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Institutional ownership data, not revenue."
+   },
+   "4eb2f0da70d7c90d9abcaa123776236a2c775c71fe6b712cfb24095e57621aa9": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Non-US exchange filings; Apple is US EDGAR."
+   },
+   "03e3e389d6dec96383293d147407cd847914f343fe27d170a59864d784dc3a5b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Construction materials takeoff, unrelated."
+   },
+   "90e8651d943fd777a5db086457578c16788d0028107d8b6e800929bce82ed0f7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Layoff tracking, unrelated to revenue."
+   },
+   "dd6eee59b9aa0624f2cae08e8721b0a599c032d4be1adbec72bcbcc747ef1007": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Insider trading Form 4 data, not revenue."
+   },
+   "6c9b81c1b6d7f576fe3a95f672eb461d1266192cd2765cb91795c96ca677e72f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Fund holdings data, not company revenue."
+   },
+   "ec80e47230ce4bb3ada5d4abc7f71c71d341515f358c60aad01c0ea2255115de": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Ranks companies by revenue from SEC filings; Apple's figure could be found but indirectly, and the year is fixed to CY20"
+   },
+   "eaff556d9e4ccfbdda3367df72989eddc9b2edeb2f6d074f3df4c73dce38bd9e": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Lists recent 8-K events, not annual revenue figures."
+   },
+   "89a12d05c1a60495604c20ed85b23dc22bf7496fa423bdf924bd02b8da35e6d2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Lists recent 8-K events, not annual revenue figures."
+   },
+   "44894fb97ea685d4b39de7f64b203465ec0acaee4d5330268102ab37795cddac": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Ranks companies by revenue from SEC filings; Apple's figure could be found but indirectly, and the year is fixed to CY20"
+   },
+   "eb7eed9c4ea60e2229ee9ed3b07f3df3698b932f413a0dad895ad57153a75d43": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns annual revenue per company from SEC XBRL filings, covering Apple's latest year."
+   },
+   "0576db8d3cd5b036fd49d4669c1fb7d5103dac1ba7c1920faca477fcdd7c1ba1": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns annual revenue per company from SEC XBRL filings, covering Apple's latest year."
+   },
+   "b826e11252a8c667f124391649b9641c5ca8c726db78d9d701673a01f087ed8d": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Gives links to Apple's 10-K, but revenue must be extracted separately."
+   },
+   "8575bc623679424e2ddd731e38653ed8cf0dcfb28ab80c35686390d2de966687": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Gives links to Apple's 10-K, but revenue must be extracted separately."
+   },
+   "faa3f427e7d68515349ed8c36cd71650fac581589ae31ef6d4fb15ee9c391519": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Finds Apple's 10-K filing link on EDGAR, but extracts no revenue figures."
+   },
+   "da7a7b73f895345002d0a778ddb2facaf4bbb3a1aa905b121ac2f41dc568388e": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Climate phrase search in filings; no revenue data or Apple-specific lookup."
+   },
+   "c8516cff03cc13d78c231fe7e13a87e7bb8b0419a7723107fbb502af8da59514": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "SEPTA train positions; unrelated to Apple revenue."
+   },
+   "32ab539841a674a8a8d5ba87c62450552d436acd44a1b97a834102d9da5d27f5": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Form 4 insider filings list; no revenue figures."
+   },
+   "7f438ef54fa05ccf8ade66af2fb917ba516bde386d3ef55d91c3d290249af5ae": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Form D private offerings; irrelevant to Apple's annual revenue."
+   },
+   "ccf8dfdef5d75ac36aa77ea948e1a5947862234532f78f26f71b771657b96611": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Mac App Store app metadata; not company financials."
+   },
+   "153717e3622107b50be5283824c8913b79715a2afa817216458110108b7b948d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "iPhone app metadata; not Apple revenue."
+   },
+   "5b4da6ad98337200750e429631340a2d8eba973c4459b0024d25552dc5360627": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Australian car news headlines; unrelated."
+   },
+   "7b9655b8f1908ad109aa141fdc31da05618164a9e2355a56ef08bbc0faf019d2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Lazada product search; unrelated to SEC revenue."
+   },
+   "51dd04ca97ab9b0f67d290f34a5693e2dc11618b887fdf063e61a7beafe8854a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "NBA/NFL team stats; unrelated."
+   },
+   "72f6dc067d2fa95471852439b36f465a7c05c2e8bead9c68d43a8d9de074e776": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "NYC property sales; unrelated."
+   },
+   "7104bde872a81460deb6909df632f2e1630a72ca9ad9677b776d9f752b8d05ae": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns BLS US unemployment data, not Apple revenue from SEC filings."
+   },
+   "2d66841fafc62e49a8291a8bd531a8c457ab343f9fc841437c71283457d838fe": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "CFTC Canadian dollar positioning; unrelated to Apple revenue."
+   },
+   "491761d843a774ad7dda68ba09ce88871f0d53308a2d9bdac0d531995d944809": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Generic cross-market corporate-finance context; no Apple or SEC EDGAR data."
+   },
+   "0322195860cc9ba6373d60b294201a12b26d24ac97743531d67def757f705722": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Detects stale macro series; no company financials."
+   },
+   "b8f3cfb49c3662990021568cd98cee7301fc41bbc17811bd7c1f2ae44507cbaa": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "CFTC Solana futures positioning; unrelated to Apple revenue."
+   },
+   "d66f4a6f942762ee0bdaa3bb9f69b7626dec27cd5d40126c983060e6f40750e8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Argentina FDI inflows from World Bank; not Apple or SEC data."
+   },
+   "588f78cb78a5434527c7b348f40b07457a4d0c75d4e6ad6db0b067ed0311e2ce": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "US labour-force participation data; unrelated to Apple revenue."
+   }
+  }
+ },
+ "screen the company name rosneft against ofac and other sanctions lists": {
+  "need_id": "q08",
+  "need": "Screen the company name Rosneft against OFAC and other sanctions lists",
+  "labels": {
+   "cfacb18ea2dfb833471528f1f71106c68a017f315dd32f4e791eb8c5c5f6af21": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Screens a company name against OFAC SDN and Consolidated lists with alias fuzzy matching."
+   },
+   "6fa256fe198eb8bee9d73cdb8076002b39604722959e05293bf9dcd6e162f5e3": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Sanctions intelligence on any target across OFAC/EU/UN/UK, but not clearly name screening."
+   },
+   "c9ec3270da59785a3c4e33371a3bd7ade0c7cd5a7884361c46c6acaa37e47621": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Screens against OFAC, EU, UN, UK lists; covers OFAC and other lists."
+   },
+   "27b6fb912d8cbffff0f5b9297a2545cce56388616a0821c22a42c83fcbaf5b42": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Macro economic impact of sanctions regimes, not entity name screening."
+   },
+   "634094ba1b28fee6b176687cf2a3ee9e4d1f19633e533ff73c712b03bdc2a569": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "OFAC SDN screening and sanctions exposure for any entity across OFAC, EU, UN."
+   },
+   "0c174fab30d8c6e18fdf888e8a6484ef3e62d30c2f883c86e4529fd3cd1957e3": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Regulatory applicability preview, not sanctions screening."
+   },
+   "7a68bb7bb3711129eef3c6d3c3a8872bedfd9045b95e829a50373890bd259634": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Includes alias-aware OFAC screen, but as part of broader memo; OFAC only."
+   },
+   "09aba275ffa42b121f0444e242f1096102812292708f19e376df2b7953facdfe": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Domain/IP OSINT, unrelated to sanctions screening."
+   },
+   "eec756e0c4e0f05aaaeed20c9190c9665a3853824c322084a8a7fb864fcc11cb": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Screens company names with fuzzy matching, but only OFAC lists, not other sanctions lists."
+   },
+   "cd73a123330b7cd154b5764af725de29cffb4a3627fa4aa9f33b765d71306a85": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Only checks crypto wallet addresses, not company names."
+   },
+   "1a91ffaa51313e6dcf028ba0034d708bfa3e39075e4415a46191c3b68e426f45": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Screens company name against OFAC, EU, UK lists and flags UN designations."
+   },
+   "1f7a0f5a5e5bf91d812c6f59c115238e53e7c757296878055f7f4eb85081f6f2": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Screens company names against OFAC SDN and EU lists with fuzzy matching."
+   },
+   "a4ec4655b5cae2fddd6c6504fd459976daf9c6ae32d24dfc134b32f38f54a28b": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Same name screening service against OFAC SDN and EU lists."
+   },
+   "7586118ff3186eec73431b830505fb407675be32a5cc5c2fbbf918dc968eface": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Checks crypto wallet addresses, not company names."
+   },
+   "0bb18bc06d1802280afa18ab195df47e055c080c0bf78332a59f46f6970feecc": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Lists only recent EU designations; cannot screen a name against OFAC."
+   },
+   "b82910e70391d8b66e1c2fc3d7b73e443fc82065b799fe5e0044b155e2854f0a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crypto wallet address check, not company name screening."
+   },
+   "53df85e1d2e9d4541b0cb24e85cfcc899e38442ea02f5976906473511d0943e5": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Only recent EU designations; no name lookup or OFAC coverage."
+   },
+   "d14aab86c51b3314d1256bc1b2017e930203bc3fcafcda712120a974c191f107": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Name screening against OFAC SDN and UN lists; directly fits Rosneft screening."
+   },
+   "e5238938ea2da87d34daa6d47ae8b01cd9d3934f09611dab85b63d055d6c985c": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Searches OFAC SDN but for vessels only, not companies."
+   },
+   "3bbcd0b81a30f9a2a5b6425deeef30a8baa3f89406c33f984f6926d63469f074": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Russian company registry, no sanctions status."
+   },
+   "8cf66531e4e4fe38a8aeb5954c686c99502d817a3904126c6164825b482171e9": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Norwegian company register, no sanctions data."
+   },
+   "72ca34ae8853620be7ad41083b62d72e74cc643505f555613be463a7117d36d7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "IP host exposure data, unrelated to sanctions."
+   },
+   "3a32ecfcacb9510a616d55785a7fb223a4e8f64ad6370671ed5a67fe7f6d104a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "IP host summary, unrelated to sanctions."
+   },
+   "1f190e398707df2fd874048e485b9c2cfd6fea868079929ec73f599842d9b197": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Open port data for IPs, unrelated."
+   },
+   "84521d0cffb220ff4cf15448f183b43fa3a9531043b5ae83e53415b02d8f57e4": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "SNMP exposure for IPs, unrelated."
+   },
+   "510e9f1e64bef4df956901ab921acd0271eba20c3b1564c66035602be5ce29bc": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "FDA drug directory, unrelated."
+   },
+   "a02092a18df0f18cff1c98706d37f7d1f51b5fb6130005e687e48aa5556bdfc0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "FDA approval records, unrelated."
+   },
+   "e7dfdcb0e952f02d17e45f14984730080f9d6527ed528ed809608b236d2a900c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Podcast search, unrelated."
+   },
+   "686339912664047bd6732ab86082340e3d17bda64d2e8c44db57813ae867b3c2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token contract search, unrelated."
+   },
+   "61fa2137bf6f13d53b52c392a6ded5e64051e1645ebd3d164ce90f2d1cec1cbc": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Container number validation, unrelated."
+   },
+   "c87dfaf032e80f6b781f5be4db853be596b5bcca535ca87d098de25520d3472b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "FDA Orange Book data, unrelated."
+   },
+   "9e3a57879283dc5ec6003edfd21faf1ad867cd4c4456d573383c72ae5811e5f7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Lawyer directory, unrelated."
+   },
+   "334727104f6c67a6ddf839986aba6b84393d55724659d0f61d3c67b6be771ae4": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "DNS and email hygiene, unrelated."
+   },
+   "85c0b6b082d0644e1960c6bc0da664bda155117460e204918989ef2140f3960b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "French company register, no sanctions data."
+   },
+   "8504429e2c9504febde3daeb0c3a6f8beccfc1595eeb1e9946859d53f612fd71": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "OFAC SDN crypto addresses only; not name screening of companies."
+   },
+   "7dd82a32da2392848cf2d8101d3ceae40fb2b9b298596dfd410bece0a0122cc5": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "NTP port exposure, unrelated."
+   },
+   "a1fe0ecc604a188439b77c69624e84c8c7919148a43cdd366520755d4a5b0410": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Stock screener, unrelated."
+   },
+   "93eafcc2a0218463a29fb00f24463f9402f6efb32928c92a5e8dd53788f4cc8a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Screens crypto wallet addresses against OFAC, not company names like Rosneft."
+   },
+   "9692bdf83526f11de45168f20950bfabbf06337cb590e53d97b4f6b9300f3a6e": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Checks OFAC SDN only for crypto addresses, not company names like Rosneft."
+   },
+   "aa0d9834de69c0389264e31b998569f51591aa816aa7ac6f0e75140463775292": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Checks x402 Bazaar listing status; unrelated to sanctions screening."
+   }
+  }
+ },
+ "is the ethereum address <evm> on a sanctions list?": {
+  "need_id": "q09",
+  "need": "Is the Ethereum address 0x098B716B8Aaf21512996dC57EB0615e2383E2f96 on a sanctions list?",
+  "labels": {
+   "cd73a123330b7cd154b5764af725de29cffb4a3627fa4aa9f33b765d71306a85": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Directly checks whether an Ethereum/EVM address is on OFAC sanctions lists."
+   },
+   "eec756e0c4e0f05aaaeed20c9190c9665a3853824c322084a8a7fb864fcc11cb": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Screens OFAC including crypto wallets, but fuzzy name-focused and less specific for exact address matching."
+   },
+   "7586118ff3186eec73431b830505fb407675be32a5cc5c2fbbf918dc968eface": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Checks Ethereum/EVM address against OFAC SDN list directly."
+   },
+   "b82910e70391d8b66e1c2fc3d7b73e443fc82065b799fe5e0044b155e2854f0a": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Same wallet sanctions check covering Ethereum addresses against OFAC SDN."
+   },
+   "0bb18bc06d1802280afa18ab195df47e055c080c0bf78332a59f46f6970feecc": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Lists recent EU designations; no address lookup."
+   },
+   "1f7a0f5a5e5bf91d812c6f59c115238e53e7c757296878055f7f4eb85081f6f2": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Name-based screening of EU/OFAC lists; crypto address search not stated."
+   },
+   "53df85e1d2e9d4541b0cb24e85cfcc899e38442ea02f5976906473511d0943e5": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Recent EU designations list; cannot check an address."
+   },
+   "a4ec4655b5cae2fddd6c6504fd459976daf9c6ae32d24dfc134b32f38f54a28b": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Name-based screening of EU/OFAC lists; crypto address search not stated."
+   },
+   "bef90d41ced78f45f3fe0abd89f3f10e3c1d9aa612a36f7631ef9d16dd51c9dc": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Only validates address format, no sanctions information."
+   },
+   "d4e3de59dea90d051422127e8554e4199c3a79d862b8cfc64b0e7f8dd02dad66": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Computes contract addresses; unrelated to sanctions."
+   },
+   "eab891255e9e366d3d701e216e507dc20f3ab8a8f86aac52f06229eead7b5383": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Provides RPC endpoints; no sanctions data."
+   },
+   "81d90fc17f89028d40f1fa2da165e97f73fedaa72110f27c2c55d8deb60a3cf1": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Provides RPC endpoints; no sanctions data."
+   },
+   "20055bf39a8e9f70ff85ff3a3a5a9ba4d32a3f82e6d8c70d2823cd4174f75876": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Verifies signatures; does not check sanctions."
+   },
+   "c592f48dfcc6702f0481d199232030ce3fb4e4decc1def77a51204083301e8ab": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Only validates address format, no sanctions information."
+   },
+   "522aebd5f332d9b09189c2c3a028749731b7c577770add492dbeb1c6ad88ba8a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Computes contract addresses; unrelated to sanctions."
+   },
+   "cfacb18ea2dfb833471528f1f71106c68a017f315dd32f4e791eb8c5c5f6af21": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "OFAC screening by name only; no stated crypto address matching, though SDN entries list addresses."
+   },
+   "6fa256fe198eb8bee9d73cdb8076002b39604722959e05293bf9dcd6e162f5e3": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "General sanctions intel for any target; address screening not confirmed."
+   },
+   "27b6fb912d8cbffff0f5b9297a2545cce56388616a0821c22a42c83fcbaf5b42": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Macro economic impact of sanctions regimes, not entity or address screening."
+   },
+   "c9ec3270da59785a3c4e33371a3bd7ade0c7cd5a7884361c46c6acaa37e47621": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Screens multiple sanctions lists, but unclear whether crypto addresses are supported."
+   },
+   "7ca78ea1f80b2e12b3ee81b09694b13972d3dbdc4870594981b36b485bcf0a71": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token honeypot check, not address sanctions screening."
+   },
+   "ff9e67fc1d1d5bc8f870ee100cb14bf2cbd335400a52c36af5fcd456c6cfe288": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token safety scanner; does not check wallet sanctions status."
+   },
+   "7a68bb7bb3711129eef3c6d3c3a8872bedfd9045b95e829a50373890bd259634": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Includes OFAC screen but name-based; address handling unclear and memo is broader."
+   },
+   "7d4c1f0a5a3839a96c81c25b0f4191facf98fd157d7f9ec7b4737b28d7ba7025": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token due-diligence report, no sanctions list check."
+   },
+   "d14aab86c51b3314d1256bc1b2017e930203bc3fcafcda712120a974c191f107": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Name screening only; explicitly does not screen crypto addresses."
+   },
+   "8504429e2c9504febde3daeb0c3a6f8beccfc1595eeb1e9946859d53f612fd71": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Checks a single address against OFAC SDN digital currency addresses."
+   },
+   "a18e5ed1a8b7a5ccd57cc3b71952ee59aad358678d3b113bf0b512199e387269": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns balance and nonce, no sanctions information."
+   },
+   "cf159d3f82bf2ac96525e46e22790b0e9b1edfd4ca82fa652d09ed1c90fd52e3": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Contract verification data, not sanctions."
+   },
+   "03ce0d792a5b191b3caefa0d6e62198a3addfa96fadae4f44c135da66d45f0ae": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token balance lookup, unrelated to sanctions."
+   },
+   "01202b00922640bd10d927a603b65a15dce9416f9e01e39215424980fa4269a8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Generic RPC pass-through; no sanctions data."
+   },
+   "d35cc6dd7a0bba898e6c2d5d1d7f2b5ed6382f56a53a605c334f397022021652": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Block data, unrelated."
+   },
+   "2e74f379deb00fdd42593046a52a992e1403d4c4db41e188e2a0fb6b825e39b7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token honeypot check, not address sanctions."
+   },
+   "919eea9c2b671af039c11d4acf9ce282205a7aa8d6bb80a0f19ba11a2045626d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token safety verdict, not sanctions screening."
+   },
+   "7b8ceee0a5ad89881be4e1515ba9736edbeec7af8dc2da2b0abf806c1e8339cc": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Scam blacklist, not an official sanctions list; related risk signal."
+   },
+   "f321e03ac0f9a44cc6d17460a768f329ff1dd51f3853d720eba596e4dc2d138a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "ENS resolution only."
+   },
+   "c612912b4745ff85e75855b138d46b327e458e8a628256a387bc37768dda5676": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Generic contract read call, no sanctions data."
+   },
+   "67708811435b29cd03e6f02a30d578042c9856bfe4869ff56e77356c9a326021": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "ERC-20 allowance lookup, unrelated."
+   },
+   "412c61d45c81741ca57b280cc4c174f308f69e8236d74f3d7626496a0778928e": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Contract verification status, not sanctions."
+   },
+   "93eafcc2a0218463a29fb00f24463f9402f6efb32928c92a5e8dd53788f4cc8a": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Screens EVM addresses against OFAC SDN list, returning sanctioned status and SDN entry details."
+   },
+   "150141bdf23ed59e41cc8a181c6b8af7e910e58b1269caea6d23afa714eb581c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns portfolio balances and concentration findings, not sanctions screening."
+   },
+   "9692bdf83526f11de45168f20950bfabbf06337cb590e53d97b4f6b9300f3a6e": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Checks OFAC SDN crypto addresses, but supported chains omit Ethereum; only other lists missing."
+   }
+  }
+ },
+ "security risk check for the ethereum token contract <evm> : honeypot, owner privileges, buy and sell tax": {
+  "need_id": "q10",
+  "need": "Security risk check for the Ethereum token contract 0x6982508145454Ce325dDbE47a25d4ec3d2311933: honeypot, owner privileges, buy and sell tax",
+  "labels": {
+   "7ca78ea1f80b2e12b3ee81b09694b13972d3dbdc4870594981b36b485bcf0a71": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns honeypot simulation, buy/sell tax, ownership flags on Ethereum tokens."
+   },
+   "ff9e67fc1d1d5bc8f870ee100cb14bf2cbd335400a52c36af5fcd456c6cfe288": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Covers honeypot, buy/sell tax, owner privileges for Ethereum tokens with verdict."
+   },
+   "b3006c3b24a8377b303b5177a105ca40666a8e1d9a044f8c247c02c90fadaabb": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Honeypot verdict on Ethereum, but taxes and owner privileges not explicitly listed."
+   },
+   "7d4c1f0a5a3839a96c81c25b0f4191facf98fd157d7f9ec7b4737b28d7ba7025": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Full report includes honeypot simulation, taxes, and mint/owner powers on EVM."
+   },
+   "1be23e73b98bcd9848ca398378205ec226b8dc756d83606ada8b4956b969abd9": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Algorand ASA scanner; not for Ethereum contracts."
+   },
+   "ed0a67faff559bbeab7233f07fb768cf464bbf3012d53ff85c12a45c8e0f39c1": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Solana memecoin scanner; not Ethereum."
+   },
+   "bd9e4de7b815492be277d78a582807d21132a8512e20f582ef300b93071a28cd": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Reflection yield math, not honeypot or owner privilege check."
+   },
+   "d5f09a882f6a17cd798461a2b2b664fb2a355895c5878d87c5cc10bfd7d35a9c": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "GoPlus-based honeypot, mint and tax trap scanner covering Ethereum tokens."
+   },
+   "3f3884f4e1f680162bcbae3b7a3f52cb4d00ba448a667eae6cdca6b14c6d0ed4": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Holder concentration only; no honeypot, tax, or owner privilege data."
+   },
+   "4efe574cfbd7ca97ea373da50659e5528e33f94bec9a9114b960ea58178cddc1": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Compares website claims to chain data; not a direct security check."
+   },
+   "11b32ee74a6b2fd55dbec89264228ec69c6c89e286230b094661e37ee2f5b713": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Liquidity and price data only, no security flags."
+   },
+   "2e74f379deb00fdd42593046a52a992e1403d4c4db41e188e2a0fb6b825e39b7": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns honeypot verdict and buy/sell tax with risk flags for EVM tokens."
+   },
+   "9213055fc69abab391cece8a606d3f608599b1f5084ee15d79b168c741dccded": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Covers honeypot, taxes, hidden owner, mintable, blacklist on Ethereum via GoPlus."
+   },
+   "919eea9c2b671af039c11d4acf9ce282205a7aa8d6bb80a0f19ba11a2045626d": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Gives verdict with honeypot and taxes, but little on owner privileges."
+   },
+   "35a16144893bab08de9a78df3ef26da3cbcb8289dd7fa6ddcdbc4aa890fdae4f": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Aggregate score includes honeypot and taxes, but no owner privilege detail."
+   },
+   "cf159d3f82bf2ac96525e46e22790b0e9b1edfd4ca82fa652d09ed1c90fd52e3": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Verified source and ABI functions help inspect owner functions, but no risk verdict."
+   },
+   "412c61d45c81741ca57b280cc4c174f308f69e8236d74f3d7626496a0778928e": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Only verification status and proxy info; no honeypot or tax data."
+   },
+   "01202b00922640bd10d927a603b65a15dce9416f9e01e39215424980fa4269a8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Generic RPC pass-through; no security analysis provided."
+   },
+   "67708811435b29cd03e6f02a30d578042c9856bfe4869ff56e77356c9a326021": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns allowances, not token contract risk."
+   },
+   "a18e5ed1a8b7a5ccd57cc3b71952ee59aad358678d3b113bf0b512199e387269": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Address balance and type only; no risk check."
+   },
+   "03ce0d792a5b191b3caefa0d6e62198a3addfa96fadae4f44c135da66d45f0ae": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token balance lookup; no security information."
+   },
+   "c612912b4745ff85e75855b138d46b327e458e8a628256a387bc37768dda5676": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Generic read call; doesn't provide risk assessment itself."
+   },
+   "d35cc6dd7a0bba898e6c2d5d1d7f2b5ed6382f56a53a605c334f397022021652": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Block data, unrelated to token security."
+   },
+   "29488cdeded25a7bbf33ca4864fe23935fa55c2d2337a66eab055774cb811b30": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Wallet token balances, not contract risk."
+   },
+   "fc0d24f109f65a1dfe481b63fd734e1273a9e8fe1beb5d5b42217d19017a0e9f": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Holder concentration is a risk factor but no honeypot, tax, owner data."
+   },
+   "cc8aaa217435137099ebbfce0720a4a97e6fbead159c188674c7bc2a1c3dd3bf": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Solana only; target is an Ethereum token."
+   },
+   "7270acc7226e308db48e7ddf0b56af66fc66830646fa2dbf123bd992efe7495a": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Token safety check for EVM tokens covering honeypot and buy/sell tax; owner privileges only partly covered."
+   },
+   "93eafcc2a0218463a29fb00f24463f9402f6efb32928c92a5e8dd53788f4cc8a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Screens wallet addresses for sanctions, not token contract honeypot or tax risks."
+   },
+   "01ca36073caaf6598703ac721732fc06f6f5e79846878875f83f3e94530692c5": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Pre-sign transaction check flags risky tokens but is not a token contract audit."
+   },
+   "6f99c95a46e0497ffcbed88cf00a7a1b8b8d2f28acdc1bc95b0230aca289872d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Explains pre-sign transaction verdicts; not a token honeypot or tax analysis."
+   },
+   "20055bf39a8e9f70ff85ff3a3a5a9ba4d32a3f82e6d8c70d2823cd4174f75876": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Verifies signatures locally; no token contract security analysis."
+   },
+   "4a17e616441b5bc3a498ffc0554ea3465f04dc913e4bfa4d1d5abd85b85f710f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Signature verification only; nothing on honeypot, owner privileges, or taxes."
+   },
+   "cd674f64dc89c4ce43d161733160697e4947e85ff20aa9c3ed24707e139b1b27": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Generic EVM utilities like hashing and checksums; no token risk data."
+   },
+   "6c60e2c79a43d069e73b5875368172f94f5a79dc2c4a98eb1af95f46039d520c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Generic EVM utilities; does not assess token contract security."
+   },
+   "7586118ff3186eec73431b830505fb407675be32a5cc5c2fbbf918dc968eface": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "OFAC sanctions check on addresses; not honeypot, owner privilege, or tax analysis."
+   },
+   "d67cec022d7cbdd6194c0a470699d902d60b16bffe8a54015671121b3b133331": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Verifies payment transactions; provides no token contract security analysis like honeypot, owner privileges, or taxes."
+   },
+   "150141bdf23ed59e41cc8a181c6b8af7e910e58b1269caea6d23afa714eb581c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Wallet portfolio concentration for an address; no token contract security analysis."
+   },
+   "cb3e1bddd41867cc7625a52f378bc2cc2009d39cb12fbffac23b745081d9c60a": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Returns ERC-20 metadata on Ethereum, but no honeypot, owner privilege, or tax checks."
+   },
+   "9692bdf83526f11de45168f20950bfabbf06337cb590e53d97b4f6b9300f3a6e": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Has scam-token flag, but doesn't cover Ethereum chain, honeypot, owner privileges, or taxes."
+   },
+   "c882649cddd275586e4cfc29df075899a052b3c439aea914cbc4991f207278ff": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Reports ETH derivatives positioning and whale activity, not token contract honeypot, owner privileges, or tax checks."
+   }
+  }
+ },
+ "usdc balance of the ethereum address <evm>": {
+  "need_id": "q11",
+  "need": "USDC balance of the Ethereum address 0x28C6c06298d514Db089934071355E5743bf21d60",
+  "labels": {
+   "6e9f2a9a1144925bbde8869a34f6eb90e88f77fb89c401f3987792c553daf96d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitcoin addresses only; not Ethereum or USDC."
+   },
+   "03ce0d792a5b191b3caefa0d6e62198a3addfa96fadae4f44c135da66d45f0ae": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns ERC-20 balance of an address for a named token like USDC on Ethereum."
+   },
+   "a18e5ed1a8b7a5ccd57cc3b71952ee59aad358678d3b113bf0b512199e387269": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Native ETH balance only; token balances are not included."
+   },
+   "cf159d3f82bf2ac96525e46e22790b0e9b1edfd4ca82fa652d09ed1c90fd52e3": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Contract verification info, not balances."
+   },
+   "c612912b4745ff85e75855b138d46b327e458e8a628256a387bc37768dda5676": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Can call USDC balanceOf, but needs contract address and manual decimals handling."
+   },
+   "d35cc6dd7a0bba898e6c2d5d1d7f2b5ed6382f56a53a605c334f397022021652": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Block data, unrelated to token balances."
+   },
+   "67708811435b29cd03e6f02a30d578042c9856bfe4869ff56e77356c9a326021": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns allowances, not balances."
+   },
+   "01202b00922640bd10d927a603b65a15dce9416f9e01e39215424980fa4269a8": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Raw JSON-RPC could do eth_call balanceOf, but requires manual encoding and decoding."
+   },
+   "29488cdeded25a7bbf33ca4864fe23935fa55c2d2337a66eab055774cb811b30": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Lists ERC-20 holdings including USDC with amounts for an EVM wallet on Ethereum."
+   },
+   "2e74f379deb00fdd42593046a52a992e1403d4c4db41e188e2a0fb6b825e39b7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Honeypot token check, not balances."
+   },
+   "f321e03ac0f9a44cc6d17460a768f329ff1dd51f3853d720eba596e4dc2d138a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "ENS name resolution only, no balances."
+   },
+   "412c61d45c81741ca57b280cc4c174f308f69e8236d74f3d7626496a0778928e": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Contract verification status, not balances."
+   },
+   "1ebd48c5c35d6c4a5e0df38a5a2c49d77e6c4b10419fdf7b3ac09f43831c94d6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Aave market data, not wallet balances."
+   },
+   "acd2e20ed32d4d7ef14cf2ad9e3f4978cab5edb15ccfd3e8bfe6b3db48b282e3": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Gas fee data, unrelated."
+   },
+   "60b6fafdbc920375004793f74907394316ab249622229d3b2f366cd6bef94c31": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Native ETH only for sampled wallets, no token balances."
+   },
+   "150141bdf23ed59e41cc8a181c6b8af7e910e58b1269caea6d23afa714eb581c": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns USDC holdings for a single Ethereum EVM address, including balance, so it directly answers the need."
+   },
+   "6cb1a6d8e2b471c3e353e32c38487e2a5a84322312e363ca0c98ea06c3fe55a3": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns ERC-20 balance including USDC for any wallet on Ethereum mainnet."
+   },
+   "9f8cc1a8456f7783c2500cfeb6c154714bea9a12e303ce0d0feb85386fc381d0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Only reports USDC on Base mainnet, not Ethereum; multi-chain deferred."
+   },
+   "20055bf39a8e9f70ff85ff3a3a5a9ba4d32a3f82e6d8c70d2823cd4174f75876": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Verifies signatures locally; returns no token balances."
+   },
+   "cd674f64dc89c4ce43d161733160697e4947e85ff20aa9c3ed24707e139b1b27": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Hash, checksum and unit utilities; no balance data."
+   },
+   "6c60e2c79a43d069e73b5875368172f94f5a79dc2c4a98eb1af95f46039d520c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Hash, checksum and unit utilities; no balance data."
+   },
+   "4a17e616441b5bc3a498ffc0554ea3465f04dc913e4bfa4d1d5abd85b85f710f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Verifies signatures locally; returns no token balances."
+   },
+   "d4e3de59dea90d051422127e8554e4199c3a79d862b8cfc64b0e7f8dd02dad66": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Predicts contract addresses; no balance data."
+   },
+   "eab891255e9e366d3d701e216e507dc20f3ab8a8f86aac52f06229eead7b5383": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Gives Ethereum RPC URLs, so balanceOf could be called, but needs extra steps."
+   },
+   "81d90fc17f89028d40f1fa2da165e97f73fedaa72110f27c2c55d8deb60a3cf1": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Gives Ethereum RPC URLs, so balanceOf could be called, but needs extra steps."
+   },
+   "522aebd5f332d9b09189c2c3a028749731b7c577770add492dbeb1c6ad88ba8a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Predicts contract addresses; no balance data."
+   },
+   "f9115a913845ba9a9909582fc73df808a9ba80b2a3159b21ada80a8306fcb5b8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Chain reference metadata only; no address balances."
+   },
+   "34cbf2b96995803a4d23477d982e827132118c204bf34460fa816f3d53430dd8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Chain reference metadata only; no address balances."
+   },
+   "0c96497df651b46469697f3b0cd44b10f8e5ffcba0c524f5da946d80a29c5274": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Monitors large USDC/USDT transfers generally; does not return a specific address's balance."
+   },
+   "7d77123333815457b144949c82aaf144202a6d6a4230576570da08e8b783482f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Native ETH large transfers only; no USDC balance for an address."
+   },
+   "fabca50ef4f3c86878b974911112083d7404927bbfde2bccaaf305661dbddb38": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Blob gas demand data; unrelated to address USDC balances."
+   },
+   "ba08bacdd74b0ae79fe1a4400f1537c89dbc585d23b6786d515af804f8724e66": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "USDT total supply, not USDC and not address-specific."
+   },
+   "8794f27589c55ea453a63b5535397c153edd32754ba8fd98177b7e453bac6ea6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "ETH base-fee burn evidence; irrelevant to USDC balance."
+   },
+   "09d8422d2cd0754c0564c5d43bec5f504714c0ef8883acab14708ec33fabe141": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Macro ETH outlook scenarios; no address balance data."
+   },
+   "5c641b01f7250e6be62743aa9e11fafa1b1f014e05b9a45f84e30383a28d40ac": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Network valuation context; does not provide address token balances."
+   },
+   "7ca78ea1f80b2e12b3ee81b09694b13972d3dbdc4870594981b36b485bcf0a71": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token honeypot safety flags; no wallet balance returned."
+   },
+   "11b32ee74a6b2fd55dbec89264228ec69c6c89e286230b094661e37ee2f5b713": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token liquidity and price data, not an address's USDC balance."
+   },
+   "e04f240eeab85bc4d7dab8ad67cf3dd4c5fb7f366dc1b974caba0a3f07c709a2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "USDC yield rates on Base, not an Ethereum address balance."
+   },
+   "ff9e67fc1d1d5bc8f870ee100cb14bf2cbd335400a52c36af5fcd456c6cfe288": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token safety scanner; does not return wallet token balances."
+   },
+   "d67cec022d7cbdd6194c0a470699d902d60b16bffe8a54015671121b3b133331": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Verifies a specific transaction's payment; does not return an address's USDC balance."
+   }
+  }
+ },
+ "current ethereum gas price: base fee and priority fee in gwei": {
+  "need_id": "q12",
+  "need": "Current Ethereum gas price: base fee and priority fee in gwei",
+  "labels": {
+   "234e513de89fdb0f407b6b2f6069e844c17213179adf8142737e5f158283c54e": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns Ethereum baseFeeGwei and priorityFeeGwei directly in one parameterless GET."
+   },
+   "375e06fc636bee43671ca85e8c244bcc475992f6e17da0c8d3afb441ce6fe537": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Provides crypto spot prices, not gas fees."
+   },
+   "150141bdf23ed59e41cc8a181c6b8af7e910e58b1269caea6d23afa714eb581c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Wallet balances and portfolio data, no gas price information."
+   },
+   "acd2e20ed32d4d7ef14cf2ad9e3f4978cab5edb15ccfd3e8bfe6b3db48b282e3": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Ethereum base fee in gwei plus priority fee percentiles from eth_feeHistory."
+   },
+   "33df0bedae15cda7cf3ad6d3f7922cf2d3b9d54a3c6d587150909d8107d60636": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Current base fee and priority fee percentiles for Ethereum, directly answers need."
+   },
+   "b70154e434b6857d523caf933f3b5a18074bc83612854de0ddda6c4937c763fc": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Ethereum base fee and slow/normal/fast priority fees; chain selectable."
+   },
+   "d35cc6dd7a0bba898e6c2d5d1d7f2b5ed6382f56a53a605c334f397022021652": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Gives latest block base fee in gwei but no priority fee."
+   },
+   "07c67d8d9cd5efe44603eaf8ef79f88f926d96bf96cd93c4acc7d8667c6ef71b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Mantle network gas, not Ethereum."
+   },
+   "b1c0442b86d5f9ff71e5331375acfbbe61fe38dd8cd60ecd1dc74916e5947e82": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Linea rollup gas, not Ethereum mainnet."
+   },
+   "c5aadf36ab59eb4370dae247888262b3e6f881fd45af0b158e109a1e928828a2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitcoin fees, not Ethereum."
+   },
+   "80202f6ae3d01c2286ea1fa2ccf511a11497690f13232394ad7c9383854f9790": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Natural gas commodity price, unrelated."
+   },
+   "4f54472645e3ae58be273709ce6cee28b098a7d6542fe1ccdfaf3f5d48d9be27": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Price feed, not gas fees."
+   },
+   "2a4224b0e7925c955cd48f24732a5bacdfd326ae88229754c294674ef40eda90": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Spot price, not gas."
+   },
+   "79d2c748a2de5619329d4cff8d89a121fdbf7995311a895ca80139e5a027e555": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Exchange rates, not gas."
+   },
+   "8a12e1b0f0a2f42a9f7da6cb06267381a6da7f6fa9d2f4dc1b7514b1405aca73": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Currency index, unrelated."
+   },
+   "9cba4ccdd8352939daa1a6df7346051df681aefbd8abdc7cfeda938aaf0efc21": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Import tariffs, unrelated."
+   },
+   "48c48f6d20064739230936ef098bf1d98747cae4167e30c595e84fa0b108a830": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Swap quotes; gas only as USD estimate, not base/priority fee."
+   },
+   "a96940da8ee25e48d453526952d4d744333b82396e338a1ace51651efc08a1dd": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "GMX token prices, unrelated."
+   },
+   "758430cecf1c0da450183b9a41eaa15e820629cf217db316b9b6e9bf5d70e914": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crypto conversion, not gas."
+   },
+   "02c336358f9900242fcfc7d77d82182539cde6f3841dab7575a23e59c5b058ff": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Swap route quote, not gas fee data."
+   },
+   "586c149a0a00b5d40aadf3d780846c38a8ae69a7e48abd3aa1405fa1244cf11d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crude oil prices, unrelated."
+   },
+   "8f932418abf44e89c2450283f7f11edea27372e14c82b3175bdfcb48ba791ba1": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Currency reference list, no gas data."
+   },
+   "fabca50ef4f3c86878b974911112083d7404927bbfde2bccaaf305661dbddb38": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns blob-gas usage and blob fees, not standard base and priority fees."
+   },
+   "8794f27589c55ea453a63b5535397c153edd32754ba8fd98177b7e453bac6ea6": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Uses latest block base fee and fee history for burn, but no priority fee guaranteed."
+   },
+   "f9af473962e4b6755a8b190ed13e69da7c56aed1f248aa30895373dab49ab8dc": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Arbitrage calculator includes gas costs but isn't a direct Ethereum base/priority fee feed."
+   },
+   "8b77e65b3041f1c8aad232a6a7a8dbcb4ec9094942aea46ba885066441e7282c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "EV charging cost versus gasoline; unrelated to Ethereum gas."
+   },
+   "b0b50bb2f280a9aa615fdfc704c57404bac46e07b824ad69bdff5e80aea0014f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Stablecoin FX premium data, no Ethereum gas fees."
+   },
+   "11b32ee74a6b2fd55dbec89264228ec69c6c89e286230b094661e37ee2f5b713": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token DEX liquidity snapshot; no gas fee data."
+   },
+   "a0bfba746f87b4da15a933287836ca9e93927830072ae438f427053c825ab24d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Personal debt payoff ranking, unrelated."
+   },
+   "b1287902d752d1fb8291be3a13c3b55b765adea66f635501f51a7e0e09e4e858": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crypto prices and sentiment; no gas base or priority fee."
+   },
+   "d37c16da098de5c9507d8da93c81bacfc140886f0330cc86d8058c24456696dc": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns crypto fiat prices, not Ethereum gas fees."
+   },
+   "d6d5573ffecc1f506917e7c2c2058db139ea8390ae7fe785ae705fea1ab8e1c2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Natural gas household prices, unrelated to Ethereum gas."
+   },
+   "f9bfc6a25023a69dbfe18a271174959535e122c502fccc7e9400d50c47a39f3c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "EU electricity prices, not Ethereum gas fees."
+   },
+   "c72a384d6611658268d542000ce46a3af428332bd847c360628276fc8e38d68e": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Natural gas household prices, unrelated to Ethereum gas."
+   },
+   "608581c7276ba3f18a320ed103af867caba25139402c2f53db525399f4b863d8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns ETH token price, not gas base or priority fees."
+   },
+   "6bd3d63f864cac0e0d61d9c8d6a33fcdc1752791bc2a717c8ef09c3113beb0bb": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns token prices, not Ethereum network gas fees."
+   },
+   "c44de2db82cea0094c19df04ccaea507928bee8ec031c707a3143311eb38768b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "EU electricity prices, not Ethereum gas fees."
+   },
+   "4b02d805b22a4abc7d38823ffce51e0399be85b3efb6c9a7a1af8b8f3983f705": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Petrol and diesel prices, unrelated to Ethereum gas."
+   },
+   "e8a01b8fc4f6878708b455205a830527cf1154e2e97f9308d77d6cee5fcfcedb": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Petrol and diesel prices, unrelated to Ethereum gas."
+   },
+   "d13f8981822d5108d5bb2b6f18d9a3bb8927403dece207e5b54cf72ba4322731": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Provides ECB fiat FX rates, not Ethereum gas prices or fees."
+   }
+  }
+ },
+ "verify xrpl transaction <hash> : was it validated and what amount did it deliver?": {
+  "need_id": "q13",
+  "need": "Verify XRPL transaction 65A456656B9479457C0995E2FC770319C7636C39550DF4A4E127D265ADB90795: was it validated and what amount did it deliver?",
+  "labels": {
+   "1d49b247d96e60241904d2bd819da9065cfd4430abaa7f517448efa5d9548f18": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Takes XRPL tx hash; returns confirmed/final status and decoded transfers including delivered amount."
+   },
+   "63bb2f394f2bdb5b1414b9a72ab7700f2dfb2247936177261889f7907f9b499c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Wallet balance checker; does not look up transactions by hash."
+   },
+   "a5deefd675c530bbde9b8823b543faf446ba3996ad361b673dd0cbe3f3ca7be8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Audits x402 endpoints; unrelated to XRPL transaction verification."
+   },
+   "9692bdf83526f11de45168f20950bfabbf06337cb590e53d97b4f6b9300f3a6e": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Pre-transfer address poisoning and OFAC checks; does not report transaction status or amount."
+   },
+   "57b4f3d90b034b97f6d2d5e9f2b9e1523b9df14279dcc656187799f443e294c6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Aggregate x402 volume stats; no lookup of a specific transaction hash."
+   },
+   "6a29c3b18954fd3634a2f7fb2c4ff81977ba9840fcf9d09b8af17507c57b5159": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Endpoint health report; does not verify individual transactions or delivered amounts."
+   },
+   "a9031d5aafe4088840fbf61dc1778c823673477075558d820ec0ac4e541216c6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Merchant address readings, not transaction lookup by hash."
+   },
+   "674258e1adb4cee717c2bc5200c7a89041ccae051114bdbe1cd93238ef8b7f2a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Facilitator reachability metric; unrelated to a specific transaction's validation or amount."
+   },
+   "7d16e095e45de278eb8e3ea0a02c8fd6f6d6dbeb7776add9a36a440bb7ecb030": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitcoin transactions only; cannot look up an XRPL transaction hash."
+   },
+   "41a244ef7c13d5209ee4d7c9a0782f79a1bee47c041173ebf4708401fe0b8b20": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Berachain telemetry; unrelated to XRPL transaction validation or delivered amount."
+   },
+   "cf159d3f82bf2ac96525e46e22790b0e9b1edfd4ca82fa652d09ed1c90fd52e3": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "EVM contract source verification; nothing about XRPL transactions."
+   },
+   "412c61d45c81741ca57b280cc4c174f308f69e8236d74f3d7626496a0778928e": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "EVM contract verification status; not XRPL transaction data."
+   },
+   "9f03462a7275e95db04566d7bb24f3ebc129cd6d48c7f3954d715cca77a99b97": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitcoin large transfers in latest block only; no XRPL support."
+   },
+   "d67cec022d7cbdd6194c0a470699d902d60b16bffe8a54015671121b3b133331": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Verifies XRPL payment but needs payee and amount inputs; doesn't report delivered amount."
+   },
+   "8a9222cc99b1fb89a111a6c4ca47118480125b781d4b5ac12c2c919f0bc2f95c": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Proves any XRPL tx by hash, returns validation evidence and full fields including metadata."
+   },
+   "008870b369f12ec24cf55ca3f64ec37a0b723f84ee6fe0d585aa79ec938058f4": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Batch payment verification includes XRPL but requires expected payee/amount; not direct delivered amount lookup."
+   },
+   "39923a004f64ce7c3eeb476b0e194b43c777e20a217d98b69b2bb34a2acfecdf": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Verifies XRPL payment validation and actual delivered amount, matching the need directly."
+   },
+   "8689deadff564f7ccfcccb06fe4fce3d603e48d7f11464acf33d2237516fc73f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Pre-send check for future payments, not verification of an existing transaction."
+   },
+   "f590ddd5e3f2cbdbde463a24ae47aa1e27b0b7257fa1cd8261064d44e6878c51": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Shows delivered amount and validated result, but as a PNG image; hard for agent parsing."
+   },
+   "26b8d2ba00fa1adf62d6a3ec597c6c37874dc83577433c9d32f75ea773e1ce1e": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Checks token issuer legitimacy, not a specific transaction."
+   },
+   "fc3022c8644b39ed749e580e072cb45623f369db289fbaecfa30b8f704c0b244": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Lists recent large payments; not lookup of a specific transaction hash."
+   },
+   "a9197288dbc0492550f1d97e16b783f2b140cf85307e9d66c90a778e74328563": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Network health data only; no transaction-specific verification."
+   },
+   "f2df32f89ef8ddb3bb009315919a136a92e4eef69531f8eb1b817dc28438ea07": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "XRPL ledger payments, but only large transfers above threshold; no lookup by transaction hash."
+   },
+   "6938a86ccb4e42d8d0848418124ad737db000ea164ba96062f24da86904e3e5a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "CFTC futures positioning data, unrelated to verifying an XRPL transaction."
+   },
+   "273f254f15c1a6cd19da50713b8f28982edd8c7f862cc7c82ebbc090d54a9680": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitcoin large transfers, not XRPL."
+   },
+   "7d77123333815457b144949c82aaf144202a6d6a4230576570da08e8b783482f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Ethereum transfers, not XRPL."
+   },
+   "eeb05b0007ce1c5e7f5596b5022c4740ee1e3e939c9a0eaa35e7847cd6f48b5f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Aggregate escrow snapshot history, not a specific transaction lookup."
+   },
+   "ca7b5328fce6f74941a1afb17aba6689f279ef23e216048c8ef4905b2634dab2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bitcoin ETF and whale reconciliation, unrelated to XRPL transaction."
+   },
+   "05264acd26c1085510dfef5e260d600645082413dd0335e680efb96feb8c1d96": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Altcoin market liquidity comparison, not transaction verification."
+   },
+   "8afade5026339ce4f005833cc128abd27af6303f0322213fe5bb27d79f605b85": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Checks x402 endpoint delivery on Base; does not look up XRPL transactions."
+   },
+   "1ccb2975e5b6262c2831670195088d5de57be72a9f355412285c7d62be8b9405": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Tax law review of wallets; does not look up XRPL transactions."
+   },
+   "7d4c1f0a5a3839a96c81c25b0f4191facf98fd157d7f9ec7b4737b28d7ba7025": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token due-diligence for Solana/EVM; no XRPL transaction validation or delivered amount."
+   },
+   "e5c5b61157fd447b8ff119c8c33dd6f40c032f577bb3f15251c7c4be2bf1dbcb": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Robinhood Chain Doppler launch checks; unrelated to XRPL transactions."
+   },
+   "f5bdbd3c73a4e41493cb9e1cee771e202d70f609787b3c6be1f3bc4097610e3d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Hyperliquid perp funding rates; not XRPL transaction data."
+   },
+   "f5e7d03f8f9d58bc37fb331f1a71b00243fc097b4a88dd3db18619921332bf04": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Hyperliquid HYPE validator staking data; unrelated to XRPL transactions."
+   },
+   "4d655b5c7704ce105169bdd41b72e0008a45690db481809f7356ea7defaabe4a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "JWT signature verification service; unrelated to XRPL transaction validation or delivered amounts."
+   },
+   "5729d6249d2eabd10c69d11a7fdb74709c03930ef83f3eb620286cda428840af": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Validates trading strategy overfitting, unrelated to XRPL transaction validation or delivered amount."
+   },
+   "8bb655e9bd70f87a628397945c4c6cbf7e76fec9a18b053479ef30863b6d2c3f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Trust check for x402 payment URLs; does not look up XRPL transactions or delivered amounts."
+   },
+   "4a17e616441b5bc3a498ffc0554ea3465f04dc913e4bfa4d1d5abd85b85f710f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Verifies Ethereum signatures locally; cannot look up XRPL transactions or delivered amounts."
+   },
+   "c592f48dfcc6702f0481d199232030ce3fb4e4decc1def77a51204083301e8ab": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Validates address formats only; no XRPL transaction lookup, validation status, or amount."
+   }
+  }
+ },
+ "whois registration data for the domain <domain> : registrar, creation date and expiry date": {
+  "need_id": "q14",
+  "need": "WHOIS registration data for the domain ripple.com: registrar, creation date and expiry date",
+  "labels": {
+   "6f13a068665f21a9c8d44213937b605a878ad56e386a355bca088a6be79f5a86": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns registrar, creation and expiry dates for a given domain via RDAP."
+   },
+   "73d69006a5d5aaf616644598241af689cb4da784cafd2ba7730d00c7a6b62f29": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Domain lookup returns registrar, creation and expiry dates from registry RDAP."
+   },
+   "120ddcc77bafac2acba052b2372dc4b7985d8982ced619056717474321a538a6": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Given a domain, returns registration date, expiry and registrar from RDAP, plus extras."
+   },
+   "1ef20ea446117d8b5dda43a1862255595f4aee681cb09a841910a816bec17bd5": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "RDAP returns registrar, registration and expiry dates for a domain."
+   },
+   "50784f42d2e9a861ebcfc28dd7522bf0f777db85b860d31d6706678752674d48": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "RDAP domain lookup returns registrar, creation and expiry dates."
+   },
+   "9eb2033deed1c29e37e49141dc19ecbde15f6d7678dcd1f86301710919b9960c": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns RDAP registration date, expiry and registrar for a domain."
+   },
+   "e764cfecd5894bf64253b389a4135fd8238266defc4c32cc6f502b1b681cb8ae": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Uptime and HTTP check, no registration data."
+   },
+   "40ee54d5856b315b402f8a0ac6e25fb77292e8e8686e5f58b6b5b601ec0d193b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Typosquat lookalike generation, not WHOIS data for the domain."
+   },
+   "e97bce78793699cec4207f8a56042573a56437be5eee11e315f2e91fe14913c7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Checks lookalike variants' registration, not registrar and dates of ripple.com."
+   },
+   "8c2693e5769638156d06d565b235593f808f06ef0ef716d6b5c43e027fa76dbd": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "TLS certificate expiry, not domain registration expiry."
+   },
+   "334727104f6c67a6ddf839986aba6b84393d55724659d0f61d3c67b6be771ae4": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "DNS and email records, no registration data."
+   },
+   "47db98390e3a092dcd43c2d62137438955a869d60529f2cb8f057ae1c8d275fa": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "NZ company register, unrelated to domain WHOIS."
+   },
+   "fa6c5bc8fb8f5ef00b79eb55d8194abbd87628cee09691627434e90a3ab2c930": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Aircraft registry, unrelated."
+   },
+   "ccf8dfdef5d75ac36aa77ea948e1a5947862234532f78f26f71b771657b96611": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Mac App Store metadata, unrelated."
+   },
+   "0f6ff66861c471fce8d32eda4b1002db08325813f3d24c792623b756a93888e8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Car listings, unrelated."
+   },
+   "8b6aac1e4ca7709c462c504a488b39af4fa21b4a9071af955e252a4db1c5043d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "DNSSEC validation only, no registrar or dates."
+   },
+   "73f004f4fcdc2e72b04fa9c2a90e716042a4d1bf82444be03b1063061b059fd8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "npm package record, unrelated."
+   },
+   "7d9cffc7bc77922605c4e0a87b3e2a6a024864c7cfc9d7015fb5aef9aecb513f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "User-agent parser, unrelated."
+   },
+   "f4d6d6fee5480aab790dfb8028a4dab2c353db58a397597281bb4fd20a0b2ff8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Formats supplied lead records, no outside data."
+   },
+   "3c9409c19d99170dffebc6b2e7ef69e3ccccf1568d13acedabc6aaa8d3d1d718": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "DNS records only, no registrar or dates."
+   },
+   "5017990a1003bf712f42de8a41ed888da45799f53fe1c2197dc64c0311d839b4": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Malware host reputation, not registration data."
+   },
+   "24c6032a4de9dcf24ed6ca9df3e994d72471b8d53e4606f44cba58f665c12572": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Email validation, not WHOIS."
+   },
+   "451d46b2c592064829a972eb6dbd39f7c9ea75a97ee3388d1567f5206d869c14": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Lookalike domain DNS check, not ripple.com registration data."
+   },
+   "cf1a5e19b22183b403841b9a7682385b6feebfbb7077faaf19e296c9c7d4ed00": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Traffic analytics, not registration data."
+   },
+   "7ef7ae287ce8cf5de97bb231f644721db9680a8465673d7519ecff11710e6cd9": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns parsed whois for any domain including registrar, creation and expiry dates; works for ripple.com."
+   },
+   "d40fbb6f89f3b1ed62ea04f953ea130a1597d06effb468a3cfee284ed32c4188": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Company LEI records, not domain WHOIS registration data."
+   },
+   "9ab3c8b6dc6325959ff6c3652a02bc32342dc49060d34a302668eec63a8560a0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "TLS certificate expiry, not domain registration expiry, registrar, or creation date."
+   },
+   "20d80406cd00b2ceb0b5f9f522ebbb265428ad978a0a021c1f4219ff73d07cee": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Detects email provider from MX/SPF; no WHOIS data."
+   },
+   "a59ee9cf00da6c4df9fcf1b85e00cc91082d03b184295c5cd72a2c022dda9904": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns DNS records only; no registrar or registration dates."
+   },
+   "4239bdadf695d94aec4752a6ece9464b8a4ad3372a07484a0dcfdc6bb26a5418": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Detects email provider from MX/SPF; no WHOIS data."
+   },
+   "bc22ece1134868ca9d5d7c38e6cc68fbfcf4581b2795a8227a866bf1a9679531": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Patent status lookup, not domain WHOIS registration data."
+   },
+   "c1c12a29764aa1f1381832999afe7b464e8ebaf6320038a854de903f3db4b6bd": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Stablecoin regulatory status, unrelated to domain WHOIS."
+   },
+   "64e9e3f67f6dad3b103c06920a9e2fdb4f4e6e2fd315e4b3233d7652d8c102e8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "International patent search, not domain registration data."
+   },
+   "1deafc2d3c265b75de88dee589082dd79669f053baf4f63004766a3ed043b71f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Franchise comparison, unrelated to WHOIS."
+   },
+   "1c79c7c51fc108dba57537b36d377352ad24b9ade6f369a15c9ec2c1e1404694": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Earthquake data, unrelated to domain registration."
+   },
+   "d9ed871a7cce506d994b21e55c41f867051c215321d434e7127ff23f940544fc": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Product safety alerts, unrelated to WHOIS."
+   },
+   "777e7e897c7a99dfa77e770c93038d6aa9ebe37e7368550ead843624b1a7a4f6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Patent keyword search, not domain WHOIS data."
+   },
+   "ef13f6e2bb55460f4aa45c7eb6330190b8cba20c72168cfff6028f8c34c71074": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns France capital formation macro data, not domain WHOIS information."
+   },
+   "c4c114dbee97645e376587833047380762aa47c5281639570e173723e1a3f059": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns Singapore capital formation macro data, not domain WHOIS information."
+   },
+   "5252331cdc7717463db8d2a4a98f27d6eed247e952ab737c927426ba25d26b42": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns India capital formation macro data, not domain WHOIS information."
+   }
+  }
+ },
+ "current weather and <num> -day forecast for new york city": {
+  "need_id": "q15",
+  "need": "Current weather and 3-day forecast for New York City",
+  "labels": {
+   "f7ee37396d3d3c9980b7049a531271078d8fe6074b7b6798150ec127989fe68b": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "NWS forecast for US coordinates covers 3 days, but lacks explicit current conditions and needs NYC coordinates."
+   },
+   "9c0671a5c5a4d0acdc810f398a5a69f926b5d42cf5abb97e036b29c5d34d4b51": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Global forecast with current conditions and daily forecast up to 9 days covers NYC."
+   },
+   "c584c675547a3054dcd3b4be7f4d85199d699d6039ca3e0c2ae866796276eac4": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "NWS forecast for US coordinates covers 3 days, but lacks explicit current conditions and needs coordinates."
+   },
+   "339dab82e83209de128a5ce6972c2fb285836a690c91aee6fd6e211a03ae7651": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Global forecast with current conditions and daily forecast up to 9 days covers NYC."
+   },
+   "0d45c0c3cbfdc9c17085bb103d2c8a4e1d331546f1ed446ec28fb80a18bb873b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Space weather, not terrestrial weather for New York City."
+   },
+   "bf0bfc404e87b352d7c50a36ad3ec18155ff9893d82f72e7be3ae40742be7b11": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "JSON tooling, unrelated to weather."
+   },
+   "37710ed819699d0c4e01444397de74de8800e43c4e9fa90fbec2ec8027ecf926": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Phone validation, unrelated to weather."
+   },
+   "cb84517365a04d81ccee00a1bb0e26900749bea8a4778ded09aca40ce19e2ea1": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "IP subnet calculator, unrelated to weather."
+   },
+   "7a087904f86abdf10422bad2a428830b0160496525d44c19291f3501270156ce": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "EU rent inflation data, unrelated to weather."
+   },
+   "69e5ed834da342a3838fc6970545f1ef8448c447281d2cae63ed29ab3f9982fb": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "JSON tooling, unrelated to weather."
+   },
+   "379b5e23d16d4658dca004344234e7693233bcae62e8d02b1f2db38f8d54b7ef": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "EU unemployment data, unrelated to weather."
+   },
+   "32f07404cd6258de0a737cffc34ce57d547d4487e58f75340b85005700140109": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "7-day forecast for any destination covers 3 days, but no explicit current conditions."
+   },
+   "ae534be5f10dbfecef8b2ba396aa53c53c6dc5c6a29ab9678755e492e4abd2c0": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Real-time current conditions for any location, but no forecast."
+   },
+   "6f201ca34a169bdc1d1c5c8a57c6522ca2dd0430ac243708660e286696dfff8e": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Stock market open status, not weather."
+   },
+   "cc243a7afe5b15d1c0b4730892f5d072500a5726332a370ce556a46db9a0187b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Historical odds for ranking event dates, not current weather or forecast."
+   },
+   "54e2cba2060adb6b45e40166384a6774fdd25868db0a1060e1bc4013e6c424cc": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "7-day hyperlocal forecast includes 3 days, but lacks current conditions."
+   },
+   "014c67b3da986a84680da6daae37f59c2e62b0d25a05a09a9a49d5b9f905d1be": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Marketing ROI forecast, unrelated to weather."
+   },
+   "8bede4736d5c4a6ec723f7b3aa21909e301f91b1c31341d2d995a8ea2cba56be": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Includes 10-day forecast for a date, but event-focused and not current conditions."
+   },
+   "c959317513e4c4b870edc3deb7ba2299a914d73fd3d8042cf92d065b31ee47a7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Pet food recall checker, unrelated to weather."
+   },
+   "09346cb09bf50f7f2bcba426f3714bc223b31330cb393ba6d6dd4dc891589e0a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Electricity prices for NYISO zones, not weather."
+   },
+   "9dacff5b48135b4a32c22e6421c4d216a5876be631ab94426c1293fa2b1d6819": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Marine wave and tide data; no general weather or forecast."
+   },
+   "fb736d4b48e2461ae59df97b94394464374c2e3d68f50030bfcd01db50338eec": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "NWS alerts for a point only; no temperature or 3-day forecast."
+   },
+   "355120e3e6fad692543d31eb095782de47c7e5dce25ce7c0f8a1fb56ec957b6a": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "METAR/TAF for NYC airport (KJFK) gives current weather; TAF covers only ~30 hours."
+   },
+   "2d010ad2c51ba536e106404b83bc0d9fe29b0e9c5626a50cf11c2b94589b2b63": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Tropical cyclone tracking, not NYC weather or forecast."
+   },
+   "07c67d8d9cd5efe44603eaf8ef79f88f926d96bf96cd93c4acc7d8667c6ef71b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Mantle blockchain telemetry, unrelated."
+   },
+   "c9fff7f34b750f602181c920df55a64ab2e6f9770e7e38f74f7d76939318b2c6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Address parsing; no weather data."
+   },
+   "6cfa81c7671fb91f96ddce4a0ba91dcccf1803f554ee8ae968d4f274fa80fe7a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Web page screenshots, unrelated."
+   },
+   "3bfa901c8958ccbfa73eedad0ffa4df919b43611d8176ffbf7a71eb0ffc69b76": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Horse racing cards; weather only for UK/Irish courses."
+   },
+   "dd94364a672fa78cb6ad4c35f03476c49947ca5814bfba6c5fa177174e9c82d0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "arXiv paper search, unrelated."
+   },
+   "f5aa6e5547e34fba4811cedad882a1ff5d22c19ed9d2e0b9bb2311db6a88ef99": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Petroleum inventory statistics, not weather."
+   },
+   "6981971f92140833d0ff02445c004b5208deaca76ea04e7bc62676150d944885": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Markdown to HTML converter, unrelated."
+   },
+   "ed2942ce7086f3b161621ffc543e36de48b1a07a40f554005561544584562f81": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns AI provider, XRPL and developer tooling readings, not meteorological weather for NYC."
+   },
+   "25255fc507402a8fd3fa344540c9898c93d8769307c983ff52b776b8bee610a2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "AI provider status page health, not weather data or forecasts."
+   },
+   "cbaad45530cdd7a0128dec4b9cf32b85f7ff49c80775ee5cca58db8824ac5204": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "'Storm' means AI/x402 service health, not real weather for New York City."
+   },
+   "6015af0c1721280941cade9aa3dcdfc7b785832d3a5c2b3e7b026891cf5fe0b7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Screenshot API returns rendered page images, not weather data or forecasts."
+   },
+   "ff7bf5cc8b7e38f3e181675cefab9d9ea7cb8fff401a34b6b0693ad6c2850a0d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Netherlands current account balance finance data, not NYC weather or forecast."
+   },
+   "fcf9798a6422b243849b1e35360643d25ec78745d8ba5a35d602aa5074c2247b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "UAE current account economic data, unrelated to NYC weather or forecast."
+   },
+   "15eee3f0e9bb5cb25f4b0ad24d25651ba6c33d8ba4299d11f8cab5fdc02f81ba": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Australia current account economic data, unrelated to NYC weather or forecast."
+   },
+   "e224dff97774d1be38c7cf86ebc364fd1c5d62ac4e44a24b72036f4b8a81a8df": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Sandboxed Python execution service; provides no weather or forecast data for New York City."
+   },
+   "b2c76c102093e6782ca2834502a7260baec55e9b7ba02b2fafbd62db6fd44fc5": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crypto and macro events calendar; provides no weather or forecast data for New York City."
+   }
+  }
+ },
+ "fetch <url> and return the article text as clean markdown": {
+  "need_id": "q16",
+  "need": "Fetch https://en.wikipedia.org/wiki/XRP_Ledger and return the article text as clean Markdown",
+  "labels": {
+   "aaf96fc93e9a1562b3291e78995a3d12ab6605f4296dd3acedbd30ba0ecb7eaa": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Fetches any public URL and returns cleaned markdown content, directly matching the need."
+   },
+   "e92b0f5491891012042542362df0ef1334ae46b07baa3fa7f7089b8e85eb80e0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Only handles PDFs; Wikipedia page is HTML, so non-PDF fails."
+   },
+   "a9f31ffb309f278e8132d74e374a10854062d52f3d825fcab19d4e670d144f05": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Search could surface the page as markdown, but truncated and indirect, not a direct fetch."
+   },
+   "b38bab0e6b179bed021b831ea3aec36ef48a1b141cb1e947fd8a16bcc1c6f2fc": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Fetches the page but returns structured fields and text sample, not full Markdown."
+   },
+   "0a6f89c988b7a5c5750d430ca029ad4098593935bbde4fa517fddb9bc6061f71": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Converts a public URL's main content to clean Markdown, matching the Wikipedia fetch request."
+   },
+   "e3040f8b931892b562d78e69e0f435d2fb22da07c892e4b9031ff6c6179e279a": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Returns only the lead summary of the Wikipedia article, not full text or Markdown."
+   },
+   "4582aaeb6ec0989dd683c289cec44c0136951646e3169612a0af210558dacf45": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Returns only the lead summary of the Wikipedia article, not full text or Markdown."
+   },
+   "067a3405fa674199edc3e5b0ea2c4896621427d4045fe0829e11a556c945c2b2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Chunks supplied text; does not fetch URLs or convert to Markdown."
+   },
+   "a3d0ea53c5b3e6e54fecf669ee3f5d78f3b456ef907218d7f5bfd6e1e2101f8a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Extracts entities from supplied text; does not fetch pages or produce Markdown."
+   },
+   "86746ffab26c91acb0d2abffccb31b507b070766b912119c4022cfd3066a31af": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Returns article body as Markdown from a named page, but aimed at news/blog pages; may work."
+   },
+   "6981971f92140833d0ff02445c004b5208deaca76ea04e7bc62676150d944885": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Converts Markdown to HTML; does not fetch pages."
+   },
+   "ae2cfb98a41d92736c258edf5dae3d86d04f5b72fda5c156ad0110e12e8c0994": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Fetches a public https page and returns main content as clean Markdown."
+   },
+   "72a3cfdf7a0ebea21ccea1137ff81de44740b05880150bd4670469dc9a89a8a6": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Converts HTML to Markdown but requires raw HTML; does not fetch the URL."
+   },
+   "c100a327b130cd48f21723fb3769b109aebbeff857701b4d6f7ad782a62fe711": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "WordPress news feed only, unrelated to Wikipedia."
+   },
+   "8c2176cf3ae1b4ee33b5ead0a04475b3d9032c8ef475b72380763e0c269533a5": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "FT headlines only, not Wikipedia page text."
+   },
+   "1f8bc78ed7bf14a5e054fec418930c721d1f645b3aff715b87965d3892d1087f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Searches npm for MCP servers; unrelated."
+   },
+   "c9a1459e4696461e5d0c1ec3bd3e73a65cdc76c6038eb1b32ca3035d20563230": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "PubMed search; unrelated to fetching a Wikipedia page."
+   },
+   "317ce8c326197a050d8d8e125b0bf8504820bcf79003365c969d8a8c4bd7b192": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "NYT headlines only; unrelated."
+   },
+   "42ad3c948e4786decc0b2386dcf27c30ce7dcf3edfedf462f0301cd4f12648a7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Text encoding utility; does not fetch pages."
+   },
+   "05d6bf7558e54bc5897b396f7bc1e3b167f9c3b7bae8428f248588938159972a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "FIFA rankings; unrelated."
+   },
+   "682275ed2c8c73dde7135524f7736ed9de0d0c03aa6fb744e066804d3648b6ff": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Splits supplied text into chunks; does not fetch pages."
+   },
+   "997cfe18ee5a6be14abf571e2aeb0fcc6ab6a4970f428879bde7aebf4f2f123e": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Al Jazeera RSS feed; unrelated."
+   },
+   "466ae1eacbf0558b62da5a8ae1b5d93ee559a078767961208101256d5a552a5f": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Reads one named public page and returns main text as Markdown."
+   },
+   "65937504efdcec6bc675cf3729faa16e42f378bfc92b1f5ad5674dbebb034a4b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Commodity prices; unrelated."
+   },
+   "445de28d5b86b2f17fefab46f39a2ea6103eacf78ca4d5ee9ec06417fe7e111b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Medscape metadata only; unrelated."
+   },
+   "5acc5d92aa2f227e76a3c7cdf4447f11214680d06de3e6618be5a4eff3f465ec": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "DataCite DOI metadata; unrelated."
+   },
+   "3c972c97c8ecfb202e3222a5a0f5514980870d875aa9424303ca67d0cc894ad2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Stock quotes; unrelated."
+   },
+   "96e48a2bcb7829eb2ccf4027a7c4b9126f3193ed1816c7e2231d85b68c1d56eb": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Open-access lookup by DOI; unrelated."
+   },
+   "cb633a0eb71b22f79c1f26b8aeec53293387ac207c1c529ec21dc9df5c85a5e0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Figshare metadata search; unrelated."
+   },
+   "c50b939c6a35ec510e0498616b61cc1dc9b94f31cf08852f7aaa7b389b2a3c09": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Soccer stats; unrelated."
+   },
+   "27840f2cabf149da5826199488d533ca0617a50715eae80edee2a3a87c573583": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "dev.to article listings by tag; unrelated."
+   },
+   "6a648fb0fe64fb3da95d154648f233f73728031b93aba97286e98b93b5b626b0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Hashing utility; unrelated."
+   },
+   "83adf1dfade6e50882724f7cdd16230b94929a4073f78b6da74a16658af5073b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Defector RSS feed; unrelated."
+   },
+   "7c06058c6a8578a84ae84c583fb22315f920a3df9a8fbf0657d6c544db9d22aa": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "WNBA scoreboard; unrelated."
+   },
+   "b19744ca7164db8c929eba027e6fdf6c07fa226e247d5e726930e2103c2a17a7": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Renders any URL and returns clean markdown via Readability, fitting the Wikipedia article fetch."
+   },
+   "0f4f617385ccc7ec5110c6fc4b0350a66e443352ee11e5619720e7d20a6e21c2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Checks x402 endpoint payment safety; does not fetch or convert web pages."
+   },
+   "01ca36073caaf6598703ac721732fc06f6f5e79846878875f83f3e94530692c5": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Pre-sign transaction security check; unrelated to fetching Wikipedia content as Markdown."
+   },
+   "8190d56db81385be668e9d807069ac2fe8156f4cbbb6ed76bea31d9ce8385c4b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Batch x402 payment safety verdicts; cannot return Wikipedia article text."
+   },
+   "c5ab416cf90975b0ae1a64c5cc68cbbe27fc9264ba643e2c1a764bd68c6c4cfa": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Hospital pricing lookup; does not fetch web pages or convert Wikipedia articles to Markdown."
+   },
+   "4ca3c8479672495c1ec7dbf7282bd2c9a48b1d4982b733e46fdbaaac9cfb5bd0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Retrieves agent's stored memory by key; does not fetch or convert Wikipedia pages to Markdown."
+   }
+  }
+ },
+ "is <date> a us business day? list the us federal holidays in november <num>": {
+  "need_id": "q17",
+  "need": "Is 2026-11-26 a US business day? List the US federal holidays in November 2026",
+  "labels": {
+   "39c9c87f8c86fd4db8972bd567abee36d39dbdea25ee6257ffdda6e24238bc3b": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Checks business-day status and lists holidays for US, covering 2026 range."
+   },
+   "c8e248e3236a62a7e4a8b197224006cd4d32a0391b021576e10370e1c26d0151": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "NYSE market holidays only, not federal holidays or general business days."
+   },
+   "c95a640005ca3bd2c0085148eb66616ea340f38221c963915200bfabbca3b67a": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Lists US public holidays for a year and checks whether a date is a holiday."
+   },
+   "71f18d0674ea9da9cada9e3071c28a58ad9b463aeda8070cdaf7fb6b716faf40": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "US business-day calculation skipping weekends and holidays, listing holidays in range."
+   },
+   "4b0a4b058248538c870cf9b87ee4afd68dcfe870a371d35a573ae6fe845097c9": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Same public holidays service; returns US holidays and date holiday check."
+   },
+   "fa6b2fd269243662277631e1c48167ccc8c0c1a724a689b08657f61f4bf1b505": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Same business-days service; covers US, lists holidays in range."
+   },
+   "708adad715a17fda55180a87add20eb3606b70909caba0dd6ea8f0fb40a0f6a6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Uses Spain's holidays, not US."
+   },
+   "0c0d69e3cc7b01fb21be63d9a63f1b1d8c55bbc18532fb413ea6590ba1c86b18": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Uses Spain's holidays, not US."
+   },
+   "429eec4a4d4d55b9a0d88a332e81408f1976059285741cc48bf3a373d27c74b2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Federal Register regulation search, unrelated to holidays."
+   },
+   "e66ade2e7221f8230d656c6697dd176fcefe4bb41866c6d1b626eb322810450d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Grant opportunities, not holidays."
+   },
+   "d7b716924cced998a2727158bf76eac5cdf14a00445ca28d1129c97e42955668": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "NYSE market holidays only, not federal holidays or general business days."
+   },
+   "f7ee37396d3d3c9980b7049a531271078d8fe6074b7b6798150ec127989fe68b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Weather forecasts, unrelated."
+   },
+   "40a7a72c295360f0306fcbb50876d1bc06eebf192e5e7d01a72197e24c59fbe2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "QR code generator, unrelated."
+   },
+   "b30922be18a485a6b7489d84e625249cdc40295798568879e0fa1d842c145eb4": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "QR code generator, unrelated."
+   },
+   "d76798ab01700b70dd2d62c8061bac014048d6a12bdac94b37aaa740657f8dc6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Email validation, unrelated."
+   },
+   "ac0d8c4f3dbec1c39e1478eeffed217ef1dbe73308a49e0ae49cafe4e087e1a8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Email validation, unrelated."
+   },
+   "d354cbf84abb415d82fa6ea77beea86173292176e8d10fc97a49a90ef95c921b": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Returns US public holidays for 2026 with dates; covers November list and day check."
+   },
+   "33ede40156f738b7f55945daf2acbd9cebd19c98f52738137bd0cfaa6272598e": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Business-day calculator for US lists skipped holidays, but not a direct holiday list or single-day check."
+   },
+   "63ac9d745057e1357676e0dd243528b8424ab08d51d318fbca47ab1582351f4e": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "NYC property owner records, unrelated."
+   },
+   "b245a46a7592c60bfa59e7a4ea69623edc13f375b7c8c0a5cbb2235015488665": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Government bid solicitations, not holidays."
+   },
+   "f21acbe81940ddf875446589794e037dcfea1d392006781dbd95e47c7e2d0e51": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Commercial real estate listings, unrelated."
+   },
+   "f8fe4f3639570e7b029f8ec7035b53f8c2640850dc0dc24aad25699955390abf": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "NYC business licenses, unrelated."
+   },
+   "afab8fc9676a5cf125c93e4883e1ec3f1668a67b5896bd8f6b1e625dda714a31": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Hourly job search, unrelated."
+   },
+   "0769b53e427c735f1347ddbd9e5eb434f59f90609f158d78e00063403bb92949": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Google Places business search, unrelated."
+   },
+   "2ce384f7e7da513e5fa580eb43098568bb35f863e24f0e618b0d513dbc1b0578": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Federal grant opportunities, not holidays."
+   },
+   "b1d4c75d11f39f0819c2a3f555649bfb28304342de27c5533165eef03a2a7471": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Federal job openings, not holidays."
+   },
+   "24c6032a4de9dcf24ed6ca9df3e994d72471b8d53e4606f44cba58f665c12572": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Email validation, unrelated."
+   },
+   "7c3235088146a5e2c5b2017e6fc5127671a813970ef2c82bfd319b5d913885de": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Genetic variant data, unrelated."
+   },
+   "42ad3c948e4786decc0b2386dcf27c30ce7dcf3edfedf462f0301cd4f12648a7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Text encoding utility, unrelated."
+   },
+   "76332f01032de6817e0a290f723ec8cc66bc937f454114b01d9a43c6c7b9a65b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Grant search; no calendar or holiday data."
+   },
+   "73660b6f855ad2447d282053482315c375ef702ed3851633136e7e86a053e5f0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Fragrance dupes; unrelated."
+   },
+   "0b2adda65ecd3cdf6f6256f1bd7d412f51eb3f60e6b44367979fca72931fde97": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Franchise disclosure analysis; unrelated."
+   },
+   "ebbfd6f09da4767ccd672b6d3f2dda08d677704f18c1e8f4968dfb38198b878a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Child product recalls; unrelated."
+   },
+   "ecb042b9eecb5e07a6fe459fde2ec6e8236f3c3109054777b778107f2b74f640": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Gift ideas; not holiday calendar data."
+   },
+   "6f201ca34a169bdc1d1c5c8a57c6522ca2dd0430ac243708660e286696dfff8e": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "NYSE open status for a date hints at holiday, but not federal holiday list."
+   },
+   "43c14e1e19b1a08516e479f593044e944e381cefd14c9aba44888dfafedf40e2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Contract solicitations; no holiday data."
+   },
+   "d4ce8c7a6caca1af3a7a8472f9155c867c1b7bbd7ae7228f1914f45084e9c684": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Federal spending awards; no holiday data."
+   },
+   "39683b3116d1b95204a27ac9ef3679c3a81cb88dc7976c19ee4f3fc9bdc9b7d3": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Fragrance risk score; unrelated."
+   },
+   "e65c5166e69b58d92ef57f3c720dbbdbd04e402de63a5bbead1cc225a172c3c6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Provides CFTC Treasury bond positioning, not business day or holiday information."
+   },
+   "c6333f90074ced350702141985688ee73cdd4db474e0b9500b0c6c1a6ba9c047": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Provides industrial growth signal, unrelated to business days or federal holidays."
+   }
+  }
+ },
+ "latest news headlines about xrp or ripple from the past <num> hours, with source and link": {
+  "need_id": "q18",
+  "need": "Latest news headlines about XRP or Ripple from the past 24 hours, with source and link",
+  "labels": {
+   "64f36b3b1a2865c86a2582f328e90d4e4898f785cd6b01a20b8456786ed5ba12": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Crypto news headlines with link, publisher, time; filterable by text or coin for XRP/Ripple."
+   },
+   "e6ae147d95218c10cfc59586264b1f66a74951d1471ef0e9c9b4fd0c4adc00d6": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "AP headlines searchable by keyword with links, but only AP, limited crypto coverage."
+   },
+   "e4c56307a22287e36f7bf325cb87a60b3a93c3085241c71f6d60c0486bd1cfb9": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Bloomberg Markets headlines only, no XRP filter; about 20 items, may lack Ripple news."
+   },
+   "0a3276aa53ee75e8c13dd341f6dfe57da5434b3422226035b4da8d6c43c414fa": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Perp funding market data, not news."
+   },
+   "a170531ea764477337fcf596207a87477207b40080097af330e2c7be8a67ddf2": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Price tickers, not news headlines."
+   },
+   "7d78c1648dac9b0faaf3828a275e21dc1fdc443a8d410e61c6d907725b46fe5b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Liquidation data, not news."
+   },
+   "4f54472645e3ae58be273709ce6cee28b098a7d6542fe1ccdfaf3f5d48d9be27": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Chainlink price feed for ETH/BTC, not news."
+   },
+   "a9bca3eb07b62d69550eba22c8b14e50ecbfb20664362f006f7949703f7d6c1b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Market depth snapshot, not news."
+   },
+   "c8bd6436a8f7edb719a6faf27e2fa26bff03ff4d2be551466e6197efc99aa14b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Spot ticker data, not news."
+   },
+   "45d2a772e76c45a359ae98ed31022505a05d435a32f37c7e696178807cc4b484": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Reuters headlines with links and keyword filter, but only recent sitemap items, single source."
+   },
+   "6488ef1b240af690f07afc8ebc0f4e772f6cb7d98db96f4486c17ecf58312de0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Oracle prices, not news."
+   },
+   "30b11ad2aa172ecd78b7229849236af1d6002cb3ea2166662f4176c09e14f8fe": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Derivatives and on-chain whale analysis, not news headlines with sources and links."
+   },
+   "eeb05b0007ce1c5e7f5596b5022c4740ee1e3e939c9a0eaa35e7847cd6f48b5f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Escrow release history data; no news headlines."
+   },
+   "f2df32f89ef8ddb3bb009315919a136a92e4eef69531f8eb1b817dc28438ea07": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Large transfer ledger monitor; not news articles."
+   },
+   "0a2f523664ba1251dd862717ea6bc3cda745faf8a93a339a31d6e10bd15170db": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Float and supply structure data, not news."
+   },
+   "cf7a5923deb7bca55e9159190207eef3184903947bbb6af03d11f43c5d5904c8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "CFTC positioning comparison; no news headlines."
+   },
+   "6938a86ccb4e42d8d0848418124ad737db000ea164ba96062f24da86904e3e5a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "CFTC leveraged-fund positioning data, not news."
+   },
+   "0bb8819be7c970d1077b2c09048726c0570d93140a4033696316f1ad16ceaee7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Adoption metrics monitor; no headlines or links."
+   },
+   "258de76b00b737142395a3db5ff9d65b627d0f29232ba7e9ab9570c80b2f0751": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "RLUSD supply and liquidity data, not news."
+   },
+   "51560ae3ffba266b1f2da644b0f62fc48320358161c99046f4243277b0a3db38": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Macro scenario outlook; does not return news headlines."
+   },
+   "d3e39e71d675b66cf6ecff071c35368a1888c7a080ef37d1ae50e4883ad91806": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Official regulator press releases filterable by keyword; not news headlines, XRP/Ripple coverage only incidental."
+   },
+   "3a4124b842c6878396712ddf95032f365a614b2bba3f0f8a423c2c686bdea23b": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Regulator press releases with keyword filter; not general news outlets, only tangentially covers Ripple/XRP."
+   },
+   "7c1ad14f9817ce1128ee38a90deec133674913ae9a03c8c29e72be9c21ac1a75": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "US government crypto documents with links; could mention Ripple/XRP but isn't a news headline feed."
+   },
+   "e036ecbab6bb72cb50205496ab6fa1014432eff31c0e82d6982ddc861e676fcf": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Generates ledger visualization image; no news headlines, sources, or links."
+   },
+   "d50d9aca3543211eaada8dc69db862e8c40e34c3ac76b6de2b1d719ae42a1b4b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Payment webhook watcher for an address; not news."
+   },
+   "fc3022c8644b39ed749e580e072cb45623f369db289fbaecfa30b8f704c0b244": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Lists large on-ledger payments, not news headlines with sources and links."
+   },
+   "a9197288dbc0492550f1d97e16b783f2b140cf85307e9d66c90a778e74328563": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Network health metrics, not news articles."
+   },
+   "39923a004f64ce7c3eeb476b0e194b43c777e20a217d98b69b2bb34a2acfecdf": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Verifies a specific payment; unrelated to news headlines."
+   },
+   "57b4f3d90b034b97f6d2d5e9f2b9e1523b9df14279dcc656187799f443e294c6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns x402 payment activity stats on XRPL, not news headlines about XRP or Ripple."
+   },
+   "f5bdbd3c73a4e41493cb9e1cee771e202d70f609787b3c6be1f3bc4097610e3d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns perp funding rates, not news headlines."
+   },
+   "b1287902d752d1fb8291be3a13c3b55b765adea66f635501f51a7e0e09e4e858": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "BTC/ETH market snapshot; no news headlines or XRP coverage."
+   },
+   "a0d32d57bd62b17fb3d5e03a8dc559b5b094614f36aa70f104466d56c0103c9a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Historical funding rates, not news."
+   },
+   "d5f09a882f6a17cd798461a2b2b664fb2a355895c5878d87c5cc10bfd7d35a9c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Token security scanner, no news."
+   },
+   "08fef55237afbc4724c07cfd4ba036892610a0370a652b60b893bb23653d011c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Pool liquidity and slippage estimator, no news."
+   },
+   "17a95842944b27566fd162998b070f3890720bcd13b1ee227d8e9967f0c8e409": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Hyperliquid wallet positions, not news."
+   },
+   "a529cd9b246c69f1603f462f2368986683a784c97a55c51197858fbb81d5c545": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "LP range modeling analytics, no news."
+   },
+   "201f09f70f5fc4ce1fc3974bb213a163867278e27d487e52833b93655ba9daf4": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Market brief with catalysts maybe, but no headlines, sources, or links for XRP."
+   },
+   "a4e274f52c55d8976a8ebc718fc2e00fcc2f4a9618487af1499ad6a5226d25aa": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Startup VC funding rounds, unrelated to XRP news."
+   },
+   "757ac21d568dee4f47f4457ed1d5744c2d1a1857e2d13f951fb598944290c759": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "General daily crypto brief with sourced news, BTC-focused; no XRP/Ripple filter or 24h headline guarantee."
+   },
+   "8a9222cc99b1fb89a111a6c4ca47118480125b781d4b5ac12c2c919f0bc2f95c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Verifies XRPL transactions cryptographically; returns no news headlines, sources, or links about XRP/Ripple."
+   }
+  }
+ },
+ "recent arxiv papers on payments by ai agents or agentic commerce, with titles, authors and links": {
+  "need_id": "q19",
+  "need": "Recent arXiv papers on payments by AI agents or agentic commerce, with titles, authors and links",
+  "labels": {
+   "7c998f78664102b66a8cd4f343b9966bf5f4386061220e65fbf574726d6576be": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "arXiv search returning titles, authors, PDF links, sortable by newest; fits the query."
+   },
+   "2443a8bbb272902ebcae9f0dc4ce6e6bda7d5363847ecfa4b630d1cd226bcbd5": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Same arXiv search with titles, authors, links and newest sorting."
+   },
+   "088b9eca3f6850c8c212b71dd7ccbfbfb384e65ed3fb4de88419881956b04598": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Sentiment analysis of text; does not retrieve papers."
+   },
+   "c9ad8dbb9a6a8eea3de2f2c985071e86db35b379418c4bd17cba5847f8c158bf": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crypto sentiment scoring; no paper search."
+   },
+   "43129a050f6afee4152a6e246288cbdebdee20c44350da1473acbd50e2b9d3b6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Extracts fields from supplied text; cannot find arXiv papers."
+   },
+   "82645f3028959cd154fcee396c025ccf155e54fa2835f1fb958463f2b68d8c70": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Translation tool; does not return papers."
+   },
+   "dd94364a672fa78cb6ad4c35f03476c49947ca5814bfba6c5fa177174e9c82d0": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Searches arXiv by term, newest first, returning title, authors and PDF link."
+   },
+   "7e1b73646761072f1e887802df5d7a7b36b3522a0ab1567402e25530231fe7c7": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Searches arXiv papers with title and link, but authors not listed; ranking not by recency."
+   },
+   "87112242cd0e6d2fd314590e9f49fe9c72276a023fe9bd2ae8710239a499597f": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Invoice OCR; unrelated to finding arXiv papers."
+   },
+   "f0737f8c93d58c5c32414cfd17e006fd6e04f934c1f2ce8d19d3e8202c8100b3": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Hyperliquid trader positions; not research papers."
+   },
+   "64f36b3b1a2865c86a2582f328e90d4e4898f785cd6b01a20b8456786ed5ba12": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crypto news headlines, not arXiv papers."
+   },
+   "96e48a2bcb7829eb2ccf4027a7c4b9126f3193ed1816c7e2231d85b68c1d56eb": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Looks up open-access status by DOI; cannot discover papers by topic."
+   },
+   "ae2cfb98a41d92736c258edf5dae3d86d04f5b72fda5c156ad0110e12e8c0994": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Generic page-to-markdown reader; no paper search."
+   },
+   "3d24559cbb9fc39761d905739e8df71a9ec86542329f01bebbd1908e96f7b2d0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Verifies known references only; cannot find papers by topic."
+   },
+   "e46f61150b65dfa549879d8e42359746927cf361bfdb598e27a99b82058e9cdf": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Brief covers arxiv AI/ML papers broadly, not specifically agent payments; unclear titles, authors, links."
+   },
+   "21027797063be058dc2da1ef9666d4badece04eced47fe6edd07ee5c363bbd8d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Euro area retail trade data, not arXiv papers."
+   },
+   "26c43c84d428cf2eb707fbfd4490512915528677ed238aff3537b67fdf185007": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Brazil inflation data, unrelated to arXiv papers."
+   },
+   "05e5fd9ce4c7fd9b44c093e9ada69cd4efddcd525c819b3362a53a4129c509ff": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Argentina inflation data, unrelated to arXiv papers."
+   },
+   "bfe03820dc1088e4ca35816e0389b6cb829a7ea41e39eec3ec2348c0777a752a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "India real interest rate data, not research papers."
+   },
+   "b470a739cba6b4117f6d9320d7f6a70fa7af8d8176974f081d7c0299b24b9b64": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Australia inflation data, unrelated to arXiv papers."
+   },
+   "3cab8723bff7952362beb228ea3cb11094604105070e9cc41114f7962ef90697": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "T\u00fcrkiye inflation data, unrelated to arXiv papers."
+   },
+   "3c166d60ca7103421583f24e5bdf759b6b9687edfd43c1fbe5bd826c9f37e37d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Brazil trade openness data, not research papers."
+   },
+   "d3953c21571cd3aba8538a802ca13cbee4c096b580c0888b947f5fbd25cf554b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Market price consensus check, not arXiv papers."
+   },
+   "424114d674cd1031fbd9e3fcccba4d33a7841d4a95f0cbc7244fcb1e51300e61": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "China inflation data, unrelated to arXiv papers."
+   },
+   "f0332bc3b1cb8a3149982daf2b7a75a3ec2ad0886ad6f224c75941b7b8e67c9d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Brazil real interest rate data, not research papers."
+   },
+   "e92c23ed77b9a7602dbea5037f885dc4655264920a4bc005215c45f90488c4cc": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "India trade openness data, not research papers."
+   },
+   "c3f7e3dd6d67fa6a7749d40df45c9f40141f7831680bb558d3589bb7e1a2cbd0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "US Treasury rates synthesis, unrelated to arXiv papers."
+   },
+   "6e6157e18207298a5cd840e702e5ae9de66a35fd7d0f0b8a3aca5bbad3734528": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Indonesia inflation data, unrelated to arXiv papers."
+   },
+   "8e5d7bc413dc3b9497c15b4d859fee8527ba527c4f157beb5789b15ff97aae42": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Switzerland inflation data, unrelated to arXiv papers."
+   },
+   "ac09272fb67bc1b2df950cba797bf998e3305b62a12e65c804c3ee5ecae6a425": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Checks XRPL x402 endpoint payment readiness; returns no arXiv papers."
+   },
+   "57b4f3d90b034b97f6d2d5e9f2b9e1523b9df14279dcc656187799f443e294c6": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Gives XRPL x402 payment activity statistics, not arXiv papers with titles and authors."
+   },
+   "ed2942ce7086f3b161621ffc543e36de48b1a07a40f554005561544584562f81": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Provider health and x402 readings; no research papers or arXiv data."
+   },
+   "2890b72073f17995061640a9474c7ee4516aa02ab335d437af859f4e54cde443": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "AI provider status readings; unrelated to arXiv papers on agentic commerce."
+   },
+   "0aef89f05a1b7ad004d68f4274926d33676d0e1df8e1e35a5f00ce8fa48dbf34": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Trade policy news, not arXiv papers on agent payments."
+   },
+   "7ac7712012aa29e54480fcc1db15779dc6b84fdb23cae537615312f8f8c48c17": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Remittance industry news, unrelated to arXiv papers."
+   },
+   "b40189bb94cf55c64d47bfa1c3a7adcf6a2071f3e2a2c726b72eb8b52840aa05": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Crypto payment processor recommendations, not academic papers."
+   },
+   "c5ab416cf90975b0ae1a64c5cc68cbbe27fc9264ba643e2c1a764bd68c6c4cfa": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Hospital pricing lookup, irrelevant."
+   },
+   "7751b6c63eceab57ce0afa916c7d240471bc2290790da0c554d9d3e926317d23": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Perp funding arbitrage data, irrelevant."
+   },
+   "c5f36d3d30f6b43d3fd398ebe654aff9454def405e0178b2b691604f776c041c": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Single-paper lookup by title/DOI; cannot search recent papers by topic."
+   },
+   "fc3022c8644b39ed749e580e072cb45623f369db289fbaecfa30b8f704c0b244": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Returns XRP Ledger large payment transactions, not arXiv papers on agentic commerce."
+   }
+  }
+ },
+ "recruiting clinical trials for type <num> diabetes in the united states, with nct ids": {
+  "need_id": "q20",
+  "need": "Recruiting clinical trials for type 2 diabetes in the United States, with NCT IDs",
+  "labels": {
+   "046b1732a1389cababe54b063f0c12f64a2174a8eb28ab2e81e1fea0e71ca5cc": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Searches ClinicalTrials.gov by condition with status filter, returning typed records including NCT IDs."
+   },
+   "a1da2e072e70c183c56be9b89c4b9f2d4a357bc9187921b03534d71501af54da": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Requires an NCT ID as input; cannot search by condition."
+   },
+   "8bb2fd0b8ba3fcb6283fda993e3b5026b151ed1a1e0f042be5039fbe7c6461a3": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Trial search focused on longevity interventions; may not cover type 2 diabetes well."
+   },
+   "6567a3f8e7bddbbd25821b5194ef3f9a9217c526238a75625a2130c5ed5dcabd": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Gives geographic distribution aggregates, not a list of recruiting trials with NCT IDs."
+   },
+   "c2c6cbe7db93f42e5c362d25555fbc5f943446c8a3a49e32555eb65b8f41442f": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "Finds actively recruiting trials by disease with country filter from ClinicalTrials.gov."
+   },
+   "32672e71af7895873befa12b53d1a337ab0751e4145774879e510a43135276f5": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Biotech M&A preview, not recruiting diabetes trial search."
+   },
+   "a3b41b1e79d165b4e32b22c5c64319eb90d37e889d59d04216af398267fd8b40": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Nutrition literature synthesis, no trial listings."
+   },
+   "0d93d57a4e0117ff91f0816ccd06c67a6c3a3329121af1266e260b87071d4c8a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "FOIA letter writer, unrelated."
+   },
+   "2cbc59b0fdc6aabc7d8bf0ba42a13009be348e07921d89957c92662b4ddeb87c": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Sponsor pipeline intelligence, not condition-based recruiting trial search."
+   },
+   "966a12a3ebb940cf86fc56e6245da65ffbb356bc96a3f8cada88eba59401e895": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Contractor vetting, unrelated."
+   },
+   "2b4ff27f3a464fbf763298be05bfb91cc682e353c9e54b4f149061f090766beb": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "M&A deal signals, not trial recruitment listings."
+   },
+   "bc22ece1134868ca9d5d7c38e6cc68fbfcf4581b2795a8227a866bf1a9679531": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Patent status lookup, unrelated."
+   },
+   "85ec4c55cbf7b07e117cd505a81f9c7864a32ff5dcc5f023d318d3bf2f0a907e": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Supplement efficacy ranking, not clinical trials."
+   },
+   "82b2a4fb23f7f5579a4eba4a131c569ca17aae1905fb80500b07658afcb8953d": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Food comparison, unrelated."
+   },
+   "19f880743d578a6ab1e70b9ac5aae082c6be9f8308a13c1e75e875745b392590": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Home renovation comparison, unrelated."
+   },
+   "c40a51f5a35d92297852eab6066d527cffcdbd2373ff50098a5963c03108a2bd": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "CGM dietary guidance, not clinical trial listings."
+   },
+   "743067d4e0a2bc07f53050d4b6cb89cc9f9869f2a62cc6ac27d913784bd46d3e": {
+    "label": "exact",
+    "p_fit": 0.9,
+    "reason": "ClinicalTrials.gov search with status filter and NCT id; fits recruiting T2D trials."
+   },
+   "92e5d908c89da441c389f48248fd03335c1da8e37ebdc75641120a72c315b430": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Returns NCT IDs and status, but no stated status filter or country filter."
+   },
+   "e83814709020fdeb7af06366121b0f155f802354464ab95ba34dde17c05ffe3b": {
+    "label": "partial",
+    "p_fit": 0.5,
+    "reason": "Condition search returns NCT number and status, but no recruiting filter or US restriction."
+   },
+   "a02092a18df0f18cff1c98706d37f7d1f51b5fb6130005e687e48aa5556bdfc0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Drug approval records, not clinical trials."
+   },
+   "7c3235088146a5e2c5b2017e6fc5127671a813970ef2c82bfd319b5d913885de": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Genetic variants, not trials."
+   },
+   "510e9f1e64bef4df956901ab921acd0271eba20c3b1564c66035602be5ce29bc": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Drug NDC directory, not trials."
+   },
+   "3b4c6fa6667fc1b63574e2051c725889635f7693e0af9556d5d56acf2380a9be": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Development bank procurement awards, unrelated."
+   },
+   "42ad3c948e4786decc0b2386dcf27c30ce7dcf3edfedf462f0301cd4f12648a7": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Text encoding utility, unrelated."
+   },
+   "40dcfaa5d09195d6fa29533d1ad96da42a9cb7b125c2041ca90c26f74f74301b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Food database search, unrelated."
+   },
+   "0f6ff66861c471fce8d32eda4b1002db08325813f3d24c792623b756a93888e8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Luxury car listings, unrelated."
+   },
+   "503dea25b6784c58f7c29a5cd47879b00942f19e92d5329f08560e7f385a58da": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Federal contract awards, not trials."
+   },
+   "792322778a304425c03162e43ed50e933cb33a9774422af50f13c7beec3d607a": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Bankruptcy dockets, unrelated."
+   },
+   "22ac2583c7188473ad5353d2c79f2bebee3310d843b65a44d9c665ae10955094": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Nucleotide sequence records, not trials."
+   },
+   "2cd472e6d5570429c0c61a56a0bc55be16b7befd2391b3b10a68d6d6ea04eb49": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Audio transcription, unrelated."
+   },
+   "d0e3278111d8f4f2764a77c687c7a1a7d9d212f1879d543399a2454476b50671": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Defense procurement solicitations, unrelated."
+   },
+   "1b23d471bede3ac194e25cc7b623f56ab01b38917b7c62c5aaf068c30179b27b": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "NIH grants, not recruiting trials or NCT IDs."
+   },
+   "f6bf0f5efc8f769477cd91a9feeb79e0c69070280cfeb1009d77e0afbede7fb5": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Brazilian medicine registrations, not trials."
+   },
+   "2c54827d5311e5b2ef1203372934e3eb41a87c8d6ae44c6d9266d57398a35942": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Cochrane review citations, not trials."
+   },
+   "482dcc98300c53915d2c6f99a5165e88d39d281880cf3e5c806498a219d0f086": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "EU taxonomy activities, unrelated."
+   },
+   "3600063a8bd98de95a92c36cdf34276395af6a3ad9039339d5fa2552b5c546cc": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Dataset catalogue metadata, not trial records."
+   },
+   "180019184573b2caa4b2d16a30ed279280095530fb37bd563c833b6e247b05d4": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Medical device lookup, unrelated to trials."
+   },
+   "e023270772fd38b29f04af4e554ef4a925d60c09f87cfe803a73a036b6d8ede0": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Validates barcodes and ISBNs; no clinical trial data."
+   },
+   "a2838fdd3507e0dcaa7d6499fa5ddd7195d0b8c5f9f3c5caf8f9eca4b71522c8": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Searches academic papers, not recruiting trial registries or NCT IDs."
+   },
+   "8c57d27aa33eade5a5d7cdd430cee8e5aa14b33aab05f73b27420741b93cf8eb": {
+    "label": "wrong",
+    "p_fit": 0.05,
+    "reason": "Searches academic papers, not recruiting trial registries or NCT IDs."
+   }
+  }
+ }
+}
