@@ -39,7 +39,7 @@ def test_one_result_per_operator_when_enough_operators(ranker):
         out = ranker.shortlist(v["need"], k=3)
         ops = [x["operator"] for x in out["results"]]
         eligible_ops = {ranker.rec.endpoints[e].payto for e, x in v["labels"].items()
-                        if x["p_fit"] >= float(CFG["rank"]["fit_min"]) and e not in ranker.dead}
+                        if x["p_fit"] >= float(CFG["rank"]["fit_min"]) and e not in ranker.dead and ranker.rec.trust[e].settle_ok}
         if len(eligible_ops) >= 3 and len(ops) == 3:
             assert len(set(ops)) == 3
 
