@@ -1,0 +1,68 @@
+[
+ {
+  "addr": "r4Nh7yRHfcNFNMt8GFe7yrP1qq8cLGjkFR",
+  "created_ledger": 104182814,
+  "created_at": "2026-05-12T15:59:20+00:00",
+  "funded_by": "rhHSo1fpGymnF9uB43kwpLxpe3ko6zr1Av"
+ },
+ {
+  "addr": "r4w68TArDZjivtcFMNL7PvKf7uPg14Vev8",
+  "created_ledger": 107045572,
+  "created_at": "2026-09-17T11:05:31+00:00",
+  "funded_by": "r4CAbSkDf4MgGZjao78Ufcks3jxr2UiPfD"
+ },
+ {
+  "addr": "rBZpuNToTKzUF2fkxWcWw5WLoP41eQQXLm",
+  "created_ledger": 106484340,
+  "created_at": "2026-08-23T07:04:11+00:00",
+  "funded_by": "r9khehKunbPduxBk4s983QU5TKYpBFUdBe"
+ },
+ {
+  "addr": "rEgYWzNvhsz44YLoVLdoK82F3ZQFnDmtxF",
+  "created_ledger": 107642405,
+  "created_at": "2026-10-14T03:48:51+00:00",
+  "funded_by": "rnFHPGmgTLSg7hjzfr8wiHaTdTh3PijrZZ"
+ },
+ {
+  "addr": "rJz8r3Yv6BjJTyGhxVMnWJwG1KxkbdvRJE",
+  "created_ledger": 107256073,
+  "created_at": "2026-09-26T20:55:20+00:00",
+  "funded_by": "rnFHPGmgTLSg7hjzfr8wiHaTdTh3PijrZZ"
+ },
+ {
+  "addr": "rM8kmmnz5qPMg7V3r7SHYXgDGvm8PhzLvM",
+  "created_ledger": 107825430,
+  "created_at": "2026-10-22T10:29:31+00:00",
+  "funded_by": "rUjfTQpvBr6wsGGxMw6sRmRQGG76nvp8Ln"
+ },
+ {
+  "addr": "rNp33A4gY4MK3kPDQhe3GY79ysUhfZoang",
+  "created_ledger": 107746892,
+  "created_at": "2026-10-18T20:31:41+00:00",
+  "funded_by": "rfEiBKRwNdBBNdwVdkLMxJSm8ZHZ1CFaiz"
+ },
+ {
+  "addr": "rNperfygoY9USDAfYeXh9itC2TnydbycMY",
+  "created_ledger": 107833731,
+  "created_at": "2026-10-22T19:37:02+00:00",
+  "funded_by": "rGCXkJroyngtxFmgj4hnRLxRtKSjr5dZJt"
+ },
+ {
+  "addr": "rn1E1zyZY5LuZfzds7DfJVL3ZVcNq1XrKt",
+  "created_ledger": 105826673,
+  "created_at": "2026-07-24T21:29:40+00:00",
+  "funded_by": "rE6xRr2GbS31KPoL9RaLgfiarJ4vqXj8Si"
+ },
+ {
+  "addr": "rpvsTYDZmX1j1ndmEFG6YjjZZwp6VRtQRz",
+  "created_ledger": 107827477,
+  "created_at": "2026-10-22T12:43:40+00:00",
+  "funded_by": "rM8kmmnz5qPMg7V3r7SHYXgDGvm8PhzLvM"
+ },
+ {
+  "addr": "rwkuVKAZQyn9maVWYDT4iHFPNmX7Nb1BT",
+  "created_ledger": 107531454,
+  "created_at": "2026-10-09T04:34:20+00:00",
+  "funded_by": "r9Y5kWQvZLXn4vuvqNJovoNpJFzpMCuP2d"
+ }
+]

@@ -1,0 +1,281 @@
+{
+ "accepts": [
+  {
+   "amount": "3000",
+   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+   "extra": {
+    "name": "USD Coin",
+    "version": "2"
+   },
+   "maxTimeoutSeconds": 300,
+   "network": "eip155:8453",
+   "payTo": "0xb9f06D2734B7E9D7b21B64C4D8b95bd774b71aCf",
+   "scheme": "exact"
+  },
+  {
+   "amount": "3000",
+   "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+   "extra": {
+    "feePayer": "GVJJ7rdGiXr5xaYbRwRbjfaJL7fmwRygFi1H6aGqDveb"
+   },
+   "maxTimeoutSeconds": 300,
+   "network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp",
+   "payTo": "HcjfmZLgWRZzwj4deEiS7pewc4KBYSw39mW5nTyt3pz2",
+   "scheme": "exact"
+  },
+  {
+   "amount": "3000",
+   "asset": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+   "extra": {
+    "name": "USD Coin",
+    "version": "2"
+   },
+   "maxTimeoutSeconds": 300,
+   "network": "eip155:137",
+   "payTo": "0xb9f06D2734B7E9D7b21B64C4D8b95bd774b71aCf",
+   "scheme": "exact"
+  },
+  {
+   "amount": "3000",
+   "asset": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+   "extra": {
+    "assets": [
+     {
+      "address": "0x0b2c639c533813f4aa9d7837caf62653d097ff85",
+      "authorizationVersions": [
+       "1",
+       "2"
+      ],
+      "decimals": 6,
+      "symbol": "USDC"
+     }
+    ],
+    "minValiditySeconds": 604800,
+    "name": "GatewayWalletBatched",
+    "verifyingContract": "0x77777777dcc4d5a8b6e418fd04d8997ef11000ee",
+    "version": "1"
+   },
+   "maxTimeoutSeconds": 604900,
+   "network": "eip155:10",
+   "payTo": "0xb9f06D2734B7E9D7b21B64C4D8b95bd774b71aCf",
+   "scheme": "exact"
+  },
+  {
+   "amount": "3000",
+   "asset": "0x3600000000000000000000000000000000000000",
+   "extra": {
+    "assets": [
+     {
+      "address": "0x3600000000000000000000000000000000000000",
+      "authorizationVersions": [
+       "1",
+       "2"
+      ],
+      "decimals": 6,
+      "symbol": "USDC"
+     }
+    ],
+    "minValiditySeconds": 604800,
+    "name": "GatewayWalletBatched",
+    "verifyingContract": "0x77777777dcc4d5a8b6e418fd04d8997ef11000ee",
+    "version": "1"
+   },
+   "maxTimeoutSeconds": 604900,
+   "network": "eip155:5042",
+   "payTo": "0xb9f06D2734B7E9D7b21B64C4D8b95bd774b71aCf",
+   "scheme": "exact"
+  },
+  {
+   "amount": "0.003",
+   "asset": "524C555344000000000000000000000000000000",
+   "extra": {
+    "areFeesSponsored": false,
+    "invoiceId": "049D52A008384268961DCD2332E29273",
+    "issuer": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+    "sourceTag": 804681468
+   },
+   "maxTimeoutSeconds": 300,
+   "network": "xrpl:0",
+   "payTo": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp",
+   "scheme": "exact"
+  },
+  {
+   "amount": "2310",
+   "asset": "XRP",
+   "extra": {
+    "areFeesSponsored": false,
+    "invoiceId": "D17A7F2B7CA74425B8DDDFA1E2835F86",
+    "sourceTag": 804681468
+   },
+   "maxTimeoutSeconds": 300,
+   "network": "xrpl:0",
+   "payTo": "rEac5rTEr7y81iEyrMTrHCRbnktSE2pNCp",
+   "scheme": "exact"
+  }
+ ],
+ "description": "Current price of up to 50 cryptocurrencies by ticker (BTC, ETH, SOL, XRP...) in USD or any ECB currency (EUR, GBP, JPY...). Covers the ~190 largest coins listed by alternative.me; currency conversion with ECB reference rates.",
+ "extensions": {
+  "bazaar": {
+   "info": {
+    "input": {
+     "body": {
+      "coins": "BTC,ETH,SOL",
+      "currency": "EUR"
+     },
+     "bodyType": "json",
+     "method": "POST",
+     "type": "http"
+    },
+    "output": {
+     "example": {
+      "currency": "EUR",
+      "date": "2026-10-16T21:12:44+00:00",
+      "prices": {
+       "BTC": 72482.0048,
+       "ETH": 2142.450902,
+       "SOL": 92.38425309
+      },
+      "source": "Data from alternative.me (Crypto API: free to use, including commercial projects; https://alternative.me/crypto/api/); currency conversion: Source: ECB statistics (euro foreign exchange reference rates)",
+      "without_price": null
+     },
+     "type": "json"
+    }
+   },
+   "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "properties": {
+     "input": {
+      "additionalProperties": false,
+      "properties": {
+       "body": {
+        "properties": {
+         "coins": {
+          "description": "Comma-separated tickers (up to 50), e.g. BTC,ETH,SOL",
+          "type": "string"
+         },
+         "currency": {
+          "description": "USD or an ISO currency code published by the ECB (default USD)",
+          "type": "string"
+         }
+        },
+        "required": [
+         "coins"
+        ]
+       },
+       "bodyType": {
+        "enum": [
+         "json",
+         "form-data",
+         "text"
+        ],
+        "type": "string"
+       },
+       "method": {
+        "enum": [
+         "POST"
+        ],
+        "type": "string"
+       },
+       "type": {
+        "const": "http",
+        "type": "string"
+       }
+      },
+      "required": [
+       "type",
+       "method",
+       "bodyType",
+       "body"
+      ],
+      "type": "object"
+     },
+     "output": {
+      "properties": {
+       "example": {
+        "properties": {
+         "currency": {
+          "type": [
+           "string",
+           "null"
+          ]
+         },
+         "date": {
+          "type": [
+           "string",
+           "null"
+          ]
+         },
+         "prices": {
+          "properties": {
+           "BTC": {
+            "type": [
+             "number",
+             "null"
+            ]
+           },
+           "ETH": {
+            "type": [
+             "number",
+             "null"
+            ]
+           },
+           "SOL": {
+            "type": [
+             "number",
+             "null"
+            ]
+           }
+          },
+          "type": [
+           "object",
+           "null"
+          ]
+         },
+         "source": {
+          "type": [
+           "string",
+           "null"
+          ]
+         },
+         "without_price": {}
+        },
+        "type": [
+         "object",
+         "null"
+        ]
+       },
+       "type": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "type"
+      ],
+      "type": "object"
+     }
+    },
+    "required": [
+     "input"
+    ],
+    "type": "object"
+   }
+  }
+ },
+ "lastUpdated": "2026-10-20T18:08:14.105Z",
+ "quality": {
+  "l30DaysTotalCalls": 7,
+  "l30DaysUniquePayers": 5,
+  "lastCalledAt": "2026-10-20T18:08:13.512Z"
+ },
+ "resource": "https://api.vextorium.com/v1/crypto-price",
+ "serviceName": "Simple crypto price by ticker",
+ "tags": [
+  "crypto-price",
+  "price",
+  "crypto",
+  "ticker",
+  "usd"
+ ],
+ "type": "http",
+ "x402Version": 2
+}
