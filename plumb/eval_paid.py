@@ -474,6 +474,8 @@ def run_e22(cfg: dict, live: bool, name: str = "e22") -> dict:
                         body_file.write_text(out["body"])
                         base = {"url": pick["url"], "http": out["http"], "spent": str(real), "tx": paid["tx_hash"] if paid else None,
                                 "body_file": str(body_file), "args": args}
+                        row[arm] = {**base, "verdict": "grading"}  # the purchase is on disk before grading can fail
+                        save(row)
                         if not out["http"] or not 200 <= out["http"] < 300:
                             v = "unsettled" if not paid else "bad"
                             res = {**base, "verdict": v, "verdict_llm_only": v, "detail": out["body"][:200]}
