@@ -1,0 +1,208 @@
+{
+ "frozen_at": "20261025T0422Z",
+ "picks": [
+  {
+   "id": "e01",
+   "need": "Current ETH price in USD",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "ETH",
+     "currency": "USD"
+    }
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/crypto/convert",
+    "method": "GET",
+    "args": {
+     "amount": "1",
+     "from": "ETH",
+     "to": "USD"
+    },
+    "match": "exact"
+   }
+  },
+  {
+   "id": "e02",
+   "need": "Current SOL price in USD",
+   "bazaar": {
+    "url": "https://horizonpulse.dev/api/pulse",
+    "method": "GET",
+    "args": {
+     "symbol": "SOL"
+    }
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/v1/crypto-price",
+    "method": "POST",
+    "args": {
+     "coins": "SOL",
+     "currency": "USD"
+    },
+    "match": "exact"
+   }
+  },
+  {
+   "id": "e03",
+   "need": "Convert 100 GBP to USD at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/convert",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "GBP",
+     "to": "USD"
+    }
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/fx",
+    "method": "GET",
+    "args": {
+     "amount": "100",
+     "from": "GBP",
+     "to": "USD"
+    },
+    "match": "exact"
+   }
+  },
+  {
+   "id": "e04",
+   "need": "Convert 1000 JPY to EUR at the latest exchange rate",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/fx/rates",
+    "method": "GET",
+    "args": {
+     "base": "JPY",
+     "symbols": "EUR",
+     "amount": 1000
+    }
+   },
+   "plumb": {
+    "url": "https://api.fadeandco.workers.dev/api/agent-intel/ecb-institutional-fx-rates",
+    "method": "GET",
+    "args": {
+     "amount": "1000",
+     "from": "JPY",
+     "to": "EUR"
+    },
+    "match": "exact"
+   }
+  },
+  {
+   "id": "e05",
+   "need": "Current Ethereum mainnet block number",
+   "bazaar": {
+    "url": "https://api.sitecheck-api.workers.dev/api/evm/block",
+    "method": "GET",
+    "args": {
+     "chain": "ethereum",
+     "number": "latest"
+    }
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/evm/block",
+    "method": "GET",
+    "args": {
+     "chain": "ethereum",
+     "number": "latest"
+    },
+    "match": "exact"
+   }
+  },
+  {
+   "id": "e06",
+   "need": "Current weather in Chicago",
+   "bazaar": {
+    "url": "https://api.vextorium.com/v1/us-weather",
+    "method": "POST",
+    "args": {
+     "lat": 41.8781,
+     "lon": -87.6298
+    }
+   },
+   "plumb": {
+    "url": "https://api.vextorium.com/tiempo-eeuu-pago",
+    "method": "POST",
+    "args": {
+     "lat": 41.8781,
+     "lon": -87.6298
+    },
+    "match": "exact"
+   }
+  },
+  {
+   "id": "e07",
+   "need": "Is 2026-12-25 a US business day? List the US federal holidays in December 2026",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/business-days",
+    "method": "GET",
+    "args": {
+     "calendar": "US",
+     "date": "2026-12-25",
+     "op": "check"
+    }
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/holidays",
+    "method": "GET",
+    "args": {
+     "country": "US",
+     "year": "2026"
+    },
+    "match": "exact"
+   }
+  },
+  {
+   "id": "e08",
+   "need": "WHOIS registration data for the domain coinbase.com: registrar, creation date and expiry date",
+   "bazaar": {
+    "url": "https://api.stablecoingateways.com/v1/whois",
+    "method": "GET",
+    "args": {
+     "domain": "coinbase.com"
+    }
+   },
+   "plumb": {
+    "url": "https://api.sitecheck-api.workers.dev/api/domain",
+    "method": "GET",
+    "args": {
+     "domain": "coinbase.com"
+    },
+    "match": "exact"
+   }
+  },
+  {
+   "id": "e09",
+   "need": "XRP balance of the XRPL account rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+   "bazaar": {
+    "url": "https://api.agentweather.io/v1/paycheck",
+    "method": "GET",
+    "args": {}
+   },
+   "plumb": {
+    "url": "https://horizonpulse.dev/api/balance",
+    "method": "GET",
+    "args": {
+     "xrpl": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De"
+    },
+    "match": "partial"
+   }
+  },
+  {
+   "id": "e10",
+   "need": "Latest Bitcoin block height",
+   "bazaar": {
+    "url": "https://horizonpulse.dev/api/chain/head",
+    "method": "GET",
+    "args": {}
+   },
+   "plumb": {
+    "url": "https://api.chainmarket-api.workers.dev/api/crypto/bitcoin-mempool-stats",
+    "method": "GET",
+    "args": {},
+    "match": "partial"
+   }
+  }
+ ]
+}
