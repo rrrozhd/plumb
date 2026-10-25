@@ -162,7 +162,12 @@ def main(argv: list[str] | None = None) -> None:
     cfg = config.load()
     if args.cmd in ("recommend", "bench"):
         from plumb import rank
-        rk = rank.load(cfg, config.ROOT / "data")
+        embed = None
+        if args.cmd == "recommend" and (config.ROOT / "env" / "judge.env").exists():
+            from plumb import relevance
+            _load_env("judge.env")
+            embed = relevance.Titan(cfg).embed  # one cached Titan call for a need template never seen before
+        rk = rank.load(cfg, config.ROOT / "data", embed=embed)
         if args.cmd == "recommend":
             print(json.dumps(rk.shortlist(args.need, k=args.k, principal=args.principal), indent=1))
         else:

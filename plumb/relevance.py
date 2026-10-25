@@ -88,6 +88,51 @@ class Vectors:
         return cls(ids, np.load(root / "listing_vectors.npy"), needs)
 
 
+class Calibration:
+    """P(exact fit) for a need nobody judged, from (embedding similarity, keyword coverage).
+
+    A logistic model fitted on the offline judge's labels for the known needs (RECOMMENDER §3), so a new need's
+    p_fit is learned from data instead of being raw coverage. Refitted at load; a few milliseconds."""
+
+    def __init__(self, w: np.ndarray):
+        self.w = w
+
+    def p(self, sim: float, cov: float) -> float:
+        return float(1 / (1 + np.exp(-(self.w[0] + self.w[1] * sim + self.w[2] * cov))))
+
+    @staticmethod
+    def features(fit: dict, vectors: "Vectors", lexical: "Lexical", skip: str | None = None):
+        idx = {e: i for i, e in enumerate(vectors.ids)}
+        X, y, groups = [], [], []
+        for t, v in fit.items():
+            vec = vectors.needs.get(t)
+            if t == skip or vec is None:
+                continue
+            q, nv = tokens(t), np.array(vec, dtype=np.float32)
+            for e, lab in v["labels"].items():
+                if e in idx:
+                    X.append([1.0, float(vectors.m[idx[e]] @ nv), lexical.coverage(q, e)])
+                    y.append(1.0 if lab["label"] == "exact" else 0.0)
+                    groups.append(t)
+        return np.array(X), np.array(y), groups
+
+    @classmethod
+    def fit(cls, X: np.ndarray, y: np.ndarray, steps: int = 3000, lr: float = 0.5, l2: float = 1e-3) -> "Calibration":
+        w = np.zeros(X.shape[1])
+        for _ in range(steps):
+            p = 1 / (1 + np.exp(-(X @ w)))
+            w -= lr * (X.T @ (p - y) / len(y) + l2 * w)
+        return cls(w)
+
+
+def auc(scores: list[float], labels: list[float]) -> float:
+    pos = [s for s, l in zip(scores, labels) if l == 1]
+    neg = [s for s, l in zip(scores, labels) if l == 0]
+    if not pos or not neg:
+        return float("nan")
+    return sum((p > n) + 0.5 * (p == n) for p in pos for n in neg) / (len(pos) * len(neg))
+
+
 class Titan:
     """Amazon Titan text embeddings on Bedrock. Used offline, and online only for a need template not yet cached."""
 

@@ -24,6 +24,7 @@ class Ranker:
     lexical: relevance.Lexical
     embed: Callable[[str], list[float]] | None = None  # used only on a template cache miss
     dead: set = field(default_factory=set)   # endpoints that failed the offline liveness preflight
+    calibration: relevance.Calibration | None = None  # new-need p_fit, learned from the judge's labels
     log: list = field(default_factory=list)
 
     def candidates(self, t: str) -> tuple[dict[str, float], str]:
@@ -37,9 +38,12 @@ class Ranker:
                 return {}, "lexical"
             vec = self.vectors.needs[t] = self.embed(t)
         q = relevance.tokens(t)
-        top = [e for e, _ in self.vectors.top(np.array(vec), cfg["embed_top"])]
-        top.sort(key=lambda e: -self.lexical.bm25(q, e))
-        return {e: self.lexical.coverage(q, e) for e in top}, "lexical"
+        top = self.vectors.top(np.array(vec), cfg["embed_top"])
+        top.sort(key=lambda es: -self.lexical.bm25(q, es[0]))
+        if self.calibration is None:
+            return {e: self.lexical.coverage(q, e) for e, _ in top}, "lexical"
+        return {e: self.calibration.p(sim, self.lexical.coverage(q, e)) for e, sim in top}, "lexical"
+
 
     def shortlist(self, need: str, k: int | None = None, principal: str | None = None, constraints: dict | None = None) -> dict:
         t0 = time.perf_counter()
@@ -147,4 +151,7 @@ def load(cfg: dict, root, embed=None, with_principals: bool = True) -> Ranker:
     docs = {i: relevance.doc_text(e, cfg["judge"]["max_listing_chars"]) for i, e in rec.endpoints.items()}
     live_path = root / "liveness.json"
     dead = {e for e, v in json.loads(live_path.read_text())["endpoints"].items() if not v["alive"]} if live_path.exists() else set()
-    return Ranker(rec, fit, relevance.Vectors.load(root), relevance.Lexical(docs), embed, dead)
+    vectors, lexical = relevance.Vectors.load(root), relevance.Lexical(docs)
+    X, y, _ = relevance.Calibration.features(fit, vectors, lexical)
+    cal = relevance.Calibration.fit(X, y) if len(set(y.tolist())) == 2 else None
+    return Ranker(rec, fit, vectors, lexical, embed, dead, cal)
