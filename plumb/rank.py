@@ -90,7 +90,8 @@ class Ranker:
             if (cost, e) not in picked:
                 picked.append((cost, e))
 
-        results = [self._result(i + 1, e, cost, cands[e], how, p, prices[e]) for i, (cost, e) in enumerate(picked)]
+        labels = (self.fit.get(t) or {}).get("labels", {})
+        results = [self._result(i + 1, e, cost, cands[e], how, p, prices[e], labels.get(e)) for i, (cost, e) in enumerate(picked)]
         done = time.perf_counter()
         out = {"shortlist_id": str(uuid.uuid4()), "need_template": t, "relevance": how, "principal": principal,
                "personalized": p is not None, "results": results, "excluded": excluded,
@@ -98,10 +99,9 @@ class Ranker:
         self.log.append(json.dumps({"need_template": t, "n": len(results), "ms": out["timing_ms"]["total"]}))
         return out
 
-    def _result(self, rank, e, cost, p_fit, how, p, price) -> dict:
+    def _result(self, rank, e, cost, p_fit, how, p, price, judged=None) -> dict:
         ep, tr = self.rec.endpoints[e], self.rec.trust[e]
         q_mean, q_lo, n_personal = self.rec.personal_q(p, e)
-        judged = next((x["labels"].get(e) for x in self.fit.values() if e in x["labels"]), None)
         return {
             "rank": rank, "endpoint_id": e, "url": ep.url, "method": ep.method, "operator": ep.payto,
             "price": {"asset": price[1], "amount_rlusd": str(price[0].quantize(Decimal("0.000001")))},
