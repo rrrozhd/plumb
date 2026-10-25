@@ -55,7 +55,7 @@ class Ranker:
         for e in cands:
             ep = self.rec.endpoints[e]
             groups.setdefault(ep.payto, []).append({"id": e, "service": ep.service_name, "url": ep.url,
-                                                    "tags": ", ".join(ep.tags), "description": ep.description})
+                                                    "tags": ", ".join(ep.tags), "input": ep.input_example, "description": ep.description})
         labels: dict = {}
         assert self.judge is not None
         with ThreadPoolExecutor(8) as pool:
@@ -138,6 +138,7 @@ class Ranker:
             "rank": rank, "endpoint_id": e, "url": ep.url, "method": ep.method, "operator": ep.payto,
             "price": {"asset": price[1], "amount_rlusd": str(price[0].quantize(Decimal("0.000001")))},
             "p_fit": round(p_fit, 3), "relevance": how, "match": (judged or {}).get("label", "lexical"),
+            "call": {"method": ep.method, "url": ep.url, "args": (judged or {}).get("args", {})},
             "trust": {"scope": "principal" if n_personal else "global", "p_settle": round(tr.p_settle, 3),
                       "q_mean": round(q_mean, 3), "q_lo": round(q_lo, 3), "n_obs": tr.n_obs, "n_personal": n_personal},
             "cost_per_good_rlusd": str(cost.quantize(Decimal("0.000001"))),
@@ -163,7 +164,7 @@ def _merge(prof: Profile, c: dict) -> Profile:
 def load(cfg: dict, root, embed=None, with_principals: bool = True, judge=None) -> Ranker:
     """Fit the recommender from data/: real ledger principals and simulated personas (outcomes labelled simulated)."""
     from plumb import config, principals as P, recommender
-    fit_path = root / "fit.json"
+    fit_path = config.path(cfg, "fit")
     fit = json.loads(fit_path.read_text()) if fit_path.exists() else {}
     cold_path = config.ROOT / "out" / "fit_cold.json"
     if cold_path.exists():

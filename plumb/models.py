@@ -22,6 +22,7 @@ class Endpoint:
     has_output_schema: bool
     bazaar_calls_30d: int | None = None
     bazaar_payers_30d: int | None = None
+    input_example: str = ""     # the listing's declared input (method, query/body example), JSON, capped
 
 
 @dataclass(frozen=True)

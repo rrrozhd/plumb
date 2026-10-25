@@ -109,7 +109,7 @@ def build(cfg: dict, judge_needs: bool) -> None:
     vectors = relevance.Vectors.load(root)
     search = json.loads((root / "bazaar_search.json").read_text())
     client = AnthropicBedrock(aws_region=cfg["judge"]["region"])
-    fit_path = root / "fit.json"
+    fit_path = config.path(cfg, "fit")
     fit = json.loads(fit_path.read_text()) if fit_path.exists() else {}
     for q in needs:
         t = relevance.template(q["need"])
@@ -122,10 +122,12 @@ def build(cfg: dict, judge_needs: bool) -> None:
         for i in cands:
             e = eps[i]
             groups.setdefault(e.payto, []).append({"id": i, "service": e.service_name, "url": e.url, "tags": ", ".join(e.tags),
-                                                   "description": e.description})
+                                                   "input": e.input_example, "description": e.description})
         labels = {}
-        for listings in groups.values():
-            labels.update(judge.judge(client, cfg, q["need"], listings))
+        from concurrent.futures import ThreadPoolExecutor
+        with ThreadPoolExecutor(8) as pool:  # one call per operator, in parallel
+            for part in pool.map(lambda g: judge.judge(client, cfg, q["need"], g), groups.values()):
+                labels.update(part)
         fit[t] = {"need_id": q["id"], "need": q["need"], "labels": labels}
         fit_path.write_text(json.dumps(fit, indent=1))
         _log(f"judged {q['id']}: {len(labels)} of {len(cands)} candidates over {len(groups)} operators")

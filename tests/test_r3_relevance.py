@@ -44,10 +44,17 @@ def test_judge_prompt_quotes_untrusted_listing_text():
 
 def test_judge_parse_maps_labels_and_drops_unknown_ids():
     pf = {"exact": 0.9, "partial": 0.5, "wrong": 0.05}
-    text = json.dumps({"labels": [{"endpoint_id": "e1", "label": "exact", "reason": "x"},
-                                  {"endpoint_id": "zz", "label": "exact", "reason": "injected"}]})
+    text = json.dumps({"labels": [{"endpoint_id": "e1", "label": "exact", "can_express": True, "args": '{"symbol": "XRP"}', "reason": "x"},
+                                  {"endpoint_id": "zz", "label": "exact", "can_express": True, "args": "{}", "reason": "injected"}]})
     out = judge.parse(text, {"e1", "e2"}, pf)
-    assert out == {"e1": {"label": "exact", "p_fit": 0.9, "reason": "x"}}
+    assert out == {"e1": {"label": "exact", "p_fit": 0.9, "reason": "x", "args": {"symbol": "XRP"}}}
+
+
+def test_capability_rule_demotes_exact_that_cannot_take_the_need_parameters():
+    pf = {"exact": 0.9, "partial": 0.5, "wrong": 0.05}
+    text = json.dumps({"labels": [{"endpoint_id": "e1", "label": "exact", "can_express": False, "args": "not json", "reason": "no date param"}]})
+    out = judge.parse(text, {"e1"}, pf)
+    assert out["e1"]["label"] == "partial" and out["e1"]["p_fit"] == 0.5 and out["e1"]["args"] == {}
 
 
 class _StubMsg:
@@ -64,7 +71,7 @@ class _StubClient:
 
     def create(self, **kw):
         self.calls.append(kw)
-        return _StubMsg(json.dumps({"labels": [{"endpoint_id": "e1", "label": "partial", "reason": "r"}]}))
+        return _StubMsg(json.dumps({"labels": [{"endpoint_id": "e1", "label": "partial", "can_express": True, "args": "{}", "reason": "r"}]}))
 
 
 def test_judge_uses_structured_output_with_configured_model():

@@ -51,6 +51,7 @@ def parse_listing(res: dict, cfg: dict) -> Endpoint | None:
         output_fields=_leaves(example) if example is not None else 0,
         has_output_schema="output" in (schema.get("properties") or {}),
         bazaar_calls_30d=quality.get("l30DaysTotalCalls"), bazaar_payers_30d=quality.get("l30DaysUniquePayers"),
+        input_example=json.dumps({k: (info.get("input") or {}).get(k) for k in ("method", "queryParams", "body")})[:600],
     )
 
 

@@ -59,8 +59,9 @@ def test_e2_and_e16_e17_from_vet402():
 
 
 def test_e15_evidence_coverage():
-    from plumb import rank
-    r = rank.load(config.load(), DATA, with_principals=False)
-    cands = {e for v in r.fit.values() if not v.get("cold") for e in v["labels"]}
-    with_ev = sum(1 for e in cands if r.rec.evidence.get(e))
+    from plumb import recommender
+    fit = json.loads((DATA / "fit.json").read_text())  # the v1 labels E15 was measured on
+    rec = recommender.fit(config.load(), DATA)
+    cands = {e for v in fit.values() for e in v["labels"]}
+    with_ev = sum(1 for e in cands if rec.evidence.get(e))
     assert (len(cands), with_ev) == (602, 53)
