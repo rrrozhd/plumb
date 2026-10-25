@@ -57,3 +57,49 @@ def test_unvalidated_tx_fails_everything_payment_related():
     e = copy.deepcopy(ENTRY)
     e["validated"] = False
     assert run(entry=e)["validated x402 payment"] is False
+
+
+@pytest.fixture(scope="module")
+def ranker():
+    from plumb import rank
+    return rank.load(CFG, config.ROOT / "data", with_principals=False)
+
+
+def _shortlisted(ranker, tmp_path, t):
+    from plumb import db
+    conn = db.connect(tmp_path / "t.db")
+    out = ranker.shortlist(ranker.fit[t]["need"], principal=None)
+    outcomes.save_shortlist(conn, out, ranker.fit[t]["need"], AT - timedelta(minutes=5))
+    return conn, out
+
+
+class _Ledger:
+    def tx(self, h):
+        return ENTRY
+
+    def account_created(self, a):
+        return OLD
+
+
+def test_unproven_wrong_answer_changes_nothing(ranker, tmp_path):
+    t = next(t for t, v in ranker.fit.items() if any(x["p_fit"] >= 0.5 for x in v["labels"].values()))
+    conn, out = _shortlisted(ranker, tmp_path, t)
+    e = out["results"][0]["endpoint_id"]
+    before = ranker.fit[t]["labels"][e]["p_fit"]
+    r = outcomes.report(conn, ranker, _Ledger(), CFG, shortlist_id=out["shortlist_id"], endpoint_id=e, verdict="wrong_answer")
+    assert not r["accepted"] and ranker.fit[t]["labels"][e]["p_fit"] == before
+
+
+def test_proven_wrong_answer_lowers_fit_only_for_the_shortlists_need(ranker, tmp_path, monkeypatch):
+    shared = next((e, [t for t, v in ranker.fit.items() if e in v["labels"]]) for e in ranker.rec.endpoints
+                  if sum(e in v["labels"] for v in ranker.fit.values()) >= 2)
+    e, (first, second) = shared[0], shared[1][:2]
+    conn, out = _shortlisted(ranker, tmp_path, second)
+    out["results"] = [{"endpoint_id": e, "price": {"asset": "XRP", "amount_rlusd": "0"}}]
+    conn.execute("UPDATE shortlist SET results = ?", (json.dumps(out["results"]),))
+    monkeypatch.setattr(outcomes, "check_payment", lambda *a, **k: [{"check": "stub", "ok": True}])
+    keep = ranker.fit[first]["labels"][e]["p_fit"]
+    r = outcomes.report(conn, ranker, _Ledger(), CFG, shortlist_id=out["shortlist_id"], endpoint_id=e,
+                        verdict="wrong_answer", principal=PAY["payer"], payment_tx="TX")
+    assert r["accepted"] and ranker.fit[second]["labels"][e]["p_fit"] == float(CFG["judge"]["p_fit"]["wrong"])
+    assert ranker.fit[first]["labels"][e]["p_fit"] == keep

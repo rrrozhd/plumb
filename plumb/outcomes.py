@@ -57,13 +57,7 @@ def report(conn: sqlite3.Connection, ranker: Ranker, lg, cfg: dict, *, shortlist
         return {"accepted": False, "error": "endpoint not in that shortlist"}
     who = principal or row["principal"]
     rec = ranker.rec
-    if verdict == "wrong_answer":  # misrouting is Plumb's error, not the merchant's: lower fit, never trust
-        t = next((k for k, v in ranker.fit.items() if endpoint_id in v["labels"]), None)
-        if t:
-            ranker.fit[t]["labels"][endpoint_id]["p_fit"] = float(cfg["judge"]["p_fit"]["wrong"])
-        return {"accepted": True, "scope": "fit", "checks": []}
-
-    if who:
+    if who and verdict != "wrong_answer":
         p = rec.principals.setdefault(who, Principal(who, who, Profile(), "ledger"))
         g, b = p.outcomes.get(endpoint_id, [0.0, 0.0])
         p.outcomes[endpoint_id] = [g + (verdict == "good"), b + (verdict == "bad")]
@@ -79,6 +73,13 @@ def report(conn: sqlite3.Connection, ranker: Ranker, lg, cfg: dict, *, shortlist
                                min_amount=Decimal(price["amount_rlusd"]) if price["asset"] == "RLUSD" else None,
                                after=datetime.fromisoformat(row["at"]), invoice_id=invoice_id, used=used)
     proven = bool(checks) and all(c["ok"] for c in checks)
+    if verdict == "wrong_answer":  # misrouting is Plumb's error, not the merchant's: lower this need's fit, never trust
+        if not proven:  # unproven, anyone could knock a rival out of a need
+            return {"accepted": False, "error": "wrong_answer needs a proven payment", "checks": checks}
+        t = next((k for k in ranker.fit if hashlib.sha256(k.encode()).hexdigest() == row["need_hash"]), None)
+        if t and endpoint_id in ranker.fit[t]["labels"]:
+            ranker.fit[t]["labels"][endpoint_id]["p_fit"] = float(cfg["judge"]["p_fit"]["wrong"])
+        return {"accepted": True, "scope": "fit", "checks": checks}  # outcome_report holds merchant verdicts only
     if proven:
         conn.execute("INSERT INTO outcome_report VALUES (?,?,?,?,?,?,?)",
                      (payment_tx, shortlist_id, endpoint_id, who, verdict, datetime.now().isoformat(), 1.0))
