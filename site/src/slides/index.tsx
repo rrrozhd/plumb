@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Busy, Cite, Ext, Kicker, PickCard, Stat, Trail, useTask } from "@/components/deck"
 import { api, short, type TrailEvent } from "@/lib/api"
-import { DEMO, E, POOLED, SLIDES } from "@/content"
+import { DEMO, E, SLIDES } from "@/content"
 import { cn } from "@/lib/utils"
 
 export type SlideProps = { active: boolean; auto: boolean }
@@ -252,26 +252,25 @@ export function Personal(props: SlideProps) {
 
 export function Evidence() {
   const steps = [
-    { id: "E26", head: "77 vs 72", sub: "100 pre-registered needs, graded by code: no significant edge (p = 0.40); Bazaar cheaper per good answer", tone: "default" as const },
-    { id: "E27", head: "44 → 72 of 72", sub: "root cause: new needs searched by embeddings only; union with keyword search recalls the right merchant", tone: "default" as const },
-    { id: "E28", head: "10 of 14", sub: "E26's failures bought again after the fix (was 0; Bazaar 9). Recovery on failures, not overall accuracy", tone: "good" as const },
+    { step: "1 · We tested", head: "77 vs 72", sub: "100 new questions, bought with real money. Plumb 77 good answers, the Bazaar 72: basically a tie.", cite: "E26", good: false },
+    { step: "2 · We found why", head: "28 of 72", sub: "times the right merchant never reached our shortlist. Our search matched by meaning only; adding keyword matching finds all 72.", cite: "E27", good: false },
+    { step: "3 · We fixed it and bought again", head: "10 of 14", sub: "of the questions we got wrong are now answered well (before the fix: 0).", cite: "E28", good: true },
   ]
   return (
     <div>
       <Head i={7} />
       <div className="grid grid-cols-3 gap-4">
-        {steps.map((x, i) => (
-          <div key={x.id} className={cn("relative rounded-xl border bg-card/60 p-6", i === 2 && "border-good/50")}>
-            <div className="mb-2 font-mono text-sm text-muted-foreground">{x.id}</div>
-            <div className={cn("font-heading text-5xl font-semibold tabular-nums tracking-tight", x.tone === "good" && "text-good")}>{x.head}</div>
-            <div className="mt-3 text-base leading-snug text-muted-foreground">{x.sub}</div>
+        {steps.map((x) => (
+          <div key={x.step} className={cn("rounded-xl border bg-card/60 p-6", x.good && "border-good/50")}>
+            <div className="mb-3 text-base font-semibold text-brand">{x.step}</div>
+            <div className={cn("font-heading text-6xl font-semibold tabular-nums tracking-tight", x.good && "text-good")}>{x.head}</div>
+            <div className="mt-4 text-lg leading-snug text-muted-foreground">{x.sub}<Cite id={x.cite} /></div>
           </div>
         ))}
       </div>
-      <ul className="mt-8 space-y-2 text-lg text-muted-foreground">
-        <li>Every number bought on XRPL mainnet with real RLUSD: 130 needs head-to-head plus the re-test; needs and grading frozen before buying.</li>
-        <li>Never chose the Bazaar's 0-for-88 #1<Cite id="E19–E21" /> · fizzl costs <b className="text-foreground">{POOLED.fizzlCi}</b> more per good answer than Plumb<Cite id="E24" /></li>
-      </ul>
+      <div className="mt-8 text-xl text-muted-foreground">
+        Every answer bought on the XRP Ledger with real RLUSD. Questions and grading were fixed <b className="text-foreground">before</b> buying, and answers were checked by code against public sources.
+      </div>
     </div>
   )
 }
