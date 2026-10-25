@@ -276,21 +276,22 @@ export function Evidence() {
 }
 
 export function Sponsors() {
-  const rows: [string, string, string][] = [
-    ["XRP Ledger", "Merchants are paid in RLUSD and XRP on mainnet; settled payments are the trust evidence; trust lines decide what an agent can pay", "E20–E28: 200+ real payments"],
-    ["Quicknode", "Full-history XRPL RPC: the payment history behind trust, each purchase verified by its own tx hash, live account reads per agent", "slide 6, live"],
-    ["AWS Bedrock", "Claude judges which merchant fits a question and fills in the call; Titan embeddings power the search", "E26–E28"],
-    ["Mastercard AP4M", "The agent pays Plumb per shortlist with signed vouchers in a capped channel; the mandate limits what Plumb may recommend; receipts", "E18 + the run on slide 5"],
+  const rows: [string, string, string, string, string][] = [
+    ["Pay", "XRP Ledger", "Merchants are paid in RLUSD and XRP on mainnet; settled payments are the trust evidence; trust lines decide what an agent can pay", "E26: 158 mainnet payments", "few real buyers yet (E13)"],
+    ["Read", "Quicknode", "Full-history XRPL RPC: the payment history behind trust, each test purchase checked by its own tx hash, each agent's account read live", "accounts slide, live", "trust also uses vet402's public log"],
+    ["Think", "AWS", "Bedrock: Claude judges which merchant fits a new question and fills in the call; Titan embeddings plus keyword search find candidates. AgentCore Memory keeps each customer's feedback across restarts", "E26–E28 · MEM2", "AgentCore shown with a simulated customer"],
+    ["Spend", "Mastercard AP4M", "The agent pays Plumb per shortlist with signed vouchers in a capped channel; the mandate limits what Plumb may recommend; settlement receipts", "E18", "testnet; channel limit reached (L27)"],
   ]
   return (
     <div>
       <Head i={8} />
       <div className="space-y-3">
-        {rows.map(([name, what, proof]) => (
-          <div key={name} className="grid grid-cols-[220px_1fr_220px] items-center gap-6 rounded-xl border bg-card/60 px-6 py-4">
+        {rows.map(([verb, name, what, proof, caveat]) => (
+          <div key={name} className="grid grid-cols-[110px_230px_1fr_250px] items-center gap-6 rounded-xl border bg-card/60 px-6 py-4">
+            <div className="text-lg font-semibold uppercase tracking-[0.18em] text-brand">{verb}</div>
             <div className="font-heading text-2xl font-semibold">{name}</div>
             <div className="text-lg leading-snug text-muted-foreground">{what}</div>
-            <div className="text-right font-mono text-sm text-good">{proof}</div>
+            <div className="text-right text-sm"><div className="font-mono text-good">{proof}</div><div className="mt-1 text-muted-foreground">{caveat}</div></div>
           </div>
         ))}
       </div>
@@ -298,24 +299,62 @@ export function Sponsors() {
   )
 }
 
-export function Production() {
-  const cols: [string, string[]][] = [
-    ["Live today", ["Router + trust on real XRPL x402 data", "AP4M: mandate, capped channel, receipts", "Real-money tests with frozen grading", "MCP tool any agent can call"]],
-    ["Next", ["x402 on Base: 39k of 42k listings are off XRPL", "A percentage fee instead of a flat one", "Later: a fee only for answers that check out", "Purchases feeding back into trust"]],
-    ["Blockers we name", ["AP4M is testnet, pays only our own merchant, and caps channels (L19, L27)", "XRPL AI Hub has no public API yet", "Few real buyers today (L2): the trust prior carries most weight", "Accuracy edge not significant at 100 needs (E26)"]],
+export function Gaps() {
+  const rows: [string, string, string, string][] = [
+    ["Accuracy is a tie so far", "77 vs 72 of 100; the 10 of 14 measures recovery, not overall accuracy", "Re-run all 100 questions with the fix, pre-registered", "E26 · E28"],
+    ["The Bazaar was cheaper per good answer", "0.0032 vs our 0.0065 RLUSD, mostly our flat 0.002 fee", "Charge a percentage of the purchase, not a flat fee", "E26"],
+    ["Trust data is thin", "9% of candidate endpoints have any past purchase on record; our own test purchases aren't in the scores yet", "Feed every graded purchase back into trust", "E15"],
+    ["No real buyers yet", "0 of 100 live XRPL x402 payments reached a Bazaar merchant; per-customer learning shown with simulated customers", "Agents pay through AP4M or the MCP tool; reviews bound to receipts", "E13"],
+    ["XRPL is a small slice", "3,207 of 42,241 listings; much of it resells free public data", "x402 on Base next; free keyless sources at cost 0", "E29 · L26"],
+    ["AP4M is a sandbox", "Testnet, pays only our own merchant, channel limit reached", "Production access when Mastercard opens it", "L19 · L27"],
   ]
   return (
     <div>
       <Head i={9} />
-      <div className="grid grid-cols-3 gap-6">
-        {cols.map(([h, xs], i) => (
-          <div key={h} className={cn("rounded-xl border bg-card/60 p-6", i === 0 && "border-brand/50")}>
-            <div className="mb-4 text-lg font-semibold">{h}</div>
-            <ul className="space-y-3 text-lg leading-snug text-muted-foreground">{xs.map((x) => <li key={x}>{x}</li>)}</ul>
-          </div>
+      <div className="grid grid-cols-[1fr_1.4fr_1.2fr] gap-x-6 text-sm uppercase tracking-[0.18em] text-muted-foreground"><div>gap</div><div>what we measured</div><div className="text-brand">next step</div></div>
+      <div className="mt-2 space-y-2">
+        {rows.map(([gap, what, step, cite]) => (
+            <div key={gap} className="grid grid-cols-[1fr_1.4fr_1.2fr] items-center gap-x-6 rounded-xl border bg-card/60 px-5 py-3">
+              <div className="text-xl font-semibold">{gap}</div>
+              <div className="text-base leading-snug text-muted-foreground">{what}<Cite id={cite} /></div>
+              <div className="text-base leading-snug">{step}</div>
+            </div>
         ))}
       </div>
-      <div className="mt-8 text-xl">Business: <b>0.002 RLUSD per shortlist</b> through AP4M today, moving to a <b>percentage of the purchase</b>.</div>
+    </div>
+  )
+}
+
+export function Transfer() {
+  const rows: [string, string, string, string, string, string][] = [
+    ["XRPL x402", "payTo account", "validated payment + InvoiceID", "code-checked purchases", "built", "good"],
+    ["Mastercard AP4M", "attested merchant registry", "voucher and settlement events", "reviews bound to receipts", "high · no directory or ranking yet", "good"],
+    ["x402 on Base", "payTo address", "token transfer events", "same purchases", "high · 39k of 42k listings", "good"],
+    ["MCP tool registries", "publisher", "none: tools are mostly free", "needs signed agent identity", "medium", "mid"],
+    ["Card checkout (AP2, ACP)", "card merchant", "card network", "delivery and returns", "low · no quality data for goods", "bad"],
+  ]
+  return (
+    <div>
+      <Head i={10} />
+      <div className="mb-6 rounded-xl border border-brand/50 bg-card/60 px-6 py-4 text-xl leading-snug">
+        <span className="text-sm uppercase tracking-[0.18em] text-brand">travels unchanged · </span>
+        trust from settlement × verified answers · rank by cost per good answer · one merchant per company · the mandate gate
+      </div>
+      <Table className="text-lg">
+        <TableHeader><TableRow><TableHead>market</TableHead><TableHead>who gets paid</TableHead><TableHead>did it clear</TableHead><TableHead>was it usable</TableHead><TableHead>fit</TableHead></TableRow></TableHeader>
+        <TableBody>
+          {rows.map(([m, who, clear, usable, fit, tone]) => (
+            <TableRow key={m}>
+              <TableCell className="font-semibold">{m}</TableCell>
+              <TableCell className="text-muted-foreground">{who}</TableCell>
+              <TableCell className="text-muted-foreground">{clear}</TableCell>
+              <TableCell className="text-muted-foreground">{usable}</TableCell>
+              <TableCell className={cn("font-medium", tone === "good" && "text-good", tone === "bad" && "text-bad")}>{fit}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+      <div className="mt-6 text-lg text-muted-foreground">Order: AP4M → x402 on Base → tool registries, once agent identity can stand in for payment.<Cite id="E29" /></div>
     </div>
   )
 }
@@ -337,4 +376,4 @@ export function Close() {
   )
 }
 
-export const SLIDE_COMPONENTS = [Title, Why, Problem, Router, Mandate, Ap4m, Personal, Evidence, Sponsors, Production, Close]
+export const SLIDE_COMPONENTS = [Title, Why, Problem, Router, Mandate, Ap4m, Personal, Evidence, Sponsors, Gaps, Transfer, Close]
