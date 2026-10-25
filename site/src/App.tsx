@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import { ChevronLeft, ChevronRight, Maximize, NotebookText, Play, Power } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -12,10 +12,15 @@ import { cn } from "@/lib/utils"
 import { DEMO, SLIDES } from "@/content"
 import { Ap4m, SLIDE_COMPONENTS } from "@/slides"
 import { Logs } from "@/components/logs"
+import { Presenter } from "@/components/presenter"
 
 const fromHash = () => Math.min(Math.max(Number(location.hash.replace(/^#\/?/, "")) || 1, 1), SLIDES.length) - 1
 
 export default function App() {
+  return new URLSearchParams(location.search).has("presenter") ? <Presenter /> : <Deck />
+}
+
+function Deck() {
   const [i, setI] = useState(fromHash)
   const [mode, setMode] = useState<"present" | "control" | "logs">("present")
   const [logs, setLogs] = useState(false)
@@ -25,6 +30,15 @@ export default function App() {
   const go = useCallback((n: number) => setI(Math.min(Math.max(n, 0), SLIDES.length - 1)), [])
 
   useEffect(() => { history.replaceState(null, "", `#/${i + 1}`) }, [i])
+  // the presenter window (?presenter) shows the cues and can drive the deck
+  const ch = useMemo(() => new BroadcastChannel("plumb-deck"), [])
+  useEffect(() => { ch.postMessage({ i }) }, [ch, i])
+  useEffect(() => {
+    ch.onmessage = (m) => {
+      if (typeof m.data?.go === "number") go(m.data.go)
+      if (m.data?.hello) ch.postMessage({ i })
+    }
+  }, [ch, go, i])
   useEffect(() => {
     const onHash = () => setI(fromHash())
     const onKey = (e: KeyboardEvent) => {
@@ -35,6 +49,7 @@ export default function App() {
       else if (e.key === "n") setNotes((x) => !x)
       else if (e.key === "c") setMode((m) => (m === "present" ? "control" : "present"))
       else if (e.key === "l") setLogs((x) => !x)
+      else if (e.key === "p") window.open(`/?presenter=1`, "plumb-presenter", "width=1100,height=800")
       else if (e.key === "f") void (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen())
       else if (/^[0-9]$/.test(e.key)) go(e.key === "0" ? 9 : Number(e.key) - 1)
     }
@@ -55,7 +70,8 @@ export default function App() {
         <div className="ml-auto flex items-center gap-4 text-sm">
           <HealthDots health={health.data} onStart={health.start} starting={health.starting} />
           <label className="flex items-center gap-2 text-muted-foreground"><Switch checked={auto} onCheckedChange={setAuto} />auto-run</label>
-          <Button size="icon-sm" variant="ghost" onClick={() => setNotes((x) => !x)} title="Speaker notes (n)"><NotebookText /></Button>
+          <Button size="sm" variant="outline" onClick={() => window.open(`/?presenter=1`, "plumb-presenter", "width=1100,height=800")} title="Open the presenter window (p)">Presenter</Button>
+          <Button size="icon-sm" variant="ghost" onClick={() => setNotes((x) => !x)} title="Speaker cues (n)"><NotebookText /></Button>
           <Button size="icon-sm" variant="ghost" onClick={() => document.documentElement.requestFullscreen()} title="Fullscreen (f)"><Maximize /></Button>
         </div>
       </header>
@@ -72,7 +88,7 @@ export default function App() {
             ))}
           </main>
           {logs && <div className="h-[34vh] shrink-0 border-t bg-card px-6 py-3"><Logs compact /></div>}
-          {notes && <div className="max-h-40 shrink-0 overflow-y-auto border-t bg-card px-16 py-4 text-lg leading-relaxed text-muted-foreground">{SLIDES[i].notes}</div>}
+          {notes && <ol className="max-h-[38vh] shrink-0 space-y-1 overflow-y-auto border-t bg-card px-16 py-4 text-xl leading-snug">{SLIDES[i].cues.map((c, n) => <li key={n}><span className="mr-3 font-mono text-brand">{n + 1}</span>{c}</li>)}</ol>}
           <footer className="flex h-14 shrink-0 items-center gap-4 border-t px-6">
             <Button size="icon-sm" variant="ghost" onClick={() => go(i - 1)} disabled={i === 0}><ChevronLeft /></Button>
             <div className="flex flex-1 gap-1.5">
@@ -83,7 +99,7 @@ export default function App() {
             </div>
             <span className="w-48 truncate text-right text-sm text-muted-foreground">{i + 1} / {SLIDES.length} · {SLIDES[i].kicker}</span>
             <Button size="icon-sm" variant="ghost" onClick={() => go(i + 1)} disabled={i === SLIDES.length - 1}><ChevronRight /></Button>
-            <div className="hidden gap-1 text-xs text-muted-foreground xl:flex"><Kbd>←</Kbd><Kbd>→</Kbd> slides <Kbd>a</Kbd> auto <Kbd>n</Kbd> notes <Kbd>l</Kbd> logs <Kbd>c</Kbd> control</div>
+            <div className="hidden gap-1 text-xs text-muted-foreground xl:flex"><Kbd>←</Kbd><Kbd>→</Kbd> slides <Kbd>a</Kbd> auto <Kbd>p</Kbd> presenter <Kbd>n</Kbd> cues <Kbd>l</Kbd> logs</div>
           </footer>
         </>
       ) : mode === "control" ? (

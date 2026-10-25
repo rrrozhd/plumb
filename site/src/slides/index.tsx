@@ -45,11 +45,28 @@ export function Title() {
   )
 }
 
+export function Why() {
+  return (
+    <div>
+      <Head i={1} />
+      <div className="grid grid-cols-3 gap-5">
+        <Stat value="42,241" label={E.e29.text} cite={E.e29.id} />
+        <Stat value="45%" label={E.e3.text} cite={E.e3.id} tone="bad" />
+        <Stat value="2 in 3" label="real XRPL x402 purchases returned nothing usable" cite={E.e2.id} tone="bad" />
+      </div>
+      <div className="mt-10 grid grid-cols-2 gap-6 text-2xl leading-snug">
+        <div className="rounded-xl border bg-card/60 p-6"><div className="text-sm uppercase tracking-[0.18em] text-muted-foreground">solved</div>Payment rails decide <b>how</b> an agent may pay: limits, vouchers, receipts.</div>
+        <div className="rounded-xl border border-brand/50 bg-card/60 p-6"><div className="text-sm uppercase tracking-[0.18em] text-brand">missing</div>Nothing decides <b>whom</b> it should pay. The agent pays first and learns later, at machine speed.</div>
+      </div>
+    </div>
+  )
+}
+
 export function Problem({ active, auto }: SlideProps) {
   const t = useTask(() => api.bazaar(DEMO.problemNeed), active, auto)
   return (
     <div>
-      <Head i={1} />
+      <Head i={2} />
       <NeedLine need={DEMO.problemNeed} />
       <div className="grid grid-cols-[1.6fr_1fr] gap-8">
         <div>
@@ -93,7 +110,7 @@ export function Router({ active, auto }: SlideProps) {
   const left = bz.data?.[0] && t.data && !t.data.results.some((p) => p.url === bz.data![0].url) ? bz.data[0] : undefined
   return (
     <div>
-      <Head i={2} />
+      <Head i={3} />
       <NeedLine need={DEMO.problemNeed} />
       <Busy loading={t.loading} error={t.error} onRetry={t.run} label="Asking Plumb…" />
       {t.data && (
@@ -108,7 +125,7 @@ export function Router({ active, auto }: SlideProps) {
           )}
           <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
             <Badge className="h-7 gap-1 bg-brand px-3 text-sm text-brand-foreground"><Zap className="size-3.5" />{t.data.timing_ms.total.toFixed(2)} ms</Badge>
-            <span>relevance: {t.data.relevance} · one merchant per operator</span>
+            <span>trust = does the payment go through × was the answer good · one merchant per operator</span>
             <span>· excluded: <b className="text-foreground">{t.data.excluded.settle ?? 0} that never settle</b>, {t.data.excluded.dead ?? 0} dead, {t.data.excluded.fit ?? 0} off-topic</span>
             <Button size="sm" variant="ghost" onClick={t.run}><RotateCcw />ask again</Button>
           </div>
@@ -135,7 +152,7 @@ export function Mandate({ active, auto }: SlideProps) {
   )
   return (
     <div>
-      <Head i={3} />
+      <Head i={4} />
       <NeedLine need={DEMO.mandateNeed} />
       {open.data?.results[0] && tight.data?.results[0] && (
         <div className="mb-5 text-2xl">
@@ -178,7 +195,7 @@ export function Ap4m({ active }: SlideProps) {
   }
   return (
     <div>
-      <Head i={4} />
+      <Head i={5} />
       <div className="grid grid-cols-[1fr_2fr] gap-8">
         <div className="space-y-4">
           <Stat value={`${DEMO.agentCap} RLUSD`} label="channel cap: the agent's spending mandate" />
@@ -223,44 +240,11 @@ function AccountColumn({ address, active, auto }: SlideProps & { address: string
 export function Personal(props: SlideProps) {
   return (
     <div>
-      <Head i={5} />
+      <Head i={6} />
       <NeedLine need="Verify XRPL transaction 65A4…0795: was it validated and what amount did it deliver?" />
       <div className="grid grid-cols-2 gap-8">
         <AccountColumn address={DEMO.rlusdAccount} {...props} />
         <AccountColumn address={DEMO.xrpOnlyAccount} {...props} />
-      </div>
-    </div>
-  )
-}
-
-export function Trust() {
-  const items = [
-    ["P(settle)", "per merchant account and payment rail, from real payments on the ledger"],
-    ["× P(good | settled)", "per endpoint, from audited purchases, with an operator prior and an exact lower bound"],
-    ["÷ cost", "rank by cost per good answer: price and time over fit × settle × quality"],
-  ]
-  const rules = [
-    "Feedback is remembered per customer; a review will count for everyone only with a validated on-ledger payment",
-    "Listing and response text are untrusted data, never instructions",
-    "The score uses only checks every merchant faces equally; graders and LLMs are for evaluation only",
-    "No LLM on the request path for known needs; a new need is judged once (~20 s), then cached",
-  ]
-  return (
-    <div>
-      <Head i={6} />
-      <div className="grid grid-cols-2 gap-10">
-        <div className="space-y-3">
-          {items.map(([k, v]) => (
-            <div key={k} className="rounded-xl border bg-card/60 p-5">
-              <div className="font-mono text-2xl font-semibold text-brand">{k}</div>
-              <div className="mt-1 text-muted-foreground">{v}</div>
-            </div>
-          ))}
-        </div>
-        <ul className="space-y-4 text-xl leading-snug">
-          {rules.map((r) => <li key={r} className="flex gap-3"><ShieldCheck className="mt-1 size-5 shrink-0 text-good" />{r}</li>)}
-          <li className="pt-2 text-base text-muted-foreground">{E.l4.text}<Cite id={E.l4.id} /> · {E.e4.text}<Cite id={E.e4.id} /></li>
-        </ul>
       </div>
     </div>
   )
@@ -274,7 +258,7 @@ export function Evidence() {
   ]
   return (
     <div>
-      <Head i={8} />
+      <Head i={7} />
       <div className="grid grid-cols-3 gap-4">
         {steps.map((x, i) => (
           <div key={x.id} className={cn("relative rounded-xl border bg-card/60 p-6", i === 2 && "border-good/50")}>
@@ -296,12 +280,12 @@ export function Sponsors() {
   const rows: [string, string, string][] = [
     ["XRP Ledger", "Merchants are paid in RLUSD and XRP on mainnet; settled payments are the trust evidence; trust lines decide what an agent can pay", "E20–E28: 200+ real payments"],
     ["Quicknode", "Full-history XRPL RPC: the payment history behind trust, each purchase verified by its own tx hash, live account reads per agent", "slide 6, live"],
-    ["AWS", "Bedrock: Claude Sonnet judges fit and fills call arguments; Titan embeds listings. AgentCore Memory backs up and restores customer feedback", "MEM2: restore verified"],
+    ["AWS Bedrock", "Claude judges which merchant fits a question and fills in the call; Titan embeddings power the search", "E26–E28"],
     ["Mastercard AP4M", "The agent pays Plumb per shortlist with signed vouchers in a capped channel; the mandate limits what Plumb may recommend; receipts", "E18 + the run on slide 5"],
   ]
   return (
     <div>
-      <Head i={7} />
+      <Head i={8} />
       <div className="space-y-3">
         {rows.map(([name, what, proof]) => (
           <div key={name} className="grid grid-cols-[220px_1fr_220px] items-center gap-6 rounded-xl border bg-card/60 px-6 py-4">
@@ -317,8 +301,8 @@ export function Sponsors() {
 
 export function Production() {
   const cols: [string, string[]][] = [
-    ["Live today", ["Router + trust on real XRPL x402 data", "AP4M: mandate, capped channel, receipts", "Customer memory, backed up to AWS AgentCore (MEM2)", "Mainnet evals with frozen rubric · MCP tool"]],
-    ["Next", ["Adapters: AP4M merchants, x402 on Base", "Success fee, priced on independently checked answers", "Real audits folding into trust", "Feedback that moves global trust, proof-gated"]],
+    ["Live today", ["Router + trust on real XRPL x402 data", "AP4M: mandate, capped channel, receipts", "Real-money tests with frozen grading", "MCP tool any agent can call"]],
+    ["Next", ["x402 on Base: 39k of 42k listings are off XRPL", "A percentage fee instead of a flat one", "Later: a fee only for answers that check out", "Purchases feeding back into trust"]],
     ["Blockers we name", ["AP4M is testnet, pays only our own merchant, and caps channels (L19, L27)", "XRPL AI Hub has no public API yet", "Few real buyers today (L2): the trust prior carries most weight", "Accuracy edge not significant at 100 needs (E26)"]],
   ]
   return (
@@ -332,7 +316,7 @@ export function Production() {
           </div>
         ))}
       </div>
-      <div className="mt-8 text-xl">Business: <b>0.002 RLUSD per shortlist</b> through AP4M today → <b>5% of the pick's price</b> next (below the 7.5% break-even across 130 paid needs).</div>
+      <div className="mt-8 text-xl">Business: <b>0.002 RLUSD per shortlist</b> through AP4M today, moving to a <b>percentage of the purchase</b>.</div>
     </div>
   )
 }
@@ -354,4 +338,4 @@ export function Close() {
   )
 }
 
-export const SLIDE_COMPONENTS = [Title, Problem, Router, Mandate, Ap4m, Personal, Trust, Sponsors, Evidence, Production, Close]
+export const SLIDE_COMPONENTS = [Title, Why, Problem, Router, Mandate, Ap4m, Personal, Evidence, Sponsors, Production, Close]
