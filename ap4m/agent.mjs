@@ -30,7 +30,8 @@ const context = await loadX402Context(AP4M.api);
 const resourceUrl = `http://localhost:${AP4M.merchantPort}/resource`;
 const runId = Date.now().toString(36);
 const fee = ethers.parseUnits(AP4M.feeRlusd, 18);
-let spent = 0n; // this run's cumulative spend on the channel
+// Start from what the channel has already redeemed on-chain, so a reused channel is judged correctly.
+let spent = (await sdk.getChannelState(provider, context.participantRequest.ledger, channel.channel_id)).redeemed;
 for (const [i, need] of needs.entries()) {
   // The agent's own pay/no-pay decision: never sign a voucher that would push the channel past its cap.
   if (spent + fee > BigInt(channel.cap_wei)) {
