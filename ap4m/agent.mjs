@@ -29,13 +29,21 @@ log('channel_open', { channel_id: channel.channel_id, cap_rlusd: ethers.formatUn
 const context = await loadX402Context(AP4M.api);
 const resourceUrl = `http://localhost:${AP4M.merchantPort}/resource`;
 const runId = Date.now().toString(36);
+const fee = ethers.parseUnits(AP4M.feeRlusd, 18);
+let spent = 0n; // this run's cumulative spend on the channel
 for (const [i, need] of needs.entries()) {
+  // The agent's own pay/no-pay decision: never sign a voucher that would push the channel past its cap.
+  if (spent + fee > BigInt(channel.cap_wei)) {
+    log('refused_over_cap', { need, spent_rlusd: ethers.formatUnits(spent, 18), fee_rlusd: AP4M.feeRlusd, cap_rlusd: ethers.formatUnits(channel.cap_wei, 18) });
+    continue;
+  }
   try {
     const bought = await buyResource({
       context, provider, wallet, stateDirectory: new URL(`../out/ap4m-agent/`, import.meta.url).pathname,
       resourceUrl, channelId: channel.channel_id, maximumAmount: ethers.parseUnits(AP4M.feeRlusd, 18).toString(),
       operation: `shortlist-${runId}-${i}`,
     });
+    spent += fee;
     log('paid', { need, voucher_redeemed_tx: bought.transactionHash, claim_id: bought.claimId });
     const r = await fetch(`http://localhost:${AP4M.gatewayPort}/shortlist`, { method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ need, paid_tx: bought.transactionHash, principal: process.env.PLUMB_PRINCIPAL }) });
