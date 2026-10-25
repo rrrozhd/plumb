@@ -394,8 +394,10 @@ def run_e22(cfg: dict, live: bool) -> dict:
     bodies = config.ROOT / "out" / f"e22-bodies-{stamp}"
     bodies.mkdir(parents=True, exist_ok=True)
 
-    picks = []
-    for q in needs:  # picks and arguments frozen before any purchase, written to disk first
+    picks, frozen = [], root / "e22_picks.json"
+    if live and frozen.exists():  # buy exactly the committed dry-run picks; a fresh search or judge call could differ
+        picks = json.loads(frozen.read_text())["picks"]
+    for q in needs if not picks else []:  # picks and arguments frozen before any purchase, written to disk first
         cap = Decimal(str(q.get("max_price_rlusd", "0.05")))
         b = next((e for e in (catalog.parse_listing(r, cfg) for r in bz.search(q["need"])) if e and
                   (e.price_rlusd or Decimal(e.price_xrp_drops or 0) / 1_000_000 * mid) <= cap), None)
@@ -409,7 +411,8 @@ def run_e22(cfg: dict, live: bool) -> dict:
         picks.append({"id": q["id"], "need": q["need"],
                       "bazaar": {"url": b.url, "method": b.method, "args": b_args} if b else None,
                       "plumb": {"url": p["url"], "method": p["method"], "args": p["call"]["args"], "match": p["match"]} if p else None})
-    (root / "e22_picks.json").write_text(json.dumps({"frozen_at": stamp, "picks": picks}, indent=1))
+    if not (live and frozen.exists()):
+        frozen.write_text(json.dumps({"frozen_at": stamp, "picks": picks}, indent=1))
     if not live:
         return {"mode": "dry-run", "picks": picks, "path": str(root / "e22_picks.json"), "summary": {}, "spent_total_rlusd": "0"}
 
