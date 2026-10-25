@@ -125,8 +125,12 @@ def build(cfg: dict, judge_needs: bool) -> None:
                                                    "input": e.input_example, "description": e.description})
         labels = {}
         from concurrent.futures import ThreadPoolExecutor
+        # one retry: a refusal returns nothing and would silently drop the operator's listings
+        once = lambda g: judge.judge(client, cfg, q["need"], g) or judge.judge(client, cfg, q["need"], g)
         with ThreadPoolExecutor(8) as pool:  # one call per operator, in parallel
-            for part in pool.map(lambda g: judge.judge(client, cfg, q["need"], g), groups.values()):
+            for g, part in zip(groups.values(), pool.map(once, groups.values())):
+                if not part:
+                    _log(f"judge returned no labels for {q['id']} operator {eps[g[0]['id']].payto} ({len(g)} listings)")
                 labels.update(part)
         fit[t] = {"need_id": q["id"], "need": q["need"], "labels": labels}
         fit_path.write_text(json.dumps(fit, indent=1))
