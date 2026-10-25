@@ -72,6 +72,8 @@ createServer(async (req, res) => {
                     within: true, dropped: out.results.length - kept.length };
     out.results = kept.map((x) => ({ ...x, within_mandate: `per-purchase ≤ ${m.perPurchase}, budget left ${m.budgetLeft}` }));
   }
+  console.log(JSON.stringify({ at: new Date().toISOString(), event: 'gateway.shortlist', paid_tx: tx, first_use: first, need: String(q.need).slice(0, 120),
+    mandate: out.mandate ?? null, top: out.results?.[0]?.url ?? null, picks: out.results?.length ?? 0 }));
   send(res, r.status, { ...out, credit_first_use: first });
 }).listen(AP4M.gatewayPort, '127.0.0.1');
 

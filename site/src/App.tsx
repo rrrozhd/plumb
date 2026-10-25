@@ -11,12 +11,14 @@ import { api, short, type Health } from "@/lib/api"
 import { cn } from "@/lib/utils"
 import { DEMO, SLIDES } from "@/content"
 import { Ap4m, SLIDE_COMPONENTS } from "@/slides"
+import { Logs } from "@/components/logs"
 
 const fromHash = () => Math.min(Math.max(Number(location.hash.replace(/^#\/?/, "")) || 1, 1), SLIDES.length) - 1
 
 export default function App() {
   const [i, setI] = useState(fromHash)
-  const [mode, setMode] = useState<"present" | "control">("present")
+  const [mode, setMode] = useState<"present" | "control" | "logs">("present")
+  const [logs, setLogs] = useState(false)
   const [auto, setAuto] = useState(true)
   const [notes, setNotes] = useState(false)
   const health = useHealth()
@@ -32,6 +34,7 @@ export default function App() {
       else if (e.key === "a") setAuto((x) => !x)
       else if (e.key === "n") setNotes((x) => !x)
       else if (e.key === "c") setMode((m) => (m === "present" ? "control" : "present"))
+      else if (e.key === "l") setLogs((x) => !x)
       else if (e.key === "f") void (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen())
       else if (/^[0-9]$/.test(e.key)) go(e.key === "0" ? 9 : Number(e.key) - 1)
     }
@@ -46,8 +49,8 @@ export default function App() {
         <div className="flex items-center gap-2 font-heading text-lg font-semibold tracking-tight">
           <span className="inline-block size-3 rotate-45 rounded-[3px] bg-brand" />Plumb
         </div>
-        <Tabs value={mode} onValueChange={(v) => setMode(v as "present" | "control")}>
-          <TabsList><TabsTrigger value="present">Present</TabsTrigger><TabsTrigger value="control">Control room</TabsTrigger></TabsList>
+        <Tabs value={mode} onValueChange={(v) => setMode(v as "present" | "control" | "logs")}>
+          <TabsList><TabsTrigger value="present">Present</TabsTrigger><TabsTrigger value="control">Control room</TabsTrigger><TabsTrigger value="logs">Logs</TabsTrigger></TabsList>
         </Tabs>
         <div className="ml-auto flex items-center gap-4 text-sm">
           <HealthDots health={health.data} onStart={health.start} starting={health.starting} />
@@ -68,6 +71,7 @@ export default function App() {
               </section>
             ))}
           </main>
+          {logs && <div className="h-[34vh] shrink-0 border-t bg-card px-6 py-3"><Logs compact /></div>}
           {notes && <div className="max-h-40 shrink-0 overflow-y-auto border-t bg-card px-16 py-4 text-lg leading-relaxed text-muted-foreground">{SLIDES[i].notes}</div>}
           <footer className="flex h-14 shrink-0 items-center gap-4 border-t px-6">
             <Button size="icon-sm" variant="ghost" onClick={() => go(i - 1)} disabled={i === 0}><ChevronLeft /></Button>
@@ -79,11 +83,13 @@ export default function App() {
             </div>
             <span className="w-48 truncate text-right text-sm text-muted-foreground">{i + 1} / {SLIDES.length} · {SLIDES[i].kicker}</span>
             <Button size="icon-sm" variant="ghost" onClick={() => go(i + 1)} disabled={i === SLIDES.length - 1}><ChevronRight /></Button>
-            <div className="hidden gap-1 text-xs text-muted-foreground xl:flex"><Kbd>←</Kbd><Kbd>→</Kbd> slides <Kbd>a</Kbd> auto <Kbd>n</Kbd> notes <Kbd>c</Kbd> control</div>
+            <div className="hidden gap-1 text-xs text-muted-foreground xl:flex"><Kbd>←</Kbd><Kbd>→</Kbd> slides <Kbd>a</Kbd> auto <Kbd>n</Kbd> notes <Kbd>l</Kbd> logs <Kbd>c</Kbd> control</div>
           </footer>
         </>
-      ) : (
+      ) : mode === "control" ? (
         <main className="min-h-0 flex-1 overflow-y-auto px-8 py-6"><ControlRoom /></main>
+      ) : (
+        <main className="min-h-0 flex-1 px-8 py-6"><Logs /></main>
       )}
     </div>
   )

@@ -8,6 +8,7 @@
 // POST /api/agent/run         {per_purchase, cap, needs[], fresh?}: the AP4M buyer agent on testnet (one run at a time)
 // GET  /api/agent/stream      ?run=: the run's control trail as server-sent events
 // GET  /api/trail             ?run=|latest: a finished trail (the fallback replay)
+// GET  /api/logs              every demo-relevant log, merged by time: control server, Plumb API, AP4M gateway, agent trails, eval purchases
 //
 // Secrets stay here: the Quicknode URL (env/ledger.env) is used server-side only; agent keys stay in the agent process.
 import { spawn } from 'node:child_process';
@@ -110,13 +111,15 @@ async function bazaar(body) {
   const r = await fetch(url, { signal: AbortSignal.timeout(20000) });
   if (!r.ok) throw new Error(`Bazaar search failed (HTTP ${r.status})`);
   const items = (await r.json()).resources ?? [];
-  return items.map((x, i) => {
+  const rows = items.map((x, i) => {
     const host = String(x.resource).replace(/^https?:\/\//, '').split('/')[0];
     const opt = (x.accepts ?? []).find((a) => a.network === CFG.xrpl.network) ?? {};
     return { rank: i + 1, url: x.resource, host, service: String(x.serviceName ?? '').slice(0, 80), pay_to: opt.payTo,
              asset: opt.asset === 'XRP' ? 'XRP' : 'RLUSD', amount: opt.amount, calls_30d: x.quality?.l30DaysTotalCalls ?? null,
              vet402: vet402[host] ?? null };
   });
+  log('bazaar.search', { need: body.need, first: rows[0]?.host, record: rows[0]?.vet402 ? `${rows[0].vet402.settled}/${rows[0].vet402.attempts} settled` : 'no record' });
+  return rows;
 }
 
 async function recommend(body) {
@@ -130,7 +133,12 @@ async function recommend(body) {
   const k = Math.max(1, Math.min(Number(body.k) || 3, 5));
   const r = await fetch(PLUMB_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: AbortSignal.timeout(60000),
     body: JSON.stringify({ need: need(body.need), k, principal: body.principal || undefined, constraints }) });
-  return r.json();
+  const out = await r.json();
+  const top = out.results?.[0];
+  log('plumb.shortlist', { need: body.need, mandate_max: constraints.max_price ?? null, assets: constraints.assets ?? null,
+    top: top ? `${top.url.replace(/^https?:\/\//, '')} @ ${top.price.amount_rlusd} (${top.match})` : 'none',
+    picks: out.results?.length ?? 0, excluded: out.excluded, ms: out.timing_ms?.total });
+  return out;
 }
 
 async function xrpl(method, params) {
@@ -147,6 +155,7 @@ async function account(body) {
   const [info, lines] = await Promise.all([xrpl('account_info', { account: address }), xrpl('account_lines', { account: address })]);
   if (info?.error) throw new BadRequest(`ledger: ${info.error}`);
   const rl = (lines?.lines ?? []).find((l) => l.currency === CFG.xrpl.rlusd_currency && l.account === CFG.xrpl.rlusd_issuer);
+  log('quicknode.account', { address, ledger_index: info.ledger_index, ms: Math.round(performance.now() - t0), rlusd_trust_line: Boolean(rl) });
   return {
     address, ledger_index: info.ledger_index, ms: Math.round(performance.now() - t0), source: 'Quicknode (full-history XRPL)',
     xrp: (Number(info.account_data.Balance) / 1e6).toFixed(6), rlusd_trust_line: Boolean(rl), rlusd_balance: rl?.balance ?? null,
@@ -216,7 +225,36 @@ function stream(req, res, id) {
   req.on('close', () => clearInterval(tick));
 }
 
+const OUT = `${ROOT}out/`;
+const newest = (...names) => names.map((n) => OUT + n).filter(existsSync).sort((a, b) => statSync(b).mtimeMs - statSync(a).mtimeMs)[0];
+const tail = (path, n) => (path ? readFileSync(path, 'utf8').split('\n').filter(Boolean).slice(-n) : []);
+const parse = (l) => { try { return JSON.parse(l); } catch { return { text: l }; } };
+const redact = (s) => s.replace(/(quiknode\.pro\/)[^\s"/]+/g, '$1…');  // never show the Quicknode token
+
+function logs() {
+  const out = [];
+  const add = (source, e) => out.push({ source, at: e.at ?? null, event: e.event ?? e.req ?? 'log', data: redact(JSON.stringify(e)) });
+  for (const l of tail(`${OUT}control.log`, 300)) { const e = parse(l); if (e.event !== 'listening') add('control', e); }
+  for (const l of tail(newest('plumb-api.log', 'api.log'), 300)) { const e = parse(l); if (!/" 400 /.test(e.req ?? '')) add('plumb-api', e); }
+  for (const l of tail(newest('ap4m-merchant.log', 'merchant.log'), 200)) add('ap4m-gateway', parse(l));
+  const trails = existsSync(TRAILS) ? readdirSync(TRAILS).filter((f) => f.startsWith('trail-'))
+    .sort((a, b) => statSync(TRAILS + b).mtimeMs - statSync(TRAILS + a).mtimeMs).slice(0, 3) : [];
+  for (const f of trails) for (const l of tail(TRAILS + f, 100)) add('agent', parse(l));
+  for (const [name, file] of [['E28', 'e28_result.json'], ['E26', 'e26_result.json']]) {
+    const path = `${ROOT}data/${file}`;
+    if (!existsSync(path)) continue;
+    const d = JSON.parse(readFileSync(path, 'utf8'));
+    const at = d.at ? `${d.at.slice(0, 4)}-${d.at.slice(4, 6)}-${d.at.slice(6, 8)}T${d.at.slice(9, 11)}:${d.at.slice(11, 13)}:00Z` : null;
+    for (const r of d.rows) for (const arm of ['plumb', 'bazaar']) {
+      const x = r[arm];
+      if (x?.url) add(`eval ${name}`, { at, event: `${arm}: ${x.verdict}`, need: r.need, url: x.url, spent: x.spent, tx: x.tx ?? null, http: x.http ?? null });
+    }
+  }
+  return out.sort((a, b) => String(a.at ?? '').localeCompare(String(b.at ?? ''))).slice(-1500);
+}
+
 const routes = {
+  'GET /api/logs': () => logs(),
   'GET /api/health': () => health(),
   'POST /api/services/start': () => startServices(),
   'POST /api/bazaar': (b) => bazaar(b),
