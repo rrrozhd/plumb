@@ -81,3 +81,15 @@ def test_e23_heldout_numbers():
     assert (sum(r["bazaar"]["verdict"] == "good" for r in new), sum(r["plumb"]["verdict"] == "good" for r in new)) == (6, 7)
     txs = [r[a]["tx"] for r in rows for a in ("bazaar", "plumb") if r[a].get("tx") and not r[a].get("shared")]
     assert len(txs) == len(set(txs)) == 18
+
+
+def test_e24_pooled():
+    rows = json.loads((DATA / "e21_result.json").read_text())["rows"] + json.loads((DATA / "e22_result.json").read_text())["rows"]
+    gb, cb = cost_per_good(rows, "bazaar")
+    gp, cp = cost_per_good(rows, "plumb", FEE)
+    won = sum(r["plumb"]["verdict"] == "good" and r["bazaar"]["verdict"] != "good" for r in rows)
+    lost = sum(r["bazaar"]["verdict"] == "good" and r["plumb"]["verdict"] != "good" for r in rows)
+    n = won + lost
+    p = min(1.0, 2 * sum(comb(n, k) for k in range(max(won, lost), n + 1)) / 2 ** n)
+    assert (len(rows), gp, gb, won, lost, round(p, 3)) == (30, 19, 14, 6, 1, 0.125)
+    assert round(cp, 4) == D("0.0060") and round(cb, 4) == D("0.0080") and round(cb / cp, 2) == D("1.34")

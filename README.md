@@ -13,7 +13,7 @@ Built at the XRPL NYC AI & Fintech Hackathon (Agentic Finance track) on **XRPL**
 | **Plumb's #1** (fee included) | **11 / 20** | **0.0068** |
 | fizzl (buys on any chain) | 13 / 20 | 0.0277 |
 
-- **Speed:** a shortlist takes 0.07 ms at worst-5%, with no LLM on the request path.
+- **Speed:** a shortlist takes 0.13 ms at worst-5% (E25), with no LLM on the request path.
 - **AP4M:** live on testnet, with a capped channel, paid shortlists, an over-cap refusal and a settled receipt.
 
 Sources and caveats: [`docs/EVIDENCE.md`](docs/EVIDENCE.md) (E18–E23) and [`docs/LIMITS.md`](docs/LIMITS.md).
