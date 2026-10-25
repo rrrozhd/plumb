@@ -6,21 +6,28 @@ An agent asks for what it needs. Plumb returns three XRPL x402 merchants ranked 
 
 Built at the XRPL NYC AI & Fintech Hackathon (Agentic Finance track) on **XRPL**, **Quicknode**, **AWS Bedrock**, **AgentCore Memory** and **Mastercard AP4M**.
 
-## Results (real money, mainnet, pre-registered)
-| 20 frozen needs, every answer bought and graded | Good answers | Cost per good answer (RLUSD) |
-|---|---|---|
-| Coinbase Bazaar's #1 | 7 / 20 | 0.0133 |
-| **Plumb's #1** (fee included) | **11 / 20** | **0.0068** |
-| fizzl (buys on any chain) | 13 / 20 | 0.0277 |
+## Results (real money, XRPL mainnet, pre-registered, graded by code)
+| Test | Plumb | Coinbase Bazaar #1 | Reading |
+|---|---|---|---|
+| **E26:** 100 new questions, each answer bought and checked against a public source | 77 good | 72 good | a tie (p = 0.40); the Bazaar was cheaper per good answer (0.0032 vs 0.0065 RLUSD), mostly because of our flat fee |
+| **E27:** why we missed (offline, no purchases) | the right merchant never reached our shortlist on 28 of 72 needs | | meaning-only search; adding keyword search recovers all 72 |
+| **E28:** the 14 questions we failed, bought again after the fix | 10 of 14 good (was 0) | 9 of 14 (in E26, not re-bought) | recovery, not overall accuracy; re-running all 100 is next |
 
-- **Speed:** the earlier cached-shortlist benchmark reached 0.13 ms at worst-5% (E25). A new need is judged once; cached needs use lookup and arithmetic.
-- **AP4M:** live on testnet, with a capped channel, paid shortlists, an over-cap refusal and a settled receipt.
+- **The problem we measured:** of 17,684 real x402 purchase attempts across chains, 44% got no usable answer (E3); on XRPL, 2 in 3 (E2). The Bazaar's #1 for one need, pay.edge-agents.ai, settled 0 of 88; Plumb never recommends it.
+- **Speed:** 0.13 ms worst-5% per cached shortlist, no LLM on the request path (E25).
+- **Mastercard AP4M (testnet):** identities and a funded 0.005 channel cap, HTTP 402 → agent-signed voucher → resource released, an over-cap attempt refused, settlement and an AP4M receipt linking channel, claim and payout (E18; slide 6 of the deck, built by `ap4m/proof.py`).
 
-Sources and caveats: [`docs/EVIDENCE.md`](docs/EVIDENCE.md) (E18–E23) and [`docs/LIMITS.md`](docs/LIMITS.md).
+Every number, with its source and caveats: [`docs/EVIDENCE.md`](docs/EVIDENCE.md). Limits: [`docs/LIMITS.md`](docs/LIMITS.md).
+
+## What's mocked or not live
+- **AP4M** runs on XRPL EVM **testnet** and pays only our own merchant (AP4M's rule). New channels are blocked by AP4M's per-merchant channel limit (L27), so the deck replays the last completed run (2026-10-25 05:25 UTC); every hash links to the explorer.
+- **Per-customer learning** is shown with **simulated** customers. The live, real part is the payment constraint: Quicknode reads each account's trust lines and balances.
+- **Our own test purchases are not yet in the trust scores**; trust comes from vet402's public purchase log plus ledger reads. Only 9% of candidate endpoints have any purchase on record (E15).
+- **Pricing:** 0.002 RLUSD per shortlist today; the percentage fee is a calculation, not a live test.
 
 ## How it works
 1. **Catalogue:** Bazaar XRPL listings; a liveness check excludes dead endpoints.
-2. **Relevance:** Titan embeddings, then BM25, then an offline Claude judge (exact / partial / wrong). Exact matches always rank first. A never-seen need is judged once (~20 s), then cached.
+2. **Relevance:** Titan embeddings, then BM25, then an offline Claude judge (exact / partial / wrong). Exact matches always rank first. A never-seen need is judged once by the AI judge, then cached.
 3. **Trust:** P(the payment settles) per merchant account and rail × P(the answer is good, given it settled) per endpoint. The current fitter uses saved vet402 purchase observations and ledger payments read through Quicknode.
 4. **Ranking:** expected cost per good answer, with one result per operator.
 5. **Personalisation:** account constraints and a per-customer posterior over its own outcomes, with a co-purchase signal from the snapshot. Saved customer feedback does not train other customers.
@@ -116,3 +123,9 @@ The surrounding repository keeps its existing roles:
 - `data/`: the committed market snapshot, judge labels and eval results.
 - `eval/`: the frozen needs, the rubric and the E21 pre-registration.
 - `docs/`: pitch, demo script, evidence, limits, markets and reproducibility.
+
+## Demo, team and licence
+- **Demo video:** _add the unlisted link here_. Presenter deck: `cd site && npm run dev`, then http://127.0.0.1:5173 ([docs/DECK.md](docs/DECK.md), cards in [docs/CARDS.md](docs/CARDS.md)).
+- **Team:** rrrozhd.
+- **Licence:** _not yet chosen_.
+
