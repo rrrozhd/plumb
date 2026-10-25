@@ -10,7 +10,7 @@ Built at the XRPL NYC AI & Fintech Hackathon (Agentic Finance track) on **XRPL**
 | 20 frozen needs, every answer bought and graded | Good answers | Cost per good answer (RLUSD) |
 |---|---|---|
 | Coinbase Bazaar's #1 | 7 / 20 | 0.0133 |
-| **Plumb's #1** (fee included) | **11 / 20** | **0.0062** |
+| **Plumb's #1** (fee included) | **11 / 20** | **0.0068** |
 | fizzl (buys on any chain) | 13 / 20 | 0.0277 |
 
 - **Speed:** a shortlist takes 0.07 ms at worst-5%, with no LLM on the request path.

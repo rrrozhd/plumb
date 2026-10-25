@@ -2165,5 +2165,11 @@
   "fizzl_payments_on_ledger": 18,
   "fizzl_spent_rlusd": "0.36",
   "why": "fizzl uses static invoiceIds, so the harness's InvoiceID lookup matched an earlier payment for two rows; the ledger count is authoritative"
+ },
+ "corrected_summary": {
+  "plumb_cost_per_good": "0.006824",
+  "bazaar_cost_per_good": "0.013323",
+  "fizzl_cost_per_good": "0.027692",
+  "note": "rubric \u00a71.6: shared picks' spend counted on both sides; Plumb includes its 0.002 fee per need; fizzl spend from a ledger recount. The original 'summary' field excluded shared spend from the Plumb arm."
  }
 }

@@ -614,5 +614,10 @@
     "body_head": "{\"query\":{\"q\":\"insulin\",\"status\":\"RECRUITING\",\"phase\":null},\"studies\":[{\"nctId\":\"NCT07154251\",\"title\":\"Utilizing Community Health Workers as Diabetes Technology Coaches for Children With Type 1 Diabetes Using Automated Insulin Delivery\",\"status\":\"RECRUITING\",\"phases\":[\"NA\"],\"conditions\":[\"Type 1 Diabetes (T1D)\"],\"sponsor\":\"University Hospitals Cleveland Medical Center\",\"start\":\"2025-11-06\",\"comple"
    }
   }
- ]
+ ],
+ "corrected_summary": {
+  "plumb_cost_per_good": "0.007607",
+  "bazaar_cost_per_good": "0.016213",
+  "note": "rubric \u00a71.6: shared picks' spend counted on both sides; Plumb includes its 0.002 fee per need; fizzl spend from a ledger recount. The original 'summary' field excluded shared spend from the Plumb arm."
+ }
 }

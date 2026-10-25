@@ -249,7 +249,7 @@ def run(cfg: dict, live: bool, resume: str | None = None, grader_version: int = 
     for side in ("bazaar", "plumb"):
         rs = [r[side] for r in rows]
         good = sum(r["verdict"] == "good" for r in rs)
-        cost = sum((Decimal(r.get("spent", "0")) for r in rs if not r.get("shared")), Decimal(0))
+        cost = sum((Decimal(r.get("spent", "0")) for r in rs), Decimal(0))  # rubric §1.6: a shared pick's spend counts on both sides
         summary[side] = {"good": good, "of": len(rs), "spent_rlusd": str(cost),
                          "cost_per_good_rlusd": str((cost / good).quantize(Decimal("0.000001"))) if good else None,
                          "planned_rlusd": str(sum(Decimal(r.get("cost_rlusd", "0")) for r in rs if not r.get("shared")))}
@@ -353,7 +353,7 @@ def run_e21(cfg: dict, live: bool) -> dict:
     summary = {}
     for arm in ("bazaar", "plumb", "fizzl"):
         rs = [r[arm] for r in rows]
-        merchant = sum((Decimal(r.get("spent", "0")) for r in rs if not r.get("shared")), Decimal(0))
+        merchant = sum((Decimal(r.get("spent", "0")) for r in rs), Decimal(0))  # rubric §1.6: shared spend counts on both sides
         fee = PLUMB_FEE * sum(1 for r in rs if r.get("verdict") != "refused") if arm == "plumb" else Decimal(0)
         for grader_name, field in (("v2", "verdict"), ("llm_only", "verdict_llm_only")):
             good = sum(r.get(field) == "good" for r in rs)
