@@ -25,7 +25,9 @@ def test_e20_numbers():
     gb, cb = cost_per_good(rows, "bazaar")
     gp, cp = cost_per_good(rows, "plumb", FEE)
     assert (gb, gp) == (6, 10)
-    assert round(cb, 4) == D("0.0162") and round(cp, 4) == D("0.0076")
+    assert round(cb, 4) == D("0.0159") and round(cp, 4) == D("0.0074")  # q13 unsettled (audit 2026-10-25)
+    txs = [r[a]["tx"] for r in rows for a in ("bazaar", "plumb") if r[a].get("tx") and not r[a].get("shared")]
+    assert len(txs) == len(set(txs))  # one ledger payment, one purchase
 
 
 def test_e21_numbers():
@@ -36,6 +38,8 @@ def test_e21_numbers():
     assert (gb, gp, gf) == (7, 11, 13)
     assert round(cb, 4) == D("0.0133") and round(cp, 4) == D("0.0068") and round(cf, 4) == D("0.0277")
     assert round(cb / cp, 2) == D("1.95") and round(cf / cp, 1) == D("4.1")
+    txs = [r[a]["tx"] for r in rows for a in ("bazaar", "plumb") if r[a].get("tx") and not r[a].get("shared")]
+    assert len(txs) == len(set(txs))  # fizzl's static invoiceIds are why its spend is a ledger recount
 
 
 def test_e21_paired_sign_test():

@@ -389,17 +389,17 @@
    "need": "Verify XRPL transaction 65A456656B9479457C0995E2FC770319C7636C39550DF4A4E127D265ADB90795: was it validated and what amount did it deliver?",
    "bazaar": {
     "url": "https://horizonpulse.dev/api/tx-status",
-    "verdict": "bad",
-    "why": "G2: HTTP 400",
-    "tx": "795ABBD7E1DDB1E4DEFCE374B4B7DEF29EDCDC0AE211C299DBEA236EB1C3A016",
-    "spent": "0.002"
+    "verdict": "unsettled",
+    "why": "G2: HTTP 400; no payment of its own on the ledger (795ABBD7\u2026 is q12's, 69 s earlier; audit 2026-10-25)",
+    "tx": null,
+    "spent": "0"
    },
    "plumb": {
     "url": "https://horizonpulse.dev/api/tx-status",
-    "verdict": "bad",
-    "why": "G2: HTTP 400",
-    "tx": "795ABBD7E1DDB1E4DEFCE374B4B7DEF29EDCDC0AE211C299DBEA236EB1C3A016",
-    "spent": "0.002",
+    "verdict": "unsettled",
+    "why": "G2: HTTP 400; no payment of its own on the ledger (795ABBD7\u2026 is q12's, 69 s earlier; audit 2026-10-25)",
+    "tx": null,
+    "spent": "0",
     "shared": true
    }
   },
@@ -616,8 +616,8 @@
   }
  ],
  "corrected_summary": {
-  "plumb_cost_per_good": "0.007607",
-  "bazaar_cost_per_good": "0.016213",
-  "note": "rubric \u00a71.6: shared picks' spend counted on both sides; Plumb includes its 0.002 fee per need; fizzl spend from a ledger recount. The original 'summary' field excluded shared spend from the Plumb arm."
+  "plumb_cost_per_good": "0.007407",
+  "bazaar_cost_per_good": "0.015880",
+  "note": "rubric \u00a71.6: shared picks' spend counted on both sides; Plumb includes its 0.002 fee per need; fizzl spend from a ledger recount. The original 'summary' field excluded shared spend from the Plumb arm. q13 (both arms) is unsettled: its recorded tx was q12's payment, matched by a static (empty) invoiceId; fixed in settled_on_ledger."
  }
 }

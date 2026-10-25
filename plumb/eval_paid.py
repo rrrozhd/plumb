@@ -88,7 +88,8 @@ def pay_and_fetch(http, req, opt, wallet, client, cfg) -> dict:
     send_max = None if opt["asset"] == "XRP" else amount
     tx = Payment(account=wallet.classic_address, destination=opt["payTo"], amount=amount, send_max=send_max,
                  invoice_id=hashlib.sha256(inv.encode()).hexdigest().upper(), source_tag=extra.get("sourceTag"))
-    blob = sign(autofill(tx, client), wallet).blob()
+    signed = sign(autofill(tx, client), wallet)
+    blob = signed.blob()
     payload = {"x402Version": 2, "accepted": opt, "payload": {"signedTxBlob": blob, "invoiceId": inv}}
     header = base64.b64encode(json.dumps(payload).encode()).decode()
     method, url, params, body = req
@@ -109,17 +110,18 @@ def pay_and_fetch(http, req, opt, wallet, client, cfg) -> dict:
         except ValueError:
             pass
     return {"http": status, "ms": round((time.perf_counter() - t0) * 1000), "body": text, "settled_tx": settled_tx,
-            "invoice_hash": hashlib.sha256(inv.encode()).hexdigest().upper()}
+            "tx_hash": signed.get_hash(), "invoice_hash": hashlib.sha256(inv.encode()).hexdigest().upper()}
 
 
-def settled_on_ledger(lg, cfg, payer: str, payto: str, invoice_hash: str, tx_hash: str | None) -> dict | None:
-    """G1: the validated payment from our wallet to payTo carrying this InvoiceID (amount from delivered_amount)."""
+def settled_on_ledger(lg, cfg, payer: str, payto: str, invoice_hash: str, tx_hash: str) -> dict | None:
+    """G1: our own signed payment, by its hash, validated to payTo with this InvoiceID (amount from delivered_amount).
+
+    Never search the account's history: merchants with a static invoiceId would let one payment count for two purchases.
+    """
     for _ in range(10):
-        entries = [lg.tx(tx_hash)] if tx_hash else lg.rpc("account_tx", account=payer, limit=20).get("transactions", [])
-        for e in entries:
-            p = ledger.parse_payment(e, cfg)
-            if p and p["payer"] == payer and p["payto"] == payto and p["invoice_id"].upper() == invoice_hash:
-                return p
+        p = ledger.parse_payment(lg.tx(tx_hash), cfg)
+        if p:
+            return p if p["payer"] == payer and p["payto"] == payto and p["invoice_id"].upper() == invoice_hash else None
         time.sleep(3)
     return None
 
@@ -187,8 +189,8 @@ def run(cfg: dict, live: bool, resume: str | None = None, grader_version: int = 
         for prev in json.loads(open(resume).read())["rows"]:
             for side in ("bazaar", "plumb"):
                 r = prev[side]
-                if r.get("url") and r["verdict"] != "unsettled" and not r.get("shared"):
-                    bought[r["url"]] = r
+                if r.get("url") and r["verdict"] != "unsettled" and (prev["id"], r["url"]) not in bought:
+                    bought[(prev["id"], r["url"])] = {k: v for k, v in r.items() if k != "shared"}
                     spent += Decimal(r.get("spent", "0"))
     with httpx.Client(timeout=15) as http:
         for p in picks:
@@ -199,8 +201,8 @@ def run(cfg: dict, live: bool, resume: str | None = None, grader_version: int = 
                 if not url:
                     row[side] = {"verdict": "refused", "why": "no pick under the cap", "spent": "0"}
                     continue
-                if url in bought:  # shared pick: buy once, same label and spend for both sides (rubric §1.6)
-                    row[side] = {**bought[url], "shared": True}
+                if (p["id"], url) in bought:  # shared pick: buy once, same label and spend for both sides (rubric §1.6)
+                    row[side] = {**bought[(p["id"], url)], "shared": side == "plumb" and p["bazaar"] == url}
                     continue
                 req = build_request(raw[url], q.get("inputs") or {})
                 status, accepts = challenge(http, req)
@@ -218,7 +220,7 @@ def run(cfg: dict, live: bool, resume: str | None = None, grader_version: int = 
                     else:
                         assert wallet is not None and lg is not None
                         out = pay_and_fetch(http, req, opt, wallet, client, cfg)
-                        paid = settled_on_ledger(lg, cfg, wallet.classic_address, opt["payTo"], out["invoice_hash"], out["settled_tx"])
+                        paid = settled_on_ledger(lg, cfg, wallet.classic_address, opt["payTo"], out["invoice_hash"], out["tx_hash"])
                         amt = Decimal(paid["amount"]) if paid else Decimal(0)
                         real = (money.drops_to_rlusd(int(amt), mid) if paid and paid["asset"] == "XRP" else amt)
                         spent += real
@@ -241,7 +243,7 @@ def run(cfg: dict, live: bool, resume: str | None = None, grader_version: int = 
                             res = {"url": url, "verdict": "good" if ok else "bad", "grade": g, "tx": paid["tx_hash"],
                                    "ms": out["ms"], "spent": str(real), "body_file": str(body_file),
                                    "body_sha256": hashlib.sha256(out["body"].encode()).hexdigest()}
-                bought[url] = res
+                bought[(p["id"], url)] = res
                 row[side] = res
             rows.append(row)
 
@@ -250,6 +252,7 @@ def run(cfg: dict, live: bool, resume: str | None = None, grader_version: int = 
         rs = [r[side] for r in rows]
         good = sum(r["verdict"] == "good" for r in rs)
         cost = sum((Decimal(r.get("spent", "0")) for r in rs), Decimal(0))  # rubric §1.6: a shared pick's spend counts on both sides
+        cost += PLUMB_FEE * len(rs) if side == "plumb" else Decimal(0)  # Plumb's fee, once per shortlist
         summary[side] = {"good": good, "of": len(rs), "spent_rlusd": str(cost),
                          "cost_per_good_rlusd": str((cost / good).quantize(Decimal("0.000001"))) if good else None,
                          "planned_rlusd": str(sum(Decimal(r.get("cost_rlusd", "0")) for r in rs if not r.get("shared")))}
@@ -302,7 +305,7 @@ def run_e21(cfg: dict, live: bool) -> dict:
             row = {"id": p["id"], "need": p["need"]}
             arms = {"bazaar": p["bazaar"], "plumb": p["plumb"], "fizzl": FIZZL}
             for arm, url in arms.items():
-                key = url if arm != "fizzl" else f"fizzl:{p['id']}"
+                key = (p["id"], url if arm != "fizzl" else "fizzl")  # shared only within a need
                 if not url:
                     row[arm] = {"verdict": "refused", "why": "no pick", "spent": "0"}
                     continue
@@ -329,7 +332,7 @@ def run_e21(cfg: dict, live: bool) -> dict:
                     else:
                         assert wallet is not None and lg is not None
                         out = pay_and_fetch(http, req, opt, wallet, client, cfg)
-                        paid = settled_on_ledger(lg, cfg, wallet.classic_address, opt["payTo"], out["invoice_hash"], out["settled_tx"])
+                        paid = settled_on_ledger(lg, cfg, wallet.classic_address, opt["payTo"], out["invoice_hash"], out["tx_hash"])
                         amt = Decimal(paid["amount"]) if paid else Decimal(0)
                         real = money.drops_to_rlusd(int(amt), mid) if paid and paid["asset"] == "XRP" else amt
                         spent += real
@@ -354,7 +357,7 @@ def run_e21(cfg: dict, live: bool) -> dict:
     for arm in ("bazaar", "plumb", "fizzl"):
         rs = [r[arm] for r in rows]
         merchant = sum((Decimal(r.get("spent", "0")) for r in rs), Decimal(0))  # rubric §1.6: shared spend counts on both sides
-        fee = PLUMB_FEE * sum(1 for r in rs if r.get("verdict") != "refused") if arm == "plumb" else Decimal(0)
+        fee = PLUMB_FEE * len(rs) if arm == "plumb" else Decimal(0)  # per shortlist, refused or not
         for grader_name, field in (("v2", "verdict"), ("llm_only", "verdict_llm_only")):
             good = sum(r.get(field) == "good" for r in rs)
             summary[f"{arm}/{grader_name}"] = {"good": good, "of": len(rs), "cost_rlusd": str(merchant + fee),
@@ -423,8 +426,8 @@ def run_e22(cfg: dict, live: bool) -> dict:
                 if not pick:
                     row[arm] = {"verdict": "refused", "why": "no pick", "spent": "0"}
                     continue
-                if pick["url"] in done:
-                    row[arm] = {**done[pick["url"]], "shared": True}
+                if (pk["id"], pick["url"]) in done:  # shared only within a need: another need's args differ
+                    row[arm] = {**done[(pk["id"], pick["url"])], "shared": True}
                     continue
                 args = pick["args"] or {}
                 req = (pick["method"], pick["url"], args if pick["method"] == "GET" else None, args if pick["method"] != "GET" else None)
@@ -438,7 +441,7 @@ def run_e22(cfg: dict, live: bool) -> dict:
                         res = {"url": pick["url"], "verdict": "refused", "why": f"cap: {cost}", "spent": "0"}
                     else:
                         out = pay_and_fetch(http, req, opt, wallet, client, cfg)
-                        paid = settled_on_ledger(lg, cfg, wallet.classic_address, opt["payTo"], out["invoice_hash"], out["settled_tx"])
+                        paid = settled_on_ledger(lg, cfg, wallet.classic_address, opt["payTo"], out["invoice_hash"], out["tx_hash"])
                         amt = Decimal(paid["amount"]) if paid else Decimal(0)
                         real = money.drops_to_rlusd(int(amt), mid) if paid and paid["asset"] == "XRP" else amt
                         spent += real
@@ -454,7 +457,7 @@ def run_e22(cfg: dict, live: bool) -> dict:
                             g1 = grade(jclient, cfg, q, out["body"], cap=200_000)
                             res = {**base, "verdict": "good" if g2["good"] else "bad", "grade_v2": g2,
                                    "verdict_llm_only": "good" if (g1["g3_well_formed"] and g1["g4_answers_need"] and g1["g5_fresh_enough"]) else "bad"}
-                done[pick["url"]] = res
+                done[(pk["id"], pick["url"])] = res
                 row[arm] = res
             rows.append(row)
     summary = {}
