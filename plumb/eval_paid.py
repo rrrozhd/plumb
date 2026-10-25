@@ -367,3 +367,107 @@ def run_e21(cfg: dict, live: bool) -> dict:
     out.write_text(json.dumps(report, indent=1, default=str))
     report["path"] = str(out)
     return report
+
+
+def run_e22(cfg: dict, live: bool) -> dict:
+    """E22 per eval/e22_prereg.md: held-out needs; Bazaar #1 vs Plumb v2 #1, both called with judge-v2 arguments."""
+    import gzip
+    from anthropic.lib.bedrock import AnthropicBedrock
+    from plumb import catalog, grader as G, judge, rank, relevance
+    from plumb.cli import _cold_judge, _load_env
+    _load_env("judge.env")
+    root = config.ROOT / "data"
+    cfg = {**cfg, "paths": {**cfg["paths"], "fit": "data/fit_v2.json"}}
+    needs = yaml.safe_load((config.ROOT / "eval" / "queries_e22.yaml").read_text())["queries"]
+    rk = rank.load(cfg, root, embed=relevance.Titan(cfg).embed, with_principals=False, judge=_cold_judge(cfg))
+    jclient = AnthropicBedrock(aws_region=cfg["judge"]["region"])
+    bz = catalog.Bazaar(cfg)
+    mid = Decimal(json.loads((root / "meta.json").read_text())["xrp_in_rlusd"])
+    cap_each, cap_total = Decimal("0.05"), money.rlusd(cfg["caps"]["eval_max_total"])
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%MZ")
+    bodies = config.ROOT / "out" / f"e22-bodies-{stamp}"
+    bodies.mkdir(parents=True, exist_ok=True)
+
+    picks = []
+    for q in needs:  # picks and arguments frozen before any purchase, written to disk first
+        cap = Decimal(str(q.get("max_price_rlusd", "0.05")))
+        b = next((e for e in (catalog.parse_listing(r, cfg) for r in bz.search(q["need"])) if e and
+                  (e.price_rlusd or Decimal(e.price_xrp_drops or 0) / 1_000_000 * mid) <= cap), None)
+        b_args = {}
+        if b:
+            lab = judge.judge(jclient, cfg, q["need"], [{"id": b.id, "service": b.service_name, "url": b.url, "tags": ", ".join(b.tags),
+                                                          "input": b.input_example, "description": b.description}])
+            b_args = (lab.get(b.id) or {}).get("args", {})
+        out = rk.shortlist(q["need"], k=1, constraints={"max_price": str(cap)})["results"]
+        p = out[0] if out else None
+        picks.append({"id": q["id"], "need": q["need"],
+                      "bazaar": {"url": b.url, "method": b.method, "args": b_args} if b else None,
+                      "plumb": {"url": p["url"], "method": p["method"], "args": p["call"]["args"], "match": p["match"]} if p else None})
+    (root / "e22_picks.json").write_text(json.dumps({"frozen_at": stamp, "picks": picks}, indent=1))
+    if not live:
+        return {"mode": "dry-run", "picks": picks, "path": str(root / "e22_picks.json"), "summary": {}, "spent_total_rlusd": "0"}
+
+    from xrpl.clients import JsonRpcClient
+    from xrpl.wallet import Wallet
+    seed = next(line.split("=", 1)[1].strip().strip('"') for line in (config.ROOT / "env" / "auditor.env").read_text().splitlines()
+                if line.startswith("AUDITOR_SEED="))
+    wallet, lg = Wallet.from_seed(seed), ledger.Ledger(cfg)
+    client = JsonRpcClient(lg.url)
+    spent, done, rows = Decimal(0), {}, []
+    with httpx.Client(timeout=15) as http:
+        for pk in picks:
+            q = next(x for x in needs if x["id"] == pk["id"])
+            row = {"id": pk["id"], "need": pk["need"]}
+            for arm in ("bazaar", "plumb"):
+                pick = pk[arm]
+                if not pick:
+                    row[arm] = {"verdict": "refused", "why": "no pick", "spent": "0"}
+                    continue
+                if pick["url"] in done:
+                    row[arm] = {**done[pick["url"]], "shared": True}
+                    continue
+                args = pick["args"] or {}
+                req = (pick["method"], pick["url"], args if pick["method"] == "GET" else None, args if pick["method"] != "GET" else None)
+                status, accepts = challenge(http, req)
+                opt = choose_option(accepts, cfg)
+                if status != 402 or not opt:
+                    res = {"url": pick["url"], "verdict": "refused", "why": f"no x402 challenge (HTTP {status})", "spent": "0"}
+                else:
+                    cost = cost_rlusd(opt, cfg, mid)
+                    if cost > cap_each or spent + cost > cap_total:
+                        res = {"url": pick["url"], "verdict": "refused", "why": f"cap: {cost}", "spent": "0"}
+                    else:
+                        out = pay_and_fetch(http, req, opt, wallet, client, cfg)
+                        paid = settled_on_ledger(lg, cfg, wallet.classic_address, opt["payTo"], out["invoice_hash"], out["settled_tx"])
+                        amt = Decimal(paid["amount"]) if paid else Decimal(0)
+                        real = money.drops_to_rlusd(int(amt), mid) if paid and paid["asset"] == "XRP" else amt
+                        spent += real
+                        body_file = bodies / f"{pk['id']}-{arm}.txt"
+                        body_file.write_text(out["body"])
+                        base = {"url": pick["url"], "http": out["http"], "spent": str(real), "tx": paid["tx_hash"] if paid else None,
+                                "body_file": str(body_file), "args": args}
+                        if not out["http"] or not 200 <= out["http"] < 300:
+                            v = "unsettled" if not paid else "bad"
+                            res = {**base, "verdict": v, "verdict_llm_only": v, "detail": out["body"][:200]}
+                        else:
+                            g2 = G.grade(q, out["body"], True, None, llm=llm_residual(jclient, cfg))
+                            g1 = grade(jclient, cfg, q, out["body"], cap=200_000)
+                            res = {**base, "verdict": "good" if g2["good"] else "bad", "grade_v2": g2,
+                                   "verdict_llm_only": "good" if (g1["g3_well_formed"] and g1["g4_answers_need"] and g1["g5_fresh_enough"]) else "bad"}
+                done[pick["url"]] = res
+                row[arm] = res
+            rows.append(row)
+    summary = {}
+    for arm in ("bazaar", "plumb"):
+        rs = [r[arm] for r in rows]
+        merchant = sum((Decimal(r.get("spent", "0")) for r in rs), Decimal(0))  # shared spend counts on both arms
+        fee = PLUMB_FEE * len(rows) if arm == "plumb" else Decimal(0)
+        for gname, field in (("v2", "verdict"), ("llm_only", "verdict_llm_only")):
+            good = sum(r.get(field) == "good" for r in rs)
+            summary[f"{arm}/{gname}"] = {"good": good, "of": len(rs), "cost_rlusd": str(merchant + fee),
+                                         "cost_per_good": str(((merchant + fee) / good).quantize(Decimal("0.000001"))) if good else None}
+    report = {"at": stamp, "mode": "live", "prereg": "eval/e22_prereg.md", "spent_total_rlusd": str(spent), "summary": summary, "rows": rows}
+    out_path = config.ROOT / "out" / f"e22-live-{stamp}.json"
+    out_path.write_text(json.dumps(report, indent=1, default=str))
+    report["path"] = str(out_path)
+    return report
